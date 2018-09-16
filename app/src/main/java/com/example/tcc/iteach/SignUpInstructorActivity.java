@@ -1,5 +1,6 @@
 package com.example.tcc.iteach;
 
+import android.accounts.Account;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -26,16 +27,19 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 public class SignUpInstructorActivity extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener {
-
+Instructor instructor;
 private TextView textViewSignin2;
-private EditText editTextPasswordInstructor , yearsExperience, editTextEmailInstructor,editTextFirstName,editTextLastName;
+private EditText editTextPasswordInstructor , yearsExperience, editTextEmailInstructor,editTextFirstName,editTextLastName , editTextNumberInstructor, lessonsPrice;
 private DatePicker datePicker;
 private RadioGroup radioGroupGender;
 private Spinner specialtySpinner , paymentSpinner, placeSpinner;
 private Button buttonRegisterInstructor;
 FirebaseAuth firebaseAuth;
 ProgressDialog progressDialog;
-
+String  instructorEmail, instructorPassword , firstName, lastName  , gender, date;
+long instructorsPhoneNum;
+int yearsOfExperience;
+double price;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +50,8 @@ ProgressDialog progressDialog;
         editTextPasswordInstructor= (EditText) findViewById(R.id.editTextPasswordInstructor);
         editTextFirstName=(EditText) findViewById(R.id.editTextFirstName);
         editTextLastName=(EditText) findViewById(R.id.editTextLastName);
+        editTextNumberInstructor= (EditText) findViewById(R.id.editTextNumberInstructor);
+        lessonsPrice= (EditText)findViewById(R.id.lessonsPrice);
         datePicker=(DatePicker)findViewById(R.id.datePicker);
         radioGroupGender=(RadioGroup)findViewById(R.id.radioGroupGender);
         specialtySpinner=(Spinner)findViewById(R.id.specialty);
@@ -58,15 +64,15 @@ ProgressDialog progressDialog;
 
         textViewSignin2.setOnClickListener(this);
         buttonRegisterInstructor.setOnClickListener(this);
-        String firstName= editTextFirstName.getText().toString();
-        String lastName= editTextLastName.getText().toString();
-        String yearsOfExperience = yearsExperience.getText().toString();
-
-        String date = datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear();
+        firstName= editTextFirstName.getText().toString();
+        lastName= editTextLastName.getText().toString();
+        yearsOfExperience = Integer.parseInt(yearsExperience.getText().toString());
+        instructorsPhoneNum = Long.parseLong(editTextNumberInstructor.getText().toString());
+        date = datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear();
        // To know if user selects male or female
        int radioId= radioGroupGender.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(radioId);
-        String gender = radioButton.getText().toString();
+        gender = radioButton.getText().toString();
         // fill the payment spinner with the payment methods in the strings.xml
         ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(this,R.array.paymentMethod,android.R.layout.simple_spinner_item);
         paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -86,8 +92,8 @@ paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
 
     private void registerInstructor(){
-        String instructorEmail = editTextEmailInstructor.getText().toString();
-        String instructorPassword = editTextPasswordInstructor.getText().toString();
+        instructorEmail = editTextEmailInstructor.getText().toString();
+        instructorPassword = editTextPasswordInstructor.getText().toString();
 
         if(TextUtils.isEmpty(instructorEmail)){
             // email is empty!
@@ -103,12 +109,11 @@ paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 // if validations are ok
         progressDialog.setMessage("Registering..Please wait..");
         progressDialog.show();
-        firebaseAuth.createUserWithEmailAndPassword(instructorEmail,instructorPassword)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.createUserWithEmailAndPassword(instructorEmail,instructorPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-
                         if(task.isSuccessful()) {
+                            instructor = new Instructor(firstName,lastName,date,gender,"location",instructorsPhoneNum, yearsOfExperience,price);
 
 
 
