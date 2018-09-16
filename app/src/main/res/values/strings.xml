@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">ITeach</string>
+
+
+    <string-array name="paymentMethod">
+        <item>VISA</item>
+        <item>Cash</item>
+        <item>Both</item>
+
+
+    </string-array>
+
+    <string-array name="specialty">
+        <item>Math</item>
+        <item>Piano</item>
+        <item>Science</item>
+        <item>Guitar</item>
+        <item>English</item>
+        <item>Ballet</item>
+        <item>Chemistry</item>
+        <item>Physics</item>
+
+
+    </string-array>
+
+    <string-array name="lessonsPlace">
+        <item>Instructor's place</item>
+        <item>student's place</item>
+        <item>Both</item>
+
+
+    </string-array>
+
+</resources>
