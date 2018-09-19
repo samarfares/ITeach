@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "227170686702",
+    "firebase_url": "https://iteach-2c6d1.firebaseio.com",
+    "project_id": "iteach-2c6d1",
+    "storage_bucket": "iteach-2c6d1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:227170686702:android:a875d7c19fc4db91",
+        "android_client_info": {
+          "package_name": "com.example.tcc.iteach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "227170686702-nl1hqgvaahgc9ks8fcs16k4qc40maj4n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjLVOfdZylbUzzrAg7suZrvIxpGbOdAIw"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
