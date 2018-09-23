@@ -6,4 +6,125 @@
     android:layout_height="match_parent"
     tools:context=".SignUpStudentActivity">
 
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:layout_gravity="center_horizontal"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Students Registeration"
+
+
+        />
+
+    <TextView
+        android:textAlignment="center"
+        android:text="Already registered? Sign in here"
+        android:id="@+id/textViewSignin2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <EditText
+        android:layout_margin="15dp"
+        android:inputType="textEmailAddress"
+        android:hint="please enter your email"
+        android:id="@+id/editTextEmailStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <EditText
+        android:layout_margin="15dp"
+        android:inputType="textPassword"
+        android:hint="please enter your password"
+        android:id="@+id/editTextPasswordStudent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+        <EditText
+            android:id="@+id/editTextFirstNameStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="please enter your first name" />
+
+        <EditText
+            android:id="@+id/editTextLastNameStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="please enter your last name" />
+        <TextView
+            android:text="Please select your date of birth"
+            android:id="@+id/textViewDOBStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        <DatePicker
+            android:id="@+id/datePickerStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:calendarViewShown="false"
+            android:datePickerMode="spinner"
+            android:spinnersShown="true"></DatePicker>
+
+        <TextView
+            android:text="Please select your gender"
+            android:id="@+id/textViewGenderStudent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupGender2">
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/male2"
+                android:text="Male"/>
+            <RadioButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/female2"
+                android:text="Female"/>
+        </RadioGroup>
+
+        <TextView
+            android:text="Please select your preferred subjects"
+            android:id="@+id/textViewSubjects"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+
+
+
+
+
+        <Spinner
+            android:id="@+id/subjects"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:layout_margin="15dp"
+            android:id="@+id/buttonContinueToLocation2"
+            android:text="Continue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>

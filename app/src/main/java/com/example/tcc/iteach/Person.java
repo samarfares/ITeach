@@ -7,7 +7,7 @@ public class Person {
     Account account;
 
 
-    public Person(String firstName, String lastName,String DOB, String gender, String location, long phoneNum) {
+    public Person(String firstName, String lastName,String DOB, String gender, String location) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = DOB;
