@@ -112,6 +112,12 @@
             android:id="@+id/textViewSpecialty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+
+
+
+
+
         <Spinner
             android:id="@+id/specialty"
             android:layout_width="fill_parent"
@@ -153,8 +159,8 @@
 
         <Button
             android:layout_margin="15dp"
-            android:id="@+id/buttonRegisterInstructor"
-            android:text="Register"
+            android:id="@+id/buttonContinueToLocation"
+            android:text="Continue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

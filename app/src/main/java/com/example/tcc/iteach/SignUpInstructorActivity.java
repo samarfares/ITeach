@@ -1,7 +1,9 @@
 package com.example.tcc.iteach;
 
 import android.accounts.Account;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -26,20 +28,31 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
+import java.util.ArrayList;
+
 public class SignUpInstructorActivity extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener {
 Instructor instructor;
-private TextView textViewSignin2;
+private TextView textViewSignin2 , textview , textViewDOB, textViewGender , textViewSpecialty, textViewPayment, textViewPlace;
 private EditText editTextPasswordInstructor , yearsExperience, editTextEmailInstructor,editTextFirstName,editTextLastName , editTextNumberInstructor, lessonsPrice;
 private DatePicker datePicker;
 private RadioGroup radioGroupGender;
+private RadioButton male, female;
 private Spinner specialtySpinner , paymentSpinner, placeSpinner;
-private Button buttonRegisterInstructor;
+private Button buttonContinueToLocation;
 FirebaseAuth firebaseAuth;
 ProgressDialog progressDialog;
 String  instructorEmail, instructorPassword , firstName, lastName  , gender, date;
 long instructorsPhoneNum;
 int yearsOfExperience;
 double price;
+
+String [] listItems;
+boolean [] checkedItems;
+ArrayList<Integer> mUserItems = new ArrayList<>();
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,35 +71,63 @@ double price;
         yearsExperience= (EditText)findViewById(R.id.yearsExperience);
         paymentSpinner=(Spinner)findViewById(R.id.payment);
         placeSpinner=(Spinner)findViewById(R.id.place);
-        buttonRegisterInstructor=(Button)findViewById(R.id.buttonRegisterInstructor);
+        buttonContinueToLocation=(Button)findViewById(R.id.buttonContinueToLocation);
+        textViewDOB=(TextView) findViewById(R.id.textViewDOB);
+        textview=(TextView) findViewById(R.id.textview);
+        textViewGender=(TextView) findViewById(R.id.textViewGender);
+        textViewSpecialty=(TextView) findViewById(R.id.textViewSpecialty);
+        male=(RadioButton) findViewById(R.id.male);
+        female=(RadioButton)findViewById(R.id.female);
+        textViewPayment= (TextView) findViewById(R.id.textViewPayment);
+        textViewPlace=(TextView) findViewById(R.id.textViewPlace);
+        progressDialog =new ProgressDialog(this);
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
         FirebaseUser firebaseUser;
         DatabaseReference databaseReference;
-
         textViewSignin2.setOnClickListener(this);
-        buttonRegisterInstructor.setOnClickListener(this);
-        firstName= editTextFirstName.getText().toString();
-        lastName= editTextLastName.getText().toString();
-        yearsOfExperience = Integer.parseInt(yearsExperience.getText().toString());
-        instructorsPhoneNum = Long.parseLong(editTextNumberInstructor.getText().toString());
-        date = datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear();
-       // To know if user selects male or female
-       int radioId= radioGroupGender.getCheckedRadioButtonId();
-        RadioButton radioButton = findViewById(radioId);
-        gender = radioButton.getText().toString();
-        // fill the payment spinner with the payment methods in the strings.xml
-        ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(this,R.array.paymentMethod,android.R.layout.simple_spinner_item);
-        paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-paymentSpinner.setAdapter(paymentAdapter);
-paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+        buttonContinueToLocation.setOnClickListener(this);
+///////////////////////////////////////////////////////////////////////////////////////
+       /* listItems=getResources().getStringArray(R.array.specialty);
+        checkedItems=new boolean[listItems.length];
+        specialtySpinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(SignUpInstructorActivity.this);
+                mBuilder.setTitle("Specialties");
+                mBuilder.setMultiChoiceItems(listItems, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int position, boolean isChecked) {
+                      if (isChecked){
+                          if(! mUserItems.contains(position)){
+                              mUserItems.add(position);
+                          }
+                          else{
+                              mUserItems.remove(position);
+                          }
 
-        ArrayAdapter<CharSequence> specialtyAdapter = ArrayAdapter.createFromResource(this,R.array.specialty,android.R.layout.simple_spinner_item);
-        specialtyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        specialtySpinner.setAdapter(specialtyAdapter);
-        specialtySpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
 
-        ArrayAdapter<CharSequence> placeAdapter = ArrayAdapter.createFromResource(this,R.array.lessonsPlace,android.R.layout.simple_spinner_item);
-        placeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        placeSpinner.setAdapter(placeAdapter);
+                      }
+
+                    }
+                });
+mBuilder.setCancelable(false);
+mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+    @Override
+    public void onClick(DialogInterface dialogInterface, int which) {
+        String item="";
+        for(int i=0 ; i<mUserItems.size();i++){
+            item=item+listItems[mUserItems.get(i)];
+            if(i !=mUserItems.size()-1)
+                item=item+",";
+
+        }
+
+    }
+});
+            }
+        }); */
 
     }
 
@@ -94,6 +135,37 @@ paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
     private void registerInstructor(){
         instructorEmail = editTextEmailInstructor.getText().toString();
         instructorPassword = editTextPasswordInstructor.getText().toString();
+
+        firstName= editTextFirstName.getText().toString();
+        lastName= editTextLastName.getText().toString();
+        yearsOfExperience = Integer.parseInt(yearsExperience.getText().toString());
+        instructorsPhoneNum = Long.parseLong(editTextNumberInstructor.getText().toString());
+        date = datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear();
+        // To know if user selects male or female
+        int radioId= radioGroupGender.getCheckedRadioButtonId();
+        RadioButton radioButton = findViewById(radioId);
+        gender = radioButton.getText().toString();
+        // fill the payment spinner with the payment methods in the strings.xml
+        ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(this ,R.array.paymentMethod,android.R.layout.simple_spinner_item);
+        paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        paymentSpinner.setAdapter(paymentAdapter);
+        setContentView(R.layout.activity_sign_up_instructor);
+
+
+
+        paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
+
+
+
+       ArrayAdapter<CharSequence> specialtyAdapter = ArrayAdapter.createFromResource(this,R.array.specialty,android.R.layout.simple_spinner_item);
+       specialtyAdapter.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
+       specialtySpinner.setAdapter(specialtyAdapter);
+       specialtySpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+
+        ArrayAdapter<CharSequence> placeAdapter = ArrayAdapter.createFromResource(this,R.array.lessonsPlace,android.R.layout.simple_spinner_item);
+        placeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        placeSpinner.setAdapter(placeAdapter);
 
         if(TextUtils.isEmpty(instructorEmail)){
             // email is empty!
@@ -113,27 +185,28 @@ paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
-                            instructor = new Instructor(firstName,lastName,date,gender,"location",instructorsPhoneNum, yearsOfExperience,price);
+                            progressDialog.dismiss();
+                            //instructor = new Instructor(firstName,lastName,date,gender,"location",instructorsPhoneNum, yearsOfExperience,price);
+                            Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
+                            intent.putExtra("instructorsFName",firstName);
+                            intent.putExtra("instructorsLName",lastName);
+                            intent.putExtra("DOB",date);
+                            intent.putExtra("gender",gender);
+                            intent.putExtra("location","location");
+                            intent.putExtra("phoneNum",instructorsPhoneNum);
+                            intent.putExtra("yearsOfExperience",yearsOfExperience);
+                            intent.putExtra("price",price);
 
-
-
-
-
-
-
-
-                            //Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                            progressDialog.hide();
+                            Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                             finish();
-                            startActivity(new Intent(getApplicationContext(),InstructorActivity.class));}
+                            startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            }
 
-                        else {Toast.makeText(SignUpInstructorActivity.this, "Registeration failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            progressDialog.hide();
-
-                        }//else
+                        else {progressDialog.dismiss();
+                            Toast.makeText(SignUpInstructorActivity.this, "Registeration failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                             }//else
                     }//oncomplete
-                });
-    }
+                }); }
 
     @Override
     public void onClick(View view) {
@@ -141,7 +214,7 @@ paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
             finish();
             startActivity(new Intent(this, MainActivity.class));
         }
-        if (view==buttonRegisterInstructor ){
+        if (view==buttonContinueToLocation ){
             registerInstructor();
 
 

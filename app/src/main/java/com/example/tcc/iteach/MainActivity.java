@@ -14,6 +14,7 @@ import android.widget.EditText;
 
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.tasks.OnFailureListener;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(firebaseAuth.getCurrentUser()!=null){
             finish();
-            startActivity(new Intent(getApplicationContext(), profileActivity.class));
+            startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
         }
         databaseReference= FirebaseDatabase.getInstance().getReference();
 
@@ -63,21 +64,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-    private void userLogin(){
+    private void userLogin() {
 
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString();
 
-        if(TextUtils.isEmpty(email)){
-            Toast.makeText(this,"Please Enter Email", Toast.LENGTH_SHORT).show();
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        if(TextUtils.isEmpty(password)){
+        if (TextUtils.isEmpty(password)) {
             Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT).show();
             return;
         }
-        if (password.length()<6){
+        if (password.length() < 6) {
             Toast.makeText(this, "password should be at least 6 characters long", Toast.LENGTH_SHORT).show();
             return;
 
@@ -89,36 +90,30 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         }*/
-        else if (!email.equals("haya@hotmail.com")&&password.equals("123456")){
-            SharedPreferences sharedPreferences=getSharedPreferences("MayData",MODE_PRIVATE);
-            SharedPreferences.Editor editor=sharedPreferences.edit();
-            editor.putString("User","NotAdmin");
-            editor.commit();
-        }
+       // else if (!email.equals("haya@hotmail.com") && password.equals("123456")) {
+           // SharedPreferences sharedPreferences = getSharedPreferences("MayData", MODE_PRIVATE);
+         //   SharedPreferences.Editor editor = sharedPreferences.edit();
+           // editor.putString("User", "NotAdmin");
+           // editor.commit();}
 
 
         progressDialog.setMessage("Logging in please wait...");
         progressDialog.show();
-        firebaseAuth.signInWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+        firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
 
-                            progressDialog.hide();
+                        if (task.isSuccessful()) {
+                            progressDialog.dismiss();
                             finish();
-                            startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        }
-
-                        else {progressDialog.hide();
-                            Toast.makeText(MainActivity.this, "login failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
-
-
+                            startActivity(new Intent(getApplicationContext(),SignUpStudentActivity.class));
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(MainActivity.this, "login failed, " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }//else
                     }
                 });
     }
-
 
 
     @Override
