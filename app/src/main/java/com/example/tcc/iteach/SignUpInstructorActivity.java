@@ -39,12 +39,14 @@ private RadioGroup radioGroupGender;
 private RadioButton male, female;
 private Spinner specialtySpinner , paymentSpinner, placeSpinner;
 private Button buttonContinueToLocation;
+private Button register;
 FirebaseAuth firebaseAuth;
 ProgressDialog progressDialog;
 String  instructorEmail, instructorPassword , firstName, lastName  , gender, date;
 long instructorsPhoneNum;
 int yearsOfExperience;
 double price;
+private String location;
 
 String [] listItems;
 boolean [] checkedItems;
@@ -72,6 +74,8 @@ ArrayList<Integer> mUserItems = new ArrayList<>();
         paymentSpinner=(Spinner)findViewById(R.id.payment);
         placeSpinner=(Spinner)findViewById(R.id.place);
         buttonContinueToLocation=(Button)findViewById(R.id.buttonContinueToLocation);
+        register=(Button)findViewById(R.id.buttonRegister);
+
         textViewDOB=(TextView) findViewById(R.id.textViewDOB);
         textview=(TextView) findViewById(R.id.textview);
         textViewGender=(TextView) findViewById(R.id.textViewGender);
@@ -129,6 +133,10 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             }
         }); */
 
+    location=getIntent().getStringExtra( "location" );
+
+
+
     }
 
 
@@ -177,6 +185,8 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
         if (instructorPassword.length()<6){
             Toast.makeText(this, "Password must me at least 6 characters long", Toast.LENGTH_LONG).show();return;}
+        if (location==null)
+            Toast.makeText(SignUpInstructorActivity.this, "Please enter your location", Toast.LENGTH_SHORT).show();
 
 // if validations are ok
         progressDialog.setMessage("Registering..Please wait..");
@@ -186,8 +196,10 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             progressDialog.dismiss();
-                            //instructor = new Instructor(firstName,lastName,date,gender,"location",instructorsPhoneNum, yearsOfExperience,price);
-                            Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
+
+
+                            instructor = new Instructor(firstName,lastName,date,gender,location,instructorsPhoneNum, yearsOfExperience,price);
+                           /* Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
                             intent.putExtra("instructorsFName",firstName);
                             intent.putExtra("instructorsLName",lastName);
                             intent.putExtra("DOB",date);
@@ -195,7 +207,7 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             intent.putExtra("location","location");
                             intent.putExtra("phoneNum",instructorsPhoneNum);
                             intent.putExtra("yearsOfExperience",yearsOfExperience);
-                            intent.putExtra("price",price);
+                            intent.putExtra("price",price);*/
 
                             Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                             finish();
@@ -203,7 +215,7 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                             }
 
                         else {progressDialog.dismiss();
-                            Toast.makeText(SignUpInstructorActivity.this, "Registeration failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpInstructorActivity.this, "Registration failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                              }//else
                     }//oncomplete
                 }); }
@@ -215,9 +227,15 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             startActivity(new Intent(this, MainActivity.class));
         }
         if (view==buttonContinueToLocation ){
+
+            startActivity(new Intent(this, LocationActivity.class));
+
+
+            }
+        if (view==register ){
+
+
             registerInstructor();
-
-
 
         }
 

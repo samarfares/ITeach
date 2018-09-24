@@ -26,7 +26,7 @@
 
     <Button
         android:layout_margin="15dp"
-        android:id="@+id/buttonSignupInstructor"
+        android:id="@+id/buttonSignUpInstructor"
         android:text="Sign up as an instructor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
