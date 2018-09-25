@@ -25,6 +25,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
     public static final String TAG = LocationActivity.class.getSimpleName();
     private static final int PLACE_PICKER_REQUEST = 1;
     private GoogleApiClient mClient;
+    String search;
 
 
     @Override
@@ -38,6 +39,9 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                 .addApi( Places.GEO_DATA_API )
                 .enableAutoManage( this, this )
                 .build();
+
+        search=getIntent().getStringExtra( "search" );
+
 
         try {
 
@@ -81,10 +85,22 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                 LatLng placeId=place.getLatLng();
             if(Riyadh.contains(placeId))
 
-            {Intent intent=new Intent(this, SignUpInstructorActivity.class);
-            intent.putExtra("location",placeId.toString());
+            {
+                if( search==null){
+                Intent intent=new Intent(this, SignUpInstructorActivity.class);
+                    Bundle args = new Bundle();
+                    args.putParcelable("location", placeId);
+                    intent.putExtra("bundle", args);
 
-            startActivity(intent);}
+                    startActivity(intent);}
+                Intent intent=new Intent(this, SearchForInstructorActivity.class);
+                Bundle args = new Bundle();
+                args.putParcelable("location", placeId);
+                intent.putExtra("bundle", args);
+
+                startActivity(intent);
+
+            }
             else
                 Toast.makeText(LocationActivity.this, "Your Location must be in Riyadh..sorry !!, ", Toast.LENGTH_LONG).show();
 

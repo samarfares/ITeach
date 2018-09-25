@@ -22,6 +22,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -43,7 +44,7 @@ import javax.crypto.SecretKey;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.DESKeySpec;
 
-public class SignUpInstructorActivity extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener {
+public class SignUpInstructorActivity extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener, AdapterView.OnItemClickListener {
 Instructor instructor;
 private TextView textViewSignin2 , textview , textViewDOB, textViewGender , textViewSpecialty, textViewPayment, textViewPlace;
 private EditText editTextPasswordInstructor , yearsExperience, editTextEmailInstructor,editTextFirstName,editTextLastName , editTextNumberInstructor, lessonsPrice;
@@ -59,7 +60,9 @@ String  instructorEmail, instructorPassword , firstName, lastName  , gender, dat
 long instructorsPhoneNum;
 int yearsOfExperience;
 double price;
-private String location,encryptedLocation;
+private String encryptedLatitude,encryptedLongitude;
+private LatLng location,encryptedLocation;
+private String latitude,longitude;
 private static String cryptoPass = "sup3rS3xy";
 
 String [] listItems;
@@ -106,6 +109,7 @@ ArrayList<Integer> mUserItems = new ArrayList<>();
         DatabaseReference databaseReference;
         textViewSignin2.setOnClickListener(this);
         buttonContinueToLocation.setOnClickListener(this);
+        register.setOnClickListener(this);
 ///////////////////////////////////////////////////////////////////////////////////////
        /* listItems=getResources().getStringArray(R.array.specialty);
         checkedItems=new boolean[listItems.length];
@@ -147,8 +151,15 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             }
         }); */
 
-    location=getIntent().getStringExtra( "location" );
-    encryptedLocation=encryptIt( location );
+
+        Bundle bundle = getIntent().getParcelableExtra("bundle");
+        if (bundle!=null){
+        location = bundle.getParcelable("location");
+        latitude= String.valueOf( location.latitude );
+        encryptedLatitude=encryptIt( latitude );
+        longitude= String.valueOf( location.longitude );
+        encryptedLongitude=encryptIt( longitude );
+        encryptedLocation=new LatLng(  Double.parseDouble(encryptedLatitude),Double.parseDouble(encryptedLongitude));}
 
 
 
@@ -176,10 +187,7 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
 
 
-        paymentSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-
-
-
+        paymentSpinner.setOnItemClickListener(this);
 
        ArrayAdapter<CharSequence> specialtyAdapter = ArrayAdapter.createFromResource(this,R.array.specialty,android.R.layout.simple_spinner_item);
        specialtyAdapter.setDropDownViewResource(android.R.layout.simple_list_item_multiple_choice);
@@ -287,6 +295,38 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
         }
         return value;
     };
+    public static String decryptIt(String value) {
+        try {
+            DESKeySpec keySpec = new DESKeySpec(cryptoPass.getBytes("UTF8"));
+            SecretKeyFactory keyFactory = SecretKeyFactory.getInstance("DES");
+            SecretKey key = keyFactory.generateSecret(keySpec);
+
+            byte[] encrypedPwdBytes = Base64.decode(value, Base64.DEFAULT);
+            // cipher is not thread safe
+            Cipher cipher = Cipher.getInstance("DES");
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decrypedValueBytes = (cipher.doFinal(encrypedPwdBytes));
+
+            String decrypedValue = new String(decrypedValueBytes);
+            return decrypedValue;
+
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        }
+        return value;
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -304,6 +344,11 @@ mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     }
 }

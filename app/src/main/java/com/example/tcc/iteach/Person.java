@@ -1,13 +1,16 @@
 package com.example.tcc.iteach;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Person {
 
-    String firstName , lastName, DOB , Gender, location ;
+    String firstName , lastName, DOB , Gender;
+    LatLng location ;
     long phoneNum;
     Account account;
 
 
-    public Person(String firstName, String lastName,String DOB, String gender, String location) {
+    public Person(String firstName, String lastName,String DOB, String gender, LatLng location) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = DOB;
@@ -34,7 +37,7 @@ public class Person {
         return Gender;
     }
 
-    public String getLocation() {
+    public LatLng getLocation() {
         return location;
     }
 
@@ -60,7 +63,7 @@ public class Person {
         Gender = gender;
     }
 
-    public void setLocation(String location) {
+    public void setLocation(LatLng location) {
         this.location = location;
     }
 

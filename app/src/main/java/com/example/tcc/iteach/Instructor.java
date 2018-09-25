@@ -1,5 +1,7 @@
 package com.example.tcc.iteach;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Instructor extends Person {
 
     int YOE;
@@ -9,7 +11,7 @@ long phoneNum;
 
 
 
-    public Instructor(String firstName, String lastName, String DOB, String gender,String location, long phoneNum , int YOE ,double lessonsPrice) {
+    public Instructor(String firstName, String lastName, String DOB, String gender, LatLng location, long phoneNum , int YOE , double lessonsPrice) {
         super(firstName, lastName, DOB, gender, location);
     }
 
