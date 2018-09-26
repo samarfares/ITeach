@@ -86,26 +86,30 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
             if(Riyadh.contains(placeId))
 
             {
-                if( search==null){
+                Toast.makeText(LocationActivity.this, search, Toast.LENGTH_LONG).show();
+
+               if( search!= "true"){
                 Intent intent=new Intent(this, SignUpInstructorActivity.class);
                     Bundle args = new Bundle();
                     args.putParcelable("location", placeId);
                     intent.putExtra("bundle", args);
 
                     startActivity(intent);}
+                if( search.equals("true"))
+                {
                 Intent intent=new Intent(this, SearchForInstructorActivity.class);
                 Bundle args = new Bundle();
                 args.putParcelable("location", placeId);
                 intent.putExtra("bundle", args);
 
-                startActivity(intent);
+                startActivity(intent);}
 
             }
-            else
+            else{
                 Toast.makeText(LocationActivity.this, "Your Location must be in Riyadh..sorry !!, ", Toast.LENGTH_LONG).show();
 
-            Intent intent=new Intent(this, SignUpInstructorActivity.class);
-            startActivity(intent);
+           Intent intent=new Intent(this, SignUpInstructorActivity.class);
+            startActivity(intent);}
         }
 
 

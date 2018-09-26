@@ -1,5 +1,6 @@
 package com.example.tcc.iteach;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Build;
@@ -73,6 +74,10 @@ public class SearchForInstructorActivity extends AppCompatActivity {
         editTextPrice.setVisibility( View.GONE );
         radioType=(RadioGroup) findViewById(R.id.radioType);
         radioType.setVisibility( View.GONE );
+        listView=(ListView) findViewById( R.id.list1 );
+        list = new ArrayList<>();
+
+
         advancedSearch=(Button) findViewById(R.id.advancedSearch);
         location=(Button) findViewById(R.id.location);
         location.setVisibility( View.GONE );
@@ -95,10 +100,6 @@ public class SearchForInstructorActivity extends AppCompatActivity {
                  editTextPrice.setVisibility( View.VISIBLE );
                  radioType.setVisibility( View.VISIBLE );
                  location.setVisibility( View.VISIBLE );
-
-
-
-
                 }
 
 
@@ -113,7 +114,6 @@ public class SearchForInstructorActivity extends AppCompatActivity {
         final String gender = radioTypeButton.getText().toString();
         search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                list = new ArrayList<>();
                 databaseReference = FirebaseDatabase.getInstance().getReference(DATABASE_PATH);
                 databaseReference.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -159,7 +159,10 @@ public class SearchForInstructorActivity extends AppCompatActivity {
 
                             }
                                 }
-                            }
+
+
+                    }
+
 
 
 
@@ -172,6 +175,14 @@ public class SearchForInstructorActivity extends AppCompatActivity {
                 });
 
 
+                if (list!=null){
+                    myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,list);
+
+
+                    listView.setAdapter(myAdapter);}
+
+                    Toast.makeText(SearchForInstructorActivity.this, "No Results Found !!", Toast.LENGTH_SHORT).show();
+
 
 
 
@@ -180,8 +191,6 @@ public class SearchForInstructorActivity extends AppCompatActivity {
 
 
         });
-        myAdapter = new MyAdapterSearch( this,R.layout.items,list);
-        listView.setAdapter(myAdapter);
 
 
     }
