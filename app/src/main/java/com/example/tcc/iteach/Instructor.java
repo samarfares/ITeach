@@ -2,17 +2,28 @@ package com.example.tcc.iteach;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.LinkedList;
+import java.util.List;
+
 public class Instructor extends Person {
 
     int YOE;
-    double lessonsPrice;
+    double lessonsPrice ;
+    int rate;
     String paymentMethod, teachingMethod , lessonsPlace;
 long phoneNum;
 
 
+    public Instructor(String firstName, String lastName, String DOB, String gender, LatLng location, long phoneNum , int YOE , double lessonsPrice, int rate ,List<String> subjects , String paymentMethod , String lessonsPlace, String teachingMethod ) {
+        super(firstName, lastName, DOB, gender, location , subjects);
+        this.lessonsPrice=lessonsPrice;
+        this.rate=rate;
+        this.phoneNum=phoneNum;
+        this.YOE=YOE;
+        this.teachingMethod=teachingMethod;
+        this.paymentMethod=paymentMethod;
+        this.lessonsPlace=lessonsPlace;
 
-    public Instructor(String firstName, String lastName, String DOB, String gender, LatLng location, long phoneNum , int YOE , double lessonsPrice) {
-        super(firstName, lastName, DOB, gender, location);
     }
 
     public int getYOE() {
@@ -55,5 +66,13 @@ long phoneNum;
 
     public void setLessonsPlace(String lessonsPlace) {
         this.lessonsPlace = lessonsPlace;
+    }
+
+    public void setRate(int rate) {
+        this.rate = rate;
+    }
+
+    public double getRate() {
+        return rate;
     }
 }

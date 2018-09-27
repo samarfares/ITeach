@@ -25,7 +25,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
     public static final String TAG = LocationActivity.class.getSimpleName();
     private static final int PLACE_PICKER_REQUEST = 1;
     private GoogleApiClient mClient;
-    String search;
+    String search, value;
 
 
     @Override
@@ -41,6 +41,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                 .build();
 
         search=getIntent().getStringExtra( "search" );
+        value = getIntent().getExtras().getString("key");
 
 
         try {

@@ -30,6 +30,14 @@
 
 
     </string-array>
+
+    <string-array name="method">
+        <item>Teach individual</item>
+        <item>Teach group</item>
+        <item>Both</item>
+
+
+    </string-array>
     <string name="title_activity_maps">Map</string>
 
 </resources>
