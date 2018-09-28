@@ -39,5 +39,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:16.0.3'
     implementation 'com.google.firebase:firebase-database:16.0.1'
 
+
+
+    implementation 'com.tomer:fadingtextview:1.8.1'
+    implementation 'com.android.support:design:27.1.1'
+
 }
 apply plugin: 'com.google.gms.google-services'

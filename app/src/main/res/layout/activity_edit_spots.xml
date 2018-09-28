@@ -1,0 +1,533 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".editSpots">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_choose_date_schedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/done"
+                />
+
+            <TextView
+                android:id="@+id/textViewDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/select_spots"
+                android:textSize="30sp"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="6:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="7:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="8:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="9:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"
+                    />
+
+                <Button
+                    android:id="@+id/button_individual_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="12:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="13:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="14:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="16:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="17:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="18:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="19:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="21:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="23:00"
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
+
+                <Button
+                    android:id="@+id/button_individual_23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Individual"
+                    android:layout_marginVertical="10dp"/>
+
+                <Button
+                    android:id="@+id/button_group_23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Group"
+                    android:layout_marginVertical="10dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>
