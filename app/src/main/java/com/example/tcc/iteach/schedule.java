@@ -20,12 +20,17 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.sql.Date;
 import java.text.DateFormat;
 import java.util.Calendar;
 
 public class schedule extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , DatePickerDialog.OnDateSetListener {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +38,14 @@ public class schedule extends AppCompatActivity
         setContentView(R.layout.activity_schedule);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         Button button = (Button) findViewById(R.id.button_choose_date_schedule);
         Button button1 = (Button) findViewById(R.id.button_edit_spots);
+        final TextView textView = (TextView) findViewById(R.id.textViewDate);
+        textView.setText(DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime()));
+
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +77,9 @@ public class schedule extends AppCompatActivity
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(schedule.this, editSpots.class));
+                Intent i = new Intent(schedule.this , editSpots.class);
+                        i.putExtra("date", textView.getText().toString());
+                startActivity(i);
 
             }
         });
@@ -146,6 +159,5 @@ public class schedule extends AppCompatActivity
         String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDate);
         textView.setText(currentDateString);
-
     }
 }

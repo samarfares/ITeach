@@ -1,14 +1,41 @@
 package com.example.tcc.iteach;
 
 
+import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 public class editSpots extends AppCompatActivity implements View.OnClickListener {
+
+    Spot spot;
+
+    FirebaseAuth firebaseAuth;
+    DatabaseReference databaseReference;
+    FirebaseUser firebaseUser;
+
+    Dialog groupDialog;
+    EditText groupMembers;
+    Button saveGroupMembers;
+
+    private TextView textViewSelectedDate;
+    private Button done;
+    private TextView textViewNumber6;
+
+    int numberInt6=0, numberInt7=1, numberInt8=1, numberInt9=1, numberInt10=1, numberInt11=1, numberInt12=1, numberInt13=1, numberInt14=1, numberInt15=1, numberInt16=1, numberInt17=1, numberInt18=1, numberInt19=1, numberInt20=1, nNumberInt21=1, numberInt22=1, numberInt23=1;
+
     private boolean individual6;
     private boolean individual7;
     private boolean individual8;
@@ -66,11 +93,27 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
     private Button button23g ;
     private Button button23i ;
 
+    private int members6, members7, members8, members9, members10, members11, members12, members13, members14, members15, members16, members17, members18, members19, members20, members21, members22, members23;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_spots);
+
+        Intent intent = getIntent();
+
+        String date = intent.getStringExtra("date");
+
+        databaseReference= FirebaseDatabase.getInstance().getReference("Spots");
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        textViewSelectedDate = findViewById(R.id.textViewSelectedDate);
+        textViewSelectedDate.setText(date);
+
+
+        textViewNumber6 = (TextView) findViewById(R.id.textViewNumber6) ;
+        done = findViewById(R.id.button_choose_date_schedule);
 
         button6g = findViewById(R.id.button_group_6);
         button6i = findViewById(R.id.button_individual_6);
@@ -108,6 +151,8 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
         button22i = findViewById(R.id.button_individual_22);
         button23g = findViewById(R.id.button_group_23);
         button23i = findViewById(R.id.button_individual_23);
+
+        done.setOnClickListener(this);
 
         button6g.setOnClickListener(this);
         button6i.setOnClickListener(this);
@@ -154,6 +199,27 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             button6g.setBackgroundColor(Color.GRAY);
             button6i.setBackgroundResource(android.R.drawable.btn_default);
             individual6 = false;
+            groupDialog = new Dialog(editSpots.this);
+            groupDialog.setTitle("Write the number of students you can teach in a lesson");
+            groupDialog.setContentView(R.layout.dialog_template);
+            groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
+            saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
+            groupMembers.setEnabled(true);
+            saveGroupMembers.setEnabled(true);
+
+            saveGroupMembers.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    SharedPrefesSave(groupMembers.getText().toString());
+                    SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
+                    String number = sp.getString("members", null);
+                    numberInt6= Integer.parseInt(number);
+                    textViewNumber6.setText(number + " students");
+                    groupDialog.cancel();
+
+                }
+            });
+            groupDialog.show();
         }
         if (v == button6i) {
             button6i.setBackgroundColor(Color.GRAY);
@@ -331,5 +397,23 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual23 = true;
         }
 
+        if (v == done ) {
+            String instructor_id = databaseReference.push().getKey();
+
+            spot = new Spot( instructor_id, "wed 12/8/2019",  "6:00", 4, true,  false);
+
+            firebaseUser=firebaseAuth.getCurrentUser();
+            databaseReference.child(instructor_id).setValue(spot);
+
+        }
+
+    }
+
+    public void SharedPrefesSave (String members){
+
+        SharedPreferences prefs = getApplicationContext().getSharedPreferences("members", 0);
+        SharedPreferences.Editor prefEdit = prefs.edit();
+        prefEdit.putString("members", members);
+        prefEdit.commit();
     }
 }

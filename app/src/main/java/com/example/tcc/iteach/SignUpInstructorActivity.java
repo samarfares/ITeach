@@ -219,7 +219,7 @@ price=Double.parseDouble(priceString);
                             progressDialog.dismiss();
                             chosen=spinner.getSelectedStrings();
 chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
-                            Toast.makeText(SignUpInstructorActivity.this, "chosen "+ chosen.get(0), Toast.LENGTH_LONG).show();
+                            //Toast.makeText(SignUpInstructorActivity.this, "chosen "+ chosen.get(0), Toast.LENGTH_LONG).show();
                             instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosen , chosenPaymentMethod, chosenPlace , chosenMethod);
                            /* Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
                             intent.putExtra("instructorsFName",firstName);*/
@@ -228,7 +228,7 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
                             databaseReference.child(id).setValue(instructor);
                            // databaseReference.child(id).setValue(chosenString);
                             Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                           // startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                           startActivity(new Intent(getApplicationContext(),instructor_main.class));
                             }
 
                         else {progressDialog.dismiss();
@@ -254,7 +254,6 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
 
 
             registerInstructor();
-
         }
 
 
