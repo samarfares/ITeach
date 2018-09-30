@@ -126,7 +126,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
         date = intent.getStringExtra("date");
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("Spots");
+        databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
         textViewSelectedDate = findViewById(R.id.textViewSelectedDate);
@@ -867,202 +867,202 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
         if (v == done ) {
 
-            String instructor_id = databaseReference.push().getKey();
             firebaseUser=firebaseAuth.getCurrentUser();
+            String instructor_id = firebaseUser.getUid();
 
             if(chosen6){
                 if(individual6){
-                    spot = new Spot( instructor_id, date,  "6:00", 0, true,  true);
-                    databaseReference.child(instructor_id).setValue(spot);
+                    spot = new Spot( instructor_id, date,  "6:00", 1, true,  true);
+                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                 }
                 else {
                     spot = new Spot( instructor_id, date,  "6:00", numberInt6, true,  false);
-                    databaseReference.child(instructor_id).setValue(spot);
+                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                 }
 
             }
             if(chosen7){
                 if(individual7){
-                    spot = new Spot( instructor_id, date,  "7:00", 0, true,  true);
-                    databaseReference.child(instructor_id).setValue(spot);
+                    spot = new Spot( instructor_id, date,  "7:00", 1, true,  true);
+                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                 }
                 else {
                     spot = new Spot( instructor_id, date,  "7:00", numberInt7, true,  false);
-                    databaseReference.child(instructor_id).setValue(spot);
+                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                 }
                 if(chosen8){
                     if(individual8){
-                        spot = new Spot( instructor_id, date,  "8:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "8:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "8:00", numberInt8, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen9){
                     if(individual9){
-                        spot = new Spot( instructor_id, date,  "9:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "9:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "9:00", numberInt9, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen10){
                     if(individual10){
-                        spot = new Spot( instructor_id, date,  "10:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "10:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "10:00", numberInt10, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen11){
                     if(individual11){
-                        spot = new Spot( instructor_id, date,  "11:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "11:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "11:00", numberInt11, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen12){
                     if(individual12){
-                        spot = new Spot( instructor_id, date,  "12:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "12:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "12:00", numberInt12, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen13){
                     if(individual13){
-                        spot = new Spot( instructor_id, date,  "13:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "13:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "6:00", numberInt13, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen14){
                     if(individual14){
-                        spot = new Spot( instructor_id, date,  "14:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "14:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "14:00", numberInt14, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen15){
                     if(individual15){
-                        spot = new Spot( instructor_id, date,  "15:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "15:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "15:00", numberInt15, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen16){
                     if(individual16){
-                        spot = new Spot( instructor_id, date,  "16:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "16:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "16:00", numberInt16, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen17){
                     if(individual17){
-                        spot = new Spot( instructor_id, date,  "17:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "17:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "17:00", numberInt17, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen18){
                     if(individual18){
-                        spot = new Spot( instructor_id, date,  "18:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "18:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "18:00", numberInt18, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen19){
                     if(individual19){
-                        spot = new Spot( instructor_id, date,  "19:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "19:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "19:00", numberInt19, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen20){
                     if(individual20){
-                        spot = new Spot( instructor_id, date,  "20:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "20:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "20:00", numberInt20, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen21){
                     if(individual21){
-                        spot = new Spot( instructor_id, date,  "21:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "21:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "21:00", numberInt21, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen22){
                     if(individual22){
-                        spot = new Spot( instructor_id, date,  "22:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "22:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "22:00", numberInt22, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
                 if(chosen23){
                     if(individual23){
-                        spot = new Spot( instructor_id, date,  "23:00", 0, true,  true);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        spot = new Spot( instructor_id, date,  "23:00", 1, true,  true);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "23:00", numberInt23, true,  false);
-                        databaseReference.child(instructor_id).setValue(spot);
+                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
                     }
 
                 }
