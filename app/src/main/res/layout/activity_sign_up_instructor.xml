@@ -29,7 +29,7 @@
 
         <TextView
             android:textAlignment="center"
-            android:text="Already registered? Sign in here"
+            android:text=" Already registered? Sign in here"
             android:id="@+id/textViewSignin2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
