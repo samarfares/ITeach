@@ -77,7 +77,7 @@ public class schedule extends AppCompatActivity
         spot = new Spot();
 
 
-        databaseReference = firebaseDatabase.getReference("Instructors").child("1").child("Spots");
+        databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
          adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -88,7 +88,6 @@ public class schedule extends AppCompatActivity
                     spot = ds.getValue(Spot.class);
                     if ( spot.getDate().equals(currentDateString)){
                         if ( spot.isIndividual()) {
-
                             list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
 
                         }
