@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.CalendarContract;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
@@ -17,19 +18,39 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.sql.Date;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class schedule extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener , DatePickerDialog.OnDateSetListener {
 
+    String currentDateString;
+    FirebaseDatabase firebaseDatabase;
+    DatabaseReference databaseReference;
+    FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
 
+    ListView listView;
+    ArrayList<String> list;
+    ArrayAdapter<String> adapter;
+    Spot spot;
 
 
     @Override
@@ -43,7 +64,50 @@ public class schedule extends AppCompatActivity
         Button button = (Button) findViewById(R.id.button_choose_date_schedule);
         Button button1 = (Button) findViewById(R.id.button_edit_spots);
         final TextView textView = (TextView) findViewById(R.id.textViewDate);
-        textView.setText(DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime()));
+        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
+        textView.setText(currentDateString);
+
+
+        listView = (ListView) findViewById(R.id.listViewSchedule);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
+        String instructor_id = firebaseUser.getUid();
+        spot = new Spot();
+
+
+        databaseReference = firebaseDatabase.getReference("Instructors").child("1").child("Spots");
+        list = new ArrayList<>();
+         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    spot = ds.getValue(Spot.class);
+                    if ( spot.getDate().equals(currentDateString)){
+                        if ( spot.isIndividual()) {
+
+                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
+
+                        }
+                        else{
+                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : "+ spot.getNumberOfStudent());
+
+                        }
+                    }
+                }
+                listView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -156,7 +220,7 @@ public class schedule extends AppCompatActivity
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDate);
         textView.setText(currentDateString);
     }

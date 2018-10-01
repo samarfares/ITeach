@@ -6,6 +6,9 @@ public class Spot {
     int numberOfStudent;
     boolean available, individual;
 
+    public Spot() {
+    }
+
     public Spot(String instructor_id, String date, String time, int numberOfStudent, boolean available, boolean individual) {
         this.instructor_id = instructor_id;
         this.date = date;

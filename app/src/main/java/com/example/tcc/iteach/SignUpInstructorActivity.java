@@ -253,8 +253,7 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
         if (view==register ){
 
 
-            //registerInstructor();
-            startActivity(new Intent(this,schedule.class));
+            registerInstructor();
         }
 
 

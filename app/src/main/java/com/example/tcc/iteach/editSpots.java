@@ -5,6 +5,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.provider.DocumentsContract;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +16,11 @@ import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class editSpots extends AppCompatActivity implements View.OnClickListener {
@@ -868,7 +873,10 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
         if (v == done ) {
 
             firebaseUser=firebaseAuth.getCurrentUser();
-            String instructor_id = firebaseUser.getUid();
+            final String instructor_id = firebaseUser.getUid();
+
+            databaseReference.child("Instructors").child(instructor_id).child("spots").setValue(null);
+
 
             if(chosen6){
                 if(individual6){
