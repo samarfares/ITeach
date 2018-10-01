@@ -367,11 +367,11 @@ public class SearchForInstructorActivity extends AppCompatActivity {
 
                                     Set<Instructor> common1;
                                 common1 = new HashSet<Instructor>(list);
-                                if (genderList.size()>0)
+                             //   if (genderList.size()>0)
                                 common1.retainAll(genderList);
-                                if(priceList.size ()>0)
+                               // if(priceList.size ()>0)
                                 common1.retainAll(priceList);
-                                if (subjectList.size()>0)
+                                //if (subjectList.size()>0)
                                     common1.retainAll(subjectList);
 
 
