@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             progressDialog.dismiss();
                             finish();
-                            startActivity(new Intent(getApplicationContext(),SignUpStudentActivity.class));
+                            //startActivity(new Intent(getApplicationContext(),instructor_main.class));
                         } else {
                             progressDialog.dismiss();
                             Toast.makeText(MainActivity.this, "login failed, " + task.getException().getMessage(), Toast.LENGTH_LONG).show();

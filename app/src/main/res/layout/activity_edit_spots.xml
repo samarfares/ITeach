@@ -26,6 +26,17 @@
                 />
 
             <TextView
+                android:id="@+id/textViewSelectedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="30sp"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                android:layout_gravity="center_horizontal"
+                />
+
+            <TextView
                 android:id="@+id/textViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,6 +69,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -85,6 +103,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
 
@@ -114,6 +139,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
 
@@ -143,6 +175,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
 
@@ -171,6 +210,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
 
@@ -199,6 +245,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
 
@@ -227,6 +280,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -254,6 +314,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -281,6 +348,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -308,6 +382,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -335,6 +416,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber16"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -362,6 +450,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber17"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -389,6 +484,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber18"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -416,6 +518,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber19"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -443,6 +552,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber20"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -470,6 +586,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber21"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -497,6 +620,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
             <LinearLayout
@@ -524,6 +654,13 @@
                     android:layout_height="wrap_content"
                     android:text="Group"
                     android:layout_marginVertical="10dp"/>
+                <TextView
+                    android:id="@+id/textViewNumber23"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp"
+                    android:layout_margin="10dp"/>
 
             </LinearLayout>
         </LinearLayout>
