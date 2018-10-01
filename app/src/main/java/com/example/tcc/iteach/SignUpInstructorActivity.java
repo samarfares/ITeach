@@ -65,11 +65,11 @@ String  instructorEmail, instructorPassword , firstName, lastName  , gender, dat
 long longInstructorsPhoneNum;
 int intYearsOfExperience;
 double price;
-private String encryptedLatitude,encryptedLongitude;
-private LatLng location,encryptedLocation;
+private LatLng location;
+    private String encryptedLocation;
 private String latitude,longitude;
 private static String cryptoPass = "sup3rS3xy";
-    List<String> chosen = new LinkedList<String>();
+    List<String> chosen = new ArrayList<String>();
     MultiSelectionSpinner spinner;
 
 
@@ -147,11 +147,7 @@ method=(Spinner)findViewById(R.id.method);
         Bundle bundle = getIntent().getParcelableExtra("bundle");
         if (bundle!=null){
         location = bundle.getParcelable("location");
-        latitude= String.valueOf( location.latitude );
-        encryptedLatitude=encryptIt( latitude );
-        longitude= String.valueOf( location.longitude );
-        encryptedLongitude=encryptIt( longitude );
-        encryptedLocation=new LatLng(  Double.parseDouble(encryptedLatitude),Double.parseDouble(encryptedLongitude));}
+        encryptedLocation=encryptIt( location.toString() );}
 // end location
     }
 
@@ -218,15 +214,19 @@ price=Double.parseDouble(priceString);
                         if(task.isSuccessful()) {
                             progressDialog.dismiss();
                             chosen=spinner.getSelectedStrings();
-chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
-                            Toast.makeText(SignUpInstructorActivity.this, "chosen "+ chosen.get(0), Toast.LENGTH_LONG).show();
-                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosen , chosenPaymentMethod, chosenPlace , chosenMethod);
+                            Toast.makeText(SignUpInstructorActivity.this,chosen.get( 0 ), Toast.LENGTH_SHORT).show();
+
+
+                            chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
+                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
                            /* Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
                             intent.putExtra("instructorsFName",firstName);*/
                             firebaseUser=firebaseAuth.getCurrentUser();
                             String id = databaseReference.push().getKey();
                             databaseReference.child(id).setValue(instructor);
-                           // databaseReference.child(id).setValue(chosenString);
+                            databaseReference.child(id).child("subjects").setValue(chosen);
+
+                            // databaseReference.child(id).setValue(chosenString);
                             Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
                            // startActivity(new Intent(getApplicationContext(),MainActivity.class));
                             }
@@ -245,7 +245,7 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
         }
         if (view==buttonContinueToLocation ){
             Intent intent = new Intent(SignUpInstructorActivity.this,LocationActivity.class);
-            intent.putExtra("key",1);
+            intent.putExtra("key", "instructor" );
            startActivity(intent);
 
 

@@ -2,25 +2,27 @@ package com.example.tcc.iteach;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Person {
 
     String firstName , lastName, DOB , Gender;
-    LatLng location ;
+    String location ;
     Account account;
-    List<String> subjects;
+    LinkedList<String> subjects=new LinkedList<String>();
 
 
-    public Person(String firstName, String lastName,String DOB, String gender, LatLng location , List<String> subs ) {
-       // subjects=new LinkedList<>();
+    public Person() {}
+
+
+    public Person(String firstName, String lastName,String DOB, String gender, String location  ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = DOB;
         Gender = gender;
         this.location = location;
-        subjects=subs;
 
     }
 
@@ -42,7 +44,7 @@ public class Person {
         return Gender;
     }
 
-    public LatLng getLocation() {
+    public String getLocation() {
         return location;
     }
 
@@ -65,7 +67,7 @@ public class Person {
         Gender = gender;
     }
 
-    public void setLocation(LatLng location) {
+    public void setLocation(String location) {
         this.location = location;
     }
 

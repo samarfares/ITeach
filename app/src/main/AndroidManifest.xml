@@ -48,6 +48,9 @@
             android:name=".SearchForInstructorActivity"
             android:exported="true" />
         <activity
+            android:name=".SearchResultsActivity"
+            android:exported="true" />
+        <activity
             android:name=".instructor_main"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
@@ -77,7 +80,7 @@
             android:name=".settings"
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".editSpots"></activity>
+        <activity android:name=".editSpots" />
     </application>
 
 </manifest>

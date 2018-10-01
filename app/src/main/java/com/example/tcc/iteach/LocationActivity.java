@@ -44,6 +44,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
         value = getIntent().getExtras().getString("key");
 
 
+
         try {
 
             PlacePicker.IntentBuilder builder=new PlacePicker.IntentBuilder();
@@ -87,17 +88,24 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
             if(Riyadh.contains(placeId))
 
             {
-                Toast.makeText(LocationActivity.this, search, Toast.LENGTH_LONG).show();
 
-               if( search!= "true"){
+               if(!search.equals( "true" )){
+                   if (value.equals( "instructor" )){
                 Intent intent=new Intent(this, SignUpInstructorActivity.class);
                     Bundle args = new Bundle();
                     args.putParcelable("location", placeId);
                     intent.putExtra("bundle", args);
 
                     startActivity(intent);}
-                if( search.equals("true"))
-                {
+                   if (value.equals( "student" )){
+                       Intent intent=new Intent(this, SignUpStudentActivity.class);
+                       Bundle args = new Bundle();
+                       args.putParcelable("location", placeId);
+                       intent.putExtra("bundle", args);
+
+                       startActivity(intent);}
+               }
+                  else                {
                 Intent intent=new Intent(this, SearchForInstructorActivity.class);
                 Bundle args = new Bundle();
                 args.putParcelable("location", placeId);

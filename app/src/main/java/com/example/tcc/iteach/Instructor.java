@@ -1,11 +1,13 @@
 package com.example.tcc.iteach;
 
-import com.google.android.gms.maps.model.LatLng;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import java.util.LinkedList;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
-public class Instructor extends Person {
+public class Instructor extends Person implements Parcelable {
 
     int YOE;
     double lessonsPrice ;
@@ -13,9 +15,10 @@ public class Instructor extends Person {
     String paymentMethod, teachingMethod , lessonsPlace;
 long phoneNum;
 
+public Instructor(){}
 
-    public Instructor(String firstName, String lastName, String DOB, String gender, LatLng location, long phoneNum , int YOE , double lessonsPrice, int rate ,List<String> subjects , String paymentMethod , String lessonsPlace, String teachingMethod ) {
-        super(firstName, lastName, DOB, gender, location , subjects);
+    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int rate  , String paymentMethod , String lessonsPlace, String teachingMethod) {
+        super(firstName, lastName, DOB, gender, location );
         this.lessonsPrice=lessonsPrice;
         this.rate=rate;
         this.phoneNum=phoneNum;
@@ -24,7 +27,30 @@ long phoneNum;
         this.paymentMethod=paymentMethod;
         this.lessonsPlace=lessonsPlace;
 
+
     }
+
+    protected Instructor(Parcel in) {
+        YOE = in.readInt();
+        lessonsPrice = in.readDouble();
+        rate = in.readInt();
+        paymentMethod = in.readString();
+        teachingMethod = in.readString();
+        lessonsPlace = in.readString();
+        phoneNum = in.readLong();
+    }
+
+    public static final Creator<Instructor> CREATOR = new Creator<Instructor>() {
+        @Override
+        public Instructor createFromParcel(Parcel in) {
+            return new Instructor( in );
+        }
+
+        @Override
+        public Instructor[] newArray(int size) {
+            return new Instructor[size];
+        }
+    };
 
     public int getYOE() {
         return YOE;
@@ -74,5 +100,19 @@ long phoneNum;
 
     public double getRate() {
         return rate;
+    }
+
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(firstName);
+        dest.writeString(lastName);
+
+
     }
 }

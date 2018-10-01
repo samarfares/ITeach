@@ -58,11 +58,12 @@ FirebaseAuth firebaseAuth;
 FirebaseUser firebaseUser;
 DatabaseReference databaseReference2;
 Person person;
-private LatLng location,encryptedLocation;
+private LatLng location;
+    private String encryptedLocation;
     private String latitude,longitude ,encryptedLatitude,encryptedLongitude;
     private static String cryptoPass = "sup3rS3xy";
 
-    List<String> subjects = new LinkedList<String>();
+    List<String> subjects = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,11 +109,7 @@ private LatLng location,encryptedLocation;
         Bundle bundle = getIntent().getParcelableExtra("bundle");
         if (bundle!=null){
             location = bundle.getParcelable("location");
-            latitude= String.valueOf( location.latitude );
-            encryptedLatitude=encryptIt( latitude );
-            longitude= String.valueOf( location.longitude );
-            encryptedLongitude=encryptIt( longitude );
-            encryptedLocation=new LatLng(  Double.parseDouble(encryptedLatitude),Double.parseDouble(encryptedLongitude));}
+            encryptedLocation=encryptIt( location.toString() );}
 // end location
 
         textViewSignin2.setOnClickListener(this);
@@ -128,7 +125,7 @@ buttonRegister2.setOnClickListener(this);
         }
         if (view==buttonContinueToLocation2 ){
             Intent intent = new Intent(SignUpStudentActivity.this,LocationActivity.class);
-            intent.putExtra("key",0);
+            intent.putExtra("key", "student" );
             startActivity(intent);        }
 
          if (view==buttonRegister2)
@@ -185,10 +182,12 @@ buttonRegister2.setOnClickListener(this);
                 if(task.isSuccessful()) {
                     progressDialog.dismiss();
                     subjects=spinner2.getSelectedStrings();
-person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation,subjects);
+                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation);
                     firebaseUser=firebaseAuth.getCurrentUser();
                     String id = databaseReference2.push().getKey();
                     databaseReference2.child(id).setValue(person);
+                    databaseReference2.child(id).child("subjects").setValue(subjects);
+
 
                     Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
 
