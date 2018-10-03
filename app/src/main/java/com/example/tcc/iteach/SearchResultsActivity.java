@@ -34,37 +34,10 @@ public class SearchResultsActivity extends AppCompatActivity {
         list = new ArrayList<>();
         text=(EditText) findViewById( R.id.test );
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors");
-        databaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                list.clear();
-                for(DataSnapshot snap : dataSnapshot.getChildren()){
 
-                    Instructor instructor = snap.getValue(Instructor.class);
-                    list.add(instructor);
 
-                }
-                for (int i=0;i<list.size();i++)
-                {
-                    String test=SignUpInstructorActivity.decryptIt( list.get( i ).location );
-                    Double lat= Double.valueOf( test.substring( test.indexOf( "(" )+1,test.indexOf( "," ) ) );
-                    Double lng= Double.valueOf( test.substring( test.indexOf( "," )+1,test.indexOf( ")" ) ) );
-                    LatLng t =new LatLng(lat,lng );
-                    LatLng b=new LatLng( 24,46 );
-                    Double dis=SearchForInstructorActivity.CalculationByDistance(t,b);
+                    Double dis=SearchForInstructorActivity.CalculationByDistance(new LatLng(24.7136 ,46.6753 ),new LatLng(26.4207 ,50.0888 ));
                     text.setText( dis.toString() );
-
-                }
-
-            }
-
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
 
     }
 }

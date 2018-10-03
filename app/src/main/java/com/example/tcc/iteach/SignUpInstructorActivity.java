@@ -214,14 +214,14 @@ price=Double.parseDouble(priceString);
                         if(task.isSuccessful()) {
                             progressDialog.dismiss();
                             chosen=spinner.getSelectedStrings();
-                            Toast.makeText(SignUpInstructorActivity.this,chosen.get( 0 ), Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(SignUpInstructorActivity.this,chosen.get( 0 ), Toast.LENGTH_SHORT).show();
 
 
                             chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
-                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
+                            //instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
 chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
                             //Toast.makeText(SignUpInstructorActivity.this, "chosen "+ chosen.get(0), Toast.LENGTH_LONG).show();
-                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 ,chosenPaymentMethod, chosenPlace , chosenMethod);
+                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0,0,0 ,chosenPaymentMethod, chosenPlace , chosenMethod);
                            /* Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
                             intent.putExtra("instructorsFName",firstName);*/
                             firebaseUser=firebaseAuth.getCurrentUser();
@@ -249,7 +249,9 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
         if (view==buttonContinueToLocation ){
             Intent intent = new Intent(SignUpInstructorActivity.this,LocationActivity.class);
             intent.putExtra("key", "instructor" );
-           startActivity(intent);
+            intent.putExtra("search", "false" );
+
+            startActivity(intent);
 
 
             }

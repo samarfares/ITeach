@@ -87,11 +87,11 @@ public class SearchForInstructorActivity extends AppCompatActivity {
     String spinner_item;
 
     SpinnerAdapter adapter;
-
-    @Override
+/*
+  @Override
     protected void onStart() {
 
-
+mAuth =FirebaseAuth.getInstance();
         super.onStart();
         FirebaseUser firebaseUser=mAuth.getCurrentUser();
         if(firebaseUser==null)
@@ -100,7 +100,7 @@ public class SearchForInstructorActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-    }
+    }*/
 
 
     @Override
@@ -169,14 +169,13 @@ public class SearchForInstructorActivity extends AppCompatActivity {
                                 Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
                                 LatLng t = new LatLng( lat, lng );
                                 Double distance = CalculationByDistance( t, SearchLocation );
-                                if (distance <= 1)
+                                if (distance <= 5)
                                     listLocation.add( locations.get( i ) );
 
 
                             }
                             if (listLocation.size()>0)
                             {
-                                Toast.makeText(SearchForInstructorActivity.this, "innnnnn", Toast.LENGTH_SHORT).show();
 
                                 myAdapter = new MyAdapterSearch( SearchForInstructorActivity.this, R.layout.items, listLocation );
                             listView.setAdapter( myAdapter );
@@ -271,11 +270,10 @@ public class SearchForInstructorActivity extends AppCompatActivity {
 
                             listView.setAdapter(myAdapter);
                             Utility.setListViewHeightBasedOnChildren(listView);}
-                        else {
 
-                            Toast.makeText(SearchForInstructorActivity.this, "No Results Found !!", Toast.LENGTH_SHORT).show();
 
-                        }
+
+
 
 
                     }
@@ -387,7 +385,7 @@ public class SearchForInstructorActivity extends AppCompatActivity {
                                 common1 = new HashSet<Instructor>(list);
                                if (genderList.size()>0&& priceList.size()<=0 &&subjectList.size()<=0)
                                 common1.retainAll(genderList);
-                                if(priceList.size ()>0&&genderList.size()<=0&&subjectList.size()<0)
+                                if(priceList.size ()>0&&genderList.size()<=0&&subjectList.size()<=0)
                                 common1.retainAll(priceList);
                                 if (subjectList.size()>0&&genderList.size()<=0&&priceList.size()<=0)
                                     common1.retainAll(subjectList);

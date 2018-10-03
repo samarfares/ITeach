@@ -89,7 +89,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
 
             {
 
-               if(!search.equals( "true" )){
+               if((!(search.equals( null ))&&!search.equals( "true" ))){
                    if (value.equals( "instructor" )){
                 Intent intent=new Intent(this, SignUpInstructorActivity.class);
                     Bundle args = new Bundle();

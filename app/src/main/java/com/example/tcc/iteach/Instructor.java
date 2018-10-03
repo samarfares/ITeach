@@ -11,16 +11,18 @@ public class Instructor extends Person implements Parcelable {
 
     int YOE;
     double lessonsPrice ;
-    int rate;
+    int likes , dislikes, neutral;
     String paymentMethod, teachingMethod , lessonsPlace;
 long phoneNum;
 
 public Instructor(){}
 
-    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int rate  , String paymentMethod , String lessonsPlace, String teachingMethod) {
+    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod) {
         super(firstName, lastName, DOB, gender, location );
         this.lessonsPrice=lessonsPrice;
-        this.rate=rate;
+        this.likes=likes;
+        this.dislikes=dislikes;
+        this.neutral=neutral;
         this.phoneNum=phoneNum;
         this.YOE=YOE;
         this.teachingMethod=teachingMethod;
@@ -33,7 +35,10 @@ public Instructor(){}
     protected Instructor(Parcel in) {
         YOE = in.readInt();
         lessonsPrice = in.readDouble();
-        rate = in.readInt();
+        likes = in.readInt();
+        dislikes=in.readInt();
+        neutral=in.readInt();
+
         paymentMethod = in.readString();
         teachingMethod = in.readString();
         lessonsPlace = in.readString();
@@ -94,14 +99,33 @@ public Instructor(){}
         this.lessonsPlace = lessonsPlace;
     }
 
-    public void setRate(int rate) {
-        this.rate = rate;
+    public int getLikes() {
+        return likes;
     }
 
-    public double getRate() {
-        return rate;
+    public int getDislikes() {
+        return dislikes;
     }
 
+    public int getNeutral() {
+        return neutral;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
+    }
+
+    public void setDislikes(int dislikes) {
+        this.dislikes = dislikes;
+    }
+
+    public void setNeutral(int neutral) {
+        this.neutral = neutral;
+    }
+
+    public void setPhoneNum(long phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 
     @Override
     public int describeContents() {
@@ -114,5 +138,16 @@ public Instructor(){}
         dest.writeString(lastName);
 
 
+    }
+
+
+    public void likeInstructor(Instructor ins){
+        ins.likes+=1;
+    }
+    public void dislikeInstructor(Instructor ins){
+        ins.dislikes+=1;
+    }
+    public void neutralizeInstructor(Instructor ins){
+        ins.neutral+=1;
     }
 }

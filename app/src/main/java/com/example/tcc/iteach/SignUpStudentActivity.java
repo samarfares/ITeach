@@ -126,6 +126,8 @@ buttonRegister2.setOnClickListener(this);
         if (view==buttonContinueToLocation2 ){
             Intent intent = new Intent(SignUpStudentActivity.this,LocationActivity.class);
             intent.putExtra("key", "student" );
+            intent.putExtra("search", "false" );
+
             startActivity(intent);        }
 
          if (view==buttonRegister2)

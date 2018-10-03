@@ -120,6 +120,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         if(view== buttonSignIn){
             userLogin();
+            //startActivity(new Intent(this, SearchForInstructorActivity.class));
+
         }
         if(view== textViewSignup){
             finish();
