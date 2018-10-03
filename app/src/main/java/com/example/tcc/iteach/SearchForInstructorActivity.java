@@ -35,6 +35,8 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -65,6 +67,7 @@ public class SearchForInstructorActivity extends AppCompatActivity {
     final ArrayList<String> keyList = new ArrayList<>();
     public static final String DATABASE_PATH = "Instructors";
     private DatabaseReference databaseReference;
+    private FirebaseAuth mAuth;
     private EditText editTextName;
     private TextView textViewSearch,textType,textSubject;
     private Button location,search,advancedSearch,locationSearch;
@@ -84,6 +87,21 @@ public class SearchForInstructorActivity extends AppCompatActivity {
     String spinner_item;
 
     SpinnerAdapter adapter;
+
+    @Override
+    protected void onStart() {
+
+
+        super.onStart();
+        FirebaseUser firebaseUser=mAuth.getCurrentUser();
+        if(firebaseUser==null)
+        {
+            Intent intent=new Intent(SearchForInstructorActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -367,12 +385,28 @@ public class SearchForInstructorActivity extends AppCompatActivity {
 
                                     Set<Instructor> common1;
                                 common1 = new HashSet<Instructor>(list);
-                             //   if (genderList.size()>0)
+                               if (genderList.size()>0&& priceList.size()<=0 &&subjectList.size()<=0)
                                 common1.retainAll(genderList);
-                               // if(priceList.size ()>0)
+                                if(priceList.size ()>0&&genderList.size()<=0&&subjectList.size()<0)
                                 common1.retainAll(priceList);
-                                //if (subjectList.size()>0)
+                                if (subjectList.size()>0&&genderList.size()<=0&&priceList.size()<=0)
                                     common1.retainAll(subjectList);
+                                if (genderList.size()>0&& priceList.size()>0 &&subjectList.size()<=0){
+                                    common1.retainAll(genderList);
+                                    common1.retainAll(priceList);}
+                                if (genderList.size()>0&& priceList.size()<=0 &&subjectList.size()>0){
+                                    common1.retainAll(genderList);
+                                    common1.retainAll(subjectList);}
+                                if(priceList.size ()>0&&genderList.size()<=0&&subjectList.size()>0){
+                                    common1.retainAll(priceList);
+                                    common1.retainAll(subjectList); }
+                                if(priceList.size ()>0&&genderList.size()>0&&subjectList.size()>0){
+                                    common1.retainAll(priceList);
+                                    common1.retainAll(subjectList);
+                                    common1.retainAll(genderList);
+                                }
+
+
 
 
                                 list = new ArrayList<Instructor>(common1);
