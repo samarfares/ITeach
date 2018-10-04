@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 
 public class editSpots extends AppCompatActivity implements View.OnClickListener {
 
@@ -30,6 +33,9 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     FirebaseUser firebaseUser;
+    FirebaseDatabase firebaseDatabase;
+    ArrayList<String> list ;
+
 
     Dialog groupDialog;
     EditText groupMembers;
@@ -131,31 +137,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
         date = intent.getStringExtra("date");
 
-        databaseReference= FirebaseDatabase.getInstance().getReference();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
 
         textViewSelectedDate = findViewById(R.id.textViewSelectedDate);
         textViewSelectedDate.setText(date);
 
 
-        textViewNumber6 = (TextView) findViewById(R.id.textViewNumber6) ;
-        textViewNumber7 = (TextView) findViewById(R.id.textViewNumber7) ;
-        textViewNumber8 = (TextView) findViewById(R.id.textViewNumber8) ;
-        textViewNumber9 = (TextView) findViewById(R.id.textViewNumber9) ;
-        textViewNumber10 = (TextView) findViewById(R.id.textViewNumber10) ;
-        textViewNumber11 = (TextView) findViewById(R.id.textViewNumber11) ;
-        textViewNumber12 = (TextView) findViewById(R.id.textViewNumber12) ;
-        textViewNumber13 = (TextView) findViewById(R.id.textViewNumber13) ;
-        textViewNumber14 = (TextView) findViewById(R.id.textViewNumber14) ;
-        textViewNumber15 = (TextView) findViewById(R.id.textViewNumber15) ;
-        textViewNumber16 = (TextView) findViewById(R.id.textViewNumber16) ;
-        textViewNumber17 = (TextView) findViewById(R.id.textViewNumber17) ;
-        textViewNumber18 = (TextView) findViewById(R.id.textViewNumber18) ;
-        textViewNumber19 = (TextView) findViewById(R.id.textViewNumber19) ;
-        textViewNumber20 = (TextView) findViewById(R.id.textViewNumber20) ;
-        textViewNumber21 = (TextView) findViewById(R.id.textViewNumber21) ;
-        textViewNumber22 = (TextView) findViewById(R.id.textViewNumber22) ;
-        textViewNumber23 = (TextView) findViewById(R.id.textViewNumber23) ;
+        textViewNumber6 = (TextView) findViewById(R.id.textViewNumber6);
+        textViewNumber7 = (TextView) findViewById(R.id.textViewNumber7);
+        textViewNumber8 = (TextView) findViewById(R.id.textViewNumber8);
+        textViewNumber9 = (TextView) findViewById(R.id.textViewNumber9);
+        textViewNumber10 = (TextView) findViewById(R.id.textViewNumber10);
+        textViewNumber11 = (TextView) findViewById(R.id.textViewNumber11);
+        textViewNumber12 = (TextView) findViewById(R.id.textViewNumber12);
+        textViewNumber13 = (TextView) findViewById(R.id.textViewNumber13);
+        textViewNumber14 = (TextView) findViewById(R.id.textViewNumber14);
+        textViewNumber15 = (TextView) findViewById(R.id.textViewNumber15);
+        textViewNumber16 = (TextView) findViewById(R.id.textViewNumber16);
+        textViewNumber17 = (TextView) findViewById(R.id.textViewNumber17);
+        textViewNumber18 = (TextView) findViewById(R.id.textViewNumber18);
+        textViewNumber19 = (TextView) findViewById(R.id.textViewNumber19);
+        textViewNumber20 = (TextView) findViewById(R.id.textViewNumber20);
+        textViewNumber21 = (TextView) findViewById(R.id.textViewNumber21);
+        textViewNumber22 = (TextView) findViewById(R.id.textViewNumber22);
+        textViewNumber23 = (TextView) findViewById(R.id.textViewNumber23);
 
 
         done = findViewById(R.id.button_choose_date_schedule);
@@ -202,52 +208,293 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
         button6g.setOnClickListener(this);
         button6i.setOnClickListener(this);
         button7g.setOnClickListener(this);
-        button7i.setOnClickListener( this);
-        button8g.setOnClickListener( this);
-        button8i.setOnClickListener( this);
+        button7i.setOnClickListener(this);
+        button8g.setOnClickListener(this);
+        button8i.setOnClickListener(this);
         button9g.setOnClickListener(this);
-        button9i.setOnClickListener( this);
-        button10g.setOnClickListener( this);
-        button10i.setOnClickListener( this);
-        button11g.setOnClickListener( this);
-        button11i.setOnClickListener( this);
-        button12g.setOnClickListener( this);
-        button12i.setOnClickListener( this);
-        button13g.setOnClickListener( this);
-        button13i.setOnClickListener( this);
-        button14g.setOnClickListener( this);
-        button14i.setOnClickListener( this);
-        button15g.setOnClickListener( this);
-        button15i.setOnClickListener( this);
-        button16g.setOnClickListener( this);
-        button16i.setOnClickListener( this);
+        button9i.setOnClickListener(this);
+        button10g.setOnClickListener(this);
+        button10i.setOnClickListener(this);
+        button11g.setOnClickListener(this);
+        button11i.setOnClickListener(this);
+        button12g.setOnClickListener(this);
+        button12i.setOnClickListener(this);
+        button13g.setOnClickListener(this);
+        button13i.setOnClickListener(this);
+        button14g.setOnClickListener(this);
+        button14i.setOnClickListener(this);
+        button15g.setOnClickListener(this);
+        button15i.setOnClickListener(this);
+        button16g.setOnClickListener(this);
+        button16i.setOnClickListener(this);
         button17g.setOnClickListener(this);
-        button17i.setOnClickListener( this);
-        button18g.setOnClickListener( this);
-        button18i.setOnClickListener( this);
-        button19g.setOnClickListener( this);
-        button19i.setOnClickListener( this);
-        button20g.setOnClickListener( this);
-        button20i.setOnClickListener( this);
-        button21g.setOnClickListener( this);
+        button17i.setOnClickListener(this);
+        button18g.setOnClickListener(this);
+        button18i.setOnClickListener(this);
+        button19g.setOnClickListener(this);
+        button19i.setOnClickListener(this);
+        button20g.setOnClickListener(this);
+        button20i.setOnClickListener(this);
+        button21g.setOnClickListener(this);
         button21i.setOnClickListener(this);
-        button22g.setOnClickListener( this);
-        button22i.setOnClickListener( this);
-        button23g.setOnClickListener( this);
+        button22g.setOnClickListener(this);
+        button22i.setOnClickListener(this);
+        button23g.setOnClickListener(this);
         button23i.setOnClickListener(this);
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
+        spot = new Spot();
+
+        databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
+        list = new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    spot = ds.getValue(Spot.class);
+                    if (spot.getDate().equals(date)) {
+                        if (spot.isIndividual()) {
+                            list.add(spot.getTime() + ".Individual");
+
+                        } else {
+                            list.add(spot.getTime() + ".Group." + spot.getNumberOfStudent());
+
+                        }
+                    }
+                }
+
+                for (String item : list) {
+                    String[] parts = item.split("\\."); // String array, each element is text between dots
+                    if (parts[0].equals("6:00")) {
+                        chosen6 = true;
+                        if (parts[1].equals("Group")) {
+                            button6g.setBackgroundColor(Color.GRAY);
+                            textViewNumber6.setText(parts[2] + " students");
+                        }
+                        else {
+                            button6i.setBackgroundColor(Color.GRAY);
+                            individual6 = true;
+                        }
+                    }
+                    if (parts[0].equals("7:00")) {
+                        chosen7 = true;
+                        if (parts[1].equals("Group")) {
+                            button7g.setBackgroundColor(Color.GRAY);
+                            textViewNumber7.setText(parts[2] + " students");
+                        }
+                        else {
+                            button7i.setBackgroundColor(Color.GRAY);
+                            individual7 = true;
+                        }
+                    }if (parts[0].equals("8:00")) {
+                        chosen8 = true;
+                        if (parts[1].equals("Group")) {
+                            button8g.setBackgroundColor(Color.GRAY);
+                            textViewNumber8.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual8 = true;
+                            button8i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("9:00")) {
+                        chosen9 = true;
+                        if (parts[1].equals("Group")) {
+                            button9g.setBackgroundColor(Color.GRAY);
+                            textViewNumber9.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual9 = true;
+                            button9i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("10:00")) {
+                        chosen10 = true;
+                        if (parts[1].equals("Group")) {
+                            button10g.setBackgroundColor(Color.GRAY);
+                            textViewNumber10.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual10 = true;
+                            button10i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("11:00")) {
+                        chosen11 = true;
+                        if (parts[1].equals("Group")) {
+                            button11g.setBackgroundColor(Color.GRAY);
+                            textViewNumber11.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual11 = true;
+                            button11i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("12:00")) {
+                        chosen12 = true;
+                        if (parts[1].equals("Group")) {
+                            button12g.setBackgroundColor(Color.GRAY);
+                            textViewNumber12.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual12 = true;
+                            button12i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("13:00")) {
+                        chosen13 = true;
+                        if (parts[1].equals("Group")) {
+                            button13g.setBackgroundColor(Color.GRAY);
+                            textViewNumber13.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual13 = true;
+                            button13i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("14:00")) {
+                        chosen14 = true;
+                        if (parts[1].equals("Group")) {
+                            button14g.setBackgroundColor(Color.GRAY);
+                            textViewNumber14.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual14 = true;
+                            button14i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("15:00")) {
+                        chosen15 = true;
+                        if (parts[1].equals("Group")) {
+                            button15g.setBackgroundColor(Color.GRAY);
+                            textViewNumber15.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual15 = true;
+                            button15i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("16:00")) {
+                        chosen16 = true;
+                        if (parts[1].equals("Group")) {
+                            button16g.setBackgroundColor(Color.GRAY);
+                            textViewNumber16.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual16 = true;
+                            button16i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("17:00")) {
+                        chosen17 = true;
+                        if (parts[1].equals("Group")) {
+                            button17g.setBackgroundColor(Color.GRAY);
+                            textViewNumber17.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual17 = true;
+                            button17i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("18:00")) {
+                        chosen18 = true;
+                        if (parts[1].equals("Group")) {
+                            button18g.setBackgroundColor(Color.GRAY);
+                            textViewNumber18.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual18 = true;
+                            button18i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("19:00")) {
+                        chosen19 = true;
+                        if (parts[1].equals("Group")) {
+                            button19g.setBackgroundColor(Color.GRAY);
+                            textViewNumber19.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual19 = true;
+                            button19i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("20:00")) {
+                        chosen20 = true;
+                        if (parts[1].equals("Group")) {
+                            button20g.setBackgroundColor(Color.GRAY);
+                            textViewNumber20.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual20 = true;
+                            button20i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("21:00")) {
+                        chosen21 = true;
+                        if (parts[1].equals("Group")) {
+                            button21g.setBackgroundColor(Color.GRAY);
+                            textViewNumber21.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual21 = true;
+                            button21i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("22:00")) {
+                        chosen22 = true;
+                        if (parts[1].equals("Group")) {
+                            button22g.setBackgroundColor(Color.GRAY);
+                            textViewNumber22.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual22 = true;
+                            button22i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                    if (parts[0].equals("23:00")) {
+                        chosen23 = true;
+                        if (parts[1].equals("Group")) {
+                            button23g.setBackgroundColor(Color.GRAY);
+                            textViewNumber23.setText(parts[2] + " students");
+                        }
+                        else {
+                            individual23 = true;
+                            button23i.setBackgroundColor(Color.GRAY);
+                        }
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
     @Override
     public void onClick(View v) {
         if (v == button6g) {
+            if (chosen6 && !individual6){
+                button6g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber6.setText("");
+                chosen6 = false;
+
+            }
+            else {
             chosen6=true;
             button6g.setBackgroundColor(Color.GRAY);
             button6i.setBackgroundResource(android.R.drawable.btn_default);
             individual6 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("Write the number of students you can teach in a lesson");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -267,14 +514,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                 }
             });
             groupDialog.show();
-        }
+        }}
         if (v == button6i) {
-            chosen6 = true;
-            button6i.setBackgroundColor(Color.GRAY);
-            button6g.setBackgroundResource(android.R.drawable.btn_default);
-            individual6 = true;
+            if (chosen6 && individual6){
+                button6i.setBackgroundResource(android.R.drawable.btn_default);
+                individual6 = false;
+                chosen6 = false;
+
+            }
+            else {
+
+                chosen6 = true;
+                button6i.setBackgroundColor(Color.GRAY);
+                button6g.setBackgroundResource(android.R.drawable.btn_default);
+                individual6 = true;
+                textViewNumber6.setText("");
+            }
         }
         if (v == button7g) {
+            if (chosen7 && !individual7){
+                button7g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber7.setText("");
+                chosen7 = false;
+
+            }
+            else {
             chosen7 = true;
             button7g.setBackgroundColor(Color.GRAY);
             button7i.setBackgroundResource(android.R.drawable.btn_default);
@@ -302,14 +566,30 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button7i) {
-            chosen7 = true;
-            button7i.setBackgroundColor(Color.GRAY);
-            button7g.setBackgroundResource(android.R.drawable.btn_default);
-            individual7 = true;
+            if (chosen7 && individual7) {
+                button7i.setBackgroundResource(android.R.drawable.btn_default);
+                individual7 = false;
+                chosen7 = false;
+
+            } else {
+                chosen7 = true;
+                button7i.setBackgroundColor(Color.GRAY);
+                button7g.setBackgroundResource(android.R.drawable.btn_default);
+                individual7 = true;
+                textViewNumber7.setText("");
+            }
+
         }
         if (v == button8g) {
+            if (chosen8 && !individual8){
+                button8g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber8.setText("");
+                chosen8 = false;
+
+            }
+            else {
             chosen8=true;
             button8g.setBackgroundColor(Color.GRAY);
             button8i.setBackgroundResource(android.R.drawable.btn_default);
@@ -337,14 +617,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button8i) {
-            chosen8 = true;
-            button8i.setBackgroundColor(Color.GRAY);
-            button8g.setBackgroundResource(android.R.drawable.btn_default);
-            individual8 = true;
+            if (chosen8 && individual8) {
+                button8i.setBackgroundResource(android.R.drawable.btn_default);
+                individual8 = false;
+                chosen8 = false;
+
+            } else {
+                chosen8 = true;
+                button8i.setBackgroundColor(Color.GRAY);
+                button8g.setBackgroundResource(android.R.drawable.btn_default);
+                individual8 = true;
+                textViewNumber8.setText("");
+
+            }
+
         }
         if (v == button9g) {
+            if (chosen9 && !individual9){
+                button9g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber9.setText("");
+                chosen9 = false;
+
+            }
+            else {
             chosen9 = true;
             button9g.setBackgroundColor(Color.GRAY);
             button9i.setBackgroundResource(android.R.drawable.btn_default);
@@ -372,14 +669,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button9i) {
-            chosen9 = true;
-            button9i.setBackgroundColor(Color.GRAY);
-            button9g.setBackgroundResource(android.R.drawable.btn_default);
-            individual9 = true ;
+            if (chosen9 && individual9) {
+                button9i.setBackgroundResource(android.R.drawable.btn_default);
+                individual9 = false;
+                chosen9 = false;
+
+            } else {
+                chosen9 = true;
+                button9i.setBackgroundColor(Color.GRAY);
+                button9g.setBackgroundResource(android.R.drawable.btn_default);
+                individual9 = true;
+                textViewNumber9.setText("");
+
+            }
+
         }
         if (v == button10g) {
+            if (chosen10 && !individual10){
+                button10g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber10.setText("");
+                chosen10 = false;
+
+            }
+            else {
             chosen10 = true;
             button10g.setBackgroundColor(Color.GRAY);
             button10i.setBackgroundResource(android.R.drawable.btn_default);
@@ -407,14 +721,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button10i) {
-            chosen10 = true;
-            button10i.setBackgroundColor(Color.GRAY);
-            button10g.setBackgroundResource(android.R.drawable.btn_default);
-            individual10 =true;
+            if (chosen10 && individual10) {
+                button10i.setBackgroundResource(android.R.drawable.btn_default);
+                individual10 = false;
+                chosen10 = false;
+
+            } else {
+                chosen10 = true;
+                button10i.setBackgroundColor(Color.GRAY);
+                button10g.setBackgroundResource(android.R.drawable.btn_default);
+                individual10 = true;
+                textViewNumber10.setText("");
+
+            }
+
         }
         if (v == button11g) {
+            if (chosen11 && !individual11){
+                button11g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber11.setText("");
+                chosen11 = false;
+
+            }
+            else {
             chosen11 = true;
             button11g.setBackgroundColor(Color.GRAY);
             button11i.setBackgroundResource(android.R.drawable.btn_default);
@@ -442,14 +773,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button11i) {
-            chosen11 = true;
-            button11i.setBackgroundColor(Color.GRAY);
-            button11g.setBackgroundResource(android.R.drawable.btn_default);
-            individual11 = true;
+            if (chosen11 && individual11) {
+                button11i.setBackgroundResource(android.R.drawable.btn_default);
+                individual11 = false;
+                chosen11 = false;
+
+            } else {
+                chosen11 = true;
+                button11i.setBackgroundColor(Color.GRAY);
+                button11g.setBackgroundResource(android.R.drawable.btn_default);
+                individual11 = true;
+                textViewNumber11.setText("");
+
+            }
+
         }
         if (v == button12g) {
+            if (chosen12 && !individual12){
+                button12g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber12.setText("");
+                chosen12 = false;
+
+            }
+            else {
             chosen12 = true;
             button12g.setBackgroundColor(Color.GRAY);
             button12i.setBackgroundResource(android.R.drawable.btn_default);
@@ -477,14 +825,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button12i) {
-            chosen12 = true;
-            button12i.setBackgroundColor(Color.GRAY);
-            button12g.setBackgroundResource(android.R.drawable.btn_default);
-            individual12=true;
+            if (chosen12 && individual12) {
+                button12i.setBackgroundResource(android.R.drawable.btn_default);
+                individual12 = false;
+                chosen12 = false;
+
+            } else {
+                chosen12 = true;
+                button12i.setBackgroundColor(Color.GRAY);
+                button12g.setBackgroundResource(android.R.drawable.btn_default);
+                individual12 = true;
+                textViewNumber12.setText("");
+
+            }
+
         }
         if (v == button13g) {
+            if (chosen13 && !individual13){
+                button13g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber13.setText("");
+                chosen13 = false;
+
+            }
+            else {
             chosen13 = true;
             button13g.setBackgroundColor(Color.GRAY);
             button13i.setBackgroundResource(android.R.drawable.btn_default);
@@ -512,14 +877,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button13i) {
-            chosen13 = true;
-            button13i.setBackgroundColor(Color.GRAY);
-            button13g.setBackgroundResource(android.R.drawable.btn_default);
-            individual13 = true;
+            if (chosen13 && individual13) {
+                button13i.setBackgroundResource(android.R.drawable.btn_default);
+                individual13 = false;
+                chosen13 = false;
+
+            } else {
+                chosen13 = true;
+                button13i.setBackgroundColor(Color.GRAY);
+                button13g.setBackgroundResource(android.R.drawable.btn_default);
+                individual13 = true;
+                textViewNumber13.setText("");
+
+            }
+
         }
         if (v == button14g) {
+            if (chosen14 && !individual14){
+                button14g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber14.setText("");
+                chosen14 = false;
+
+            }
+            else {
             chosen14 = true;
             button14g.setBackgroundColor(Color.GRAY);
             button14i.setBackgroundResource(android.R.drawable.btn_default);
@@ -547,14 +929,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button14i) {
-            chosen14 = true;
-            button14i.setBackgroundColor(Color.GRAY);
-            button14g.setBackgroundResource(android.R.drawable.btn_default);
-            individual14 = true;
+            if (chosen14 && individual14) {
+                button14i.setBackgroundResource(android.R.drawable.btn_default);
+                individual14 = false;
+                chosen14 = false;
+
+            } else {
+                chosen14 = true;
+                button14i.setBackgroundColor(Color.GRAY);
+                button14g.setBackgroundResource(android.R.drawable.btn_default);
+                individual14 = true;
+                textViewNumber14.setText("");
+
+            }
+
         }
         if (v == button15g) {
+            if (chosen15 && !individual15){
+                button15g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber15.setText("");
+                chosen15 = false;
+
+            }
+            else {
             chosen15 = true;
             button15g.setBackgroundColor(Color.GRAY);
             button15i.setBackgroundResource(android.R.drawable.btn_default);
@@ -582,14 +981,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button15i) {
-            chosen15 = true;
-            button15i.setBackgroundColor(Color.GRAY);
-            button15g.setBackgroundResource(android.R.drawable.btn_default);
-            individual15 = true;
+            if (chosen15 && individual15) {
+                button15i.setBackgroundResource(android.R.drawable.btn_default);
+                individual15 = false;
+                chosen15 = false;
+
+            } else {
+                chosen15 = true;
+                button15i.setBackgroundColor(Color.GRAY);
+                button15g.setBackgroundResource(android.R.drawable.btn_default);
+                individual15 = true;
+                textViewNumber15.setText("");
+
+            }
+
         }
         if (v == button16g) {
+            if (chosen16 && !individual16){
+                button16g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber16.setText("");
+                chosen16 = false;
+
+            }
+            else {
             chosen16 = true;
             button16g.setBackgroundColor(Color.GRAY);
             button16i.setBackgroundResource(android.R.drawable.btn_default);
@@ -617,14 +1033,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button16i) {
-            chosen16 = true;
-            button16i.setBackgroundColor(Color.GRAY);
-            button16g.setBackgroundResource(android.R.drawable.btn_default);
-            individual16 = true;
+            if (chosen16 && individual16) {
+                button16i.setBackgroundResource(android.R.drawable.btn_default);
+                individual16 = false;
+                chosen16 = false;
+
+            } else {
+                chosen16 = true;
+                button16i.setBackgroundColor(Color.GRAY);
+                button16g.setBackgroundResource(android.R.drawable.btn_default);
+                individual16 = true;
+                textViewNumber16.setText("");
+
+            }
+
         }
         if (v == button17g) {
+            if (chosen17 && !individual17){
+                button17g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber17.setText("");
+                chosen17 = false;
+
+            }
+            else {
             chosen17 = true;
             button17g.setBackgroundColor(Color.GRAY);
             button17i.setBackgroundResource(android.R.drawable.btn_default);
@@ -652,14 +1085,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button17i) {
-            chosen17 = true;
-            button17i.setBackgroundColor(Color.GRAY);
-            button17g.setBackgroundResource(android.R.drawable.btn_default);
-            individual17 = true;
+            if (chosen17 && individual17) {
+                button17i.setBackgroundResource(android.R.drawable.btn_default);
+                individual17 = false;
+                chosen17 = false;
+
+            } else {
+                chosen17 = true;
+                button17i.setBackgroundColor(Color.GRAY);
+                button17g.setBackgroundResource(android.R.drawable.btn_default);
+                individual17 = true;
+                textViewNumber17.setText("");
+
+            }
+
         }
         if (v == button18g) {
+            if (chosen18 && !individual18){
+                button18g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber18.setText("");
+                chosen18 = false;
+
+            }
+            else {
             chosen18 = true;
             button18g.setBackgroundColor(Color.GRAY);
             button18i.setBackgroundResource(android.R.drawable.btn_default);
@@ -687,14 +1137,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button18i) {
-            chosen18 = true;
-            button18i.setBackgroundColor(Color.GRAY);
-            button18g.setBackgroundResource(android.R.drawable.btn_default);
-            individual18 = true;
+            if (chosen18 && individual18) {
+                button18i.setBackgroundResource(android.R.drawable.btn_default);
+                individual18 = false;
+                chosen18 = false;
+
+            } else {
+                chosen18 = true;
+                button18i.setBackgroundColor(Color.GRAY);
+                button18g.setBackgroundResource(android.R.drawable.btn_default);
+                individual18 = true;
+                textViewNumber18.setText("");
+
+            }
+
         }
         if (v == button19g) {
+            if (chosen19 && !individual19){
+                button19g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber19.setText("");
+                chosen19 = false;
+
+            }
+            else {
             chosen19 = true;
             button19g.setBackgroundColor(Color.GRAY);
             button19i.setBackgroundResource(android.R.drawable.btn_default);
@@ -722,14 +1189,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button19i) {
-            chosen19 = true;
-            button19i.setBackgroundColor(Color.GRAY);
-            button19g.setBackgroundResource(android.R.drawable.btn_default);
-            individual19 = true;
+            if (chosen19 && individual19) {
+                button19i.setBackgroundResource(android.R.drawable.btn_default);
+                individual19 = false;
+                chosen19 = false;
+
+            } else {
+                chosen19 = true;
+                button19i.setBackgroundColor(Color.GRAY);
+                button19g.setBackgroundResource(android.R.drawable.btn_default);
+                individual19 = true;
+                textViewNumber19.setText("");
+
+            }
+
         }
         if (v == button20g) {
+            if (chosen20 && !individual20){
+                button20g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber20.setText("");
+                chosen20 = false;
+
+            }
+            else {
             chosen20 = true;
             button20g.setBackgroundColor(Color.GRAY);
             button20i.setBackgroundResource(android.R.drawable.btn_default);
@@ -757,14 +1241,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button20i) {
-            chosen20 = true;
-            button20i.setBackgroundColor(Color.GRAY);
-            button20g.setBackgroundResource(android.R.drawable.btn_default);
-            individual20 = true;
+            if (chosen20 && individual20) {
+                button20i.setBackgroundResource(android.R.drawable.btn_default);
+                individual20 = false;
+                chosen20 = false;
+
+            } else {
+                chosen20 = true;
+                button20i.setBackgroundColor(Color.GRAY);
+                button20g.setBackgroundResource(android.R.drawable.btn_default);
+                individual20 = true;
+                textViewNumber20.setText("");
+
+            }
+
         }
         if (v == button21g) {
+            if (chosen21 && !individual21){
+                button21g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber21.setText("");
+                chosen21 = false;
+
+            }
+            else {
             chosen21 = true;
             button21g.setBackgroundColor(Color.GRAY);
             button21i.setBackgroundResource(android.R.drawable.btn_default);
@@ -792,14 +1293,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button21i) {
-            chosen21 = true;
-            button21i.setBackgroundColor(Color.GRAY);
-            button21g.setBackgroundResource(android.R.drawable.btn_default);
-            individual21 = true;
+            if (chosen21 && individual21) {
+                button21i.setBackgroundResource(android.R.drawable.btn_default);
+                individual21 = false;
+                chosen21 = false;
+
+            } else {
+                chosen21 = true;
+                button21i.setBackgroundColor(Color.GRAY);
+                button21g.setBackgroundResource(android.R.drawable.btn_default);
+                individual21 = true;
+                textViewNumber21.setText("");
+
+            }
+
         }
         if (v == button22g) {
+            if (chosen22 && !individual22){
+                button22g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber22.setText("");
+                chosen22 = false;
+
+            }
+            else {
             chosen22 = true;
             button22g.setBackgroundColor(Color.GRAY);
             button22i.setBackgroundResource(android.R.drawable.btn_default);
@@ -827,14 +1345,31 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button22i) {
-            chosen22 = true;
-            button22i.setBackgroundColor(Color.GRAY);
-            button22g.setBackgroundResource(android.R.drawable.btn_default);
-            individual22 = true;
+            if (chosen22 && individual22) {
+                button22i.setBackgroundResource(android.R.drawable.btn_default);
+                individual22 = false;
+                chosen22 = false;
+
+            } else {
+                chosen22 = true;
+                button22i.setBackgroundColor(Color.GRAY);
+                button22g.setBackgroundResource(android.R.drawable.btn_default);
+                individual22 = true;
+                textViewNumber22.setText("");
+
+            }
+
         }
         if (v == button23g) {
+            if (chosen23 && !individual23){
+                button23g.setBackgroundResource(android.R.drawable.btn_default);
+                textViewNumber23.setText("");
+                chosen23 = false;
+
+            }
+            else {
             chosen23 = true;
             button23g.setBackgroundColor(Color.GRAY);
             button23i.setBackgroundResource(android.R.drawable.btn_default);
@@ -862,220 +1397,234 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             });
             groupDialog.show();
 
-        }
+        }}
         if (v == button23i) {
-            chosen23 = true;
-            button23i.setBackgroundColor(Color.GRAY);
-            button23g.setBackgroundResource(android.R.drawable.btn_default);
-            individual23 = true;
+            if (chosen23 && individual23) {
+                button23i.setBackgroundResource(android.R.drawable.btn_default);
+                individual23 = false;
+                chosen23 = false;
+
+            } else {
+                chosen23 = true;
+                button23i.setBackgroundColor(Color.GRAY);
+                button23g.setBackgroundResource(android.R.drawable.btn_default);
+                individual23 = true;
+                textViewNumber23.setText("");
+
+            }
+
         }
 
         if (v == done ) {
 
             firebaseUser=firebaseAuth.getCurrentUser();
-            final String instructor_id = firebaseUser.getUid();
+            final String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
 
-            databaseReference.child("Instructors").child(instructor_id).child("spots").setValue(null);
+            databaseReference = FirebaseDatabase.getInstance().getReference();
+            databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
+
+            databaseReference.setValue(null);
 
 
             if(chosen6){
                 if(individual6){
                     spot = new Spot( instructor_id, date,  "6:00", 1, true,  true);
-                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                    databaseReference.push().setValue(spot);
                 }
                 else {
                     spot = new Spot( instructor_id, date,  "6:00", numberInt6, true,  false);
-                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                    databaseReference.push().setValue(spot);
                 }
 
             }
-            if(chosen7){
-                if(individual7){
-                    spot = new Spot( instructor_id, date,  "7:00", 1, true,  true);
-                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+            if(chosen7) {
+                if (individual7) {
+                    spot = new Spot(instructor_id, date, "7:00", 1, true, true);
+                    databaseReference.push().setValue(spot);
+                } else {
+                    spot = new Spot(instructor_id, date, "7:00", numberInt7, true, false);
+                    databaseReference.push().setValue(spot);
                 }
-                else {
-                    spot = new Spot( instructor_id, date,  "7:00", numberInt7, true,  false);
-                    databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
-                }
+            }
                 if(chosen8){
                     if(individual8){
                         spot = new Spot( instructor_id, date,  "8:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "8:00", numberInt8, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen9){
                     if(individual9){
                         spot = new Spot( instructor_id, date,  "9:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "9:00", numberInt9, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen10){
                     if(individual10){
                         spot = new Spot( instructor_id, date,  "10:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "10:00", numberInt10, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen11){
                     if(individual11){
                         spot = new Spot( instructor_id, date,  "11:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "11:00", numberInt11, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen12){
                     if(individual12){
                         spot = new Spot( instructor_id, date,  "12:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "12:00", numberInt12, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen13){
                     if(individual13){
                         spot = new Spot( instructor_id, date,  "13:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "6:00", numberInt13, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen14){
                     if(individual14){
                         spot = new Spot( instructor_id, date,  "14:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "14:00", numberInt14, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen15){
                     if(individual15){
                         spot = new Spot( instructor_id, date,  "15:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "15:00", numberInt15, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen16){
                     if(individual16){
                         spot = new Spot( instructor_id, date,  "16:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "16:00", numberInt16, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen17){
                     if(individual17){
                         spot = new Spot( instructor_id, date,  "17:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "17:00", numberInt17, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen18){
                     if(individual18){
                         spot = new Spot( instructor_id, date,  "18:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "18:00", numberInt18, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen19){
                     if(individual19){
                         spot = new Spot( instructor_id, date,  "19:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "19:00", numberInt19, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen20){
                     if(individual20){
                         spot = new Spot( instructor_id, date,  "20:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "20:00", numberInt20, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen21){
                     if(individual21){
                         spot = new Spot( instructor_id, date,  "21:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "21:00", numberInt21, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen22){
                     if(individual22){
                         spot = new Spot( instructor_id, date,  "22:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "22:00", numberInt22, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
                 if(chosen23){
                     if(individual23){
                         spot = new Spot( instructor_id, date,  "23:00", 1, true,  true);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
                     else {
                         spot = new Spot( instructor_id, date,  "23:00", numberInt23, true,  false);
-                        databaseReference.child("Instructors").child(instructor_id).child("spots").push().setValue(spot);
+                        databaseReference.push().setValue(spot);
                     }
 
                 }
 
-            }
+
+            startActivity(new Intent(this, schedule.class));
 
         }
 

@@ -73,7 +73,7 @@ public class schedule extends AppCompatActivity
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
-        String instructor_id = firebaseUser.getUid();
+        String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
         spot = new Spot();
 
 
@@ -84,21 +84,17 @@ public class schedule extends AppCompatActivity
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
-                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     spot = ds.getValue(Spot.class);
-                    if ( spot.getDate().equals(currentDateString)){
-                        if ( spot.isIndividual()) {
-                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
-
-                        }
-                        else{
-                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : "+ spot.getNumberOfStudent());
-
+                        if (spot.getDate().equals(currentDateString)) {
+                            if (spot.isIndividual()) {
+                                list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
+                            } else {
+                                list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : " + spot.getNumberOfStudent());
+                            }
                         }
                     }
-                }
-                listView.setAdapter(adapter);
-
+                    listView.setAdapter(adapter);
             }
 
             @Override
@@ -222,5 +218,47 @@ public class schedule extends AppCompatActivity
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDate);
         textView.setText(currentDateString);
+
+
+        listView = (ListView) findViewById(R.id.listViewSchedule);
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseUser=firebaseAuth.getCurrentUser();
+        String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
+        spot = new Spot();
+
+        databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
+        list = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                for (DataSnapshot ds : dataSnapshot.getChildren()){
+                    spot = ds.getValue(Spot.class);
+                    if ( spot.getDate().equals(currentDateString)){
+                        if ( spot.isIndividual()) {
+                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
+
+                        }
+                        else{
+                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : "+ spot.getNumberOfStudent());
+
+                        }
+                    }
+                }
+                listView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
     }
 }
