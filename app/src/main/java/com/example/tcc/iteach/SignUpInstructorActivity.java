@@ -259,7 +259,7 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
 
 
             registerInstructor();
-            //startActivity(new Intent(this,schedule.class));
+            startActivity(new Intent(this,instructor_main.class));
         }
 
 

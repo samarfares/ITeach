@@ -130,10 +130,11 @@ buttonRegister2.setOnClickListener(this);
 
             startActivity(intent);        }
 
-         if (view==buttonRegister2)
+         if (view==buttonRegister2) {
              registerStudent();
-
-            }
+             startActivity(new Intent(this, student_main.class));
+         }
+    }
 
     private void registerStudent() {
         studentEmail = editTextEmailStudent.getText().toString();
