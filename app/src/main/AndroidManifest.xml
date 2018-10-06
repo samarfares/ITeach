@@ -47,15 +47,13 @@
         <activity
             android:name=".SearchForInstructorActivity"
             android:exported="true" />
-
         <activity
             android:name=".SearchResultsActivity"
             android:exported="true" />
         <activity
             android:name=".instructor_main"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".blackboard"
             android:label="@string/title_activity_blackboard"
@@ -83,6 +81,25 @@
             </intent-filter>
         </service>
 
+        <activity
+            android:name=".notifications2"
+            android:label="@string/title_activity_notifications"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".reservations2"
+            android:label="@string/title_activity_reservations"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".settings2"
+            android:label="@string/title_activity_settings"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".student_main"
+            android:label="ITeach"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".blackboard2"
+            android:label="@string/title_activity_blackboard"
+            android:theme="@style/AppTheme.NoActionBar"/>
     </application>
 
 </manifest>

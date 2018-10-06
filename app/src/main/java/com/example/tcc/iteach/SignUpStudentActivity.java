@@ -130,10 +130,10 @@ buttonRegister2.setOnClickListener(this);
 
             startActivity(intent);        }
 
-         if (view==buttonRegister2)
+         if (view==buttonRegister2) {
              registerStudent();
-
-            }
+         }
+    }
 
     private void registerStudent() {
         studentEmail = editTextEmailStudent.getText().toString();
@@ -192,8 +192,8 @@ buttonRegister2.setOnClickListener(this);
 
 
                     Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), student_main.class));
 
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 }
 
                 else {
