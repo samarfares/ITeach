@@ -132,7 +132,6 @@ buttonRegister2.setOnClickListener(this);
 
          if (view==buttonRegister2) {
              registerStudent();
-             startActivity(new Intent(this, student_main.class));
          }
     }
 
@@ -193,8 +192,8 @@ buttonRegister2.setOnClickListener(this);
 
 
                     Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getApplicationContext(), student_main.class));
 
-                    //startActivity(new Intent(getApplicationContext(),MainActivity.class));
                 }
 
                 else {
