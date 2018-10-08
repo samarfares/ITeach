@@ -130,10 +130,11 @@ buttonRegister2.setOnClickListener(this);
 
             startActivity(intent);        }
 
-         if (view==buttonRegister2)
+         if (view==buttonRegister2) {
              registerStudent();
-
-            }
+             startActivity(new Intent(this, student_main.class));
+         }
+    }
 
     private void registerStudent() {
         studentEmail = editTextEmailStudent.getText().toString();
@@ -184,7 +185,9 @@ buttonRegister2.setOnClickListener(this);
                 if(task.isSuccessful()) {
                     progressDialog.dismiss();
                     subjects=spinner2.getSelectedStrings();
-                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation);
+                    firebaseUser=firebaseAuth.getCurrentUser();
+                    String userID = firebaseUser.getUid();
+                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation ,studentEmail, subjects,userID);
                     firebaseUser=firebaseAuth.getCurrentUser();
                     String id = databaseReference2.push().getKey();
                     databaseReference2.child(id).setValue(person);

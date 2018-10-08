@@ -32,8 +32,8 @@
     </string-array>
 
     <string-array name="method">
-        <item>Teach individual</item>
-        <item>Teach group</item>
+        <item>Teaching individual</item>
+        <item>Teaching group</item>
         <item>Both</item>
 
 

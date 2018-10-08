@@ -61,7 +61,7 @@ FirebaseAuth firebaseAuth;
 DatabaseReference databaseReference;
 FirebaseUser firebaseUser;
 ProgressDialog progressDialog;
-String  instructorEmail, instructorPassword , firstName, lastName  , gender, date , yearsOfExperience , instructorsPhoneNum , chosenString, priceString ,   chosenPaymentMethod,chosenPlace , chosenMethod;
+String  instructorEmail, instructorPassword , firstName, lastName  , gender, date , yearsOfExperience , instructorsPhoneNum , chosenString, priceString ,   chosenPaymentMethod,chosenPlace , chosenMethod , insId;
 long longInstructorsPhoneNum;
 int intYearsOfExperience;
 double price;
@@ -220,18 +220,20 @@ price=Double.parseDouble(priceString);
                             chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
                             //instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
 chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
-                            //Toast.makeText(SignUpInstructorActivity.this, "chosen "+ chosen.get(0), Toast.LENGTH_LONG).show();
-                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0,0,0 ,chosenPaymentMethod, chosenPlace , chosenMethod);
-                           /* Intent intent = new Intent(SignUpInstructorActivity.this,MapsActivity.class);
-                            intent.putExtra("instructorsFName",firstName);*/
                             firebaseUser=firebaseAuth.getCurrentUser();
-                            String id = databaseReference.push().getKey();
-                            databaseReference.child(id).setValue(instructor);
-                            databaseReference.child(id).child("subjects").setValue(chosen);
+                          // Toast.makeText(SignUpInstructorActivity.this, "email "+ instructorEmail, Toast.LENGTH_LONG).show();
+String userID = firebaseUser.getUid();
+                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0,0,0 ,chosenPaymentMethod, chosenPlace , chosenMethod , instructorEmail, chosen , userID);
+                            //Toast.makeText(SignUpInstructorActivity.this, "chosen "+ instructor.subjects.get(0), Toast.LENGTH_LONG).show();
 
-                            // databaseReference.child(id).setValue(chosenString);
+                            /* Intent intent = new Intent(SignUpInstructorActivity.this,ViewInstructorProfile.class);
+                            intent.putExtra("instructorsFName",firstName);*/
+
+                           // String id = databaseReference.push().getKey();
+                            databaseReference.child(firebaseUser.getUid()).setValue(instructor);
+                            databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(getApplicationContext(),instructor_main.class));
+                         // startActivity(new Intent(getApplicationContext(),instructor_main.class));
                             }
 
                         else {progressDialog.dismiss();
@@ -259,7 +261,7 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
 
 
             registerInstructor();
-            //startActivity(new Intent(this,schedule.class));
+           // startActivity(new Intent(this,instructor_main.class));
         }
 
 
