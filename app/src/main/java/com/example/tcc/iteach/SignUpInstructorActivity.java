@@ -261,11 +261,7 @@ String userID = firebaseUser.getUid();
 
 
             registerInstructor();
-<<<<<<< HEAD
-           // startActivity(new Intent(this,instructor_main.class));
-=======
             //startActivity(new Intent(this,instructor_main.class));
->>>>>>> d4e2bf95aec03c254146f77194e61d0b73b994a0
         }
 
 

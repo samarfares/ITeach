@@ -53,11 +53,7 @@
         <activity
             android:name=".instructor_main"
             android:label="@string/app_name"
-<<<<<<< HEAD
             android:theme="@style/AppTheme.NoActionBar"></activity>
-=======
->>>>>>> d4e2bf95aec03c254146f77194e61d0b73b994a0
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".blackboard"
             android:label="@string/title_activity_blackboard"
@@ -79,16 +75,14 @@
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".editSpots" />
-<<<<<<< HEAD
+
         <activity android:name=".ViewInstructorProfile"></activity>
-=======
         <service android:name=".FCMService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT"/>
             </intent-filter>
         </service>
 
->>>>>>> d4e2bf95aec03c254146f77194e61d0b73b994a0
         <activity
             android:name=".notifications2"
             android:label="@string/title_activity_notifications"

@@ -132,10 +132,8 @@ buttonRegister2.setOnClickListener(this);
 
          if (view==buttonRegister2) {
              registerStudent();
-<<<<<<< HEAD
-             startActivity(new Intent(this, student_main.class));
-=======
->>>>>>> d4e2bf95aec03c254146f77194e61d0b73b994a0
+
+             //startActivity(new Intent(this, student_main.class));
          }
     }
 
