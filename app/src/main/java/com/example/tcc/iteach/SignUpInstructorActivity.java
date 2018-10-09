@@ -36,6 +36,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -71,6 +72,13 @@ private String latitude,longitude;
 private static String cryptoPass = "sup3rS3xy";
     List<String> chosen = new ArrayList<String>();
     MultiSelectionSpinner spinner;
+
+
+
+    private DatabaseReference usersRef;
+    private FirebaseAuth mAuth;
+
+    private String current_user_id;
 
 
 
@@ -149,6 +157,12 @@ method=(Spinner)findViewById(R.id.method);
         location = bundle.getParcelable("location");
         encryptedLocation=encryptIt( location.toString() );}
 // end location
+
+        mAuth = FirebaseAuth.getInstance();
+        //  current_user_id = mAuth.getCurrentUser().getUid();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
     }
 
 
@@ -233,6 +247,11 @@ String userID = firebaseUser.getUid();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+
+                           current_user_id = mAuth.getCurrentUser().getUid();
+                            HashMap postsMap = new HashMap();
+                            postsMap.put("fullname",firstName+lastName);
+                            usersRef.child(current_user_id).updateChildren(postsMap);
                          // startActivity(new Intent(getApplicationContext(),instructor_main.class));
                             }
 
@@ -261,7 +280,7 @@ String userID = firebaseUser.getUid();
 
 
             registerInstructor();
-            //startActivity(new Intent(this,instructor_main.class));
+            //startActivity(new Intent(this,blackboard.class));
         }
 
 
