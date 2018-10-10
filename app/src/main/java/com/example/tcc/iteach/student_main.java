@@ -14,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 import com.tomer.fadingtextview.FadingTextView;
 
@@ -21,7 +22,9 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class student_main extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
+
+    Button findInstructor ;
     DrawerLayout drawer;
     NavigationView navigationView;
     Toolbar toolbar=null;
@@ -61,7 +64,16 @@ public class student_main extends AppCompatActivity
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new MyTimerTask(), 2000, 4000);
 
+        //////////////////////////
+        findInstructor = (Button) findViewById(R.id.findInstructor);
+        findInstructor.setOnClickListener((View.OnClickListener) this);
     }
+
+    @Override
+    public void onClick(View view) {
+        startActivity(new Intent(student_main.this,SearchForInstructorActivity.class));
+    }
+
     public class MyTimerTask extends TimerTask{
 
 

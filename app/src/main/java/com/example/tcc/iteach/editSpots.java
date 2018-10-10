@@ -246,7 +246,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
         databaseReference = FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser = firebaseAuth.getCurrentUser();
-        String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
+        String instructor_id = firebaseUser.getUid();
         spot = new Spot();
 
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
@@ -1418,7 +1418,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
         if (v == done ) {
 
             firebaseUser=firebaseAuth.getCurrentUser();
-            final String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
+            final String instructor_id = firebaseUser.getUid();
 
             databaseReference = FirebaseDatabase.getInstance().getReference();
             databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");

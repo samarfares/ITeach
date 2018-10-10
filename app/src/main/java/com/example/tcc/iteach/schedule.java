@@ -73,7 +73,7 @@ public class schedule extends AppCompatActivity
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
-        String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
+        String instructor_id = firebaseUser.getUid();
         spot = new Spot();
 
 
@@ -225,7 +225,7 @@ public class schedule extends AppCompatActivity
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
-        String instructor_id = "-LNts7DF2v8B-i90dLAJ";//firebaseUser.getUid();
+        String instructor_id =firebaseUser.getUid();
         spot = new Spot();
 
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
