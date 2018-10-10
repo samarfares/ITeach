@@ -252,7 +252,7 @@ String userID = firebaseUser.getUid();
                             HashMap postsMap = new HashMap();
                             postsMap.put("fullname",firstName+lastName);
                             usersRef.child(current_user_id).updateChildren(postsMap);
-                         // startActivity(new Intent(getApplicationContext(),instructor_main.class));
+                         startActivity(new Intent(getApplicationContext(),instructor_main.class));
                             }
 
                         else {progressDialog.dismiss();

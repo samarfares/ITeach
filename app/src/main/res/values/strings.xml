@@ -11,14 +11,16 @@
     </string-array>
 
     <string-array name="specialty">
-        <item>Music</item>
-        <item>Piano</item>
-        <item>Science</item>
-        <item>Guitar</item>
+        <item>Arabic</item>
         <item>English</item>
-        <item>Ballet</item>
+        <item>Math</item>
         <item>Chemistry</item>
         <item>Physics</item>
+        <item>Music</item>
+        <item>Dancing</item>
+        <item>Painting</item>
+        <item>Cooking</item>
+
 
 
     </string-array>
