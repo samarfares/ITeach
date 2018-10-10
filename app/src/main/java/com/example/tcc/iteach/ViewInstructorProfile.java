@@ -139,7 +139,7 @@ neutralizeInstructor(list.get(0));
 
         }
         if (v==buttonReserve){
-            Intent intent = new Intent(ViewInstructorProfile.this,reservations.class);
+            Intent intent = new Intent(ViewInstructorProfile.this,ReserveInfo.class);
             intent.putExtra("insID",list.get(0).getUserID());
             intent.putExtra("insName",list.get(0).getFirstName()+list.get(0).getLastName());
             intent.putExtra("insGender",list.get(0).getGender());
@@ -155,7 +155,7 @@ neutralizeInstructor(list.get(0));
             intent.putExtra("insYOE",list.get(0).getYOE());
             intent.putExtra("insDOB",list.get(0).getDOB());
             intent.putExtra("insLocation",list.get(0).getLocation());
-            //startActivity(intent);
+            startActivity(intent);
 
         }
     }
