@@ -1,17 +1,16 @@
 package com.example.tcc.iteach;
 
 public class Lesson {
-    private String date, time, instructorID, studentID, feedback, subject, price, paymentMethod, lessonPlace, teachingMethod;
+    private String date, time, instructorID, studentID, subject, price, paymentMethod, lessonPlace, teachingMethod;
 
     public Lesson() {
     }
 
-    public Lesson(String date, String time, String instructorID, String studentID, String feedback, String subject, String price, String paymentMethod, String lessonPlace, String method) {
+    public Lesson(String date, String time, String instructorID, String studentID, String subject, String price, String paymentMethod, String lessonPlace, String method) {
         this.date = date;
         this.time = time;
         this.instructorID = instructorID;
         this.studentID = studentID;
-        this.feedback = feedback;
         this.subject = subject;
         this.price = price;
         this.paymentMethod = paymentMethod;
@@ -49,14 +48,6 @@ public class Lesson {
 
     public void setStudentID(String studentID) {
         this.studentID = studentID;
-    }
-
-    public String getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(String feedback) {
-        this.feedback = feedback;
     }
 
     public String getSubject() {

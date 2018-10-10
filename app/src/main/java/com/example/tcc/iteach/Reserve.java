@@ -37,12 +37,13 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
     Spot spot;
+    Lesson lesson;
 
     Button buttonReserve;
     Button buttonDate;
 
     String date, time, stuID;
-    String insID, insName, insGender, insPaymentMethod, insLessonsPlace, insLessonsPrice, insTeachingMethod ;
+    String insID, insName, paymentMethod, lessonPlace, lessonPrice, teachingMethod ,subject;
 
 
     @Override
@@ -60,12 +61,16 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         Intent intent = getIntent();
 
         insID = intent.getStringExtra("insID");
-        insName = intent.getStringExtra("insName");
-        insGender = intent.getStringExtra("insGender");
-        insPaymentMethod = intent.getStringExtra("insPaymentMethod");
-        insLessonsPlace = intent.getStringExtra("insLessonsPlace");
-        insLessonsPrice = intent.getStringExtra("insLessonsPrice");
-        insTeachingMethod = intent.getStringExtra("insTeachingMethod");
+        insName = intent.getStringExtra("price");
+        paymentMethod = intent.getStringExtra("paymentMethod");
+        lessonPlace = intent.getStringExtra("place");
+        lessonPrice = intent.getStringExtra("price");
+        teachingMethod = intent.getStringExtra("teachingMethod");
+        subject = intent.getStringExtra("subject");
+
+        if (paymentMethod.equals("VISA")){
+            buttonReserve.setText("Continue To Payment");
+        }
 
         listView = (ListView) findViewById(R.id.listViewReserve);
         firebaseDatabase = FirebaseDatabase.getInstance();
@@ -76,6 +81,30 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         String instructor_id = insID;
         spot = new Spot();
 
+        buttonReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (teachingMethod.equals("Cash")){
+                    databaseReference = firebaseDatabase.getReference("Lessons");
+                    lesson = new Lesson( date, time,  insID, stuID, subject, lessonPrice,paymentMethod,lessonPlace, teachingMethod);
+                    databaseReference.push().setValue(lesson);
+                    startActivity(new Intent(Reserve.this , student_main.class));
+                }
+                else{
+
+                    Intent i = new Intent(Reserve.this , Reserve.class);
+                    i.putExtra("insID", insID);
+                    i.putExtra("insName", insName);
+                    i.putExtra("paymentMethod", paymentMethod);
+                    i.putExtra("lessonPlace", lessonPlace);
+                    i.putExtra("lessonPrice", lessonPrice);
+                    i.putExtra("teachingMethod", teachingMethod);
+                    i.putExtra("subject", subject);
+                    startActivity(i);
+
+                }
+            }
+        });
 
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
@@ -88,7 +117,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     spot = ds.getValue(Spot.class);
                     if (spot.getDate().equals(currentDateString)) {
                         if (spot.isAvailable()) {
-                            if (insTeachingMethod.equals("Individual")) {
+                            if (teachingMethod.equals("Individual")) {
                                 if (spot.isIndividual())
                                     list.add("Time : " + spot.getTime().toString());
                             } else {
@@ -150,7 +179,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     spot = ds.getValue(Spot.class);
                     if ( spot.getDate().equals(currentDateString)){
                         if (spot.isAvailable()) {
-                            if (insTeachingMethod.equals("Individual")) {
+                            if (teachingMethod.equals("Individual")) {
                                 if (spot.isIndividual())
                                     list.add("Time : " + spot.getTime().toString() );
                             } else {
