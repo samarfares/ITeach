@@ -17,8 +17,8 @@ long phoneNum;
 
 public Instructor(){}
 
-    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod) {
-        super(firstName, lastName, DOB, gender, location );
+    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod , String email , List<String> subjects , String userID) {
+        super(firstName, lastName, DOB, gender, location, email  , subjects , userID );
         this.lessonsPrice=lessonsPrice;
         this.likes=likes;
         this.dislikes=dislikes;
@@ -28,8 +28,6 @@ public Instructor(){}
         this.teachingMethod=teachingMethod;
         this.paymentMethod=paymentMethod;
         this.lessonsPlace=lessonsPlace;
-
-
     }
 
     protected Instructor(Parcel in) {
@@ -107,6 +105,7 @@ public Instructor(){}
         return dislikes;
     }
 
+
     public int getNeutral() {
         return neutral;
     }
@@ -141,13 +140,11 @@ public Instructor(){}
     }
 
 
-    public void likeInstructor(Instructor ins){
-        ins.likes+=1;
+    public void likeInstructor(){
+        this.likes+=1;
     }
-    public void dislikeInstructor(Instructor ins){
-        ins.dislikes+=1;
-    }
-    public void neutralizeInstructor(Instructor ins){
-        ins.neutral+=1;
+    public void dislikeInstructor(){ this.dislikes+=1; }
+    public void neutralizeInstructor(){
+        this.neutral+=1;
     }
 }

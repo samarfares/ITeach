@@ -8,22 +8,26 @@ import java.util.List;
 
 public class Person {
 
-    String firstName , lastName, DOB , Gender;
+    String firstName , lastName, DOB , Gender , email  ;
     String location ;
     Account account;
-    LinkedList<String> subjects=new LinkedList<String>();
-
+    List<String> subjects;
+String userID;
 
     public Person() {}
 
 
-    public Person(String firstName, String lastName,String DOB, String gender, String location  ) {
+
+    public Person(String firstName, String lastName, String DOB, String gender, String location , String email, List<String>subjects , String userID  ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = DOB;
         Gender = gender;
+this.userID=userID;
         this.location = location;
-
+        this.email=email;
+        this.subjects=new ArrayList<String>(subjects);
+//this.subjects=subjects;
     }
 
     public String getFirstName() {
@@ -34,7 +38,13 @@ public class Person {
         return lastName;
     }
 
+    public String getEmail() {
+        return email;
+    }
 
+    public String getUserID() {
+        return userID;
+    }
 
     public String getDOB() {
         return DOB;
@@ -53,11 +63,17 @@ public class Person {
         this.firstName = firstName;
     }
 
+    public void setSubjects(List<String> subjects) {
+        this.subjects = subjects;
+    }
+
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-
+    public List<String> getSubjects() {
+        return subjects;
+    }
 
     public void setDOB(String DOB) {
         this.DOB = DOB;
@@ -71,4 +87,7 @@ public class Person {
         this.location = location;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

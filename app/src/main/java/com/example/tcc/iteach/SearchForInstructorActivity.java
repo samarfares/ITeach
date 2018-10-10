@@ -50,7 +50,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SearchForInstructorActivity extends AppCompatActivity {
+public class SearchForInstructorActivity  extends AppCompatActivity {
     ListView listView;
     List<Instructor> list,listLocation;
     List<Instructor> namesList;
@@ -444,6 +444,22 @@ mAuth =FirebaseAuth.getInstance();
 
             }
         });
+
+//****************************
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SearchForInstructorActivity.this,ViewInstructorProfile.class);
+                intent.putExtra("name",list.get(position).getFirstName()+" "+list.get(position).getLastName());
+                intent.putExtra("email",list.get(position).getEmail());
+               Toast.makeText(SearchForInstructorActivity.this, "email "+ list.get(position).getEmail(), Toast.LENGTH_LONG).show();
+
+                startActivity(intent);
+            }
+        });
+
+
 
 
     }

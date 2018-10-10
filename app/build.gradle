@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.example.tcc.iteach"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
         versionName "1.0"
@@ -47,6 +47,9 @@ dependencies {
 
     implementation 'com.tomer:fadingtextview:1.8.1'
     implementation 'com.android.support:design:27.1.1'
+
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    implementation 'com.firebaseui:firebase-ui-database:4.2.0'
 
 }
 apply plugin: 'com.google.gms.google-services'

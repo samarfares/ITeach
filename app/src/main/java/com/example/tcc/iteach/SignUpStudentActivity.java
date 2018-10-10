@@ -31,6 +31,7 @@ import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -64,6 +65,11 @@ private LatLng location;
     private static String cryptoPass = "sup3rS3xy";
 
     List<String> subjects = new ArrayList<String>();
+
+    private DatabaseReference usersRef;
+    private FirebaseAuth mAuth;
+
+    private String current_user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,6 +121,12 @@ private LatLng location;
         textViewSignin2.setOnClickListener(this);
         buttonContinueToLocation2.setOnClickListener(this);
 buttonRegister2.setOnClickListener(this);
+
+        mAuth = FirebaseAuth.getInstance();
+        //  current_user_id = mAuth.getCurrentUser().getUid();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
     }
 
     @Override
@@ -132,6 +144,8 @@ buttonRegister2.setOnClickListener(this);
 
          if (view==buttonRegister2) {
              registerStudent();
+
+             //startActivity(new Intent(this, student_main.class));
          }
     }
 
@@ -184,7 +198,9 @@ buttonRegister2.setOnClickListener(this);
                 if(task.isSuccessful()) {
                     progressDialog.dismiss();
                     subjects=spinner2.getSelectedStrings();
-                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation);
+                    firebaseUser=firebaseAuth.getCurrentUser();
+                    String userID = firebaseUser.getUid();
+                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation ,studentEmail, subjects,userID);
                     firebaseUser=firebaseAuth.getCurrentUser();
                     String id = databaseReference2.push().getKey();
                     databaseReference2.child(id).setValue(person);
@@ -192,6 +208,12 @@ buttonRegister2.setOnClickListener(this);
 
 
                     Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+
+
+                    current_user_id = mAuth.getCurrentUser().getUid();
+                    HashMap postsMap = new HashMap();
+                    postsMap.put("fullname",studentFName+studentLName);
+                    usersRef.child(current_user_id).updateChildren(postsMap);
                     startActivity(new Intent(getApplicationContext(), student_main.class));
 
                 }

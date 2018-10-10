@@ -37,9 +37,11 @@ public class MyAdapterSearch extends ArrayAdapter<Instructor> {
         TextView name = (TextView) view.findViewById(R.id.name);
         TextView gender = (TextView) view.findViewById(R.id.gender);
         TextView subject = (TextView) view.findViewById(R.id.subject);
+        TextView email = (TextView) view.findViewById(R.id.Email);
 
         name.setText(list.get(position).firstName+' '+list.get( position ).lastName);
         gender.setText(list.get(position).getGender());
+        email.setText(list.get(position).getEmail());
         String s="empty";
         for(int i=0;i<list.get(position).subjects.size();i++)
             s.concat( list.get(position).subjects.get( i )+'\n' );

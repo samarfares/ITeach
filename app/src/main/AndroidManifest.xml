@@ -75,9 +75,11 @@
             android:label="@string/title_activity_settings"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".editSpots" />
+        <activity android:name=".ViewInstructorProfile" />
+
         <service android:name=".FCMService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
@@ -97,11 +99,16 @@
             android:name=".student_main"
             android:label="ITeach"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".blackboard2"
+        <activity
+            android:name=".blackboard2"
             android:label="@string/title_activity_blackboard"
             android:theme="@style/AppTheme.NoActionBar"/>
+
         <activity android:name=".ReserveInfo"/>
         <activity android:name=".Reserve"/>
+
+        <activity android:name=".answerActivity" />
+        <activity android:name=".askActivity"></activity>
     </application>
 
 </manifest>
