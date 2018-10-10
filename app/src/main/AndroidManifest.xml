@@ -102,13 +102,14 @@
         <activity
             android:name=".blackboard2"
             android:label="@string/title_activity_blackboard"
-            android:theme="@style/AppTheme.NoActionBar"/>
-
-        <activity android:name=".ReserveInfo"/>
-        <activity android:name=".Reserve"/>
-
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ReserveInfo" />
+        <activity android:name=".Reserve" />
         <activity android:name=".answerActivity" />
-        <activity android:name=".askActivity"></activity>
+        <activity android:name=".askActivity" />
+        <activity
+            android:name=".PaymentActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
