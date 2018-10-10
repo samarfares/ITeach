@@ -44,6 +44,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="280dp">
             </ListView>
+
             <Button
                 android:id="@+id/button_reserve"
                 android:layout_width="wrap_content"
