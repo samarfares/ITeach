@@ -41,7 +41,6 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
     ArrayAdapter<String> adapter;
     Spot spot;
     Lesson lesson;
-    List<Spot> spotList;
 
     Button buttonReserve;
     Button buttonDate;
@@ -111,7 +110,6 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
             }
         });
 
-        spotList.clear();
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
@@ -126,12 +124,10 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                             if (teachingMethod.equals("Individual")) {
                                 if (spot.isIndividual()) {
                                     list.add("Time : " + spot.getTime().toString());
-                                    spotList.add(spot);
                                 }
                             } else {
                                 if (!spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString());
-                                    spotList.add(spot);
                                 }
                             }
                         }
@@ -152,7 +148,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                time = spotList.get(i).getTime();
+                time = list.get(i).toString();
                 Toast.makeText(Reserve.this, "time : "+time,Toast.LENGTH_LONG).show();
                 }
                 });
@@ -187,7 +183,6 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         String instructor_id = insID;
         spot = new Spot();
 
-        spotList.clear();
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
@@ -202,12 +197,10 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                             if (teachingMethod.equals("Individual")) {
                                 if (spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString() );
-                                    spotList.add(spot);
                                 }
                             } else {
                                 if (!spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString() );
-                                    spotList.add(spot);
                                 }
 
                             }
