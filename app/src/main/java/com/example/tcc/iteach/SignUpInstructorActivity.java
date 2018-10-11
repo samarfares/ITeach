@@ -237,7 +237,7 @@ chosenString= spinner.getSelectedItemsAsString(); // this variable contains the 
                             firebaseUser=firebaseAuth.getCurrentUser();
                           // Toast.makeText(SignUpInstructorActivity.this, "email "+ instructorEmail, Toast.LENGTH_LONG).show();
 String userID = firebaseUser.getUid();
-                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0,0,0 ,chosenPaymentMethod, chosenPlace , chosenMethod , instructorEmail, chosen , userID);
+                            instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0,0,0 ,chosenPaymentMethod, chosenPlace , chosenMethod , instructorEmail, chosen , userID , "1");
                             //Toast.makeText(SignUpInstructorActivity.this, "chosen "+ instructor.subjects.get(0), Toast.LENGTH_LONG).show();
 
                             /* Intent intent = new Intent(SignUpInstructorActivity.this,ViewInstructorProfile.class);

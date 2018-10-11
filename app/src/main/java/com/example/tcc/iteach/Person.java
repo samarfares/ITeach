@@ -12,17 +12,18 @@ public class Person {
     String location ;
     Account account;
     List<String> subjects;
-String userID;
+String userID , key;
 
     public Person() {}
 
 
 
-    public Person(String firstName, String lastName, String DOB, String gender, String location , String email, List<String>subjects , String userID  ) {
+    public Person(String firstName, String lastName, String DOB, String gender, String location , String email, List<String>subjects , String userID , String key  ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.DOB = DOB;
         Gender = gender;
+        this.key=key;
 this.userID=userID;
         this.location = location;
         this.email=email;
@@ -69,6 +70,18 @@ this.userID=userID;
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public List<String> getSubjects() {

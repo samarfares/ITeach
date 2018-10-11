@@ -62,10 +62,10 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         insID = intent.getStringExtra("insID");
         insName = intent.getStringExtra("insName");
         insGender = intent.getStringExtra("insGender");
-        insPaymentMethod = intent.getStringExtra("insPaymentMethod");
-        insLessonsPlace = intent.getStringExtra("insLessonsPlace");
-        insLessonsPrice = intent.getStringExtra("insLessonsPrice");
-        insTeachingMethod = intent.getStringExtra("insTeachingMethod");
+        insPaymentMethod = intent.getStringExtra("paymentMethod");
+        insLessonsPlace = intent.getStringExtra("place");
+        insLessonsPrice = intent.getStringExtra("price");
+        insTeachingMethod = intent.getStringExtra("teachingMethod");
 
         listView = (ListView) findViewById(R.id.listViewReserve);
         firebaseDatabase = FirebaseDatabase.getInstance();

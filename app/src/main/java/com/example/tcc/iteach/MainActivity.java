@@ -21,8 +21,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -31,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textViewSignup;
-    private DatabaseReference databaseReference;
+    private DatabaseReference databaseReference ,databaseReference2;
 
     FirebaseAuth firebaseAuth;
 
@@ -45,12 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         firebaseAuth =FirebaseAuth.getInstance();
 
-        if(firebaseAuth.getCurrentUser()!=null){
-            finish();
-            startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
-        }
-        databaseReference= FirebaseDatabase.getInstance().getReference();
 
+        databaseReference= FirebaseDatabase.getInstance().getReference();
+databaseReference2=FirebaseDatabase.getInstance().getReference("Instructors");
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonSignIn = (Button) findViewById(R.id.buttonSignin);
@@ -106,12 +106,47 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (task.isSuccessful()) {
                             progressDialog.dismiss();
                             finish();
+                            databaseReference2.addValueEventListener( new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                                        Toast.makeText(MainActivity.this, "id " +snap.child( "userID" ).getValue().toString()+ firebaseAuth.getCurrentUser().getUid() , Toast.LENGTH_LONG).show();
+
+                                        if (snap.child( "userID" ).getValue().toString().equals( firebaseAuth.getCurrentUser().getUid() ))
+                                            startActivity( new Intent( getApplicationContext(), instructor_main.class ) );
+
+
+                                    }
+                                    startActivity( new Intent( getApplicationContext(), student_main.class ) );
+
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            } );
+
+
+
+
                             //startActivity(new Intent(getApplicationContext(),instructor_main.class));
-                        } else {
+                        }
+
+
+                        else {
                             progressDialog.dismiss();
                             Toast.makeText(MainActivity.this, "login failed, " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }//else
                     }
+
+
+
+
+
+
+
+
                 });
     }
 
