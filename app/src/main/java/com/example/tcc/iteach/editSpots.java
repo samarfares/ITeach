@@ -1423,7 +1423,25 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             databaseReference = FirebaseDatabase.getInstance().getReference();
             databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
 
-            databaseReference.setValue(null);
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds :dataSnapshot.getChildren()) {
+
+                        String key = ds.getKey();
+                        spot = ds.getValue(Spot.class);
+                        if (spot.getDate().equals(date)) {
+                            dataSnapshot.getRef().child(key).removeValue();
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            //databaseReference.setValue(null);
 
 
             if(chosen6){

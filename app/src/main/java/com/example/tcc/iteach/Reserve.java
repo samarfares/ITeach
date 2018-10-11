@@ -7,11 +7,13 @@ import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -38,6 +41,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
     ArrayAdapter<String> adapter;
     Spot spot;
     Lesson lesson;
+    List<Spot> spotList;
 
     Button buttonReserve;
     Button buttonDate;
@@ -106,6 +110,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
             }
         });
 
+        spotList.clear();
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
@@ -118,16 +123,21 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     if (spot.getDate().equals(currentDateString)) {
                         if (spot.isAvailable()) {
                             if (teachingMethod.equals("Individual")) {
-                                if (spot.isIndividual())
+                                if (spot.isIndividual()) {
                                     list.add("Time : " + spot.getTime().toString());
+                                    spotList.add(spot);
+                                }
                             } else {
-                                if (!spot.isIndividual())
+                                if (!spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString());
+                                    spotList.add(spot);
+                                }
                             }
                         }
                     }
                 }
                 listView.setAdapter(adapter);
+
 
 
             }
@@ -137,6 +147,14 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
             }
         });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                time = spotList.get(i).getTime();
+                Toast.makeText(Reserve.this, "time : "+time,Toast.LENGTH_LONG).show();
+                }
+                });
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -168,6 +186,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         String instructor_id = insID;
         spot = new Spot();
 
+        spotList.clear();
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
@@ -180,11 +199,15 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     if ( spot.getDate().equals(currentDateString)){
                         if (spot.isAvailable()) {
                             if (teachingMethod.equals("Individual")) {
-                                if (spot.isIndividual())
+                                if (spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString() );
+                                    spotList.add(spot);
+                                }
                             } else {
-                                if (!spot.isIndividual())
+                                if (!spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString() );
+                                    spotList.add(spot);
+                                }
 
                             }
                         }
