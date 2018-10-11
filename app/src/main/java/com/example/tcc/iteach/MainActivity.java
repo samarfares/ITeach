@@ -106,6 +106,7 @@ databaseReference2=FirebaseDatabase.getInstance().getReference("Instructors");
                         if (task.isSuccessful()) {
                             progressDialog.dismiss();
                             finish();
+
                             databaseReference2.addValueEventListener( new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -133,8 +134,7 @@ databaseReference2=FirebaseDatabase.getInstance().getReference("Instructors");
                             //startActivity(new Intent(getApplicationContext(),instructor_main.class));
                         }
 
-
-                        else {
+                         else {
                             progressDialog.dismiss();
                             Toast.makeText(MainActivity.this, "login failed, " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }//else

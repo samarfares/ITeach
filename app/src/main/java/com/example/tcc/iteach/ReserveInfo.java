@@ -135,6 +135,7 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
         if (view == continueButton){
             Intent i = new Intent(ReserveInfo.this , Reserve.class);
             i.putExtra("insID", insID);
+            i.putExtra("insName", insName);
             i.putExtra("price", insLessonsPrice);
             i.putExtra("teachingMethod", chosenMethod);
             i.putExtra("paymentMethod", chosenPayment);
