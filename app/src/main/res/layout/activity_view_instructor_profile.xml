@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        tools:layout_editor_absoluteY="60dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,36 +31,38 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="15dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/buttonLike"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/dislike" />
+
+                <TextView
+                    android:id="@+id/textViewRate"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="15dp"
+                    android:paddingTop="9.5dp"
+                    android:text="0 likes"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="android:color/black" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/buttonReserve"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Reserve a lesson" />
 
-            <TextView
-                android:id="@+id/textViewRate"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Tell us what you think of this instructor"
-                android:textAppearance="?android:attr/textAppearanceLarge" />
-
-            <ImageButton
-                android:id="@+id/buttonLike"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/heart" />
-
-            <ImageButton
-                android:id="@+id/buttonDisLike"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/bheart" />
-
-            <ImageButton
-                android:id="@+id/buttonNeutral"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/poker" />
 
         </LinearLayout>
 

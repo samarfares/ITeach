@@ -1,6 +1,7 @@
 package com.example.tcc.iteach;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,12 +28,15 @@ public class ViewInstructorProfile extends AppCompatActivity implements View.OnC
     ListView listViewInstructorProfile ;
     TextView textViewInstructorProfile , textViewRate;
     DatabaseReference databaseReference;
-    DatabaseReference databaseReference2 ;
+    DatabaseReference databaseReference2 , likesRef ;
    List<Instructor> list = new ArrayList<>();
 AdapterInstructor adapterInstructor;
 ImageButton buttonLike , buttonDisLike, buttonNeutral;
 Button buttonReserve;
 String email;
+boolean likeChecker= false;
+FirebaseUser firebaseUser;
+int countLikes;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,15 +46,18 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
     textViewRate= (TextView)findViewById(R.id.textViewRate);
     buttonReserve=(Button) findViewById(R.id.buttonReserve);
             buttonLike=(ImageButton) findViewById(R.id.buttonLike);
-    buttonDisLike=(ImageButton) findViewById(R.id.buttonDisLike);
-    buttonNeutral=(ImageButton) findViewById(R.id.buttonNeutral);
+   // buttonDisLike=(ImageButton) findViewById(R.id.buttonDisLike);
+    //buttonNeutral=(ImageButton) findViewById(R.id.buttonNeutral);
 
+    likesRef=FirebaseDatabase.getInstance().getReference().child("likes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
     buttonLike.setOnClickListener(this);
-    buttonDisLike.setOnClickListener(this);
-    buttonNeutral.setOnClickListener(this);
+   // buttonDisLike.setOnClickListener(this);
+ //   buttonNeutral.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
+
+
 }
 
 
@@ -85,14 +94,61 @@ buttonReserve.setOnClickListener(this);
 
     public void likeInstructor(Instructor ins){
   ins.likeInstructor();
-    String likedInsId = ins.getUserID();
+   final String likedInsId = ins.getUserID();
+   final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
     databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(likedInsId);
         databaseReference2.setValue(ins);
-buttonLike.setVisibility(View.INVISIBLE);
-buttonDisLike.setVisibility(View.INVISIBLE);
-buttonNeutral.setVisibility(View.INVISIBLE);
-textViewRate.setVisibility(View.INVISIBLE);
-Toast.makeText(ViewInstructorProfile.this,"Thank you for rating!"  , Toast.LENGTH_LONG).show();
+likeChecker=true;
+
+likesRef.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+       if(likeChecker){
+           if (dataSnapshot.child(likedInsId).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+               likesRef.child(likedInsId).child(currentUser).removeValue();
+               likeChecker=false;
+
+           }
+           else { likesRef.child(likedInsId).child(currentUser).setValue(true);
+               likeChecker=false;}
+
+
+
+       }
+
+        setLikeButtonStatus(likedInsId);
+        }
+
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }});}
+public void setLikeButtonStatus (final String likedInsId){
+likesRef.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+if (dataSnapshot.child(likedInsId).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+    countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
+buttonLike.setImageResource(R.drawable.like);
+textViewRate.setText(((Integer.toString(countLikes)+"likes")));
+}
+
+else{
+    countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
+    buttonLike.setImageResource(R.drawable.dislike);
+    textViewRate.setText(((Integer.toString(countLikes)+"likes")));
+
+}
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
+});
+
 
 
 }

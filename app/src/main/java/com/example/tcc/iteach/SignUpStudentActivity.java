@@ -200,7 +200,7 @@ buttonRegister2.setOnClickListener(this);
                     subjects=spinner2.getSelectedStrings();
                     firebaseUser=firebaseAuth.getCurrentUser();
                     String userID = firebaseUser.getUid();
-                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation ,studentEmail, subjects,userID,"2");
+                    person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation ,studentEmail, subjects,userID);
                     firebaseUser=firebaseAuth.getCurrentUser();
                     String id = databaseReference2.push().getKey();
                     databaseReference2.child(id).setValue(person);

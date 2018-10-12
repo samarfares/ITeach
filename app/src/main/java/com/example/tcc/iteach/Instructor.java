@@ -17,8 +17,8 @@ long phoneNum;
 
 public Instructor(){}
 
-    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod , String email , List<String> subjects , String userID , String key) {
-        super(firstName, lastName, DOB, gender, location, email  , subjects , userID , key );
+    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod , String email , List<String> subjects , String userID ) {
+        super(firstName, lastName, DOB, gender, location, email  , subjects , userID  );
         this.lessonsPrice=lessonsPrice;
         this.likes=likes;
         this.dislikes=dislikes;
