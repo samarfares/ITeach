@@ -9,7 +9,7 @@ import java.util.List;
 
 public class Instructor extends Person implements Parcelable {
 
-    int YOE;
+    int yoe;
     double lessonsPrice ;
     int likes , dislikes, neutral;
     String paymentMethod, teachingMethod , lessonsPlace;
@@ -17,21 +17,21 @@ long phoneNum;
 
 public Instructor(){}
 
-    public Instructor(String firstName, String lastName, String DOB, String gender, String location, long phoneNum , int YOE , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod , String email , List<String> subjects , String userID ) {
-        super(firstName, lastName, DOB, gender, location, email  , subjects , userID  );
+    public Instructor(String firstName, String lastName, String dob, String gender, String location, long phoneNum , int yoe , double lessonsPrice, int likes, int dislikes, int neutral  , String paymentMethod , String lessonsPlace, String teachingMethod , String email , List<String> subjects , String userID ) {
+        super(firstName, lastName, dob, gender, location, email  , subjects , userID  );
         this.lessonsPrice=lessonsPrice;
         this.likes=likes;
         this.dislikes=dislikes;
         this.neutral=neutral;
         this.phoneNum=phoneNum;
-        this.YOE=YOE;
+        this.yoe=yoe;
         this.teachingMethod=teachingMethod;
         this.paymentMethod=paymentMethod;
         this.lessonsPlace=lessonsPlace;
     }
 
     protected Instructor(Parcel in) {
-        YOE = in.readInt();
+        yoe = in.readInt();
         lessonsPrice = in.readDouble();
         likes = in.readInt();
         dislikes=in.readInt();
@@ -55,9 +55,6 @@ public Instructor(){}
         }
     };
 
-    public int getYOE() {
-        return YOE;
-    }
 
     public long getPhoneNum() { return phoneNum; }
 
@@ -77,8 +74,12 @@ public Instructor(){}
         return lessonsPlace;
     }
 
-    public void setYOE(int YOE) {
-        this.YOE = YOE;
+    public int getYoe() {
+        return yoe;
+    }
+
+    public void setYoe(int yoe) {
+        this.yoe = yoe;
     }
 
     public void setLessonsPrice(double lessonsPrice) {

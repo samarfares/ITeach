@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Person {
 
-    String firstName , lastName, DOB , Gender , email  ;
+    String firstName , lastName, dob , Gender , email  ;
     String location ;
     Account account;
     List<String> subjects;
@@ -18,10 +18,10 @@ String userID ;
 
 
 
-    public Person(String firstName, String lastName, String DOB, String gender, String location , String email, List<String>subjects , String userID  ) {
+    public Person(String firstName, String lastName, String dob, String gender, String location , String email, List<String>subjects , String userID  ) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.DOB = DOB;
+        this.dob = dob;
         Gender = gender;
 this.userID=userID;
         this.location = location;
@@ -46,9 +46,6 @@ this.userID=userID;
         return userID;
     }
 
-    public String getDOB() {
-        return DOB;
-    }
 
     public String getGender() {
         return Gender;
@@ -81,8 +78,12 @@ this.userID=userID;
         return subjects;
     }
 
-    public void setDOB(String DOB) {
-        this.DOB = DOB;
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
     public void setGender(String gender) {
