@@ -201,14 +201,10 @@ buttonRegister2.setOnClickListener(this);
                     firebaseUser=firebaseAuth.getCurrentUser();
                     String userID = firebaseUser.getUid();
                     person = new Person(studentFName,studentLName,studentDOB,studentGender,encryptedLocation ,studentEmail, subjects,userID);
-                    firebaseUser=firebaseAuth.getCurrentUser();
-                    String id = databaseReference2.push().getKey();
-                    databaseReference2.child(id).setValue(person);
-                    databaseReference2.child(id).child("subjects").setValue(subjects);
 
-
+                    databaseReference2.child(firebaseUser.getUid()).setValue(person);
+                    databaseReference2.child(firebaseUser.getUid()).child("subjects").setValue(subjects);
                     Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-
 
                     current_user_id = mAuth.getCurrentUser().getUid();
                     HashMap postsMap = new HashMap();

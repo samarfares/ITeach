@@ -34,7 +34,7 @@ public class ViewInstructorProfile extends AppCompatActivity implements View.OnC
     AdapterInstructor adapterInstructor;
 ImageButton buttonLike , buttonDisLike, buttonNeutral;
 Button buttonReserve;
-String email;
+String email , ID;
 boolean likeChecker= false;
 FirebaseUser firebaseUser;
 int countLikes;
@@ -58,6 +58,23 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
  //   buttonNeutral.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
 
+databaseReference.addValueEventListener(new ValueEventListener() {
+    @Override
+    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+        for (DataSnapshot snap : dataSnapshot.getChildren()){
+
+            ID= getIntent().getExtras().getString("insId");
+            if (snap.child("userID").getValue().toString().equals(ID))
+                setLikeButtonStatus(ID);
+        }
+    }
+
+    @Override
+    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+    }
+});
 
 }
 
@@ -106,16 +123,13 @@ likesRef.addValueEventListener(new ValueEventListener() {
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
        if(likeChecker){
-           if (dataSnapshot.child(likedInsId).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+           if (dataSnapshot.child(likedInsId).hasChild(currentUser)){
                likesRef.child(likedInsId).child(currentUser).removeValue();
                likeChecker=false;
 
            }
            else { likesRef.child(likedInsId).child(currentUser).setValue(true);
                likeChecker=false;}
-
-
-
        }
 
         }
