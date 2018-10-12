@@ -60,7 +60,6 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
         textView.setText(currentDateString);
 
-
         Intent intent = getIntent();
 
         insID = intent.getStringExtra("insID");
@@ -88,14 +87,48 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         buttonReserve.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (teachingMethod.equals("Cash")){
-                    databaseReference = firebaseDatabase.getReference("Lessons");
-                    lesson = new Lesson( date, time,  insID, stuID, subject, lessonPrice,paymentMethod,lessonPlace, teachingMethod);
+                if (paymentMethod.equals("Cash")){
+                    databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
+                    lesson = new Lesson( currentDateString, time,  insID, stuID, subject, lessonPrice,paymentMethod,lessonPlace, teachingMethod);
                     databaseReference.push().setValue(lesson);
                     startActivity(new Intent(Reserve.this , student_main.class));
+                    databaseReference = firebaseDatabase.getReference("Instructors").child(insID).child("spots");
+                    databaseReference.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                spot = ds.getValue(Spot.class);
+                                if (spot.getDate().equals(currentDateString)) {
+                                    if (spot.isAvailable()) {
+                                        if (spot.getTime().equals(time)) {
+                                            if (teachingMethod.equals("Individual")) {
+                                                if (spot.isIndividual()) {
+                                                    ds.getRef().child("available").setValue(false);
+                                                }
+                                            } else {
+                                                if (!spot.isIndividual()) {
+                                                    ds.getRef().child("numberOfStudent").setValue(spot.getNumberOfStudent()-1);
+                                                    if (spot.getNumberOfStudent() == 0)
+                                                    ds.getRef().child("available").setValue(false);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                    startActivity(new Intent (Reserve.this , student_main.class));
+                    Toast.makeText(Reserve.this, "Noooo",Toast.LENGTH_LONG).show();
+
                 }
                 else{
 
+                    Toast.makeText(Reserve.this, "lala" + teachingMethod,Toast.LENGTH_LONG).show();
                     Intent i = new Intent(Reserve.this , Reserve.class);
                     i.putExtra("insID", insID);
                     i.putExtra("insName", insName);
@@ -148,8 +181,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                time = list.get(i).toString();
-                Toast.makeText(Reserve.this, "time : "+time,Toast.LENGTH_LONG).show();
+                time = list.get(i).toString().substring(7);
                 }
                 });
         buttonDate.setOnClickListener(new View.OnClickListener() {
