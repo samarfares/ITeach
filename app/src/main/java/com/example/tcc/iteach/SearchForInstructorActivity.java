@@ -455,7 +455,6 @@ mAuth =FirebaseAuth.getInstance();
                 intent.putExtra("name",list.get(position).getFirstName()+" "+list.get(position).getLastName());
                 intent.putExtra("email",list.get(position).getEmail());
                 intent.putExtra("insId",list.get(position).getUserID());
-                Toast.makeText(SearchForInstructorActivity.this, "email "+ list.get(position).getEmail(), Toast.LENGTH_LONG).show();
 
                 startActivity(intent);
             }

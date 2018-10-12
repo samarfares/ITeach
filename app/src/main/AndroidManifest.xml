@@ -69,6 +69,7 @@
         <activity
             android:name=".notifications"
             android:label="@string/title_activity_notifications"
+            android:exported="true"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".settings"

@@ -58,7 +58,6 @@ public class SearchResultsActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        myRef.push().setValue(new Message(title.getText().toString(), message.getText().toString()));
         Toast.makeText(this, "Message Sent", Toast.LENGTH_SHORT).show();
     }
 

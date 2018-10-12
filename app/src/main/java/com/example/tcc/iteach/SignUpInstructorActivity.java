@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -247,8 +248,11 @@ String userID = firebaseUser.getUid();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                            FirebaseMessaging.getInstance().subscribeToTopic("notifications");
+                            FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "New Instructor", "New instructor joined ITeach you may be interested in his subjects \n check if he lives near you" ,instructorEmail));
 
-                           current_user_id = mAuth.getCurrentUser().getUid();
+
+                            current_user_id = mAuth.getCurrentUser().getUid();
                             HashMap postsMap = new HashMap();
                             postsMap.put("fullname",firstName+lastName);
                             usersRef.child(current_user_id).updateChildren(postsMap);
