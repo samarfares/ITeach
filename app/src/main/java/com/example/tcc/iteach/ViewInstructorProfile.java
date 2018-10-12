@@ -50,7 +50,7 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
    // buttonDisLike=(ImageButton) findViewById(R.id.buttonDisLike);
     //buttonNeutral=(ImageButton) findViewById(R.id.buttonNeutral);
 
-    likesRef=FirebaseDatabase.getInstance().getReference().child("likes");
+    likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
     buttonLike.setOnClickListener(this);
@@ -118,14 +118,19 @@ likesRef.addValueEventListener(new ValueEventListener() {
 
        }
 
-        setLikeButtonStatus(likedInsId);
         }
 
 
     @Override
     public void onCancelled(@NonNull DatabaseError databaseError) {
 
-    }});}
+    }});
+
+setLikeButtonStatus(likedInsId);
+
+}
+
+
 public void setLikeButtonStatus (final String likedInsId){
 likesRef.addValueEventListener(new ValueEventListener() {
     @Override
