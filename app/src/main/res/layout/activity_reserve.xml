@@ -33,9 +33,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/date"
-                android:textSize="55sp"
+                android:textSize="35sp"
                 android:layout_gravity="center"
                 />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:text="Choose from below slots if there is any : "/>
 
             <ListView
                 android:layout_marginTop="30dp"
