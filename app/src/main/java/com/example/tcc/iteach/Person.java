@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Person {
 
-    String firstName , lastName, dob , Gender , email  ;
+    String firstName , lastName, dob , gender , email  ;
     String location ;
     Account account;
     List<String> subjects;
@@ -22,7 +22,7 @@ String userID ;
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
-        Gender = gender;
+        this.gender = gender;
 this.userID=userID;
         this.location = location;
         this.email=email;
@@ -48,7 +48,7 @@ this.userID=userID;
 
 
     public String getGender() {
-        return Gender;
+        return gender;
     }
 
     public String getLocation() {
@@ -87,7 +87,7 @@ this.userID=userID;
     }
 
     public void setGender(String gender) {
-        Gender = gender;
+        this.gender = gender;
     }
 
     public void setLocation(String location) {

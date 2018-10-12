@@ -30,7 +30,8 @@ public class ViewInstructorProfile extends AppCompatActivity implements View.OnC
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2 , likesRef ;
    List<Instructor> list = new ArrayList<>();
-AdapterInstructor adapterInstructor;
+
+    AdapterInstructor adapterInstructor;
 ImageButton buttonLike , buttonDisLike, buttonNeutral;
 Button buttonReserve;
 String email;
