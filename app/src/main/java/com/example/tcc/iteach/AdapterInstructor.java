@@ -52,11 +52,11 @@ Instructor instructor = instructors.get(position);
 
 name.setText(instructor.getFirstName().concat(" ").concat(instructor.getLastName()));
 gender.setText(instructor.getGender());
-dob.setText("Was born on "+instructor.getDOB());
+dob.setText("Was born on "+instructor.getDob());
 likes.setText("Likes "+instructor.getLikes()+"");
 dislikes.setText("Dislikes "+instructor.getDislikes()+"");
         neutral.setText("Neutral "+instructor.getNeutral()+"");
-        yoe.setText("Years of experience: "+instructor.getYOE()+"");
+        yoe.setText("Years of experience: "+instructor.getYoe()+"");
         insLessonPlace.setText("Prefers teaching at "+instructor.getLessonsPlace());
         insLessonPrice.setText("lesson's price "+instructor.getLessonsPrice()+"SR");
         insTmethod.setText("prefers "+instructor.getTeachingMethod());

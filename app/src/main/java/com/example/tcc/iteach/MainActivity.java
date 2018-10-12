@@ -114,12 +114,12 @@ intent = new Intent(MainActivity.this, instructor_main.class );
                                         if (snap.child( "userID" ).getValue().toString().equals( firebaseAuth.getCurrentUser().getUid() )) {
                                             check=false;
                                             Toast.makeText( MainActivity.this, snap.child( "userID" ).getValue().toString() + "\n" + firebaseAuth.getCurrentUser().getUid(), Toast.LENGTH_LONG ).show();
+                                            //intent.putExtra("username", snap.child("firstName").toString()+" "+snap.child("lastName"));
                                             startActivity( intent);
 
                                         }
                                     }
                                     if (check){
-                                    Toast.makeText( MainActivity.this, "5ra 3lek", Toast.LENGTH_LONG ).show();
                                     startActivity(new Intent(getApplicationContext(),student_main.class));}
                                 }
 

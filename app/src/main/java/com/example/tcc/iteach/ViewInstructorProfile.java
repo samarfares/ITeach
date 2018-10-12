@@ -208,8 +208,8 @@ neutralizeInstructor(list.get(0));
             intent.putExtra("insLessonsPlace",list.get(0).getLessonsPlace());
             intent.putExtra("insLessonsPrice",list.get(0).getLessonsPrice());
             intent.putExtra("insTeachingMethod",list.get(0).getTeachingMethod());
-            intent.putExtra("insYOE",list.get(0).getYOE());
-            intent.putExtra("insDOB",list.get(0).getDOB());
+            intent.putExtra("insYOE",list.get(0).getYoe());
+            intent.putExtra("insDOB",list.get(0).getDob());
             intent.putExtra("insLocation",list.get(0).getLocation());
             startActivity(intent);
 
