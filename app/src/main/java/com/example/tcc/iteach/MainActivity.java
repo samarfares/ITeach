@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextPassword;
     private TextView textViewSignup;
     private DatabaseReference databaseReference ,databaseReference2;
-
+boolean check = true;
     FirebaseAuth firebaseAuth;
-
+Intent intent;
     private ProgressDialog progressDialog;
 
 
@@ -60,7 +60,7 @@ databaseReference2=FirebaseDatabase.getInstance().getReference("Instructors");
 
         buttonSignIn.setOnClickListener(this);
         textViewSignup.setOnClickListener(this);
-
+intent = new Intent(MainActivity.this, instructor_main.class );
     }
 
 
@@ -111,15 +111,16 @@ databaseReference2=FirebaseDatabase.getInstance().getReference("Instructors");
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
-                                        Toast.makeText(MainActivity.this, "id " +snap.child( "userID" ).getValue().toString()+ firebaseAuth.getCurrentUser().getUid() , Toast.LENGTH_LONG).show();
+                                        if (snap.child( "userID" ).getValue().toString().equals( firebaseAuth.getCurrentUser().getUid() )) {
+                                            check=false;
+                                            Toast.makeText( MainActivity.this, snap.child( "userID" ).getValue().toString() + "\n" + firebaseAuth.getCurrentUser().getUid(), Toast.LENGTH_LONG ).show();
+                                            startActivity( intent);
 
-                                        if (snap.child( "userID" ).getValue().toString().equals( firebaseAuth.getCurrentUser().getUid() ))
-                                            startActivity( new Intent( getApplicationContext(), instructor_main.class ) );
-
-
+                                        }
                                     }
-                                    startActivity( new Intent( getApplicationContext(), student_main.class ) );
-
+                                    if (check){
+                                    Toast.makeText( MainActivity.this, "5ra 3lek", Toast.LENGTH_LONG ).show();
+                                    startActivity(new Intent(getApplicationContext(),student_main.class));}
                                 }
 
                                 @Override
