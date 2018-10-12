@@ -219,7 +219,8 @@ mAuth =FirebaseAuth.getInstance();
                     names.add(snap.getValue(Instructor.class));
 
                     Instructor instructor = snap.getValue(Instructor.class);
-                        list.add(instructor);
+
+                    list.add(instructor);
 
                 }
 
@@ -373,7 +374,8 @@ mAuth =FirebaseAuth.getInstance();
                                     if(subject!=null){
 
                                       if (instructor.subjects.contains( subject ))
-                                          subjectList.add( instructor );
+
+                                        subjectList.add( instructor );
                                     }
 
 
@@ -412,7 +414,6 @@ mAuth =FirebaseAuth.getInstance();
                                     list.clear();
 
                                 if (list.size()!=0){
-                                    Toast.makeText(SearchForInstructorActivity.this, "innnn filter", Toast.LENGTH_SHORT).show();
 
                                     myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,list);
 

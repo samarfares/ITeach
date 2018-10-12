@@ -59,10 +59,8 @@ likes.setText("Likes "+instructor.getLikes()+"");
         insPmethod.setText("Payment method "+instructor.getPaymentMethod());
         insEmail.setText("Email "+instructor.getEmail());
          insPhone.setText("Mobile "+instructor.getPhoneNum()+"");
-        String s="empty";
-        for(int i=0;i<instructor.subjects.size();i++)
-            s.concat( instructor.subjects.get( i )+'\n' );
-        subject.setText("Subjects "+s);
+
+        subject.setText("Subjects: "+instructor.subjects.toString());
 
        //String d = instructor.getPhoneNum()+"";
 
