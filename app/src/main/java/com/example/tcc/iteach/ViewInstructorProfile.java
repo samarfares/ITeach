@@ -52,6 +52,8 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
     likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
+    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
+
     buttonLike.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
 
@@ -111,7 +113,6 @@ databaseReference.addValueEventListener(new ValueEventListener() {
   //ins.likeInstructor();
    final String likedInsId = ins.getUserID();
    final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(likedInsId);
         //databaseReference2.setValue(ins);
 likeChecker=true;
 
