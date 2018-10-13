@@ -111,7 +111,7 @@ databaseReference.addValueEventListener(new ValueEventListener() {
   //ins.likeInstructor();
    final String likedInsId = ins.getUserID();
    final String currentUser = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(likedInsId).child("likes");
+    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(likedInsId);
         //databaseReference2.setValue(ins);
 likeChecker=true;
 
@@ -150,14 +150,14 @@ if (dataSnapshot.child(likedInsId).hasChild(FirebaseAuth.getInstance().getCurren
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
 buttonLike.setImageResource(R.drawable.like);
 textViewRate.setText(((Integer.toString(countLikes)+" likes")));
-    databaseReference2.setValue(countLikes);
+    databaseReference2.child("likes").setValue(countLikes);
 }
 
 else{
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
     buttonLike.setImageResource(R.drawable.dislike);
     textViewRate.setText(((Integer.toString(countLikes)+" likes")));
-    databaseReference2.setValue(countLikes);
+    databaseReference2.child("likes").setValue(countLikes);
 
 
 }
