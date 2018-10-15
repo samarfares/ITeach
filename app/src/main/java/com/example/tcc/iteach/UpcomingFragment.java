@@ -1,5 +1,7 @@
 package com.example.tcc.iteach;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -7,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,10 +36,13 @@ public class UpcomingFragment  extends Fragment {
     FirebaseUser firebaseUser;
     ListView listView;
     ArrayList<String> list;
+    ArrayList<String> keyList;
+    ArrayList<Lesson> lessons;
     ArrayAdapter<String> adapter;
     Lesson lesson;
     String currentDateString;
     int i;
+    int j;
     Person student;
     String stuName ;
     public UpcomingFragment() {
@@ -56,6 +63,8 @@ public class UpcomingFragment  extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
         list = new ArrayList<>();
+        keyList = new ArrayList<>();
+        lessons = new ArrayList<>();
         adapter = new ArrayAdapter<String>(getActivity(),R.layout.spot_info,R.id.listViewSpotInfoTime,list);
 
 
@@ -64,7 +73,9 @@ public class UpcomingFragment  extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    keyList.add(ds.getKey());
                     lesson = ds.getValue(Lesson.class);
+                    lessons.add(lesson);
                     try {
                         Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
                         Date date2 = DateFormat.getDateInstance(DateFormat.FULL).parse(lesson.getDate());
@@ -73,14 +84,84 @@ public class UpcomingFragment  extends Fragment {
                         e.printStackTrace();
                     }
                     if (i <= 0) {
-                        FirebaseDatabase.getInstance().getReference("Students").addListenerForSingleValueEvent(new ValueEventListener() {
+                        /*FirebaseDatabase.getInstance().getReference("Students").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     student = ds.getValue(Person.class);
                                     if (ds.getKey().equals(lesson.getStudentID())){
-                                        stuName = student.getFirstName() +" " + student . getLastName();
+                                        stuName = student.getFirstName() +" " + student.getLastName();
+                                        list.add("Date : " + lesson.getDate() + "\nTime : " + lesson.getTime() + "\nStudent : " + stuName + "\nSubject : " + lesson.getSubject() + "\nPrice : " + lesson.getPrice() + "\nPayment by : " + lesson.getPaymentMethod() + "\nPlace : " + lesson.getLessonPlace() + "\nTeaching method : " + lesson.getTeachingMethod());
                                     }
+                                }
+                            }
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                            }
+                        });
+*/
+                        list.add("Date : " + lesson.getDate() + "\nTime : " + lesson.getTime() +  "\nSubject : " + lesson.getSubject() + "\nPrice : " + lesson.getPrice() + "\nPayment by : " + lesson.getPaymentMethod() + "\nPlace : " + lesson.getLessonPlace() + "\nTeaching method : " + lesson.getTeachingMethod());
+                    }
+                }
+                listView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+
+                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
+                adb.setTitle("Cancel?");
+                adb.setMessage("Are you sure you want to Cancel ");
+                final int positionToRemove = i;
+                adb.setNegativeButton("Cancel", null);
+                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseDatabase.getInstance().getReference("Lessons").addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot ds2 : dataSnapshot.getChildren()){
+                                    lesson = ds2.getValue(Lesson.class);
+                                    if (ds2.getKey().equals(keyList.get(i))){
+                                        try {
+                                            Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
+                                            Date date2 = DateFormat.getDateInstance(DateFormat.FULL).parse(lesson.getDate());
+                                            j = date1.compareTo(date2);
+                                        } catch (java.text.ParseException e) {
+                                            e.printStackTrace();
+                                        }
+                                        if (j == 0) {
+                                            int t = Integer.parseInt(lesson.getTime().substring(0,lesson.getTime().indexOf(":")));
+                                            Calendar rightNow = Calendar.getInstance();
+                                            int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
+                                            if (t <= currentHourIn24Format + 1){
+                                            }
+                                            else{
+                                                list.remove(positionToRemove);
+                                                adapter.notifyDataSetChanged();
+                                                FirebaseDatabase.getInstance().getReference("Lessons").child(keyList.get(i)).removeValue();
+                                                keyList.remove(i);
+                                                lessons.remove(i);
+                                                Toast.makeText(getActivity(),"Cancelled Successfully!!!",Toast.LENGTH_LONG).show();
+
+                                            }
+
+                                        }
+                                        else{
+                                            databaseReference.getRoot().child("Lessons").child(keyList.get(i)).removeValue();
+                                            keyList.remove(i);
+                                            lessons.remove(i);
+                                            Toast.makeText(getActivity(),"Cancelled Successfully!!!",Toast.LENGTH_LONG).show();
+
+                                        }
+                                    }
+
                                 }
                             }
 
@@ -90,17 +171,10 @@ public class UpcomingFragment  extends Fragment {
                             }
                         });
 
-                        list.add("Date : " + lesson.getDate() + "\nTime : " + lesson.getTime() + "\nStudent : " + stuName + "\nSubject : " + lesson.getSubject() + "\nPrice : " + lesson.getPrice() + "\nPayment by : " + lesson.getPaymentMethod() + "\nPlace : " + lesson.getLessonPlace() + "\nTeaching method : " + lesson.getTeachingMethod());
 
+                    }});
+                adb.show();
 
-                    }
-                }
-
-                listView.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

@@ -9,8 +9,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Past reservations :"
-        android:textSize="20sp"
+        android:textSize="27sp"
         android:textStyle="bold"/>
+
 
     <ListView
         android:id="@+id/listViewPast"

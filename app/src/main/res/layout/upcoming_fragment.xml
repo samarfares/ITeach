@@ -9,8 +9,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Upcoming reservations :"
-        android:textSize="20sp"
+        android:textSize="27sp"
         android:textStyle="bold"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To cancel a lesson: click on that lesson"
+        android:textSize="20sp"
+        android:textColor="#FF0000"
+        />
 
     <ListView
         android:id="@+id/listViewUpcoming"

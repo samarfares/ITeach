@@ -64,7 +64,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
         insID = intent.getStringExtra("insID");
 
-        insName = intent.getStringExtra("price");
+        insName = intent.getStringExtra("insName");
         paymentMethod = intent.getStringExtra("paymentMethod");
         lessonPlace = intent.getStringExtra("place");
         lessonPrice = intent.getStringExtra("price");
