@@ -18,9 +18,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ViewInstructorProfile extends AppCompatActivity implements View.OnClickListener {
@@ -42,6 +44,9 @@ int countLikes;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_instructor_profile);
+
+
+
 listViewInstructorProfile = (ListView) findViewById(R.id.listViewInstructorProfile);
 textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile);
     textViewRate= (TextView)findViewById(R.id.textViewRate);
@@ -52,7 +57,9 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
     likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
-    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
+
+
+
 
     buttonLike.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
@@ -96,6 +103,7 @@ databaseReference.addValueEventListener(new ValueEventListener() {
                         list.add(ins);
                 }
 
+                databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(ID);
 
 
                 adapterInstructor = new AdapterInstructor (ViewInstructorProfile.this,list);
@@ -147,7 +155,7 @@ public void setLikeButtonStatus (final String likedInsId){
 likesRef.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-if (dataSnapshot.child(likedInsId).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+if (dataSnapshot.child(ID).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
 buttonLike.setImageResource(R.drawable.like);
 textViewRate.setText(((Integer.toString(countLikes)+" likes")));

@@ -2,6 +2,7 @@ package com.example.tcc.iteach;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewPager;
@@ -14,10 +15,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.tomer.fadingtextview.FadingTextView;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,14 +39,23 @@ public class student_main extends AppCompatActivity
     NavigationView navigationView;
     Toolbar toolbar=null;
     ViewPager viewPagerQuote;
+    DatabaseReference databaseReference;
+    FadingTextView fadingTextView;
+    /**
+     *
+     */
+   String[] top3;
+    int i=0;
+    String name , email , id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        fadingTextView = (FadingTextView) findViewById(R.id.top3text) ;
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+top3 = new String[100];
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -54,7 +73,6 @@ public class student_main extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         ///////////////////////////// top3
-        FadingTextView fadingTextView = (FadingTextView) findViewById(R.id.top3text);
         fadingTextView.setTimeout(FadingTextView.SECONDS,2);
 
         //////////////////////////// slide show
@@ -67,6 +85,54 @@ public class student_main extends AppCompatActivity
         //////////////////////////
         findInstructor = (Button) findViewById(R.id.findInstructor);
         findInstructor.setOnClickListener((View.OnClickListener) this);
+
+
+        ///////////////////////////////************************////////////////////////////////////////
+      //top3= getResources().getStringArray(R.array.text);
+      //ArrayAdapter<String> adapter;
+//adapter= new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, top3);
+        databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
+        databaseReference.orderByChild("likes").limitToLast(3).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()){
+                    name = snap.child("firstName").getValue().toString()+" "+snap.child("lastName").getValue().toString();
+                    email = snap.child("email").getValue().toString();
+                    id= snap.child("userID").getValue().toString();
+                    fadingTextView.setText(name);
+                    top3[i]=name;
+                    i++;
+                }
+               fadingTextView.setTexts(top3);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        fadingTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(student_main.this,ViewInstructorProfile.class);
+intent.putExtra("email", email);
+                intent.putExtra("insId", id);
+
+                startActivity(intent);
+
+
+            }
+        });
+
+///////////////////////////////************************////////////////////////////////////////
+
+
+
+
+
+
     }
 
     @Override
