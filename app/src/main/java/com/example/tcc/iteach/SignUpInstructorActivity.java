@@ -141,15 +141,16 @@ method=(Spinner)findViewById(R.id.method);
 
         spinner=(MultiSelectionSpinner) findViewById(R.id.input1);
         List<String> list = new ArrayList<String>();
-        list.add("Arabic");
-        list.add("English");
-        list.add("Math");
-        list.add("Chemistry");
-        list.add("Physics");
-        list.add("Music");
-        list.add("Dancing");
-        list.add("Painting");
-        list.add("Cooking");
+
+        list.add("العربية");
+        list.add("الانكليزية");
+        list.add("الرياضيات");
+        list.add("الكيمياء");
+        list.add("الفيزياء");
+        list.add("الموسيقى");
+        list.add("الرقص");
+        list.add("الرسم");
+        list.add("الطبخ");
         spinner.setItems(list);
 
         // Location
@@ -157,6 +158,8 @@ method=(Spinner)findViewById(R.id.method);
         if (bundle!=null){
         location = bundle.getParcelable("location");
         encryptedLocation=encryptIt( location.toString() );}
+
+
 // end location
 
         mAuth = FirebaseAuth.getInstance();
@@ -182,59 +185,74 @@ method=(Spinner)findViewById(R.id.method);
         RadioButton radioButton = findViewById(radioId);
         if(radioButton!=null)
         gender = radioButton.getText().toString();
+        chosen=spinner.getSelectedStrings();
+        // Toast.makeText(SignUpInstructorActivity.this,chosen.get( 0 ), Toast.LENGTH_SHORT).show();
 
+
+        chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
+        //instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
+        chosenString= spinner.getSelectedItemsAsString();
+        if(encryptedLocation== null ){
+            // email is empty!
+            Toast.makeText(this, "فضلاً اختر موقعك من الخارطة", Toast.LENGTH_LONG).show();return;}
 
         if(TextUtils.isEmpty(instructorEmail)){
             // email is empty!
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ أدخل ايميل", Toast.LENGTH_LONG).show();return;}
+
 
         if(TextUtils.isEmpty(instructorPassword)){
             // password is empty!
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلأ أدخل كلمة مرور", Toast.LENGTH_LONG).show(); return;}
 
         if (instructorPassword.length()<6){
-            Toast.makeText(this, "Password must me at least 6 characters long", Toast.LENGTH_LONG).show();return;}
-       //if (location==null){
-            //Toast.makeText(SignUpInstructorActivity.this, "Please enter your location", Toast.LENGTH_SHORT).show(); return;}
+            Toast.makeText(this, "لايجب أن يكون طول كلمة المرور أقل من ستة أحرف", Toast.LENGTH_LONG).show();return;}
 
-        if(TextUtils.isEmpty(firstName)){
-           Toast.makeText(this, "Please enter your first name", Toast.LENGTH_LONG).show();return;}
-
-        if(TextUtils.isEmpty(lastName)){
-            Toast.makeText(this, "Please enter your last name", Toast.LENGTH_LONG).show();return;}
-
-        if(TextUtils.isEmpty(date)){
-            Toast.makeText(this, "Please enter your date of birth", Toast.LENGTH_LONG).show();return;}
-
-        if(TextUtils.isEmpty(yearsOfExperience)){
-            Toast.makeText(this, "Please enter your years of experience", Toast.LENGTH_LONG).show();return;}
 
         if(TextUtils.isEmpty(instructorsPhoneNum)){
-            Toast.makeText(this, "Please enter your phone number", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلاً أدخل رقم هاتفك", Toast.LENGTH_LONG).show();return;}
+            if(instructorsPhoneNum.length()!= 10&& !(instructorsPhoneNum.substring( 0,1 ).equals( "05" ))){
+                    Toast.makeText(this, "رقم الهاتف يجب أن يكون من 10 أرقام ويبدأ ب 05", Toast.LENGTH_LONG).show();return;}
+        if(TextUtils.isEmpty(firstName)){
+           Toast.makeText(this, "فضلاً أدخل اسمك الأول", Toast.LENGTH_LONG).show();return;}
+
+        if(TextUtils.isEmpty(lastName)){
+            Toast.makeText(this, "فضلاُ أدخل اسم شهرتك", Toast.LENGTH_LONG).show();return;}
+
+        if(TextUtils.isEmpty(date)){
+            Toast.makeText(this, "فضلأ أدخل تاريخ ميلادك", Toast.LENGTH_LONG).show();return;}
+
+        if(datePicker.getYear()>2003){
+            Toast.makeText(this, "عذراً غير مسموح لك التسجيل بهذا العمر", Toast.LENGTH_LONG).show();return;}
 
         if(TextUtils.isEmpty(gender)){
-            Toast.makeText(this, "Please specify your gender", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ اختر جنسك", Toast.LENGTH_LONG).show();return;}
+        if(chosen.size()==0){
+            // email is empty!
+            Toast.makeText(this, "فضلأ اختر المواد التي تدرسها", Toast.LENGTH_LONG).show();return;}
+
+
+
+        if(TextUtils.isEmpty(yearsOfExperience)){
+            Toast.makeText(this, "فضلأ أدخل عدد سنوات خبرتك", Toast.LENGTH_LONG).show();return;}
+
+
 
         if(TextUtils.isEmpty(priceString)){
-            Toast.makeText(this, "Please enter your lesson price", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلاً أدخل سعر الدرس", Toast.LENGTH_LONG).show();return;}
+
 // if validations are ok we register user
         intYearsOfExperience=Integer.parseInt(yearsOfExperience);
         longInstructorsPhoneNum=Long.parseLong(instructorsPhoneNum);
 price=Double.parseDouble(priceString);
-        progressDialog.setMessage("Registering..Please wait..");
+        progressDialog.setMessage("تسجيل الحساب....الرجاء الانتظار");
         progressDialog.show();
         firebaseAuth.createUserWithEmailAndPassword(instructorEmail,instructorPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()) {
                             progressDialog.dismiss();
-                            chosen=spinner.getSelectedStrings();
-                           // Toast.makeText(SignUpInstructorActivity.this,chosen.get( 0 ), Toast.LENGTH_SHORT).show();
-
-
-                            chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
-                            //instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
-chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
+                           // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
                             firebaseUser=firebaseAuth.getCurrentUser();
                           // Toast.makeText(SignUpInstructorActivity.this, "email "+ instructorEmail, Toast.LENGTH_LONG).show();
 String userID = firebaseUser.getUid();
@@ -247,9 +265,9 @@ String userID = firebaseUser.getUid();
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
-                            Toast.makeText(SignUpInstructorActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpInstructorActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                             FirebaseMessaging.getInstance().subscribeToTopic("notifications");
-                            FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "New Instructor", "New instructor joined ITeach you may be interested in his subjects \n check if he lives near you" ,instructorEmail));
+                            FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail));
 
 
                             current_user_id = mAuth.getCurrentUser().getUid();
@@ -260,7 +278,7 @@ String userID = firebaseUser.getUid();
                             }
 
                         else {progressDialog.dismiss();
-                            Toast.makeText(SignUpInstructorActivity.this, "Registration failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpInstructorActivity.this, "لقد فشل تسجيل الحساب, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                              }//else
                     }//oncomplete
                 }); }

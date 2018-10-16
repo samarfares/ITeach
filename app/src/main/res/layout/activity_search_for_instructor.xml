@@ -28,7 +28,7 @@
                 android:layout_height="match_parent"
 
                 android:layout_marginBottom="30dp"
-                android:text="Choose Location"
+                android:text="اختر موقع من الخارطة"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent" />
             <Button
@@ -37,7 +37,7 @@
                 android:layout_height="match_parent"
 
                 android:layout_marginBottom="30dp"
-                android:text="Search by Location"
+                android:text="البحث بالموقع"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -54,7 +54,7 @@
                     android:layout_marginBottom="30dp"
                     android:layout_marginTop="30dp"
                     android:background="@drawable/rounded"
-                    android:hint="Search By Name"
+                    android:hint="البحث بالاسم"
                     android:inputType="text" />
 
                 <ImageButton

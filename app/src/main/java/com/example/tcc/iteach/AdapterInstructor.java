@@ -46,7 +46,8 @@ public class AdapterInstructor extends ArrayAdapter<Instructor> {
         TextView insPhone = (TextView) view.findViewById(R.id.insPhone);
         TextView insEmail = (TextView) view.findViewById(R.id.insEmail);
 
-Instructor instructor = instructors.get(position);
+
+        Instructor instructor = instructors.get(position);
 
 name.setText(instructor.getFirstName().concat(" ").concat(instructor.getLastName()));
 gender.setText(instructor.getGender());

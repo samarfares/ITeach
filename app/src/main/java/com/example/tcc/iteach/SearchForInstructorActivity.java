@@ -58,7 +58,7 @@ public class SearchForInstructorActivity  extends AppCompatActivity {
     List<Instructor> priceList;
     List<Instructor> subjectList;
     List<Instructor> locations;
-
+     Double distance;
     MyAdapterSearch myAdapter;
 
     public LatLng SearchLocation;
@@ -181,7 +181,7 @@ mAuth =FirebaseAuth.getInstance();
                             listView.setAdapter( myAdapter );
                             Utility.setListViewHeightBasedOnChildren( listView );}
                             else
-                                Toast.makeText(SearchForInstructorActivity.this, "No Results Found !!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -195,7 +195,7 @@ mAuth =FirebaseAuth.getInstance();
 
                 }
                 else
-                    Toast.makeText(SearchForInstructorActivity.this, "You need to choose location first", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchForInstructorActivity.this, "فضلاً اختر موقع من الخارطة لنبحث بجانبه", Toast.LENGTH_SHORT).show();
 
 
 
@@ -230,7 +230,7 @@ mAuth =FirebaseAuth.getInstance();
                     Utility.setListViewHeightBasedOnChildren(listView);}
                 else {
 
-                    Toast.makeText(SearchForInstructorActivity.this, "No Results Found !!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
 
                 }
                 for (int i = 0; i < names.size(); i++) {
@@ -422,7 +422,7 @@ mAuth =FirebaseAuth.getInstance();
                                     Utility.setListViewHeightBasedOnChildren(listView);}
                                 else {
 
-                                    Toast.makeText(SearchForInstructorActivity.this, "No Results Found !!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
 
                                 }
 
@@ -450,12 +450,18 @@ mAuth =FirebaseAuth.getInstance();
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(SearchForInstructorActivity.this,ViewInstructorProfile.class);
+            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
+                final Intent intent = new Intent(SearchForInstructorActivity.this,ViewInstructorProfile.class);
                 intent.putExtra("name",list.get(position).getFirstName()+" "+list.get(position).getLastName());
                 intent.putExtra("email",list.get(position).getEmail());
                 intent.putExtra("insId",list.get(position).getUserID());
-
+                Bundle args = new Bundle();
+                String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());
+                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
+                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
+                LatLng t = new LatLng( lat, lng );
+                args.putParcelable("location",t);
+                intent.putExtra("bundle", args);
                 startActivity(intent);
             }
         });

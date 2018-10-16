@@ -99,7 +99,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
                     // postsMap.put("postimage", downloadUrl);
                     // postsMap.put("profileimage", userProfileImage);
 
-                    postsMap.put("fullname", "anas");
+                    postsMap.put("fullname", userFullName);
                     PostsRef.child(current_user_id + postRandomName).updateChildren(postsMap)
                             .addOnCompleteListener(new OnCompleteListener() {
 
