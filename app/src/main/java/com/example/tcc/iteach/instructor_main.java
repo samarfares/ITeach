@@ -161,7 +161,7 @@ public class instructor_main extends AppCompatActivity
             Intent h= new Intent(instructor_main.this,reservations.class);
             startActivity(h);
         }
-        else if (id==R.id.nav_signOut){
+        else if (id==R.id.nav_signout){
             firebaseAuth.signOut();
             startActivity(new Intent(this, MainActivity.class));
         }

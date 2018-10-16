@@ -221,7 +221,7 @@ intent.putExtra("email", email);
             Intent h= new Intent(student_main.this,reservations2.class);
             startActivity(h);
         }
-        else if (id==R.id.nav_signOut){
+        else if (id==R.id.nav_signout){
             firebaseAuth.signOut();
             startActivity(new Intent(this, MainActivity.class));
         }
