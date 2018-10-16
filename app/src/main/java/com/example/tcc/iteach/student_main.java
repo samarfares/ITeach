@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -41,6 +42,7 @@ public class student_main extends AppCompatActivity
     ViewPager viewPagerQuote;
     DatabaseReference databaseReference;
     FadingTextView fadingTextView;
+    FirebaseAuth firebaseAuth;
     /**
      *
      */
@@ -85,7 +87,7 @@ top3 = new String[100];
         //////////////////////////
         findInstructor = (Button) findViewById(R.id.findInstructor);
         findInstructor.setOnClickListener((View.OnClickListener) this);
-
+firebaseAuth=FirebaseAuth.getInstance();
 
         ///////////////////////////////************************////////////////////////////////////////
       //top3= getResources().getStringArray(R.array.text);
@@ -218,6 +220,10 @@ intent.putExtra("email", email);
         } else if (id == R.id.nav_reservations) {
             Intent h= new Intent(student_main.this,reservations2.class);
             startActivity(h);
+        }
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
         }
 
 

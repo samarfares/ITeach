@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.tomer.fadingtextview.FadingTextView;
 
 import java.util.Timer;
@@ -26,6 +27,7 @@ public class instructor_main extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
 
     Button findInstructor ;
+    FirebaseAuth firebaseAuth;
 
     DrawerLayout drawer;
     NavigationView navigationView;
@@ -68,6 +70,8 @@ public class instructor_main extends AppCompatActivity
 
         findInstructor = (Button) findViewById(R.id.findInstructor2);
         findInstructor.setOnClickListener((View.OnClickListener) this);
+
+        firebaseAuth=FirebaseAuth.getInstance();
 
     }
 
@@ -156,6 +160,10 @@ public class instructor_main extends AppCompatActivity
         } else if (id == R.id.nav_reservations) {
             Intent h= new Intent(instructor_main.this,reservations.class);
             startActivity(h);
+        }
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
         }
 
 

@@ -24,5 +24,9 @@
         android:id="@+id/nav_manage"
         android:icon="@drawable/ic_menu_manage"
         android:title="@string/settings" />
+    <item
+        android:id="@+id/nav_signOut"
+        android:icon="@drawable/signOut"
+        android:title="@string/signOut" />
 
 </menu>
