@@ -178,13 +178,7 @@ else{
     }
 });
 
-
-
 }
-
-
-
-
     @Override
     public void onClick(View v) {
         if (v==buttonLike){
@@ -195,7 +189,7 @@ else{
         if (v==buttonReserve){
             Intent intent = new Intent(ViewInstructorProfile.this,ReserveInfo.class);
             intent.putExtra("insID",list.get(0).getUserID());
-            intent.putExtra("insName",list.get(0).getFirstName()+list.get(0).getLastName());
+            intent.putExtra("insName",list.get(0).getFirstName()+ " " + list.get(0).getLastName());
             intent.putExtra("insGender",list.get(0).getGender());
             intent.putExtra("insEmail",list.get(0).getEmail());
             intent.putExtra("insPhoneNum",list.get(0).getPhoneNum());
@@ -208,11 +202,6 @@ else{
             intent.putExtra("insDOB",list.get(0).getDob());
             intent.putExtra("insLocation",list.get(0).getLocation());
             startActivity(intent);
-
         }
     }
-
-
-
-
 }

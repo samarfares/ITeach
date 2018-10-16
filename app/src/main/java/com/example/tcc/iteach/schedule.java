@@ -77,10 +77,10 @@ public class schedule extends AppCompatActivity
         spot = new Spot();
 
 
-        databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
          adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -228,10 +228,10 @@ public class schedule extends AppCompatActivity
         String instructor_id =firebaseUser.getUid();
         spot = new Spot();
 
-        databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -240,11 +240,9 @@ public class schedule extends AppCompatActivity
                     if ( spot.getDate().equals(currentDateString)){
                         if ( spot.isIndividual()) {
                             list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
-
                         }
                         else{
                             list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : "+ spot.getNumberOfStudent());
-
                         }
                     }
                 }

@@ -25,6 +25,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -205,6 +206,7 @@ buttonRegister2.setOnClickListener(this);
                     databaseReference2.child(firebaseUser.getUid()).setValue(person);
                     databaseReference2.child(firebaseUser.getUid()).child("subjects").setValue(subjects);
                     Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                    FirebaseMessaging.getInstance().subscribeToTopic("notifications");
 
                     current_user_id = mAuth.getCurrentUser().getUid();
                     HashMap postsMap = new HashMap();

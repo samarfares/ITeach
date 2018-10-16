@@ -125,7 +125,6 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
     private Button button23g ;
     private Button button23i ;
 
-    private int members6, members7, members8, members9, members10, members11, members12, members13, members14, members15, members16, members17, members18, members19, members20, members21, members22, members23;
 
 
     @Override
@@ -1420,8 +1419,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             firebaseUser=firebaseAuth.getCurrentUser();
             final String instructor_id = firebaseUser.getUid();
 
-            databaseReference = FirebaseDatabase.getInstance().getReference();
-            databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
+            databaseReference = FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots");
 
             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
@@ -1641,8 +1639,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
                 }
 
-
-            startActivity(new Intent(this, schedule.class));
+                startActivity(new Intent(this, schedule.class));
 
         }
 

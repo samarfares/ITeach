@@ -3,8 +3,11 @@ package com.example.tcc.iteach;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,11 +21,27 @@ import android.view.MenuItem;
 public class reservations extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private TabLayout tabLayout;
+    private AppBarLayout appBarLayout;
+    private ViewPager viewPager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reservations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        tabLayout = (TabLayout) findViewById(R.id.tabLayoutReservations);
+        appBarLayout = (AppBarLayout) findViewById(R.id.appBarReservations);
+        viewPager = (ViewPager) findViewById(R.id.viewPagerReservations);
+        
+        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
+        tabsAdapter.AddFragment(new UpcomingFragment(),"Upccoming");
+        tabsAdapter.AddFragment(new PastFragment(),"Past");
+
+        viewPager.setAdapter(tabsAdapter);
+        tabLayout.setupWithViewPager(viewPager);
+
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

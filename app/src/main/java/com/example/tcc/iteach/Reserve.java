@@ -64,7 +64,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
         insID = intent.getStringExtra("insID");
 
-        insName = intent.getStringExtra("price");
+        insName = intent.getStringExtra("insName");
         paymentMethod = intent.getStringExtra("paymentMethod");
         lessonPlace = intent.getStringExtra("place");
         lessonPrice = intent.getStringExtra("price");
@@ -123,12 +123,10 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                         }
                     });
                     startActivity(new Intent (Reserve.this , student_main.class));
-                    Toast.makeText(Reserve.this, "Noooo",Toast.LENGTH_LONG).show();
 
                 }
                 else{
 
-                    Toast.makeText(Reserve.this, "lala" + teachingMethod,Toast.LENGTH_LONG).show();
                     Intent i = new Intent(Reserve.this , Reserve.class);
                     i.putExtra("insID", insID);
                     i.putExtra("insName", insName);
