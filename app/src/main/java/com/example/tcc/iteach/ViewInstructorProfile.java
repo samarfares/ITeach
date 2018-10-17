@@ -52,7 +52,7 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
     likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
-    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
+//    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
 
     buttonLike.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
@@ -158,7 +158,7 @@ else{
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
     buttonLike.setImageResource(R.drawable.dislike);
     textViewRate.setText(((Integer.toString(countLikes)+" likes")));
-    databaseReference2.child("likes").setValue(countLikes);
+//    databaseReference2.child("likes").setValue(countLikes);
 
 
 }

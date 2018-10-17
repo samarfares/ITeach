@@ -2,6 +2,7 @@ package com.example.tcc.iteach;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
@@ -45,7 +46,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
     Button buttonReserve;
     Button buttonDate;
 
-    String date, time, stuID;
+    String date, time = "null", stuID;
     String insID, insName, paymentMethod, lessonPlace, lessonPrice, teachingMethod ,subject;
 
 
@@ -84,63 +85,6 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         String instructor_id = insID;
         spot = new Spot();
 
-        buttonReserve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (paymentMethod.equals("Cash")){
-                    databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
-                    lesson = new Lesson( currentDateString, time,  insID, stuID, subject, lessonPrice,paymentMethod,lessonPlace, teachingMethod);
-                    databaseReference.push().setValue(lesson);
-                    startActivity(new Intent(Reserve.this , student_main.class));
-                    databaseReference = firebaseDatabase.getReference("Instructors").child(insID).child("spots");
-                    databaseReference.addValueEventListener(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                                spot = ds.getValue(Spot.class);
-                                if (spot.getDate().equals(currentDateString)) {
-                                    if (spot.isAvailable()) {
-                                        if (spot.getTime().equals(time)) {
-                                            if (teachingMethod.equals("Individual")) {
-                                                if (spot.isIndividual()) {
-                                                    ds.getRef().child("available").setValue(false);
-                                                }
-                                            } else {
-                                                if (!spot.isIndividual()) {
-                                                    ds.getRef().child("numberOfStudent").setValue(spot.getNumberOfStudent()-1);
-                                                    if (spot.getNumberOfStudent() == 0)
-                                                    ds.getRef().child("available").setValue(false);
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-                    startActivity(new Intent (Reserve.this , student_main.class));
-
-                }
-                else{
-
-                    Intent i = new Intent(Reserve.this , Reserve.class);
-                    i.putExtra("insID", insID);
-                    i.putExtra("insName", insName);
-                    i.putExtra("paymentMethod", paymentMethod);
-                    i.putExtra("lessonPlace", lessonPlace);
-                    i.putExtra("lessonPrice", lessonPrice);
-                    i.putExtra("teachingMethod", teachingMethod);
-                    i.putExtra("subject", subject);
-                    startActivity(i);
-
-                }
-            }
-        });
-
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
@@ -152,7 +96,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     spot = ds.getValue(Spot.class);
                     if (spot.getDate().equals(currentDateString)) {
                         if (spot.isAvailable()) {
-                            if (teachingMethod.equals("Individual")) {
+                            if (teachingMethod.equals("Teaching individual")) {
                                 if (spot.isIndividual()) {
                                     list.add("Time : " + spot.getTime().toString());
                                 }
@@ -165,9 +109,6 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     }
                 }
                 listView.setAdapter(adapter);
-
-
-
             }
 
             @Override
@@ -175,13 +116,82 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
             }
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
+
+        buttonReserve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (time.equals("null")) {
+                    Toast.makeText(Reserve.this, "You have to choose time !", Toast.LENGTH_LONG).show();
+                } else {
+                    if (paymentMethod.equals("Cash")) {
+                        databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
+                        lesson = new Lesson(currentDateString, time, insID, stuID, subject, lessonPrice, paymentMethod, lessonPlace, teachingMethod);
+                        databaseReference.push().setValue(lesson);
+                        startActivity(new Intent(Reserve.this, student_main.class));
+                        databaseReference = firebaseDatabase.getReference("Instructors").child(insID).child("spots");
+                        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                    spot = ds.getValue(Spot.class);
+                                    if (spot.getDate().equals(currentDateString)) {
+                                        if (spot.isAvailable()) {
+                                            if (spot.getTime().equals(time)) {
+                                                if (teachingMethod.equals("Teaching individual")) {
+                                                    if (spot.isIndividual()) {
+                                                        ds.getRef().child("available").setValue(false);
+                                                    }
+                                                } else {
+                                                    if (!spot.isIndividual()) {
+                                                        ds.getRef().child("numberOfStudent").setValue(spot.getNumberOfStudent() - 1);
+                                                        if (spot.getNumberOfStudent() == 1)
+                                                            ds.getRef().child("available").setValue(false);
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                            }
+                        });
+                        startActivity(new Intent(Reserve.this, student_main.class));
+
+                    } else {
+
+                        Intent i = new Intent(Reserve.this, Reserve.class);
+                        i.putExtra("insID", insID);
+                        i.putExtra("insName", insName);
+                        i.putExtra("paymentMethod", paymentMethod);
+                        i.putExtra("lessonPlace", lessonPlace);
+                        i.putExtra("lessonPrice", lessonPrice);
+                        i.putExtra("teachingMethod", teachingMethod);
+                        i.putExtra("subject", subject);
+                        startActivity(i);
+
+                    }
+                }
+            }
+        });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 time = list.get(i).toString().substring(7);
+                for (int j = 0; j < listView.getChildCount(); j++) {
+                    if(i == j ){
+                        listView.getChildAt(j).setBackgroundColor(Color.GRAY);
+                    }else{
+                        listView.getChildAt(j).setBackgroundColor(Color.TRANSPARENT);
+                    }
                 }
-                });
+            }
+        });
         buttonDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -224,7 +234,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     spot = ds.getValue(Spot.class);
                     if ( spot.getDate().equals(currentDateString)){
                         if (spot.isAvailable()) {
-                            if (teachingMethod.equals("Individual")) {
+                            if (teachingMethod.equals("Teaching individual")) {
                                 if (spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString() );
                                 }

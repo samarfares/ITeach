@@ -93,7 +93,7 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
 
 
         if (insTeachingMethod.equals("Both")) {
-            String[] items = {"Individual", "Group"};
+            String[] items = {"Teaching individual", "Teaching group"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             methodSpinner.setAdapter(adapter);
         }
