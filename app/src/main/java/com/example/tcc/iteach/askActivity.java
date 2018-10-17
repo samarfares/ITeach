@@ -1,5 +1,6 @@
 package com.example.tcc.iteach;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -143,5 +144,6 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         if(v == publishButton)
             ValidatePostInfo();
+        startActivity(new Intent(this, blackboard.class));
     }
 }
