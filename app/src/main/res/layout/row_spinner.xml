@@ -22,7 +22,7 @@
                 android:id="@+id/textType"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Gender:"
+                android:text="الجنس"
                 android:textStyle="bold" />
 
 
@@ -36,13 +36,13 @@
                     android:id="@+id/radioMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Male" />
+                    android:text="ذكر" />
 
                 <RadioButton
                     android:id="@+id/radioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Female" />
+                    android:text="أنثى" />
 
 
             </RadioGroup>
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:layout_marginTop="30dp"
-                android:hint="Price less than"
+                android:hint="سعر الدرس أقل من"
                 android:inputType="number" />
 
             <TextView
@@ -64,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
-                android:text="Subject:"
+                android:text="المواد:"
                 android:textStyle="bold" />
 
             <Spinner
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
 
                 android:layout_marginTop="30dp"
-                android:text="Filter results"
+                android:text="تصفية النتائج"
                 android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>

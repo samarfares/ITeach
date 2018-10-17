@@ -12,21 +12,24 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class ViewInstructorProfile extends AppCompatActivity implements View.OnClickListener {
 
     ListView listViewInstructorProfile ;
-    TextView textViewInstructorProfile , textViewRate;
+    TextView textViewInstructorProfile , textViewRate,distance;
     DatabaseReference databaseReference;
     DatabaseReference databaseReference2 , likesRef ;
    List<Instructor> list = new ArrayList<>();
@@ -42,9 +45,45 @@ int countLikes;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_instructor_profile);
+
+
+
 listViewInstructorProfile = (ListView) findViewById(R.id.listViewInstructorProfile);
 textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile);
     textViewRate= (TextView)findViewById(R.id.textViewRate);
+    distance= (TextView)findViewById(R.id.distance);
+
+
+    FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
+    String userid=user.getUid();
+    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Students");
+
+
+    ref.child(userid).addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            String location = dataSnapshot.child( "location" ).getValue().toString();
+
+            String testL = SignUpInstructorActivity.decryptIt( location );
+            Double latL = Double.valueOf( testL.substring( testL.indexOf( "(" ) + 1, testL.indexOf( "," ) ) );
+            Double lngL = Double.valueOf( testL.substring( testL.indexOf( "," ) + 1, testL.indexOf( ")" ) ) );
+            LatLng L = new LatLng( latL, lngL );
+
+            Bundle bundle = getIntent().getParcelableExtra( "bundle" );
+
+            LatLng IL = bundle.getParcelable( "location" );
+            double d = SearchForInstructorActivity.CalculationByDistance( IL, L );
+            distance.setText( "يبعد عنك مسافة :  " + d + " كيلومتر " );
+
+        }
+
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    });
+ distance.setText( "يبعد عنك مسافة :  "+ getIntent().getExtras().getString("distance")+ " كيلومتر ");
     buttonReserve=(Button) findViewById(R.id.buttonReserve);
             buttonLike=(ImageButton) findViewById(R.id.buttonLike);
 
@@ -52,7 +91,7 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
     likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
-//    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
+    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
 
     buttonLike.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
@@ -96,6 +135,7 @@ databaseReference.addValueEventListener(new ValueEventListener() {
                         list.add(ins);
                 }
 
+                databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(ID);
 
 
                 adapterInstructor = new AdapterInstructor (ViewInstructorProfile.this,list);
@@ -147,7 +187,7 @@ public void setLikeButtonStatus (final String likedInsId){
 likesRef.addValueEventListener(new ValueEventListener() {
     @Override
     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-if (dataSnapshot.child(likedInsId).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
+if (dataSnapshot.child(ID).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
 buttonLike.setImageResource(R.drawable.like);
 textViewRate.setText(((Integer.toString(countLikes)+" likes")));
@@ -158,7 +198,7 @@ else{
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
     buttonLike.setImageResource(R.drawable.dislike);
     textViewRate.setText(((Integer.toString(countLikes)+" likes")));
-//    databaseReference2.child("likes").setValue(countLikes);
+    databaseReference2.child("likes").setValue(countLikes);
 
 
 }

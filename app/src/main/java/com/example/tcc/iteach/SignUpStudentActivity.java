@@ -100,15 +100,15 @@ private LatLng location;
 
         spinner2=(MultiSelectionSpinner) findViewById(R.id.input2);
         List<String> list = new ArrayList<String>();
-        list.add("Arabic");
-        list.add("English");
-        list.add("Math");
-        list.add("Chemistry");
-        list.add("Physics");
-        list.add("Music");
-        list.add("Dancing");
-        list.add("Painting");
-        list.add("Cooking");
+        list.add("العربية");
+        list.add("الانكليزية");
+        list.add("الرياضيات");
+        list.add("الكيمياء");
+        list.add("الفيزياء");
+        list.add("الموسيقى");
+        list.add("الرقص");
+        list.add("الرسم");
+        list.add("الطبخ");
         spinner2.setItems(list);
 
 
@@ -162,36 +162,42 @@ buttonRegister2.setOnClickListener(this);
         RadioButton radioButton = findViewById(radioId);
         if(radioButton!=null)
         studentGender = radioButton.getText().toString();
-
+        if(encryptedLocation== null ){
+            // email is empty!
+            Toast.makeText(this, "فضلاً اختر موقعك من الخارطة", Toast.LENGTH_LONG).show();return;}
 
         if(TextUtils.isEmpty(studentEmail)){
             // email is empty!
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ أدخل ايميل", Toast.LENGTH_LONG).show();return;}
 
         if(TextUtils.isEmpty(studentPassword)){
             // password is empty!
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلأ أدخل كلمة مرور", Toast.LENGTH_LONG).show(); return;}
 
         if (studentPassword.length()<6){
-            Toast.makeText(this, "Password must me at least 6 characters long", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "لايجب أن يكون طول كلمة المرور أقل من ستة أحرف", Toast.LENGTH_LONG).show();return;}
 
         if(TextUtils.isEmpty(studentFName)){
-            Toast.makeText(this, "Please enter your first name", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلاً أدخل اسمك الأول", Toast.LENGTH_LONG).show(); return;}
 
         if(TextUtils.isEmpty(studentLName)){
-            Toast.makeText(this, "Please enter your last name", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلاُ أدخل اسم شهرتك", Toast.LENGTH_LONG).show(); return;}
 
         if(TextUtils.isEmpty(studentGender)){
-            Toast.makeText(this, "Please specify your gender", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلأ اختر جنسك", Toast.LENGTH_LONG).show(); return;}
 
         if(TextUtils.isEmpty(studentDOB)){
-            Toast.makeText(this, "Please specify your date of birth", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلأ أدخل تاريخ ميلادك", Toast.LENGTH_LONG).show(); return;}
+        if(datePickerStudent.getYear()>2003){
+            Toast.makeText(this, "عذراً غير مسموح لك التسجيل بهذا العمر", Toast.LENGTH_LONG).show();return;}
 
-       // if (location==null){
+
+
+        // if (location==null){
           //  Toast.makeText(SignUpStudentActivity.this, "Please enter your location", Toast.LENGTH_SHORT).show(); return;}
 
 // if validations are ok
-        progressDialog.setMessage("Registering..Please wait..");
+        progressDialog.setMessage("تسجيل الحساب....الرجاء الانتظار");
         progressDialog.show();
         firebaseAuth.createUserWithEmailAndPassword(studentEmail,studentPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -205,7 +211,7 @@ buttonRegister2.setOnClickListener(this);
 
                     databaseReference2.child(firebaseUser.getUid()).setValue(person);
                     databaseReference2.child(firebaseUser.getUid()).child("subjects").setValue(subjects);
-                    Toast.makeText(SignUpStudentActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUpStudentActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().subscribeToTopic("notifications");
 
                     current_user_id = mAuth.getCurrentUser().getUid();
@@ -218,7 +224,7 @@ buttonRegister2.setOnClickListener(this);
 
                 else {
                     progressDialog.dismiss();
-                    Toast.makeText(SignUpStudentActivity.this, "Registeration failed, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpStudentActivity.this, "لقد فشل تسجيل الحساب, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
 
                 }//else
             }//oncomplete

@@ -11,15 +11,15 @@
     </string-array>
 
     <string-array name="specialty">
-        <item>Arabic</item>
-        <item>English</item>
-        <item>Math</item>
-        <item>Chemistry</item>
-        <item>Physics</item>
-        <item>Music</item>
-        <item>Dancing</item>
-        <item>Painting</item>
-        <item>Cooking</item>
+        <item>العربية</item>
+        <item>الانكليزية</item>
+        <item>الرياضيات</item>
+        <item>الكيمياء</item>
+        <item>الفيزياء</item>
+        <item>الموسيقى</item>
+        <item>الرقص</item>
+        <item>الرسم</item>
+        <item>الطبخ</item>
 
 
     </string-array>
@@ -51,6 +51,8 @@
     <string name="action_settings">Settings</string>
     <string name="home">Home</string>
     <string name="reservations">Reservations</string>
+    <string name="signOut">Sign out</string>
+
     <string name="blackboard">Blackboard</string>
     <string name="notifications">Notifications</string>
     <string name="settings">Settings</string>

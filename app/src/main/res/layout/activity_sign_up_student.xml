@@ -24,14 +24,14 @@
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Students Registeration"
+        android:text="تسجيل الطالب"
 
 
         />
 
     <TextView
         android:textAlignment="center"
-        android:text="Already registered? Sign in here"
+        android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
         android:id="@+id/textViewSignin2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -39,7 +39,7 @@
         <Button
             android:layout_margin="15dp"
             android:id="@+id/buttonContinueToLocation2"
-            android:text="Please Enter Location"
+            android:text="فضلاً اختر موقعك من الخارطة"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
@@ -47,7 +47,7 @@
     <EditText
         android:layout_margin="15dp"
         android:inputType="textEmailAddress"
-        android:hint="please enter your email"
+        android:hint="فضلاً أدخل ايميل"
         android:id="@+id/editTextEmailStudent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -55,7 +55,7 @@
     <EditText
         android:layout_margin="15dp"
         android:inputType="textPassword"
-        android:hint="please enter your password"
+        android:hint="فضلاً أدخل كلمة مرور"
         android:id="@+id/editTextPasswordStudent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
@@ -65,16 +65,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="please enter your first name" />
+            android:hint="فضلاً أدخل اسمك الأول" />
+
 
         <EditText
             android:id="@+id/editTextLastNameStudent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"
-            android:hint="please enter your last name" />
+            android:hint="فضلاً أدخل اسم شهرتك" />
         <TextView
-            android:text="Please select your date of birth"
+            android:text="فضلاً اختر تاريخ ميلادك"
             android:id="@+id/textViewDOBStudent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -87,7 +88,7 @@
             android:spinnersShown="true"></DatePicker>
 
         <TextView
-            android:text="Please select your gender"
+            android:text="فضلاً اختر جنسك"
             android:id="@+id/textViewGenderStudent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -100,16 +101,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/male2"
-                android:text="Male"/>
+                android:text="ذكر"/>
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/female2"
-                android:text="Female"/>
+                android:text="أنثى"/>
         </RadioGroup>
 
         <TextView
-            android:text="Please select your preferred subjects"
+            android:text="فضلاً اختر المواد المهتم بتعلمها"
             android:id="@+id/textViewSubjects"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
@@ -125,7 +126,7 @@
         <Button
             android:layout_margin="15dp"
             android:id="@+id/buttonRegister2"
-            android:text="Register"
+            android:text="تسجيل الحساب"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 

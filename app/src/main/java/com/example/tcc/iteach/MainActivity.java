@@ -70,7 +70,7 @@ intent = new Intent(MainActivity.this, instructor_main.class );
         String password = editTextPassword.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
-            Toast.makeText(this, "Please Enter Email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "ادخل الايميل", Toast.LENGTH_SHORT).show();
             return;
         }
 

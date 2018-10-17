@@ -19,7 +19,7 @@
         android:id="@+id/textview3"
         android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Sign up"
+        android:text="تسجيل"
 
 
         />
@@ -27,20 +27,20 @@
     <Button
         android:layout_margin="15dp"
         android:id="@+id/buttonSignUpInstructor"
-        android:text="Sign up as an instructor"
+        android:text="تسجيل أستاذ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
         android:layout_margin="15dp"
         android:id="@+id/buttonSignupStudent"
-        android:text="Sign up as a student"
+        android:text="تسجيل طالب"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <TextView
         android:textAlignment="center"
-        android:text="lready have an account? Sign in here"
+        android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
         android:id="@+id/textViewSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
