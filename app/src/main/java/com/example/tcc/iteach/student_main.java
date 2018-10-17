@@ -139,7 +139,9 @@ intent.putExtra("email", email);
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(student_main.this,SearchForInstructorActivity.class));
+        Intent intent=new Intent(student_main.this,SearchForInstructorActivity.class);
+        intent.putExtra( "person","student" );
+        startActivity(intent);
     }
 
     public class MyTimerTask extends TimerTask{

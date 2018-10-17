@@ -126,6 +126,7 @@ public class UpcomingFragment  extends Fragment {
                         FirebaseDatabase.getInstance().getReference("Lessons").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
                                 for (DataSnapshot ds2 : dataSnapshot.getChildren()){
                                     lesson = ds2.getValue(Lesson.class);
                                     if (ds2.getKey().equals(keyList.get(i))){

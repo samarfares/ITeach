@@ -31,6 +31,8 @@ public class ViewInstructorProfile extends AppCompatActivity implements View.OnC
     ListView listViewInstructorProfile ;
     TextView textViewInstructorProfile , textViewRate,distance;
     DatabaseReference databaseReference;
+    DatabaseReference ref;
+
     DatabaseReference databaseReference2 , likesRef ;
    List<Instructor> list = new ArrayList<>();
 
@@ -56,7 +58,10 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
 
     FirebaseUser user=FirebaseAuth.getInstance().getCurrentUser();
     String userid=user.getUid();
-    DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Students");
+    if (getIntent().getExtras().getString("person").equals( "student" ))
+     ref = FirebaseDatabase.getInstance().getReference("Students");
+    else
+    ref = FirebaseDatabase.getInstance().getReference("Instructors");
 
 
     ref.child(userid).addValueEventListener(new ValueEventListener() {
@@ -91,7 +96,6 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
     likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
 
     databaseReference= FirebaseDatabase.getInstance().getReference("Instructors");
-    databaseReference2= FirebaseDatabase.getInstance().getReference("Instructors").child(list.get(0).getUserID());
 
     buttonLike.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);

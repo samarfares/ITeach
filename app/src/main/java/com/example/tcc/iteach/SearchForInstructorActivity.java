@@ -74,7 +74,7 @@ public class SearchForInstructorActivity  extends AppCompatActivity {
     private RadioGroup radioType;
     private RadioButton radioTypeButton;
     private Spinner subjectSpinner;
-    String decryptedLocation,gender,subject,price;
+    String decryptedLocation,gender,subject,price,person;
     LatLng locationSelectedLat;
     int textlength = 0;
     List<Instructor> instructorsNames;
@@ -108,6 +108,7 @@ mAuth =FirebaseAuth.getInstance();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_instructor);
 
+        person=getIntent().getStringExtra( "person" );
 
         Bundle bundle = getIntent().getParcelableExtra("bundle");
         if (bundle!=null) {
@@ -455,6 +456,7 @@ mAuth =FirebaseAuth.getInstance();
                 intent.putExtra("name",list.get(position).getFirstName()+" "+list.get(position).getLastName());
                 intent.putExtra("email",list.get(position).getEmail());
                 intent.putExtra("insId",list.get(position).getUserID());
+                intent.putExtra( "person",person );
                 Bundle args = new Bundle();
                 String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());
                 Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );

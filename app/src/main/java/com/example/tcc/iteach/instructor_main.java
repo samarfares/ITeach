@@ -77,7 +77,9 @@ public class instructor_main extends AppCompatActivity
 
     @Override
     public void onClick(View view) {
-        startActivity(new Intent(instructor_main.this,SearchForInstructorActivity.class));
+        Intent intent=new Intent(instructor_main.this,SearchForInstructorActivity.class);
+        intent.putExtra( "person","instructor" );
+        startActivity(intent);
     }
     public class MyTimerTask extends TimerTask{
 
