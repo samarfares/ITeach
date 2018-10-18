@@ -9,14 +9,14 @@
         android:layout_height="match_parent"
         android:layout_margin="4dp"
         android:inputType="number"
-        android:hint="write the number here"
+        android:hint="اكتب الرقم هنا"
         />
 
     <Button
         android:id="@+id/saveGroupMembers"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Save"
+        android:text="حفظ"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"/>
 </LinearLayout>

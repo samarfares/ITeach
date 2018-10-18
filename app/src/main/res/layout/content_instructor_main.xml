@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20sp"
-        android:text="@string/top_three_instructors"
+        android:text="أفضل 3 أساتذة"
         android:textStyle="bold"
         android:layout_below="@+id/viewPagerQuote"/>
 
@@ -43,7 +43,7 @@
         android:id="@+id/findInstructor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Instructor"
+        android:text="ابحث عن أستاذ"
         android:layout_below="@+id/top3text"
         android:gravity="center"/>
 

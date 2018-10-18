@@ -5,17 +5,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upcoming reservations :"
-        android:textSize="27sp"
-        android:textStyle="bold"/>
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="To cancel a lesson: click on that lesson"
+        android:text="لإلغاء الحجز انقر على الدرس"
         android:textSize="20sp"
         android:textColor="#FF0000"
         />

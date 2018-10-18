@@ -23,7 +23,7 @@
                 android:id="@+id/button_choose_date_schedule_reserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/choose_date"
+                android:text="اختر التاريخ"
                 android:layout_gravity="center"
                 android:layout_marginVertical="20dp"
                 />
@@ -32,7 +32,7 @@
                 android:id="@+id/textViewDateReserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/date"
+                android:text="التاريخ"
                 android:textSize="35sp"
                 android:layout_gravity="center"
                 />
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
-                android:text="Choose from below slots if there is any : "/>
+                android:text="اختر أحد الأوقات المتاحة إذا وجدت : "/>
 
             <ListView
                 android:layout_marginTop="30dp"
@@ -55,7 +55,7 @@
                 android:id="@+id/button_reserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reserve"
+                android:text="احجز الدرس"
                 android:layout_gravity="center"
                 android:layout_marginVertical="20dp"
                 />

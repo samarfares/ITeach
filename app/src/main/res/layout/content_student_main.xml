@@ -42,8 +42,8 @@
         android:id="@+id/findInstructor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Find Instructor"
+        android:text="ابحث عن أستاذ"
         android:layout_below="@+id/top3text"
-        android:gravity="center"/>
+        android:gravity="right|center_horizontal"/>
 
 </RelativeLayout>
