@@ -237,6 +237,7 @@ else{
             intent.putExtra("insYOE",list.get(0).getYoe());
             intent.putExtra("insDOB",list.get(0).getDob());
             intent.putExtra("insLocation",list.get(0).getLocation());
+            intent.putStringArrayListExtra("subjects", (ArrayList<String>) list.get(0).getSubjects()) ;
             startActivity(intent);
         }
     }

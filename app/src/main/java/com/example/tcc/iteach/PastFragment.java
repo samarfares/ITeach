@@ -90,13 +90,10 @@ public class PastFragment  extends Fragment {
 
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
-
                             }
                         });
 
-                        list.add("Date : " + lesson.getDate() + "\nTime : " + lesson.getTime() + "\nStudent : " + stuName + "\nSubject : " + lesson.getSubject() + "\nPrice : " + lesson.getPrice() + "\nPayment by : " + lesson.getPaymentMethod() + "\nPlace : " + lesson.getLessonPlace() + "\nTeaching method : " + lesson.getTeachingMethod());
-
-
+                        list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : "+ lesson.getTime() +  "\n"+"المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" +"طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" +"طريقة التدريس : " + lesson.getTeachingMethod());
                     }
                 }
 

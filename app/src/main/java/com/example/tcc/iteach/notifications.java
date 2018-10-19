@@ -20,6 +20,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +37,7 @@ public class notifications extends AppCompatActivity
     List<Message> list;
     NotificationAdapter myAdapter;
 
+    FirebaseAuth firebaseAuth;
 
 
     @Override
@@ -45,7 +47,7 @@ public class notifications extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
+        firebaseAuth = FirebaseAuth.getInstance();
         listView=(ListView) findViewById( R.id.list1 );
         list = new ArrayList<>();
 
@@ -170,6 +172,10 @@ public class notifications extends AppCompatActivity
         } else if (id == R.id.nav_reservations) {
             Intent h= new Intent(notifications.this,reservations.class);
             startActivity(h);
+        }
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

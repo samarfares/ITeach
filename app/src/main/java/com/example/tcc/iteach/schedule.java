@@ -202,7 +202,10 @@ public class schedule extends AppCompatActivity
             Intent h= new Intent(schedule.this,reservations.class);
             startActivity(h);
         }
-
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

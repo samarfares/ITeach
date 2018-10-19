@@ -32,6 +32,7 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
     Spinner subjectSpinner, paymentSpinner, placeSpinner, methodSpinner;
     Button continueButton;
 
+    List<String> subjects;
 
     String insID, insName, insGender, insPaymentMethod, insLessonsPlace, insLessonsPrice, insTeachingMethod ;
 
@@ -45,6 +46,7 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
 
         Intent intent = getIntent();
 
+        subjects = new ArrayList<>(getIntent().getStringArrayListExtra("subjects"));
         insID = intent.getStringExtra("insID");
         insName = intent.getStringExtra("insName");
         insGender = intent.getStringExtra("insGender");
@@ -52,6 +54,7 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
         insLessonsPlace = intent.getStringExtra("insLessonsPlace");
         insLessonsPrice = intent.getStringExtra("insLessonsPrice");
         insTeachingMethod = intent.getStringExtra("insTeachingMethod");
+
 
         textView=(TextView)findViewById(R.id.text_view_reserve);
         textView.setText(insName);
@@ -62,7 +65,8 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
         methodSpinner = (Spinner) findViewById(R.id.spinner_reserve4);
         continueButton = (Button) findViewById(R.id.button_continue_reserve);
 
-        ArrayAdapter<CharSequence> subjectAdapter = ArrayAdapter.createFromResource(this,R.array.specialty,android.R.layout.simple_spinner_item);
+        ArrayAdapter<String> subjectAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, subjects);
         subjectAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         subjectSpinner.setAdapter(subjectAdapter);
         subjectSpinner.setOnItemSelectedListener(this);

@@ -100,7 +100,7 @@ public class UpcomingFragment  extends Fragment {
                             }
                         });
 */
-                        list.add("Date : " + lesson.getDate() + "\nTime : " + lesson.getTime() +  "\nSubject : " + lesson.getSubject() + "\nPrice : " + lesson.getPrice() + "\nPayment by : " + lesson.getPaymentMethod() + "\nPlace : " + lesson.getLessonPlace() + "\nTeaching method : " + lesson.getTeachingMethod());
+                        list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : "+ lesson.getTime() +  "\n"+"المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" +"طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" +"طريقة التدريس : " + lesson.getTeachingMethod());
                     }
                 }
                 listView.setAdapter(adapter);
@@ -142,6 +142,7 @@ public class UpcomingFragment  extends Fragment {
                                             Calendar rightNow = Calendar.getInstance();
                                             int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
                                             if (t <= currentHourIn24Format + 1){
+                                                Toast.makeText(getActivity(), "لا تستطيع إلغاء الدرس اذا كان بعد أقل من ساعة", Toast.LENGTH_SHORT).show();
                                             }
                                             else{
                                                 list.remove(positionToRemove);
@@ -149,16 +150,18 @@ public class UpcomingFragment  extends Fragment {
                                                 FirebaseDatabase.getInstance().getReference("Lessons").child(keyList.get(i)).removeValue();
                                                 keyList.remove(i);
                                                 lessons.remove(i);
-                                                Toast.makeText(getActivity(),"Cancelled Successfully!!!",Toast.LENGTH_LONG).show();
+                                                Toast.makeText(getActivity(),"تم إلغاء الدرس بنجاح",Toast.LENGTH_LONG).show();
 
                                             }
 
                                         }
                                         else{
+                                            list.remove(positionToRemove);
+                                            adapter.notifyDataSetChanged();
                                             databaseReference.getRoot().child("Lessons").child(keyList.get(i)).removeValue();
                                             keyList.remove(i);
                                             lessons.remove(i);
-                                            Toast.makeText(getActivity(),"Cancelled Successfully!!!",Toast.LENGTH_LONG).show();
+                                            Toast.makeText(getActivity(),"تم إلغاء الدرس بنجاح",Toast.LENGTH_LONG).show();
 
                                         }
                                     }
