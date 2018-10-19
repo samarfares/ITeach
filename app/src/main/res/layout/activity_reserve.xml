@@ -38,17 +38,27 @@
                 />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25sp"
+                android:layout_marginTop="20dp"
                 android:text="اختر أحد الأوقات المتاحة إذا وجدت : "/>
+            <TextView
+                android:id="@+id/noneTextReserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="لا يوجد مواعيد متاحة في هذا اليوم اختر يوماً اخر"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                />
 
             <ListView
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
                 android:id="@+id/listViewReserve"
                 android:layout_width="match_parent"
-                android:layout_height="280dp">
+                android:layout_height="240dp">
             </ListView>
 
             <Button

@@ -31,6 +31,7 @@
                 android:id="@+id/textViewInstructorProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textSize="25sp"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -61,7 +62,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginLeft="15dp"
                     android:paddingTop="9.5dp"
-                    android:text="0 likes"
+                    android:text="0 إعجاب"
                     android:textStyle="bold"
                     android:textSize="14sp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
