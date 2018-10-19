@@ -50,7 +50,7 @@
                 android:id="@+id/noneTextSchedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="لا يوجد مواعيد متاحة في هذا اليوم اختر يوماً اخر"
+                android:text="لا يوجد مواعيد متاحة في هذا اليوم !"
                 android:textSize="20sp"
                 android:layout_gravity="center"
                 />

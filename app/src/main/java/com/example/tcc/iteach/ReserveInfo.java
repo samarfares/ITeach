@@ -71,8 +71,8 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
         subjectSpinner.setAdapter(subjectAdapter);
         subjectSpinner.setOnItemSelectedListener(this);
 
-        if (insPaymentMethod.equals("Both")) {
-            String[] items = {"Cash", "VISA"};
+        if (insPaymentMethod.equals("كلاهما")) {
+            String[] items = {"نقداً", "فيزا"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             paymentSpinner.setAdapter(adapter);
         }
@@ -83,8 +83,8 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
         }
         paymentSpinner.setOnItemSelectedListener(this);
         /////////////////
-        if (insLessonsPlace.equals("Both")) {
-            String[] items = {"Instructor's place", "Student's place"};
+        if (insLessonsPlace.equals("كلاهما")) {
+            String[] items = {"عند الأستاذ", "عند الطالب"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             placeSpinner.setAdapter(adapter);
         }
@@ -96,8 +96,8 @@ public class ReserveInfo extends AppCompatActivity implements AdapterView.OnItem
         placeSpinner.setOnItemSelectedListener(this);
 
 
-        if (insTeachingMethod.equals("Both")) {
-            String[] items = {"Teaching individual", "Teaching group"};
+        if (insTeachingMethod.equals("كلاهما")) {
+            String[] items = {"فردي", "جماعي"};
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
             methodSpinner.setAdapter(adapter);
         }

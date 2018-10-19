@@ -20,13 +20,18 @@
 
             <TextView
                 android:text="Instructor name"
+                android:textSize="25sp"
                 android:id="@+id/text_view_reserve"
                 android:layout_width="match_parent"
+                android:gravity="center"
                 android:layout_height="wrap_content" />
 
 
             <TextView
                 android:text="اختر المادة"
+                android:layout_marginTop="25dp"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
                 android:id="@+id/text_view_reserve1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -39,6 +44,9 @@
 
             <TextView
                 android:text="اختر طريقة الدفع"
+                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
                 android:id="@+id/text_view_reserve2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -52,6 +60,9 @@
 
             <TextView
                 android:text="اختر مكان الدرس"
+                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
                 android:id="@+id/text_view_reserve3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -65,6 +76,9 @@
 
             <TextView
                 android:text="اختر طريقة التدريس"
+                android:layout_marginTop="20dp"
+                android:layout_margin="10dp"
+                android:textSize="20sp"
                 android:id="@+id/text_view_reserve4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />

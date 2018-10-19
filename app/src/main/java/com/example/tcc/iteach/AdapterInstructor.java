@@ -51,17 +51,17 @@ public class AdapterInstructor extends ArrayAdapter<Instructor> {
 
 name.setText(instructor.getFirstName().concat(" ").concat(instructor.getLastName()));
 gender.setText(instructor.getGender());
-dob.setText("Was born on "+instructor.getDob());
-likes.setText("Likes "+instructor.getLikes()+"");
-        yoe.setText("Years of experience: "+instructor.getYoe()+"");
-        insLessonPlace.setText("Prefers teaching at "+instructor.getLessonsPlace());
-        insLessonPrice.setText("lesson's price "+instructor.getLessonsPrice()+" SR");
-        insTmethod.setText("prefers "+instructor.getTeachingMethod());
-        insPmethod.setText("Payment method "+instructor.getPaymentMethod());
-        insEmail.setText("Email "+instructor.getEmail());
-         insPhone.setText("Mobile "+instructor.getPhoneNum()+"");
+dob.setText("ولد في : "+instructor.getDob());
+likes.setText(" الإعجابات "+instructor.getLikes()+"");
+        yoe.setText("سنين الخبرة : "+instructor.getYoe()+"");
+        insLessonPlace.setText("يفضل أن يكون الدرس : "+instructor.getLessonsPlace());
+        insLessonPrice.setText("سعر الدرس : "+instructor.getLessonsPrice()+" SR");
+        insTmethod.setText("يفضل أن يدرس : "+instructor.getTeachingMethod());
+        insPmethod.setText("طريقة الدفع : "+instructor.getPaymentMethod());
+        insEmail.setText("البريد الالكتروني : "+instructor.getEmail());
+         insPhone.setText("رقم الجوال : "+instructor.getPhoneNum()+"");
 
-        subject.setText("Subjects: "+instructor.subjects.toString());
+        subject.setText("المواد : "+instructor.subjects.toString());
 
        //String d = instructor.getPhoneNum()+"";
 

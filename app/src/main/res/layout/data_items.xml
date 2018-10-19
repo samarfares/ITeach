@@ -8,53 +8,66 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="25sp"
+            android:gravity="center"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insName"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insDob"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insGender"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insYOE"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insLikes"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insSubjects"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insTmethod"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insPmethod"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insLessonPlace"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insLessonPrice"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insEmail"/>
         <TextView
-            android:layout_width="wrap_content"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/insPhone"/>
 

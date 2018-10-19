@@ -44,6 +44,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
     Spot spot;
     Lesson lesson;
 
+    TextView none;
     Button buttonReserve;
     Button buttonDate;
 
@@ -62,6 +63,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
         textView.setText(currentDateString);
 
+        none = (TextView)findViewById(R.id.noneTextReserve);
         Intent intent = getIntent();
 
         insID = intent.getStringExtra("insID");
@@ -73,8 +75,8 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         teachingMethod = intent.getStringExtra("teachingMethod");
         subject = intent.getStringExtra("subject");
 
-        if (paymentMethod.equals("VISA")){
-            buttonReserve.setText("Continue To Payment");
+        if (paymentMethod.equals("فيزا")){
+            buttonReserve.setText("استمرار للدفع");
         }
 
         listView = (ListView) findViewById(R.id.listViewReserve);
@@ -97,7 +99,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     spot = ds.getValue(Spot.class);
                     if (spot.getDate().equals(currentDateString)) {
                         if (spot.isAvailable()) {
-                            if (teachingMethod.equals("Teaching individual")) {
+                            if (teachingMethod.equals("فردي")) {
                                 if (spot.isIndividual()) {
                                     list.add("Time : " + spot.getTime().toString());
                                 }
@@ -108,6 +110,9 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                             }
                         }
                     }
+                }
+                if (!list.isEmpty()){
+                    none.setVisibility(View.GONE);
                 }
                 listView.setAdapter(adapter);
             }
@@ -123,9 +128,9 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
             @Override
             public void onClick(View view) {
                 if (time.equals("null")) {
-                    Toast.makeText(Reserve.this, "You have to choose time !", Toast.LENGTH_LONG).show();
+                    Toast.makeText(Reserve.this, "يجب أن تختار وقتاً !!", Toast.LENGTH_LONG).show();
                 } else {
-                    if (paymentMethod.equals("Cash")) {
+                    if (paymentMethod.equals("نقداً")) {
                         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
                         lesson = new Lesson(currentDateString, time, insID, stuID, subject, lessonPrice, paymentMethod, lessonPlace, teachingMethod);
                         databaseReference.push().setValue(lesson);
@@ -139,7 +144,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                                     if (spot.getDate().equals(currentDateString)) {
                                         if (spot.isAvailable()) {
                                             if (spot.getTime().equals(time)) {
-                                                if (teachingMethod.equals("Teaching individual")) {
+                                                if (teachingMethod.equals("فردي")) {
                                                     if (spot.isIndividual()) {
                                                         ds.getRef().child("available").setValue(false);
                                                     }
@@ -244,7 +249,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                     spot = ds.getValue(Spot.class);
                     if ( spot.getDate().equals(currentDateString)){
                         if (spot.isAvailable()) {
-                            if (teachingMethod.equals("Teaching individual")) {
+                            if (teachingMethod.equals("فردي")) {
                                 if (spot.isIndividual()){
                                     list.add("Time : " + spot.getTime().toString() );
                                 }
@@ -257,6 +262,11 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                         }
                     }
                 }
+                if (list.isEmpty()){
+                    none.setVisibility(View.VISIBLE);
+                }
+                else
+                    none.setVisibility(View.GONE);
                 listView.setAdapter(adapter);
 
             }
