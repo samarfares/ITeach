@@ -33,9 +33,11 @@ import java.util.List;
 public class notifications extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     private DatabaseReference databaseReference;
-    ListView listView;
-    List<Message> list;
-    NotificationAdapter myAdapter;
+    ListView listView2;
+
+    List<MessageLesson> list2;
+
+    NotificationLessonAdapter myAdapter2;
 
     FirebaseAuth firebaseAuth;
 
@@ -48,26 +50,32 @@ public class notifications extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        listView=(ListView) findViewById( R.id.list1 );
-        list = new ArrayList<>();
+        listView2=(ListView) findViewById( R.id.list2 );
+
+        list2 = new ArrayList<>();
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference( "messages" );
+
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference( "messagesLesson" );
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snap : dataSnapshot.getChildren()) {
 
-                    Message message = snap.getValue( Message.class );
-                    list.add( message );
+                    MessageLesson message = snap.getValue( MessageLesson.class );
+                    if(message.getInstructorID().equals( firebaseAuth.getUid() ))
+
+                        list2.add( message );
 
                 }
 
 
 
-                    myAdapter = new NotificationAdapter( notifications.this, R.layout.notificationitems, list );
-                    listView.setAdapter( myAdapter );
-                    Utility.setListViewHeightBasedOnChildren( listView );
+                myAdapter2 = new NotificationLessonAdapter( notifications.this, R.layout.lessonsitems, list2 );
+                listView2.setAdapter( myAdapter2 );
+                Utility.setListViewHeightBasedOnChildren( listView2 );
 
 
 
@@ -81,30 +89,13 @@ public class notifications extends AppCompatActivity
         } );
 
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(notifications.this,ViewInstructorProfile.class);
-                intent.putExtra("email",list.get(position).getEmail());
-                intent.putExtra( "person","instructor" );
-                Bundle args = new Bundle();
-                String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());
-                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
-                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
-                LatLng t = new LatLng( lat, lng );
-                args.putParcelable("location",t);
-                intent.putExtra("bundle", args);
-                startActivity(intent);
+                Intent intent = new Intent(notifications.this,reservations.class);
                 startActivity(intent);
             }
         });
-
-
-
-
-
-
-
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

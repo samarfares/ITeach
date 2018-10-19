@@ -80,6 +80,8 @@ public class notifications2 extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(notifications2.this,ViewInstructorProfile.class);
                 intent.putExtra("email",list.get(position).getEmail());
+                intent.putExtra("insId",list.get(position).getInsID());
+
                 intent.putExtra( "person","student" );
                 Bundle args = new Bundle();
                 String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());

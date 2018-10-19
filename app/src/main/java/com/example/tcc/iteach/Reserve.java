@@ -170,7 +170,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
 
                         FirebaseMessaging.getInstance().subscribeToTopic("notificationsLessons");
-                        FirebaseDatabase.getInstance().getReference("messagesLesson").push().setValue(new Message( "حجز جديد", "لقد قام طالب بحجز درس جديد معك .." ,stuID,lessonPlace));
+                        FirebaseDatabase.getInstance().getReference("messagesLesson").push().setValue(new MessageLesson("لقد قام طالب بحجز درس جديد معك .." ,currentDateString,time,insID));
                         FirebaseMessaging.getInstance().unsubscribeFromTopic( "notificationsLessons");
 
 

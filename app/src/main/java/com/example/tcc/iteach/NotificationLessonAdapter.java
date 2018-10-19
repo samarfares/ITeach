@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class NotificationAdapter extends ArrayAdapter<Message> {
+public class NotificationLessonAdapter extends ArrayAdapter<MessageLesson> {
 
     Activity activity;
     int resource;
-    List<Message> list;
+    List<MessageLesson> list;
 
-    public NotificationAdapter(Activity activity, int resource, List<Message> list) {
+    public NotificationLessonAdapter(Activity activity, int resource, List<MessageLesson> list) {
         super(activity, resource,list);
         this.activity = activity;
         this.resource = resource;
@@ -34,12 +34,14 @@ public class NotificationAdapter extends ArrayAdapter<Message> {
 
         View view = layoutInflater.inflate(resource,null);
 
-        TextView title = (TextView) view.findViewById(R.id.title);
+        TextView date = (TextView) view.findViewById(R.id.date);
         TextView content = (TextView) view.findViewById(R.id.content);
+        TextView time = (TextView) view.findViewById(R.id.time);
 
 
-        title.setText( " الاسم " +list.get(position).getName());
-        content.setText( "الرسالة: " +list.get(position).getMessage());
+        date.setText( " التاريخ: " +list.get(position).getDate());
+        content.setText( " الرسالة: " +list.get(position).getMessage());
+        time.setText( " الوقت: " +list.get(position).getTime());
 
 
 
