@@ -84,7 +84,15 @@ public class notifications extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(notifications.this,ViewInstructorProfile.class);
                 intent.putExtra("email",list.get(position).getEmail());
-
+                intent.putExtra( "person","instructor" );
+                Bundle args = new Bundle();
+                String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());
+                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
+                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
+                LatLng t = new LatLng( lat, lng );
+                args.putParcelable("location",t);
+                intent.putExtra("bundle", args);
+                startActivity(intent);
                 startActivity(intent);
             }
         });

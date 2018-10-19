@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -76,7 +77,14 @@ public class notifications2 extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(notifications2.this,ViewInstructorProfile.class);
                 intent.putExtra("email",list.get(position).getEmail());
-
+                intent.putExtra( "person","student" );
+                Bundle args = new Bundle();
+                String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());
+                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
+                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
+                LatLng t = new LatLng( lat, lng );
+                args.putParcelable("location",t);
+                intent.putExtra("bundle", args);
                 startActivity(intent);
             }
         });
