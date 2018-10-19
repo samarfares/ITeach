@@ -46,6 +46,14 @@
                 android:text="تعديل الأوقات المتاحة"
                 android:layout_gravity="center"
                 android:layout_marginVertical="20dp"/>
+            <TextView
+                android:id="@+id/noneTextSchedule"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="لا يوجد مواعيد متاحة في هذا اليوم اختر يوماً اخر"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                />
             <ListView
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="20dp"
@@ -53,6 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="280dp">
             </ListView>
+
         </LinearLayout>
 
     </ScrollView>

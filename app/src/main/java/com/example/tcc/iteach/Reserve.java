@@ -164,7 +164,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
                     } else {
 
-                        Intent i = new Intent(Reserve.this, Reserve.class);
+                        Intent i = new Intent(Reserve.this, PaymentActivity.class);
                         i.putExtra("insID", insID);
                         i.putExtra("insName", insName);
                         i.putExtra("paymentMethod", paymentMethod);

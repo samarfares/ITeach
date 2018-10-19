@@ -47,6 +47,8 @@ public class schedule extends AppCompatActivity
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
 
+    TextView none ;
+
     ListView listView;
     ArrayList<String> list;
     ArrayAdapter<String> adapter;
@@ -61,6 +63,7 @@ public class schedule extends AppCompatActivity
         setSupportActionBar(toolbar);
 
 
+        none = (TextView) findViewById(R.id.noneTextSchedule);
         Button button = (Button) findViewById(R.id.button_choose_date_schedule);
         Button button1 = (Button) findViewById(R.id.button_edit_spots);
         final TextView textView = (TextView) findViewById(R.id.textViewDate);
@@ -93,6 +96,9 @@ public class schedule extends AppCompatActivity
                                 list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : " + spot.getNumberOfStudent());
                             }
                         }
+                    }
+                    if (!list.isEmpty()){
+                    none.setVisibility(View.GONE);
                     }
                     listView.setAdapter(adapter);
             }
@@ -250,7 +256,11 @@ public class schedule extends AppCompatActivity
                     }
                 }
                 listView.setAdapter(adapter);
-
+                if (list.isEmpty()){
+                    none.setVisibility(View.VISIBLE);
+                }
+                else
+                    none.setVisibility(View.VISIBLE );
             }
 
             @Override

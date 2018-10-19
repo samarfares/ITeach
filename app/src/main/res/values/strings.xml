@@ -3,9 +3,9 @@
 
 
     <string-array name="paymentMethod">
-        <item>VISA</item>
-        <item>Cash</item>
-        <item>Both</item>
+        <item>فيزا</item>
+        <item>نقداً</item>
+        <item>كلاهما</item>
 
 
     </string-array>
@@ -25,17 +25,17 @@
     </string-array>
 
     <string-array name="lessonsPlace">
-        <item>Instructor's place</item>
-        <item>student's place</item>
-        <item>Both</item>
+        <item>عند الأستاذ</item>
+        <item>عند الطالب</item>
+        <item>كلاهما</item>
 
 
     </string-array>
 
     <string-array name="method">
-        <item>Teaching individual</item>
-        <item>Teaching group</item>
-        <item>Both</item>
+        <item>فردي</item>
+        <item>جماعي</item>
+        <item>كلاهما</item>
 
 
     </string-array>
