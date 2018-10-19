@@ -22,14 +22,14 @@
                 android:id="@+id/button_choose_date_schedule"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/done"
+                android:text="تم"
                 />
 
             <TextView
                 android:id="@+id/textViewSelectedDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Date"
+                android:text="التاريخ"
                 android:textSize="30sp"
                 android:background="@color/colorPrimary"
                 android:textColor="@android:color/white"
@@ -40,7 +40,7 @@
                 android:id="@+id/textViewDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/select_spots"
+                android:text="اختر التاريخ"
                 android:textSize="30sp"
                 />
 
@@ -60,14 +60,14 @@
                     android:id="@+id/button_individual_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber6"
@@ -94,14 +94,14 @@
                     android:id="@+id/button_individual_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_7"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber7"
@@ -130,14 +130,14 @@
                     android:id="@+id/button_individual_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber8"
@@ -166,14 +166,14 @@
                     android:id="@+id/button_individual_9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber9"
@@ -201,14 +201,14 @@
                     android:id="@+id/button_individual_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber10"
@@ -236,14 +236,14 @@
                     android:id="@+id/button_individual_11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_11"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber11"
@@ -271,14 +271,14 @@
                     android:id="@+id/button_individual_12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber12"
@@ -305,14 +305,14 @@
                     android:id="@+id/button_individual_13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber13"
@@ -339,14 +339,14 @@
                     android:id="@+id/button_individual_14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_14"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber14"
@@ -373,14 +373,14 @@
                     android:id="@+id/button_individual_15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber15"
@@ -407,14 +407,14 @@
                     android:id="@+id/button_individual_16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_16"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber16"
@@ -441,14 +441,14 @@
                     android:id="@+id/button_individual_17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber17"
@@ -475,14 +475,14 @@
                     android:id="@+id/button_individual_18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_18"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber18"
@@ -509,14 +509,14 @@
                     android:id="@+id/button_individual_19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_19"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber19"
@@ -543,14 +543,14 @@
                     android:id="@+id/button_individual_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber20"
@@ -577,14 +577,14 @@
                     android:id="@+id/button_individual_21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_21"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber21"
@@ -611,14 +611,14 @@
                     android:id="@+id/button_individual_22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Individual"
+                    android:text="فردي"
                     android:layout_marginVertical="10dp"/>
 
                 <Button
                     android:id="@+id/button_group_22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber22"
@@ -652,7 +652,7 @@
                     android:id="@+id/button_group_23"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Group"
+                    android:text="جماعي"
                     android:layout_marginVertical="10dp"/>
                 <TextView
                     android:id="@+id/textViewNumber23"

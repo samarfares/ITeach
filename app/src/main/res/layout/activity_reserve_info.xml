@@ -26,7 +26,7 @@
 
 
             <TextView
-                android:text="Choose subject"
+                android:text="اختر المادة"
                 android:id="@+id/text_view_reserve1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -38,7 +38,7 @@
 
 
             <TextView
-                android:text="Choose payment method"
+                android:text="اختر طريقة الدفع"
                 android:id="@+id/text_view_reserve2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -51,7 +51,7 @@
 
 
             <TextView
-                android:text="Choose lesson's place"
+                android:text="اختر مكان الدرس"
                 android:id="@+id/text_view_reserve3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -64,7 +64,7 @@
 
 
             <TextView
-                android:text="Choose teaching method"
+                android:text="اختر طريقة التدريس"
                 android:id="@+id/text_view_reserve4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -79,7 +79,7 @@
                 android:id="@+id/button_continue_reserve"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Continue"
+                android:text="استمرار"
                 android:layout_gravity="center"
                 android:layout_marginVertical="20dp"
                 />

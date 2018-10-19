@@ -64,7 +64,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
     String date;
 
-    int numberInt6=0, numberInt7=1, numberInt8=1, numberInt9=1, numberInt10=1, numberInt11=1, numberInt12=1, numberInt13=1, numberInt14=1, numberInt15=1, numberInt16=1, numberInt17=1, numberInt18=1, numberInt19=1, numberInt20=1, numberInt21=1, numberInt22=1, numberInt23=1;
+    int numberInt6=1, numberInt7=1, numberInt8=1, numberInt9=1, numberInt10=1, numberInt11=1, numberInt12=1, numberInt13=1, numberInt14=1, numberInt15=1, numberInt16=1, numberInt17=1, numberInt18=1, numberInt19=1, numberInt20=1, numberInt21=1, numberInt22=1, numberInt23=1;
 
     private boolean individual6;
     private boolean individual7;
@@ -273,7 +273,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen6 = true;
                         if (parts[1].equals("Group")) {
                             button6g.setBackgroundColor(Color.GRAY);
-                            textViewNumber6.setText(parts[2] + " students");
+                            textViewNumber6.setText(parts[2] + " طلاب ");
                         }
                         else {
                             button6i.setBackgroundColor(Color.GRAY);
@@ -284,7 +284,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen7 = true;
                         if (parts[1].equals("Group")) {
                             button7g.setBackgroundColor(Color.GRAY);
-                            textViewNumber7.setText(parts[2] + " students");
+                            textViewNumber7.setText(parts[2] + " طلاب ");
                         }
                         else {
                             button7i.setBackgroundColor(Color.GRAY);
@@ -294,7 +294,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen8 = true;
                         if (parts[1].equals("Group")) {
                             button8g.setBackgroundColor(Color.GRAY);
-                            textViewNumber8.setText(parts[2] + " students");
+                            textViewNumber8.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual8 = true;
@@ -305,7 +305,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen9 = true;
                         if (parts[1].equals("Group")) {
                             button9g.setBackgroundColor(Color.GRAY);
-                            textViewNumber9.setText(parts[2] + " students");
+                            textViewNumber9.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual9 = true;
@@ -316,7 +316,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen10 = true;
                         if (parts[1].equals("Group")) {
                             button10g.setBackgroundColor(Color.GRAY);
-                            textViewNumber10.setText(parts[2] + " students");
+                            textViewNumber10.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual10 = true;
@@ -327,7 +327,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen11 = true;
                         if (parts[1].equals("Group")) {
                             button11g.setBackgroundColor(Color.GRAY);
-                            textViewNumber11.setText(parts[2] + " students");
+                            textViewNumber11.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual11 = true;
@@ -338,7 +338,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen12 = true;
                         if (parts[1].equals("Group")) {
                             button12g.setBackgroundColor(Color.GRAY);
-                            textViewNumber12.setText(parts[2] + " students");
+                            textViewNumber12.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual12 = true;
@@ -349,7 +349,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen13 = true;
                         if (parts[1].equals("Group")) {
                             button13g.setBackgroundColor(Color.GRAY);
-                            textViewNumber13.setText(parts[2] + " students");
+                            textViewNumber13.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual13 = true;
@@ -360,7 +360,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen14 = true;
                         if (parts[1].equals("Group")) {
                             button14g.setBackgroundColor(Color.GRAY);
-                            textViewNumber14.setText(parts[2] + " students");
+                            textViewNumber14.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual14 = true;
@@ -371,7 +371,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen15 = true;
                         if (parts[1].equals("Group")) {
                             button15g.setBackgroundColor(Color.GRAY);
-                            textViewNumber15.setText(parts[2] + " students");
+                            textViewNumber15.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual15 = true;
@@ -382,7 +382,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen16 = true;
                         if (parts[1].equals("Group")) {
                             button16g.setBackgroundColor(Color.GRAY);
-                            textViewNumber16.setText(parts[2] + " students");
+                            textViewNumber16.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual16 = true;
@@ -393,7 +393,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen17 = true;
                         if (parts[1].equals("Group")) {
                             button17g.setBackgroundColor(Color.GRAY);
-                            textViewNumber17.setText(parts[2] + " students");
+                            textViewNumber17.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual17 = true;
@@ -404,7 +404,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen18 = true;
                         if (parts[1].equals("Group")) {
                             button18g.setBackgroundColor(Color.GRAY);
-                            textViewNumber18.setText(parts[2] + " students");
+                            textViewNumber18.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual18 = true;
@@ -415,7 +415,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen19 = true;
                         if (parts[1].equals("Group")) {
                             button19g.setBackgroundColor(Color.GRAY);
-                            textViewNumber19.setText(parts[2] + " students");
+                            textViewNumber19.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual19 = true;
@@ -426,7 +426,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen20 = true;
                         if (parts[1].equals("Group")) {
                             button20g.setBackgroundColor(Color.GRAY);
-                            textViewNumber20.setText(parts[2] + " students");
+                            textViewNumber20.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual20 = true;
@@ -437,7 +437,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen21 = true;
                         if (parts[1].equals("Group")) {
                             button21g.setBackgroundColor(Color.GRAY);
-                            textViewNumber21.setText(parts[2] + " students");
+                            textViewNumber21.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual21 = true;
@@ -448,7 +448,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen22 = true;
                         if (parts[1].equals("Group")) {
                             button22g.setBackgroundColor(Color.GRAY);
-                            textViewNumber22.setText(parts[2] + " students");
+                            textViewNumber22.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual22 = true;
@@ -459,7 +459,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         chosen23 = true;
                         if (parts[1].equals("Group")) {
                             button23g.setBackgroundColor(Color.GRAY);
-                            textViewNumber23.setText(parts[2] + " students");
+                            textViewNumber23.setText(parts[2] + " طلاب ");
                         }
                         else {
                             individual23 = true;
@@ -493,7 +493,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual6 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students you can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -506,10 +506,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt6= Integer.parseInt(number);
-                    textViewNumber6.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt6 = Integer.parseInt(number);
+                        textViewNumber6.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -544,7 +548,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual7 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -557,10 +561,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt7= Integer.parseInt(number);
-                    textViewNumber7.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt7 = Integer.parseInt(number);
+                        textViewNumber7.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -595,7 +603,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual8 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -608,10 +616,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt8= Integer.parseInt(number);
-                    textViewNumber8.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt8 = Integer.parseInt(number);
+                        textViewNumber8.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -647,7 +659,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual9 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -660,10 +672,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt9= Integer.parseInt(number);
-                    textViewNumber9.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt9 = Integer.parseInt(number);
+                        textViewNumber9.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -699,7 +715,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual10 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -712,10 +728,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt10= Integer.parseInt(number);
-                    textViewNumber10.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt10 = Integer.parseInt(number);
+                        textViewNumber10.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -751,7 +771,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual11 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -764,10 +784,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt11= Integer.parseInt(number);
-                    textViewNumber11.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt11 = Integer.parseInt(number);
+                        textViewNumber11.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -803,7 +827,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual12 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -816,10 +840,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt12= Integer.parseInt(number);
-                    textViewNumber12.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt12 = Integer.parseInt(number);
+                        textViewNumber12.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -855,7 +883,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual13 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -868,10 +896,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt13= Integer.parseInt(number);
-                    textViewNumber13.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt13 = Integer.parseInt(number);
+                        textViewNumber13.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -907,7 +939,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual14 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -920,10 +952,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt14= Integer.parseInt(number);
-                    textViewNumber14.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt14 = Integer.parseInt(number);
+                        textViewNumber14.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -959,7 +995,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual15 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -972,10 +1008,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt15= Integer.parseInt(number);
-                    textViewNumber15.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt15 = Integer.parseInt(number);
+                        textViewNumber15.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1011,7 +1051,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual16 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1024,10 +1064,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt16= Integer.parseInt(number);
-                    textViewNumber16.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt16 = Integer.parseInt(number);
+                        textViewNumber16.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1063,7 +1107,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual17 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1076,10 +1120,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt17= Integer.parseInt(number);
-                    textViewNumber17.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt17 = Integer.parseInt(number);
+                        textViewNumber17.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1115,7 +1163,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual18 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1128,10 +1176,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt18= Integer.parseInt(number);
-                    textViewNumber18.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt18 = Integer.parseInt(number);
+                        textViewNumber18.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1167,7 +1219,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual19 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1180,10 +1232,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt19= Integer.parseInt(number);
-                    textViewNumber19.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt19 = Integer.parseInt(number);
+                        textViewNumber19.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1219,7 +1275,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual20 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1232,10 +1288,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt20= Integer.parseInt(number);
-                    textViewNumber20.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt20 = Integer.parseInt(number);
+                        textViewNumber20.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1271,7 +1331,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual21 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1284,10 +1344,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt21= Integer.parseInt(number);
-                    textViewNumber21.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt21 = Integer.parseInt(number);
+                        textViewNumber21.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1323,7 +1387,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual22 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1336,10 +1400,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt22= Integer.parseInt(number);
-                    textViewNumber22.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt22 = Integer.parseInt(number);
+                        textViewNumber22.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();
@@ -1375,7 +1443,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
             individual23 = false;
 
             groupDialog = new Dialog(editSpots.this);
-            groupDialog.setTitle("Write the number of students\nyou can teach in a lesson");
+            groupDialog.setTitle("أدخل عدد الطلاب في المجموعة");
             groupDialog.setContentView(R.layout.dialog_template);
             groupMembers = (EditText) groupDialog.findViewById(R.id.editTextGroupMembers);
             saveGroupMembers = (Button) groupDialog.findViewById(R.id.saveGroupMembers);
@@ -1388,10 +1456,14 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     SharedPrefesSave(groupMembers.getText().toString());
                     SharedPreferences sp = getApplicationContext().getSharedPreferences("members",0);
                     String number = sp.getString("members", null);
-                    numberInt23= Integer.parseInt(number);
-                    textViewNumber23.setText(number + " students");
-                    groupDialog.cancel();
-
+                    if (number.equals("")){
+                        Toast.makeText(editSpots.this, "يجب إدخال عدد الطلاب", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        numberInt23 = Integer.parseInt(number);
+                        textViewNumber23.setText(number + " طلاب ");
+                        groupDialog.cancel();
+                    }
                 }
             });
             groupDialog.show();

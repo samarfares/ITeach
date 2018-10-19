@@ -25,12 +25,14 @@ import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class blackboard2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener {
 
+    FirebaseAuth firebaseAuth;
     private RecyclerView postList;
     private DatabaseReference UsersRef, PostsRef;
     Questions question;
@@ -42,6 +44,8 @@ public class blackboard2 extends AppCompatActivity
         setContentView(R.layout.activity_blackboard2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        firebaseAuth = FirebaseAuth.getInstance();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -129,7 +133,10 @@ public class blackboard2 extends AppCompatActivity
             Intent h= new Intent(blackboard2.this,reservations2.class);
             startActivity(h);
         }
-
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

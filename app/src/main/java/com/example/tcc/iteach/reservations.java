@@ -18,12 +18,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class reservations extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     private TabLayout tabLayout;
-    private AppBarLayout appBarLayout;
+    //private AppBarLayout appBarLayout;
     private ViewPager viewPager;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +34,10 @@ public class reservations extends AppCompatActivity
         setContentView(R.layout.activity_reservations);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         tabLayout = (TabLayout) findViewById(R.id.tabLayoutReservations);
-        appBarLayout = (AppBarLayout) findViewById(R.id.appBarReservations);
+        //appBarLayout = (AppBarLayout) findViewById(R.id.appBarReservations);
         viewPager = (ViewPager) findViewById(R.id.viewPagerReservations);
         
         TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
@@ -120,7 +125,10 @@ public class reservations extends AppCompatActivity
             Intent h= new Intent(reservations.this,reservations.class);
             startActivity(h);
         }
-
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
+        }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
