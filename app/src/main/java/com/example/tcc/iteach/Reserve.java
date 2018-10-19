@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
 import java.util.ArrayList;
@@ -160,6 +161,15 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
 
                             }
                         });
+
+
+
+                        FirebaseMessaging.getInstance().subscribeToTopic("notificationsLessons");
+                        FirebaseDatabase.getInstance().getReference("messagesLesson").push().setValue(new Message( "حجز جديد", "لقد قام طالب بحجز درس جديد معك .." ,stuID,lessonPlace));
+                        FirebaseMessaging.getInstance().unsubscribeFromTopic( "notificationsLessons");
+
+
+
                         startActivity(new Intent(Reserve.this, student_main.class));
 
                     } else {
