@@ -41,6 +41,7 @@ public class PastFragment  extends Fragment {
     int i;
     Person student;
     String stuName ;
+    String uID ;
 
     public PastFragment() {
     }
@@ -54,7 +55,7 @@ public class PastFragment  extends Fragment {
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
-        String uID = firebaseUser.getUid();
+        uID =  firebaseUser.getUid();
         lesson = new Lesson();
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
 
@@ -76,7 +77,8 @@ public class PastFragment  extends Fragment {
                     } catch (java.text.ParseException e) {
                         e.printStackTrace();
                     }
-                    if (i >= 0) {
+                    if (lesson.getInstructorID().equals(uID)) {
+                        if (i >= 0) {
                         if (i == 0) {
                             int t = Integer.parseInt(lesson.getTime().substring(0, lesson.getTime().indexOf(":")));
                             Calendar rightNow = Calendar.getInstance();
@@ -101,13 +103,12 @@ public class PastFragment  extends Fragment {
 */
                                 list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
                             }
-                        }
-                        else
+                        } else
                             list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
 
                     }
                 }
-
+            }
                 listView.setAdapter(adapter);
             }
 
