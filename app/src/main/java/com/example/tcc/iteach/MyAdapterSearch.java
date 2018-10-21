@@ -39,12 +39,12 @@ public class MyAdapterSearch extends ArrayAdapter<Instructor> {
         TextView subject = (TextView) view.findViewById(R.id.subject);
         TextView email = (TextView) view.findViewById(R.id.Email);
 
-        name.setText( "Name: " +list.get(position).firstName+' '+list.get( position ).lastName);
-        gender.setText( "Gender: " +list.get(position).getGender());
-        email.setText( "Email: " + list.get(position).getEmail());
+        name.setText( " الاسم: " +list.get(position).firstName+' '+list.get( position ).lastName);
+        gender.setText( "الجنس:  " +list.get(position).getGender());
+        email.setText( "الايميل: " + list.get(position).getEmail());
 
 
-        subject.setText( "Subjects: " +list.get(position).subjects.toString());
+        subject.setText( " المواد:  " +list.get(position).subjects.toString());
 
 
 
