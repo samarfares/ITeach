@@ -197,7 +197,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                time = list.get(i).toString().substring(7);
+                time = list.get(i).toString().substring(8);
                 for (int j = 0; j < listView.getChildCount(); j++) {
                     if(i == j ){
                         listView.getChildAt(j).setBackgroundColor(Color.GRAY);
