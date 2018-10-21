@@ -108,10 +108,10 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
                                 public void onComplete(@NonNull Task task) {
                                     if (task.isSuccessful()) {
                                         //  SendUserToMainActivity();
-                                        Toast.makeText(askActivity.this, "New Post is updated successfully.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(askActivity.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
                                         //  loadingBar.dismiss();
                                     } else {
-                                        Toast.makeText(askActivity.this, "Error Occured while updating your post.", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(askActivity.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
                                         // loadingBar.dismiss();
                                     }
                                 }

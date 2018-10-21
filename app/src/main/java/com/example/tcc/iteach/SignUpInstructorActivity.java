@@ -271,7 +271,7 @@ String userID = firebaseUser.getUid();
 
                             current_user_id = mAuth.getCurrentUser().getUid();
                             HashMap postsMap = new HashMap();
-                            postsMap.put("fullname",firstName+lastName);
+                            postsMap.put("fullname",firstName+" "+lastName);
                             usersRef.child(current_user_id).updateChildren(postsMap);
                          startActivity(new Intent(getApplicationContext(),instructor_main.class));
                             }

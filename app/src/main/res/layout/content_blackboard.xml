@@ -17,8 +17,14 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="13dp"
         android:layout_marginStart="13dp"
-        android:layout_marginTop="50dp"
-        android:text="ask" />
+        android:layout_marginTop="60dp"
+        android:textColor="#FCFFF0"
+        android:background="@drawable/button"
+        android:shadowColor="#A8254C"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="اسأل" />
 
     <Button
         android:id="@+id/myQuestionsButton"
@@ -26,7 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/askButton"
         android:layout_centerHorizontal="true"
-        android:text="my questions" />
+        android:textColor="#FCFFF0"
+        android:background="@drawable/button"
+        android:shadowColor="#A8254C"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="أسئلتي" />
 
     <Button
         android:id="@+id/filters"
@@ -35,9 +47,16 @@
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/askButton"
         android:layout_marginEnd="16dp"
-        android:text="filters"
+        android:text="فلترة"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp" />
+        android:layout_marginRight="16dp"
+
+        android:textColor="#FCFFF0"
+        android:background="@drawable/button"
+        android:shadowColor="#A8254C"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/allQuestionList"
@@ -45,7 +64,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="85dp"
+        android:layout_marginTop="100dp"
         android:layout_alignParentLeft="true"
         android:scrollbars="vertical"/>
 

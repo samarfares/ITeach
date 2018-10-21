@@ -208,13 +208,13 @@ public class answerActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     if(dataSnapshot.child(postKey).hasChild(currentUserId)) {
                         countLikes = (int) dataSnapshot.child(postKey).getChildrenCount();
-                        likeButton.setImageResource(R.drawable.like);
-                        numberOfLikes.setText(Integer.toString(countLikes)+(" Likes"));
+                        likeButton.setImageResource(R.drawable.like1);
+                        numberOfLikes.setText(Integer.toString(countLikes)+(" اعجاب "));
                     }
                     else {
                         countLikes = (int) dataSnapshot.child(postKey).getChildrenCount();
                         likeButton.setImageResource(R.drawable.dislike);
-                        numberOfLikes.setText(Integer.toString(countLikes)+(" Likes"));
+                        numberOfLikes.setText(Integer.toString(countLikes)+(" اعجاب "));
                     }
                 }
 

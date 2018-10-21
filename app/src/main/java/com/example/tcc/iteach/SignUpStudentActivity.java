@@ -216,7 +216,7 @@ buttonRegister2.setOnClickListener(this);
 
                     current_user_id = mAuth.getCurrentUser().getUid();
                     HashMap postsMap = new HashMap();
-                    postsMap.put("fullname",studentFName+studentLName);
+                    postsMap.put("fullname",studentFName+" "+studentLName);
                     usersRef.child(current_user_id).updateChildren(postsMap);
                     startActivity(new Intent(getApplicationContext(), student_main.class));
 
