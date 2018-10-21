@@ -296,7 +296,7 @@ mAuth =FirebaseAuth.getInstance();
 
 
 
-
+        title[0]="";
         title = getResources().getStringArray(R.array.specialty);
 
         btn_popup = (ImageButton) findViewById(R.id.button1);

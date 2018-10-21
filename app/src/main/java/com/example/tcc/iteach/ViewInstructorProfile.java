@@ -78,7 +78,7 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
 
             LatLng IL = bundle.getParcelable( "location" );
             double d = SearchForInstructorActivity.CalculationByDistance( IL, L );
-            distance.setText( "يبعد عنك مسافة :  " + d + " كيلومتر " );
+            distance.setText( "يبعد عنك مسافة :  " +String.valueOf(d).substring( 0, String.valueOf(d).indexOf( "." )) + " كيلومتر " );
 
         }
 
