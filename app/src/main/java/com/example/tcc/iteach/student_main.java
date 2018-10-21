@@ -56,8 +56,9 @@ public class student_main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fadingTextView = (FadingTextView) findViewById(R.id.top3text) ;
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-top3 = new String[100];
+        top3 = new String[100];
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,7 +66,7 @@ top3 = new String[100];
                         .setAction("Action", null).show();
             }
         });
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -183,7 +184,7 @@ intent.putExtra("email", email);
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.student_main, menu);
+        //getMenuInflater().inflate(R.menu.student_main, menu);
         return true;
     }
 
@@ -195,10 +196,10 @@ intent.putExtra("email", email);
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+  /*      if (id == R.id.action_settings) {
             return true;
         }
-
+*/
         return super.onOptionsItemSelected(item);
     }
 

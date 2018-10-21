@@ -91,9 +91,9 @@ public class schedule extends AppCompatActivity
                     spot = ds.getValue(Spot.class);
                         if (spot.getDate().equals(currentDateString)) {
                             if (spot.isIndividual()) {
-                                list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
+                                list.add("الوقت : " + spot.getTime() + "\n"+"طريقة التدريس : فردي");
                             } else {
-                                list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : " + spot.getNumberOfStudent());
+                                list.add("الوقت : " + spot.getTime().toString() + "\n"+"طريقة التدريس : جماعي : " +"\n"+"عدد الطلاب : "+ spot.getNumberOfStudent());
                             }
                         }
                     }
@@ -111,7 +111,7 @@ public class schedule extends AppCompatActivity
 
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +119,7 @@ public class schedule extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -164,7 +164,7 @@ public class schedule extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.instructor_main, menu);
+        //getMenuInflater().inflate(R.menu.instructor_main, menu);
         return true;
     }
 
@@ -176,9 +176,9 @@ public class schedule extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        /*if (id == R.id.action_settings) {
             return true;
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -248,10 +248,10 @@ public class schedule extends AppCompatActivity
                     spot = ds.getValue(Spot.class);
                     if ( spot.getDate().equals(currentDateString)){
                         if ( spot.isIndividual()) {
-                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Individual");
+                            list.add("الوقت : " + spot.getTime().toString() + "\n"+"طريقة التدريس : ");
                         }
                         else{
-                            list.add("Time : " + spot.getTime().toString() + "\nMethod : Group\nNumber of students : "+ spot.getNumberOfStudent());
+                            list.add("الوقت : " + spot.getTime().toString() + "\n"+"طريقة التدريس : جماعي"+"\n"+"عدد الطلاب : "+ spot.getNumberOfStudent());
                         }
                     }
                 }

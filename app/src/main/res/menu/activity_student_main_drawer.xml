@@ -7,26 +7,26 @@
     <item
         android:id="@+id/nav_home"
         android:icon="@drawable/ic_menu_home"
-        android:title="@string/home" />
+        android:title="الرئيسية" />
     <item
         android:id="@+id/nav_blackboard"
         android:icon="@drawable/ic_menu_blackboard"
-        android:title="@string/blackboard" />
+        android:title="منصة الأسئلة" />
     <item
         android:id="@+id/nav_reservations"
         android:icon="@drawable/ic_menu_reservations"
-        android:title="@string/reservations" />
+        android:title="الدروس" />
     <item
         android:id="@+id/nav_notifications"
         android:icon="@drawable/ic_menu_notifications"
-        android:title="@string/notifications" />
+        android:title="الإشعارات" />
     <item
         android:id="@+id/nav_manage"
         android:icon="@drawable/ic_menu_manage"
-        android:title="@string/settings" />
+        android:title="الإعدادات" />
     <item
         android:id="@+id/nav_signOut"
         android:icon="@drawable/signout"
-        android:title="@string/signOut" />
+        android:title="تسجيل الخروج" />
 
 </menu>

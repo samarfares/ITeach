@@ -75,11 +75,11 @@ intent = new Intent(MainActivity.this, instructor_main.class );
         }
 
         if (TextUtils.isEmpty(password)) {
-            Toast.makeText(this, "Please Enter Password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "أدخل كلمة المرور", Toast.LENGTH_SHORT).show();
             return;
         }
         if (password.length() < 6) {
-            Toast.makeText(this, "password should be at least 6 characters long", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "يجب أن تحتوي كلمة المرور على 6 حروف على الأقل", Toast.LENGTH_SHORT).show();
             return;
 
         }
@@ -97,7 +97,7 @@ intent = new Intent(MainActivity.this, instructor_main.class );
            // editor.commit();}
 
 
-        progressDialog.setMessage("Logging in please wait...");
+        progressDialog.setMessage("يتم تسجيل الدخول ... فضلاً انتظر");
         progressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
@@ -136,7 +136,7 @@ intent = new Intent(MainActivity.this, instructor_main.class );
 
                          else {
                             progressDialog.dismiss();
-                            Toast.makeText(MainActivity.this, "login failed, " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(MainActivity.this, "فشل تسجيل الدخول ! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
                         }//else
                     }
 

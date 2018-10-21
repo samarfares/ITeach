@@ -117,11 +117,11 @@ public class UpcomingFragment  extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
 
                 AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
-                adb.setTitle("Cancel?");
-                adb.setMessage("Are you sure you want to Cancel ");
+                adb.setTitle("إلغاء الدرس");
+                adb.setMessage("متأكد من إلغاء الدرس ؟");
                 final int positionToRemove = i;
-                adb.setNegativeButton("Cancel", null);
-                adb.setPositiveButton("Ok", new AlertDialog.OnClickListener() {
+                adb.setNegativeButton("لا", null);
+                adb.setPositiveButton("نعم", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         FirebaseDatabase.getInstance().getReference("Lessons").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override

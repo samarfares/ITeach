@@ -101,11 +101,11 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                         if (spot.isAvailable()) {
                             if (teachingMethod.equals("فردي")) {
                                 if (spot.isIndividual()) {
-                                    list.add("Time : " + spot.getTime().toString());
+                                    list.add("الوقت : " + spot.getTime().toString());
                                 }
                             } else {
                                 if (!spot.isIndividual()){
-                                    list.add("Time : " + spot.getTime().toString());
+                                    list.add("الوقت : " + spot.getTime().toString());
                                 }
                             }
                         }
@@ -251,11 +251,11 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                         if (spot.isAvailable()) {
                             if (teachingMethod.equals("فردي")) {
                                 if (spot.isIndividual()){
-                                    list.add("Time : " + spot.getTime().toString() );
+                                    list.add("الوقت : " + spot.getTime().toString() );
                                 }
                             } else {
                                 if (!spot.isIndividual()){
-                                    list.add("Time : " + spot.getTime().toString() );
+                                    list.add("الوقت : " + spot.getTime().toString() );
                                 }
 
                             }

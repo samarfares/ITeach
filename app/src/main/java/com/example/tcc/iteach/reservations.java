@@ -41,15 +41,15 @@ public class reservations extends AppCompatActivity
         viewPager = (ViewPager) findViewById(R.id.viewPagerReservations);
         
         TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
-        tabsAdapter.AddFragment(new UpcomingFragment(),"Upccoming");
-        tabsAdapter.AddFragment(new PastFragment(),"Past");
+        tabsAdapter.AddFragment(new UpcomingFragment(),"القادمة");
+        tabsAdapter.AddFragment(new PastFragment(),"الماضية");
 
         viewPager.setAdapter(tabsAdapter);
         tabLayout.setupWithViewPager(viewPager);
 
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,7 +57,7 @@ public class reservations extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });
-
+*/
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -81,7 +81,7 @@ public class reservations extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.instructor_main, menu);
+        //getMenuInflater().inflate(R.menu.instructor_main, menu);
         return true;
     }
 
@@ -93,10 +93,10 @@ public class reservations extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+  /*      if (id == R.id.action_settings) {
             return true;
         }
-
+*/
         return super.onOptionsItemSelected(item);
     }
 
