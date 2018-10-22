@@ -140,6 +140,8 @@ mAuth =FirebaseAuth.getInstance();
         location.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent=new Intent(SearchForInstructorActivity.this, LocationActivity.class);
+                intent.putExtra( "person",person );
+
                 intent.putExtra( "search","true" );
                 startActivity(intent);
 
@@ -156,7 +158,7 @@ mAuth =FirebaseAuth.getInstance();
                     databaseReference.addValueEventListener( new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
-                            locations.clear();
+                            list.clear();
                             for (DataSnapshot snap : dataSnapshot.getChildren()) {
 
                                 Instructor instructor = snap.getValue( Instructor.class );
@@ -171,14 +173,14 @@ mAuth =FirebaseAuth.getInstance();
                                 LatLng t = new LatLng( lat, lng );
                                 Double distance = CalculationByDistance( t, SearchLocation );
                                 if (distance <= 5)
-                                    listLocation.add( locations.get( i ) );
+                                    list.add( locations.get( i ) );
 
 
                             }
-                            if (listLocation.size()>0)
+                            if (list.size()>0)
                             {
 
-                                myAdapter = new MyAdapterSearch( SearchForInstructorActivity.this, R.layout.items, listLocation );
+                                myAdapter = new MyAdapterSearch( SearchForInstructorActivity.this, R.layout.items, list );
                             listView.setAdapter( myAdapter );
                             Utility.setListViewHeightBasedOnChildren( listView );}
                             else
@@ -253,7 +255,7 @@ mAuth =FirebaseAuth.getInstance();
                     public void onTextChanged(CharSequence s, int start, int before, int count) {
 
                         textlength = editTextName.getText().length();
-                        array_sort.clear();
+                        list.clear();
 
                         for (int i = 0; i < names.size(); i++) {
                             if (!(names.get(i).firstName .equals( null ))){
@@ -261,13 +263,13 @@ mAuth =FirebaseAuth.getInstance();
                                 if (names.get(i).firstName.toLowerCase().trim().contains(
                                         editTextName.getText().toString().toLowerCase().trim())||names.get(i).lastName.toLowerCase().trim().contains(
                                         editTextName.getText().toString().toLowerCase().trim())) {
-                                    array_sort.add(names.get(i));
+                                    list.add(names.get(i));
                                 }
                             }}
                         }
-                        if (array_sort.size()!=0){
+                        if (list.size()!=0){
 
-                            myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,array_sort);
+                            myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,list);
 
 
                             listView.setAdapter(myAdapter);
@@ -296,7 +298,6 @@ mAuth =FirebaseAuth.getInstance();
 
 
 
-        title[0]="";
         title = getResources().getStringArray(R.array.specialty);
 
         btn_popup = (ImageButton) findViewById(R.id.button1);
@@ -420,7 +421,8 @@ mAuth =FirebaseAuth.getInstance();
 
 
                                     listView.setAdapter(myAdapter);
-                                    Utility.setListViewHeightBasedOnChildren(listView);}
+                                   Utility.setListViewHeightBasedOnChildren(listView);
+                                }
                                 else {
 
                                     Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();

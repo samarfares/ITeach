@@ -25,7 +25,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
     public static final String TAG = LocationActivity.class.getSimpleName();
     private static final int PLACE_PICKER_REQUEST = 1;
     private GoogleApiClient mClient;
-    String search, value;
+    String search, value,person;
 
 
     @Override
@@ -41,6 +41,8 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                 .build();
 
         search=getIntent().getStringExtra( "search" );
+        person=getIntent().getStringExtra( "person" );
+
         value = getIntent().getExtras().getString("key");
 
 
@@ -110,6 +112,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                 Bundle args = new Bundle();
                 args.putParcelable("location", placeId);
                 intent.putExtra("bundle", args);
+                intent.putExtra("person", person);
 
                 startActivity(intent);}
 
