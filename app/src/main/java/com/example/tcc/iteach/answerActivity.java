@@ -87,7 +87,7 @@ public class answerActivity extends AppCompatActivity {
     private void validateComment(String userName){
         String answerText = answerInputText.getText().toString();
         if(TextUtils.isEmpty(answerText)){
-            Toast.makeText(this,"please write an answer",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"من فضلك ادخل الاجابة اولا",Toast.LENGTH_SHORT).show();
         }
         else {
             Calendar calFordDate = Calendar.getInstance();

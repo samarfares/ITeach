@@ -19,6 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -48,7 +49,7 @@ public class student_main extends AppCompatActivity
      */
    String[] top3;
     int i=0;
-    String name , email , id;
+    String name , email , id,test;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,6 +102,7 @@ firebaseAuth=FirebaseAuth.getInstance();
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
                     name = snap.child("firstName").getValue().toString()+" "+snap.child("lastName").getValue().toString();
                     email = snap.child("email").getValue().toString();
+                    test = SignUpInstructorActivity.decryptIt(  snap.child("location").getValue().toString());
                     id= snap.child("userID").getValue().toString();
                     fadingTextView.setText(name);
                     top3[i]=name;
@@ -121,7 +123,15 @@ firebaseAuth=FirebaseAuth.getInstance();
             public void onClick(View v) {
                 Intent intent = new Intent(student_main.this,ViewInstructorProfile.class);
 intent.putExtra("email", email);
+                Bundle args = new Bundle();
+
+                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
+                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
+                LatLng t = new LatLng( lat, lng );
+                args.putParcelable("location",t);
+                intent.putExtra("bundle", args);
                 intent.putExtra("insId", id);
+                intent.putExtra("person","student");
 
                 startActivity(intent);
 

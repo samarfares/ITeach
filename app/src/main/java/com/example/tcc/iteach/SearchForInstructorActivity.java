@@ -371,7 +371,7 @@ mAuth =FirebaseAuth.getInstance();
                                     if (!(price .matches(""))){
 
                                         double lessonPrice = Double.parseDouble( price );
-                                        if (instructor.lessonsPrice <= lessonPrice)
+                                        if (instructor.lessonsPrice < lessonPrice)
                                             priceList.add( instructor );}
                                     if(subject!=null){
 

@@ -55,7 +55,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
 
 
         if (TextUtils.isEmpty(Description)) {
-            Toast.makeText(this, "Please type your question...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "من فضلك ادخل نص السؤال اولا", Toast.LENGTH_SHORT).show();
         } else {
             //  loadingBar.setTitle("Add New Post");
             // loadingBar.setMessage("Please wait, while we are updating your new post...");
@@ -121,7 +121,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                System.out.print("failed to post ");
+                System.out.print("فشلت الاضافة");
             }
         });
     }
