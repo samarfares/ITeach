@@ -109,10 +109,10 @@ public class answerActivity extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task task) {
                     if(task.isSuccessful()) {
-                        Toast.makeText(answerActivity.this,"answer is sent",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(answerActivity.this,"تم نشر الجواب",Toast.LENGTH_SHORT).show();
                     }
                     else {
-                        Toast.makeText(answerActivity.this,"Error occurs try again",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(answerActivity.this,"لقد حدث خطأ ما أعد المحاولة",Toast.LENGTH_SHORT).show();
                     }
                 }
             });

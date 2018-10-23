@@ -19,24 +19,7 @@
         android:layout_marginTop="60dp"
         android:text="اسأل" />
 
-    <Button
-        android:id="@+id/myQuestionsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/askButton"
-        android:layout_centerHorizontal="true"
-        android:text="أسئلتي" />
 
-    <Button
-        android:id="@+id/filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/askButton"
-        android:layout_marginEnd="16dp"
-        android:text="فلترة"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/allQuestionList"
