@@ -213,7 +213,13 @@ buttonRegister2.setOnClickListener(this);
                     databaseReference2.child(firebaseUser.getUid()).child("subjects").setValue(subjects);
                     Toast.makeText(SignUpStudentActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().subscribeToTopic("notifications");
-
+                    final FirebaseUser user = mAuth.getCurrentUser();
+                    user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            Toast.makeText(SignUpStudentActivity.this, "تم  ارسال ايميل تفعيل الى حسابك", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                     current_user_id = mAuth.getCurrentUser().getUid();
                     HashMap postsMap = new HashMap();
                     postsMap.put("fullname",studentFName+" "+studentLName);

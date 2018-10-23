@@ -61,6 +61,13 @@ android:orientation="vertical"
            android:layout_width="match_parent"
            android:layout_height="wrap_content" />
 
+       <TextView
+           android:textAlignment="center"
+           android:layout_margin="15dp"
+           android:text="هل نسيت كلمة السر؟؟ اضغط هنا "
+           android:id="@+id/forgetpassword"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

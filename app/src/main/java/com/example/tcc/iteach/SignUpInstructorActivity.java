@@ -267,7 +267,13 @@ String userID = firebaseUser.getUid();
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                             FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail,encryptedLocation,firstName+" "+lastName,userID));
-
+                            final FirebaseUser user = mAuth.getCurrentUser();
+                            user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    Toast.makeText(SignUpInstructorActivity.this, "تم  ارسال ايميل تفعيل الى حسابك", Toast.LENGTH_SHORT).show();
+                                }
+                            });
 
                             current_user_id = mAuth.getCurrentUser().getUid();
                             HashMap postsMap = new HashMap();

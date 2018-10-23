@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextEmail;
     private EditText editTextPassword;
     private TextView textViewSignup;
+    private TextView reset;
     private DatabaseReference databaseReference ,databaseReference2;
 boolean check = true;
     FirebaseAuth firebaseAuth;
@@ -55,11 +56,12 @@ databaseReference2=FirebaseDatabase.getInstance().getReference("Instructors");
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonSignIn = (Button) findViewById(R.id.buttonSignin);
         textViewSignup = (TextView) findViewById(R.id.textViewSignUp);
-
+reset = (TextView) findViewById(R.id.forgetpassword);
         progressDialog = new ProgressDialog(this);
 
         buttonSignIn.setOnClickListener(this);
         textViewSignup.setOnClickListener(this);
+        reset.setOnClickListener(this);
 intent = new Intent(MainActivity.this, instructor_main.class );
     }
 
@@ -162,5 +164,8 @@ intent = new Intent(MainActivity.this, instructor_main.class );
             finish();
             startActivity(new Intent(this, SignUpActivity.class));
         }
+        if(view== reset){
+            finish();
+            startActivity(new Intent(this, resetPassword.class));}
     }
 }
