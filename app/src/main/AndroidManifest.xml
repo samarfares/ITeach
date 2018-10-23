@@ -68,8 +68,8 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".notifications"
-            android:label="@string/title_activity_notifications"
             android:exported="true"
+            android:label="@string/title_activity_notifications"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".settings"
@@ -111,6 +111,7 @@
         <activity
             android:name=".PaymentActivity"
             android:exported="true" />
+        <activity android:name=".resetPassword"></activity>
     </application>
 
 </manifest>
