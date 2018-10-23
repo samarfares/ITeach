@@ -20,36 +20,25 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"
+
             android:orientation="vertical">
 
-            <Button
-                android:id="@+id/detectLocation"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_marginBottom="30dp"
-                android:text="اختر موقع من الخارطة"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent" />
-            <Button
-                android:id="@+id/location"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
-                android:layout_marginBottom="30dp"
-                android:text="البحث بالموقع"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent" />
 
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:padding="10dp"
+                android:orientation="horizontal">
+
 
 
                 <EditText
                     android:id="@+id/editTextName"
-                    android:layout_width="300dp"
+                    android:layout_width="190dp"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="30dp"
                     android:layout_marginTop="30dp"
@@ -57,11 +46,11 @@
                     android:hint="البحث بالاسم"
                     android:inputType="text" />
 
-                <ImageButton
+                <Button
                     android:id="@+id/button1"
-                    android:layout_width="47dp"
-                    android:layout_height="78dp"
-                    android:background="@drawable/filter" />
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="بحث متقدم" />
 
             </LinearLayout>
 
