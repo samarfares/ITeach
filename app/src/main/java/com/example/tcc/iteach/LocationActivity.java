@@ -106,6 +106,13 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                        intent.putExtra("bundle", args);
 
                        startActivity(intent);}
+                   if (value.equals( "AdminInstructor" )){
+                       Intent intent=new Intent(this, InstructorActivity.class);
+                       Bundle args = new Bundle();
+                       args.putParcelable("location", placeId);
+                       intent.putExtra("bundle", args);
+
+                       startActivity(intent);}
                }
                   else                {
                 Intent intent=new Intent(this, AdvancedSearch.class);

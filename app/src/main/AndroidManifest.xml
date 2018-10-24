@@ -111,9 +111,11 @@
         <activity
             android:name=".PaymentActivity"
             android:exported="true" />
-
-        <activity android:name=".AdvancedSearch"></activity>
-        <activity android:name=".resetPassword"></activity>
+        <activity android:name=".AdvancedSearch" />
+        <activity android:name=".resetPassword" />
+        <activity android:name=".AdminActivity"
+            android:exported="true" />
+        <activity android:name=".InstructorActivity"></activity>
     </application>
 
 </manifest>
