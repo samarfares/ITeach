@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -22,8 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class askActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener {
 
@@ -32,6 +35,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
     String Description;
     private DatabaseReference UsersRef, PostsRef;
     private FirebaseAuth mAuth;
+    Spinner spinner;
 
     private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_user_id;
 
@@ -48,6 +52,18 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
         // subjectSpinner = (Spinner) findViewById(R.id.selectSubject);
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         publishButton.setOnClickListener(this);
+        spinner=(Spinner) findViewById(R.id.QuestionSpinner);
+        List<String> list = new ArrayList<String>();
+        list.add("العربية");
+        list.add("الانكليزية");
+        list.add("الرياضيات");
+        list.add("الكيمياء");
+        list.add("الفيزياء");
+        list.add("الموسيقى");
+        list.add("الرقص");
+        list.add("الرسم");
+        list.add("الطبخ");
+       // spinner.setIte
     }
 
     private void ValidatePostInfo() {

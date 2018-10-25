@@ -1,16 +1,24 @@
 package com.example.tcc.iteach;
 
 public class Answers {
-    public String answer, date, time,userName;
+    public String uid,answer, date, time,userName;
     public Answers(){
 
     }
 
-    public Answers(String answer, String date, String time, String userName) {
+    public Answers(String uid,String answer, String date, String time, String userName) {
+        this.uid = uid;
         this.answer = answer;
         this.date = date;
         this.time = time;
         this.userName = userName;
+    }
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getComment() {
