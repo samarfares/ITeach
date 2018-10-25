@@ -74,20 +74,15 @@ public class SearchForInstructorActivity  extends AppCompatActivity {
     private RadioGroup radioType;
     private RadioButton radioTypeButton;
     private Spinner subjectSpinner;
-    String decryptedLocation,gender,subject,price,person;
     LatLng locationSelectedLat;
     int textlength = 0;
     List<Instructor> instructorsNames;
     List<Instructor> array_sort,names;
+String person;
+
+    Button btn_popup;
 
 
-    ImageButton btn_popup;
-
-    String[] title;
-    String spinner_item;
-
-    SpinnerAdapter adapter;
-/*
   @Override
     protected void onStart() {
 
@@ -100,7 +95,7 @@ mAuth =FirebaseAuth.getInstance();
             startActivity(intent);
         }
 
-    }*/
+    }
 
 
     @Override
@@ -110,11 +105,6 @@ mAuth =FirebaseAuth.getInstance();
 
         person=getIntent().getStringExtra( "person" );
 
-        Bundle bundle = getIntent().getParcelableExtra("bundle");
-        if (bundle!=null) {
-            SearchLocation = bundle.getParcelable( "location" );
-
-        }
 
 
         editTextName=(EditText) findViewById( R.id.editTextName );
@@ -136,76 +126,7 @@ mAuth =FirebaseAuth.getInstance();
 
 
 
-        location=(Button) findViewById(R.id.detectLocation);
-        location.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent=new Intent(SearchForInstructorActivity.this, LocationActivity.class);
-                intent.putExtra( "person",person );
 
-                intent.putExtra( "search","true" );
-                startActivity(intent);
-
-
-            }
-
-
-        });
-        locationSearch=(Button) findViewById(R.id.location);
-        locationSearch.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if(SearchLocation!=null) {
-                    databaseReference = FirebaseDatabase.getInstance().getReference( "Instructors" );
-                    databaseReference.addValueEventListener( new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot dataSnapshot) {
-                            list.clear();
-                            for (DataSnapshot snap : dataSnapshot.getChildren()) {
-
-                                Instructor instructor = snap.getValue( Instructor.class );
-                                locations.add( instructor );
-
-                            }
-                            for (int i = 0; i < locations.size(); i++) {
-
-                                String test = SignUpInstructorActivity.decryptIt( locations.get( i ).location );
-                                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
-                                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
-                                LatLng t = new LatLng( lat, lng );
-                                Double distance = CalculationByDistance( t, SearchLocation );
-                                if (distance <= 5)
-                                    list.add( locations.get( i ) );
-
-
-                            }
-                            if (list.size()>0)
-                            {
-
-                                myAdapter = new MyAdapterSearch( SearchForInstructorActivity.this, R.layout.items, list );
-                            listView.setAdapter( myAdapter );
-                            Utility.setListViewHeightBasedOnChildren( listView );}
-                            else
-                                Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
-
-
-                        }
-
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    } );
-
-                }
-                else
-                    Toast.makeText(SearchForInstructorActivity.this, "فضلاً اختر موقع من الخارطة لنبحث بجانبه", Toast.LENGTH_SHORT).show();
-
-
-
-            }
-
-
-        });
 
 
 
@@ -298,155 +219,19 @@ mAuth =FirebaseAuth.getInstance();
 
 
 
-        title = getResources().getStringArray(R.array.specialty);
 
-        btn_popup = (ImageButton) findViewById(R.id.button1);
+        btn_popup = (Button) findViewById(R.id.button1);
 
-        adapter=new SpinnerAdapter(getApplicationContext());
 
         btn_popup.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                final Dialog dialog = new Dialog(SearchForInstructorActivity.this);
-                dialog.requestWindowFeature( Window.FEATURE_NO_TITLE);
-                dialog.setContentView(R.layout.row_spinner);
-                dialog.setCancelable(true);
-
-
-
-
-                // set the custom dialog components - text, image and button
-                final Spinner spinner = (Spinner) dialog.findViewById(R.id.subject);
-                final EditText edittext = (EditText) dialog.findViewById(R.id.editTextPrice);
-                final RadioGroup radioType=(RadioGroup) dialog.findViewById(R.id.radioType);
-
-                Button button = (Button) dialog.findViewById(R.id.button1);
-                spinner.setAdapter(adapter);
-                spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        spinner_item = title[position];
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-
-                button.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View v) {
-                        // TODO Auto-generated method stub
-                        int selectedId = radioType.getCheckedRadioButtonId();
-
-                        final RadioButton radioTypeButton = (RadioButton) dialog.findViewById( selectedId );
-
-                        if (radioTypeButton!=null )gender = radioTypeButton.getText().toString();
-                       if(!(edittext.getText().toString().equals( null )))  price=edittext.getText().toString();
-                      subject=spinner_item;
-
-                        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors");
-                        databaseReference.addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                list.clear();
-                                genderList.clear();
-                                subjectList.clear();
-                                priceList.clear();
-                                for(DataSnapshot snap : dataSnapshot.getChildren()){
-                                    keyList.add(snap.getKey());
-
-                                    Instructor instructor = snap.getValue(Instructor.class);
-                                    list.add( instructor );
-
-
-                                    if(gender!=null){
-                                        if (instructor.getGender().equals( gender ))
-                                            genderList.add( instructor );}
-                                    if (!(price .matches(""))){
-
-                                        double lessonPrice = Double.parseDouble( price );
-                                        if (instructor.lessonsPrice < lessonPrice)
-                                            priceList.add( instructor );}
-                                    if(subject!=null){
-
-                                      if (instructor.subjects.contains( subject ))
-
-                                        subjectList.add( instructor );
-                                    }
-
-
-                                }
-
-
-
-                                    Set<Instructor> common1;
-                                common1 = new HashSet<Instructor>(list);
-                               if (genderList.size()>0&& priceList.size()<=0 &&subjectList.size()<=0)
-                                common1.retainAll(genderList);
-                                if(priceList.size ()>0&&genderList.size()<=0&&subjectList.size()<=0)
-                                common1.retainAll(priceList);
-                                if (subjectList.size()>0&&genderList.size()<=0&&priceList.size()<=0)
-                                    common1.retainAll(subjectList);
-                                if (genderList.size()>0&& priceList.size()>0 &&subjectList.size()<=0){
-                                    common1.retainAll(genderList);
-                                    common1.retainAll(priceList);}
-                                if (genderList.size()>0&& priceList.size()<=0 &&subjectList.size()>0){
-                                    common1.retainAll(genderList);
-                                    common1.retainAll(subjectList);}
-                                if(priceList.size ()>0&&genderList.size()<=0&&subjectList.size()>0){
-                                    common1.retainAll(priceList);
-                                    common1.retainAll(subjectList); }
-                                if(priceList.size ()>0&&genderList.size()>0&&subjectList.size()>0){
-                                    common1.retainAll(priceList);
-                                    common1.retainAll(subjectList);
-                                    common1.retainAll(genderList);
-                                }
-
-
-
-
-                                list = new ArrayList<Instructor>(common1);
-                                if(genderList.size()<=0 && priceList.size()<=0 && subjectList.size()<=0)
-                                    list.clear();
-
-                                if (list.size()!=0){
-
-                                    myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,list);
-
-
-                                    listView.setAdapter(myAdapter);
-                                   Utility.setListViewHeightBasedOnChildren(listView);
-                                }
-                                else {
-
-                                    Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
-
-                                }
-
-
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-
-
-                        });
-
-
-                        dialog.dismiss();
-                    }
-                });
-                dialog.show();
-
-            }
+                Intent intent=new Intent(SearchForInstructorActivity.this, AdvancedSearch.class);
+                intent.putExtra( "person",person );
+                startActivity( intent );
+                }
         });
 
 //****************************
@@ -475,51 +260,7 @@ mAuth =FirebaseAuth.getInstance();
 
     }
 
-    public class SpinnerAdapter extends BaseAdapter {
-        Context context;
-        private LayoutInflater mInflater;
 
-        public SpinnerAdapter(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public int getCount() {
-            return title.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            final ListContent holder;
-            View v = convertView;
-            if (v == null) {
-                mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-                v = mInflater.inflate(R.layout.row_edittext, null);
-                holder = new ListContent();
-                holder.text = (TextView) v.findViewById(R.id.textView1);
-
-                v.setTag(holder);
-            } else {
-                holder = (ListContent) v.getTag();
-            }
-
-            holder.text.setText(title[position]);
-
-            return v;
-        }
-    }
 
     static class ListContent {
         TextView text;

@@ -113,6 +113,11 @@
             android:exported="true" />
         <activity android:name=".resetPassword" />
         <activity android:name=".myQuestions"></activity>
+
+        <activity android:name=".AdvancedSearch" />
+        <activity android:name=".AdminActivity"
+            android:exported="true" />
+        <activity android:name=".InstructorActivity"></activity>
     </application>
 
 </manifest>
