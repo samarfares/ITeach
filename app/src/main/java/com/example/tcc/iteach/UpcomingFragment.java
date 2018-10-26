@@ -35,10 +35,11 @@ public class UpcomingFragment  extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     ListView listView;
-    ArrayList<String> list;
+    public static ArrayList<String> list;
     ArrayList<String> keyList;
     ArrayList<Lesson> lessons;
-    ArrayAdapter<String> adapter;
+
+    UpcomingAdapter upcomingAdapter;
     Lesson lesson;
     String currentDateString;
     int i;
@@ -62,10 +63,12 @@ public class UpcomingFragment  extends Fragment {
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
-        list = new ArrayList<>();
-        keyList = new ArrayList<>();
-        lessons = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(getActivity(),R.layout.spot_info,R.id.listViewSpotInfoTime,list);
+        list = new ArrayList<String>();
+        keyList = new ArrayList<String>();
+        lessons = new ArrayList<Lesson>();
+
+        upcomingAdapter = new UpcomingAdapter(getContext(),list);
+
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -110,92 +113,16 @@ public class UpcomingFragment  extends Fragment {
                                 }
                             } else {
                                 list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
-
                             }
                         }
                     }
                 }
-                listView.setAdapter(adapter);
+                listView.setAdapter(upcomingAdapter);
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         });
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
-
-                AlertDialog.Builder adb=new AlertDialog.Builder(getActivity());
-                adb.setTitle("إلغاء الدرس");
-                adb.setMessage("متأكد من إلغاء الدرس ؟");
-                final int positionToRemove = i;
-                adb.setNegativeButton("لا", null);
-                adb.setPositiveButton("نعم", new AlertDialog.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        FirebaseDatabase.getInstance().getReference("Lessons").addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
-                                for (DataSnapshot ds2 : dataSnapshot.getChildren()){
-                                    lesson = ds2.getValue(Lesson.class);
-                                    if (ds2.getKey().equals(keyList.get(i))){
-                                        try {
-                                            Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
-                                            Date date2 = DateFormat.getDateInstance(DateFormat.FULL).parse(lesson.getDate());
-                                            j = date1.compareTo(date2);
-                                        } catch (java.text.ParseException e) {
-                                            e.printStackTrace();
-                                        }
-                                        if (j == 0) {
-                                            int t = Integer.parseInt(lesson.getTime().substring(0,lesson.getTime().indexOf(":")));
-                                            Calendar rightNow = Calendar.getInstance();
-                                            int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
-                                            if (t <= currentHourIn24Format + 1){
-                                                Toast.makeText(getActivity(), "لا تستطيع إلغاء الدرس اذا كان بعد أقل من ساعة", Toast.LENGTH_SHORT).show();
-                                            }
-                                            else{
-                                                list.remove(positionToRemove);
-                                                adapter.notifyDataSetChanged();
-                                                FirebaseDatabase.getInstance().getReference("Lessons").child(keyList.get(i)).removeValue();
-                                                keyList.remove(i);
-                                                lessons.remove(i);
-                                                Toast.makeText(getActivity(),"تم إلغاء الدرس بنجاح",Toast.LENGTH_LONG).show();
-
-                                            }
-
-                                        }
-                                        else{
-                                            list.remove(positionToRemove);
-                                            adapter.notifyDataSetChanged();
-                                            databaseReference.getRoot().child("Lessons").child(keyList.get(i)).removeValue();
-                                            keyList.remove(i);
-                                            lessons.remove(i);
-                                            Toast.makeText(getActivity(),"تم إلغاء الدرس بنجاح",Toast.LENGTH_LONG).show();
-
-                                        }
-                                    }
-
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-
-
-                    }});
-                adb.show();
-
-
-            }
-        });
-
-
         return view;
     }
 }

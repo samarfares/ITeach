@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditLesson">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/button_choose_date_schedule_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="اختر التاريخ"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
+                />
+
+            <TextView
+                android:id="@+id/textViewDateEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="التاريخ"
+                android:textSize="35sp"
+                android:layout_gravity="center"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_marginTop="20dp"
+                android:text="اختر أحد الأوقات المتاحة إذا وجدت : "/>
+            <TextView
+                android:id="@+id/noneTextEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="لا يوجد مواعيد متاحة في هذا اليوم اختر يوماً اخر"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                />
+
+            <ListView
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp"
+                android:id="@+id/listViewEdit"
+                android:layout_width="match_parent"
+                android:layout_height="240dp">
+            </ListView>
+
+            <Button
+                android:id="@+id/button_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تأكيد التعديل"
+                android:layout_gravity="center"
+                android:layout_marginVertical="20dp"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</android.support.constraint.ConstraintLayout>

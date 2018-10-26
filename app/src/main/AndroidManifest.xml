@@ -112,12 +112,13 @@
             android:name=".PaymentActivity"
             android:exported="true" />
         <activity android:name=".resetPassword" />
-        <activity android:name=".myQuestions"></activity>
-
+        <activity android:name=".myQuestions" />
         <activity android:name=".AdvancedSearch" />
-        <activity android:name=".AdminActivity"
+        <activity
+            android:name=".AdminActivity"
             android:exported="true" />
-        <activity android:name=".InstructorActivity"></activity>
+        <activity android:name=".InstructorActivity" />
+        <activity android:name=".EditLesson"></activity>
     </application>
 
 </manifest>
