@@ -43,7 +43,7 @@ public class AdminActivity extends AppCompatActivity {
         student.setOnClickListener(new View.OnClickListener()   {
             public void onClick(View v)  {
                 try {
-                    startActivity(new Intent(getApplicationContext(), InstructorActivity.class));
+                    startActivity(new Intent(getApplicationContext(), StudentActivity.class));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
