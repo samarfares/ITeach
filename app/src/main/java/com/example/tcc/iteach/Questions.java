@@ -1,19 +1,20 @@
 package com.example.tcc.iteach;
 
 public class Questions {
-    public String uid, time, date, description, fullname;
+    public String uid, time, date, description, fullname,subject;
 
     public Questions()
     {
 
     }
 
-    public Questions(String uid, String time, String date, String description, String fullname) {
+    public Questions(String uid, String time, String date, String description, String fullname, String subject) {
         this.uid = uid;
         this.time = time;
         this.date = date;
         this.description = description;
         this.fullname = fullname;
+        this.subject = subject;
     }
 
     public String getUid() {
@@ -58,5 +59,13 @@ public class Questions {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
+    }
+
+    public String getSubject() {
+        return subject;
+    }
+
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 }

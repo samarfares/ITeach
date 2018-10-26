@@ -121,7 +121,14 @@
             android:name=".AdminActivity"
             android:exported="true" />
         <activity android:name=".InstructorActivity" />
+
+        <activity android:name=".EditLesson"></activity>
+
+
+        <activity android:name=".filterQuestions"></activity>
+
         <activity android:name=".StudentActivity"></activity>
+
     </application>
 
 </manifest>
