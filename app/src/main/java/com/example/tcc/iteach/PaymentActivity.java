@@ -43,22 +43,16 @@ public class PaymentActivity extends AppCompatActivity {
                 new Wallet.WalletOptions.Builder()
                         .setEnvironment( WalletConstants.ENVIRONMENT_TEST)
                         .build());
+        PaymentDataRequest request = createPaymentDataRequest();
+        if (request != null) {
+            AutoResolveHelper.resolveTask(
+                    mPaymentsClient.loadPaymentData(request), PaymentActivity.this,
+                    // LOAD_PAYMENT_DATA_REQUEST_CODE is a constant value
+                    // you define.
+                    LOAD_PAYMENT_DATA_REQUEST_CODE);
+        }
 
-        b= findViewById(R.id.buy_button);
-        b  .setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        PaymentDataRequest request = createPaymentDataRequest();
-                        if (request != null) {
-                            AutoResolveHelper.resolveTask(
-                                    mPaymentsClient.loadPaymentData(request), PaymentActivity.this,
-                                    // LOAD_PAYMENT_DATA_REQUEST_CODE is a constant value
-                                    // you define.
-                                    LOAD_PAYMENT_DATA_REQUEST_CODE);
-                        }
-                    }
-                });
+
     }
 
     private PaymentDataRequest createPaymentDataRequest() {

@@ -50,13 +50,13 @@ import java.util.List;
 
 import static com.example.tcc.iteach.SignUpInstructorActivity.encryptIt;
 
-public class InstructorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class StudentActivity extends AppCompatActivity {
     ListView listView;
     final ArrayList<String> keyList = new ArrayList<>();
     private Button buttonContinueToLocation;
 
-    List<Instructor> list;
-    MyAdapterSearch myAdapter;
+    List<Person> list;
+    MyAdapterStudent myAdapter;
     ProgressDialog progressDialog;
     private DatePicker datePicker;
     private RadioGroup radioGroupGender;
@@ -67,8 +67,6 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
     double price;
     private LatLng location;
     private String encryptedLocation;
-    private String latitude,longitude;
-    private static String cryptoPass = "sup3rS3xy";
     List<String> chosen = new ArrayList<String>();
     MultiSelectionSpinner spinner;
     private TextView textViewSignin2 , textview , textViewDOB, textViewGender , textViewSpecialty, textViewPayment, textViewPlace , textViewMethod;
@@ -91,7 +89,7 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instructor);
+        setContentView(R.layout.activity_student);
         firebaseAuth = FirebaseAuth.getInstance();
         listView = (ListView) findViewById(R.id.list1);
         buttonContinueToLocation=(Button)findViewById(R.id.buttonContinueToLocation);
@@ -104,42 +102,21 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
         editTextFirstName.setVisibility( View.GONE );
         editTextLastName=(EditText) findViewById(R.id.editTextLastName);
         editTextLastName.setVisibility( View.GONE );
-        editTextNumberInstructor= (EditText) findViewById(R.id.editTextNumberInstructor);
-        editTextNumberInstructor.setVisibility( View.GONE );
-        lessonsPrice= (EditText)findViewById(R.id.lessonsPrice);
-        lessonsPrice.setVisibility( View.GONE );
         datePicker=(DatePicker)findViewById(R.id.datePicker);
         datePicker.setVisibility(View.GONE  );
         radioGroupGender=(RadioGroup)findViewById(R.id.radioGroupGender);
         radioGroupGender.setVisibility( View.GONE );
-        yearsExperience= (EditText)findViewById(R.id.yearsExperience);
-        yearsExperience.setVisibility( View.GONE );
-        paymentSpinner=(Spinner)findViewById(R.id.payment);
-        paymentSpinner.setVisibility( View.GONE );
-        placeSpinner=(Spinner)findViewById(R.id.place);
-        placeSpinner.setVisibility( View.GONE );
         textViewDOB=(TextView) findViewById(R.id.textViewDOB);
         textViewDOB.setVisibility( View.GONE );
-        spinner=(MultiSelectionSpinner) findViewById(R.id.input1);
-        spinner.setVisibility( View.GONE );
 
         textViewGender=(TextView) findViewById(R.id.textViewGender);
         textViewGender.setVisibility( View.GONE );
-        textViewSpecialty=(TextView) findViewById(R.id.textViewSpecialty);
-        textViewSpecialty.setVisibility( View.GONE );
+
         male=(RadioButton) findViewById(R.id.male);
         male.setVisibility( View.GONE );
         female=(RadioButton)findViewById(R.id.female);
         female.setVisibility( View.GONE );
-        textViewPayment= (TextView) findViewById(R.id.textViewPayment);
-        textViewPayment.setVisibility( View.GONE );
-        textViewPlace=(TextView) findViewById(R.id.textViewPlace);
-        textViewPlace.setVisibility( View.GONE );
-        textViewMethod=(TextView) findViewById(R.id.textViewMethod);
-        textViewMethod.setVisibility( View.GONE );
-        method=(Spinner)findViewById(R.id.method);
-        method.setVisibility( View.GONE );
-        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Students");
         add=(Button) findViewById(R.id.add);
         addNew=(Button) findViewById(R.id.addNew);
         addNew.setVisibility( View.GONE );
@@ -161,23 +138,12 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
                 editTextPasswordInstructor.setVisibility( View.VISIBLE );
                 editTextFirstName.setVisibility( View.VISIBLE );
                 editTextLastName.setVisibility( View.VISIBLE );
-                editTextNumberInstructor.setVisibility( View.VISIBLE );
-                lessonsPrice.setVisibility( View.VISIBLE );
                 datePicker.setVisibility(View.VISIBLE  );
                 radioGroupGender.setVisibility( View.VISIBLE );
-                yearsExperience.setVisibility( View.VISIBLE );
-                paymentSpinner.setVisibility( View.VISIBLE );
-                placeSpinner.setVisibility( View.VISIBLE );
                 textViewDOB.setVisibility( View.VISIBLE );
                 textViewGender.setVisibility( View.VISIBLE );
-                textViewSpecialty.setVisibility( View.VISIBLE );
                 male.setVisibility( View.VISIBLE );
                 female.setVisibility( View.VISIBLE );
-                textViewPayment.setVisibility( View.VISIBLE );
-                textViewPlace.setVisibility( View.VISIBLE );
-                textViewMethod.setVisibility( View.VISIBLE );
-                method.setVisibility( View.VISIBLE );
-                spinner.setVisibility( View.VISIBLE );
                 addNew.setVisibility( View.VISIBLE );
                 listView.setVisibility( View.GONE );
                 add.setVisibility( View.GONE );
@@ -190,8 +156,8 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
         buttonContinueToLocation.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                Intent intent = new Intent(InstructorActivity.this,LocationActivity.class);
-                intent.putExtra("key", "AdminInstructor" );
+                Intent intent = new Intent(StudentActivity.this,LocationActivity.class);
+                intent.putExtra("key", "AdminStudent" );
                 intent.putExtra("search", "false" );
 
                 startActivity(intent);
@@ -200,35 +166,9 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
             }
         });
 
-        ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(this ,R.array.paymentMethod,android.R.layout.simple_spinner_item);
-        paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        paymentSpinner.setAdapter(paymentAdapter);
-        //setContentView(R.layout.activity_sign_up_instructor);
-        paymentSpinner.setOnItemSelectedListener( this );
-
-        ArrayAdapter<CharSequence> placeAdapter = ArrayAdapter.createFromResource(this,R.array.lessonsPlace,android.R.layout.simple_spinner_item);
-        placeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        placeSpinner.setAdapter(placeAdapter);
-        placeSpinner.setOnItemSelectedListener( this );
 
 
-        ArrayAdapter<CharSequence> methodAdapter = ArrayAdapter.createFromResource(this,R.array.method,android.R.layout.simple_spinner_item);
-        methodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        method.setAdapter(methodAdapter);
-        method.setOnItemSelectedListener( this );
 
-        List<String> list1 = new ArrayList<String>();
-
-        list1.add("العربية");
-        list1.add("الانكليزية");
-        list1.add("الرياضيات");
-        list1.add("الكيمياء");
-        list1.add("الفيزياء");
-        list1.add("الموسيقى");
-        list1.add("الرقص");
-        list1.add("الرسم");
-        list1.add("الطبخ");
-        spinner.setItems(list1);
 
         // Location
         Bundle bundle = getIntent().getParcelableExtra("bundle");
@@ -239,27 +179,15 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
             editTextPasswordInstructor.setVisibility( View.VISIBLE );
             editTextFirstName.setVisibility( View.VISIBLE );
             editTextLastName.setVisibility( View.VISIBLE );
-            editTextNumberInstructor.setVisibility( View.VISIBLE );
-            lessonsPrice.setVisibility( View.VISIBLE );
             datePicker.setVisibility(View.VISIBLE  );
             radioGroupGender.setVisibility( View.VISIBLE );
-            yearsExperience.setVisibility( View.VISIBLE );
-            paymentSpinner.setVisibility( View.VISIBLE );
-            placeSpinner.setVisibility( View.VISIBLE );
             textViewDOB.setVisibility( View.VISIBLE );
             textViewGender.setVisibility( View.VISIBLE );
-            textViewSpecialty.setVisibility( View.VISIBLE );
             male.setVisibility( View.VISIBLE );
             female.setVisibility( View.VISIBLE );
-            textViewPayment.setVisibility( View.VISIBLE );
-            textViewPlace.setVisibility( View.VISIBLE );
-            textViewMethod.setVisibility( View.VISIBLE );
-            method.setVisibility( View.VISIBLE );
-            spinner.setVisibility( View.VISIBLE );
             addNew.setVisibility( View.VISIBLE );
             listView.setVisibility( View.GONE );
             add.setVisibility( View.GONE );
-
             buttonContinueToLocation.setVisibility(View.VISIBLE);
 
         }
@@ -269,7 +197,7 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
         progressDialog.setTitle("الرجاء الانتظار..");
         progressDialog.show();
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors");
+        databaseReference = FirebaseDatabase.getInstance().getReference("Students");
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -280,10 +208,10 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
                 for(DataSnapshot snap : dataSnapshot.getChildren()){
                     keyList.add(snap.getKey());
 
-                    Instructor instructor = snap.getValue(Instructor.class);
-                    list.add(instructor);
+                    Person person = snap.getValue(Person.class);
+                    list.add(person);
                 }
-                myAdapter = new MyAdapterSearch(InstructorActivity.this,R.layout.items,list);
+                myAdapter = new MyAdapterStudent(StudentActivity.this,R.layout.items,list);
                 listView.setAdapter(myAdapter);
                 Utility.setListViewHeightBasedOnChildren(listView);
 
@@ -298,8 +226,8 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                new AlertDialog.Builder(InstructorActivity.this)
-                        .setTitle("حذف الأستاذ")
+                new AlertDialog.Builder(StudentActivity.this)
+                        .setTitle("حذف الطالب")
                         .setMessage("هل أنت متأكد من الحذف؟؟")
                         .setPositiveButton("نعم", new DialogInterface.OnClickListener() {
                             @Override
@@ -307,7 +235,7 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
                                 list.remove(position);
                                 myAdapter.notifyDataSetChanged();
 
-                                databaseReference.getRoot().child("Instructors").child(keyList.get(position)).removeValue();
+                                databaseReference.getRoot().child("Students").child(keyList.get(position)).removeValue();
                                 keyList.remove(position);
                                 Toast.makeText(getApplicationContext(),"تم الحذف بنجاح",Toast.LENGTH_LONG).show();
 
@@ -331,22 +259,16 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
 
         firstName= editTextFirstName.getText().toString();
         lastName= editTextLastName.getText().toString();
-        yearsOfExperience = yearsExperience.getText().toString();
-        instructorsPhoneNum = editTextNumberInstructor.getText().toString();
         date = datePicker.getDayOfMonth()+"/"+datePicker.getMonth()+"/"+datePicker.getYear();
-        priceString = lessonsPrice.getText().toString();
         // To know if user selects male or female
         int radioId= radioGroupGender.getCheckedRadioButtonId();
         RadioButton radioButton = findViewById(radioId);
         if(radioButton!=null)
             gender = radioButton.getText().toString();
-        chosen=spinner.getSelectedStrings();
         // Toast.makeText(SignUpInstructorActivity.this,chosen.get( 0 ), Toast.LENGTH_SHORT).show();
 
 
-        chosenString= spinner.getSelectedItemsAsString(); // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
         //instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0 , chosenPaymentMethod, chosenPlace , chosenMethod );
-        chosenString= spinner.getSelectedItemsAsString();
         if(encryptedLocation== null ){
             // email is empty!
             Toast.makeText(this, "فضلاً اختر موقعه من الخارطة", Toast.LENGTH_LONG).show();return;}
@@ -364,10 +286,6 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
             Toast.makeText(this, "لايجب أن يكون طول كلمة المرور أقل من ستة أحرف", Toast.LENGTH_LONG).show();return;}
 
 
-        if(TextUtils.isEmpty(instructorsPhoneNum)){
-            Toast.makeText(this, "فضلاً أدخل رقم هاتف", Toast.LENGTH_LONG).show();return;}
-        if(instructorsPhoneNum.length()!= 10&& !(instructorsPhoneNum.substring( 0,1 ).equals( "05" ))){
-            Toast.makeText(this, "رقم الهاتف يجب أن يكون من 10 أرقام ويبدأ ب 05", Toast.LENGTH_LONG).show();return;}
         if(TextUtils.isEmpty(firstName)){
             Toast.makeText(this, "فضلاً أدخل اسمه الأول", Toast.LENGTH_LONG).show();return;}
 
@@ -382,24 +300,8 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
 
         if(TextUtils.isEmpty(gender)){
             Toast.makeText(this, "فضلأ اختر جنسه", Toast.LENGTH_LONG).show();return;}
-        if(chosen.size()==0){
-            // email is empty!
-            Toast.makeText(this, "فضلأ اختر المواد التي يدرسها", Toast.LENGTH_LONG).show();return;}
-
-
-
-        if(TextUtils.isEmpty(yearsOfExperience)){
-            Toast.makeText(this, "فضلأ أدخل عدد سنوات خبرته", Toast.LENGTH_LONG).show();return;}
-
-
-
-        if(TextUtils.isEmpty(priceString)){
-            Toast.makeText(this, "فضلاً أدخل سعر الدرس", Toast.LENGTH_LONG).show();return;}
 
 // if validations are ok we register user
-        intYearsOfExperience=Integer.parseInt(yearsOfExperience);
-        longInstructorsPhoneNum=Long.parseLong(instructorsPhoneNum);
-        price=Double.parseDouble(priceString);
         progressDialog.setMessage("تسجيل الحساب....الرجاء الانتظار");
         firebaseAuth.createUserWithEmailAndPassword(instructorEmail,instructorPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
@@ -409,22 +311,21 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
                     // this variable contains the specialties chosen by the instructor as a string EX:Arablic,English
                     // Toast.makeText(SignUpInstructorActivity.this, "email "+ instructorEmail, Toast.LENGTH_LONG).show();
                     String userID = firebaseAuth.getCurrentUser().getUid();
-                   Instructor instructor = new Instructor(firstName,lastName,date,gender,encryptedLocation,longInstructorsPhoneNum, intYearsOfExperience,price,0,0,0 ,chosenPaymentMethod, chosenPlace , chosenMethod , instructorEmail, chosen , userID );
+                    Person person = new Person(firstName,lastName,date,gender,encryptedLocation ,instructorEmail, chosen,userID);
                     //Toast.makeText(SignUpInstructorActivity.this, "chosen "+ instructor.subjects.get(0), Toast.LENGTH_LONG).show();
 
                             /* Intent intent = new Intent(SignUpInstructorActivity.this,ViewInstructorProfile.class);
                             intent.putExtra("instructorsFName",firstName);*/
 
                     // String id = databaseReference.push().getKey();
-                    databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(instructor);
+                    databaseReference.child(firebaseAuth.getCurrentUser().getUid()).setValue(person);
                     databaseReference.child(firebaseAuth.getCurrentUser().getUid()).child("subjects").setValue(chosen);
-                    Toast.makeText(InstructorActivity.this, "تمت إضافة الأستاذ بنجاح", Toast.LENGTH_SHORT).show();
-                    FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail,encryptedLocation,firstName+" "+lastName,userID));
+                    Toast.makeText(StudentActivity.this, "تمت إضافة الطالب بنجاح", Toast.LENGTH_SHORT).show();
                     final FirebaseUser user = firebaseAuth.getCurrentUser();
                     user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            Toast.makeText(InstructorActivity.this, "تم  ارسال ايميل تفعيل الى حسابه", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(StudentActivity.this, "تم  ارسال ايميل تفعيل الى حسابه", Toast.LENGTH_SHORT).show();
                         }
                     });
 
@@ -436,7 +337,7 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
                 }
 
                 else {progressDialog.dismiss();
-                    Toast.makeText(InstructorActivity.this, "لقد فشلت إضافة الأستاذ"+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(StudentActivity.this, "لقد فشلت إضافة الطالب"+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }//else
             }//oncomplete
         });
@@ -447,23 +348,7 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
     }
 
 
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        if(adapterView==paymentSpinner)
-            chosenPaymentMethod = adapterView.getItemAtPosition(i).toString();
 
-
-        if(adapterView==placeSpinner)
-            chosenPlace= adapterView.getItemAtPosition(i).toString();
-
-        if(adapterView==method)
-            chosenMethod= adapterView.getItemAtPosition(i).toString();
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
 }
 
 
