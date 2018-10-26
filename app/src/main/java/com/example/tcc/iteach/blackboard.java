@@ -39,7 +39,7 @@ public class blackboard extends AppCompatActivity
     private RecyclerView postList;
     private DatabaseReference UsersRef, PostsRef;
     Questions question;
-    private Button askButton,my;
+    private Button askButton,my,filter;
     FirebaseAuth firebaseAuth;
     private FirebaseAuth mAuth;
     private  String currentUserId,databaseUserID;
@@ -73,7 +73,7 @@ public class blackboard extends AppCompatActivity
         currentUserId = mAuth.getCurrentUser().getUid();
         askButton = (Button) findViewById(R.id.askButton);
         my = (Button) findViewById(R.id.myQuestionsButton);
-       // options = (Button) findViewById(R.id.options);
+        filter = (Button) findViewById(R.id.filters);
         postList = (RecyclerView) findViewById(R.id.allQuestionList);
         postList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -86,6 +86,7 @@ public class blackboard extends AppCompatActivity
         // DisplayAllUsersQuestions();
         askButton.setOnClickListener(this);
         my.setOnClickListener(this);
+        filter.setOnClickListener(this);
     }
 
     @Override
@@ -353,6 +354,11 @@ public class blackboard extends AppCompatActivity
         if(v==my ){
             finish();
             Intent addNewPostIntent = new Intent(blackboard.this, myQuestions.class);
+            startActivity(addNewPostIntent);
+        }
+        if(v==filter ){
+            finish();
+            Intent addNewPostIntent = new Intent(blackboard.this, filterQuestions.class);
             startActivity(addNewPostIntent);
         }
     }
