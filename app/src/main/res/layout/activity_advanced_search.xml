@@ -29,16 +29,21 @@
                 android:textStyle="bold" />
 
 
-
             <Button
                 android:id="@+id/detectLocation"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:text="بالقرب من "
+                android:drawableLeft="@drawable/locationpin"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent" />
+            <TextView
+                android:id="@+id/textlocation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="30dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textType"

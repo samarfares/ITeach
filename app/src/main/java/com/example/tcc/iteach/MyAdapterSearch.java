@@ -41,7 +41,7 @@ public class MyAdapterSearch extends ArrayAdapter<Instructor> {
 
         name.setText( " الاسم: " +list.get(position).firstName+' '+list.get( position ).lastName);
         gender.setText( "الجنس:  " +list.get(position).getGender());
-        email.setText( "الايميل: " + list.get(position).getEmail());
+        email.setText( "رقم الهاتف: " + list.get(position).getPhoneNum());
 
 
         subject.setText( " المواد:  " +list.get(position).subjects.toString());

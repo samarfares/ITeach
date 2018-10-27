@@ -2,6 +2,8 @@ package com.example.tcc.iteach;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,9 +28,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 
 import static com.example.tcc.iteach.SearchForInstructorActivity.CalculationByDistance;
@@ -54,7 +58,7 @@ public class AdvancedSearch extends AppCompatActivity {
     List<Instructor> subjectList;
     List<Instructor> locations;
     final ArrayList<String> keyList = new ArrayList<>();
-
+    private TextView textLocation;
     private EditText edittext;
     private RadioGroup radioType;
     private RadioButton radioTypeButton;
@@ -90,22 +94,9 @@ private TextView textType,textSubject,text;
         subjectSpinner = (Spinner) findViewById(R.id.subject);
         edittext = (EditText) findViewById(R.id.editTextPrice);
          radioType=(RadioGroup) findViewById(R.id.radioType);
-
+        textLocation=(TextView) findViewById( R.id.textlocation );
         Button button = (Button) findViewById(R.id.button1);
         subjectSpinner.setAdapter(adapter);
-
-
-
-
-
-        Bundle bundle = getIntent().getParcelableExtra("bundle");
-        if (bundle!=null) {
-            SearchLocation = bundle.getParcelable( "location" );
-            person=getIntent().getStringExtra( "person" );
-
-
-        }
-
 
 
 
@@ -115,6 +106,7 @@ private TextView textType,textSubject,text;
         location.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 Intent intent=new Intent(AdvancedSearch.this, LocationActivity.class);
+                intent.putExtra( "person",person );
 
                 intent.putExtra( "search","true" );
                 startActivity(intent);
@@ -124,6 +116,31 @@ private TextView textType,textSubject,text;
 
 
         });
+
+        Bundle bundle = getIntent().getParcelableExtra("bundle");
+        if (bundle!=null) {
+            SearchLocation = bundle.getParcelable( "location" );
+            person=getIntent().getStringExtra( "person" );
+            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+            try {
+                List<Address> listAddresses = geocoder.getFromLocation(SearchLocation.latitude, SearchLocation.longitude, 1);
+                if(null!=listAddresses&&listAddresses.size()>0){
+                    String test = listAddresses.get(0).getAddressLine(0);
+
+                    textLocation.setText( "اخترت هذا الموقع : "+"\n"+test );
+                    location.setVisibility( View.GONE );
+
+                }
+            } catch (IOException e) {
+                e.printStackTrace();}
+
+
+        }
+
+
+
+
+
 
 
 
@@ -147,7 +164,7 @@ private TextView textType,textSubject,text;
         search=(Button) findViewById(R.id.button1);
         search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                textLocation.setVisibility( View.GONE );
                 subjectSpinner.setVisibility( View.GONE );
                 edittext.setVisibility( View.GONE );
                 radioType.setVisibility( View.GONE );

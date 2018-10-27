@@ -1,6 +1,8 @@
 package com.example.tcc.iteach;
 
 import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +39,7 @@ public class ViewInstructorProfile extends AppCompatActivity implements View.OnC
    List<Instructor> list = new ArrayList<>();
 
     AdapterInstructor adapterInstructor;
-ImageButton buttonLike ;
+ImageButton buttonLike ,buttonShare;
 Button buttonReserve;
 String email , ID;
 boolean likeChecker= false;
@@ -91,6 +93,7 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
  distance.setText( "يبعد عنك مسافة :  "+ getIntent().getExtras().getString("distance")+ " كيلومتر ");
     buttonReserve=(Button) findViewById(R.id.buttonReserve);
             buttonLike=(ImageButton) findViewById(R.id.buttonLike);
+    buttonShare=(ImageButton) findViewById(R.id.share);
 
 
     likesRef=FirebaseDatabase.getInstance().getReference().child("InstructorsLikes");
@@ -99,6 +102,7 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
 
     buttonLike.setOnClickListener(this);
 buttonReserve.setOnClickListener(this);
+    buttonShare.setOnClickListener(this);
 
 databaseReference.addValueEventListener(new ValueEventListener() {
     @Override
@@ -221,6 +225,15 @@ else{
             likeInstructor(list.get(0));
            // Toast.makeText(ViewInstructorProfile.this, "likes "+ liked.getLikes(), Toast.LENGTH_LONG).show();
         }
+
+        if (v==buttonShare){
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("*/*");
+           sharingIntent.putExtra(Intent.EXTRA_TEXT, list.get(0).getFirstName()+ " " + list.get(0).getLastName()+list.get(0).getPhoneNum()+ list.get(0).getGender());
+
+            startActivity(Intent.createChooser(sharingIntent, "المشاركة باستخدام "));
+        }
+
 
         if (v==buttonReserve){
             Intent intent = new Intent(ViewInstructorProfile.this,ReserveInfo.class);
