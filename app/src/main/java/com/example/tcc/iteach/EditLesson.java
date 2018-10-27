@@ -68,8 +68,6 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         insID = intent.getStringExtra("insID");
         teachingMethod = intent.getStringExtra("teachingMethod");
 
-        Toast.makeText(this, lessonID+" : " + insID, Toast.LENGTH_SHORT).show();
-
         listView = (ListView) findViewById(R.id.listViewEdit);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference();

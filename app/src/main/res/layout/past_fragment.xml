@@ -11,6 +11,7 @@
         android:id="@+id/listViewPast"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:layout_margin="20dp"
         android:padding="10dp">
     </ListView>

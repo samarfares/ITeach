@@ -1,7 +1,5 @@
 package com.example.tcc.iteach;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,7 +7,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,7 +24,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class UpcomingFragment  extends Fragment {
+public class PastFragment2 extends Fragment {
 
     View view;
 
@@ -35,47 +32,41 @@ public class UpcomingFragment  extends Fragment {
     FirebaseAuth firebaseAuth;
     FirebaseUser firebaseUser;
     ListView listView;
-    public static ArrayList<String> list;
-    ArrayList<String> keyList;
-    ArrayList<Lesson> lessons;
-
-    UpcomingAdapter upcomingAdapter;
+    ArrayList<String> list;
+    ArrayAdapter<String> adapter;
     Lesson lesson;
     String currentDateString;
     int i;
-    int j;
     Person student;
     String stuName ;
-    public UpcomingFragment() {
+    String uID ;
+
+    public PastFragment2() {
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.upcoming_fragment,container,false);
+        view = inflater.inflate(R.layout.past_fragment,container,false);
 
-        listView = (ListView) view.findViewById(R.id.listViewUpcoming);
+        listView = (ListView) view.findViewById(R.id.listViewPast);
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
-        final String uID = firebaseUser.getUid();
+        uID =  firebaseUser.getUid();
         lesson = new Lesson();
         currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
-        list = new ArrayList<String>();
-        keyList = new ArrayList<String>();
-        lessons = new ArrayList<Lesson>();
-
-        upcomingAdapter = new UpcomingAdapter(getContext(),list);
-
+        list = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(getActivity(),R.layout.spot_info,R.id.listViewSpotInfoTime,list);
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+
                     lesson = ds.getValue(Lesson.class);
                     try {
                         Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
@@ -84,48 +75,49 @@ public class UpcomingFragment  extends Fragment {
                     } catch (java.text.ParseException e) {
                         e.printStackTrace();
                     }
-                    if (lesson.getInstructorID().equals(uID)) {
-                        if (i <= 0) {
+                    if (lesson.getStudentID().equals(uID)) {
+                        if (i >= 0) {
                             if (i == 0) {
                                 int t = Integer.parseInt(lesson.getTime().substring(0, lesson.getTime().indexOf(":")));
                                 Calendar rightNow = Calendar.getInstance();
                                 int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
-                                if (t >= currentHourIn24Format) {
+                                if (t < currentHourIn24Format) {
+
                         /*FirebaseDatabase.getInstance().getReference("Students").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                                     student = ds.getValue(Person.class);
                                     if (ds.getKey().equals(lesson.getStudentID())){
-                                        stuName = student.getFirstName() +" " + student.getLastName();
-                                        list.add("Date : " + lesson.getDate() + "\nTime : " + lesson.getTime() + "\nStudent : " + stuName + "\nSubject : " + lesson.getSubject() + "\nPrice : " + lesson.getPrice() + "\nPayment by : " + lesson.getPaymentMethod() + "\nPlace : " + lesson.getLessonPlace() + "\nTeaching method : " + lesson.getTeachingMethod());
+                                        stuName = student.getFirstName() +" " + student . getLastName();
                                     }
                                 }
                             }
+
                             @Override
                             public void onCancelled(@NonNull DatabaseError databaseError) {
                             }
                         });
 */
-
-                        keyList.add(ds.getKey());
-                        lessons.add(lesson);
-                        list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
-                        }
-                            } else {
-                                keyList.add(ds.getKey());
-                                lessons.add(lesson);
+                                    list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
+                                }
+                            } else
                                 list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
-                            }
+
                         }
                     }
                 }
-                listView.setAdapter(upcomingAdapter);
+                listView.setAdapter(adapter);
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
+
+
         return view;
+
     }
 }
