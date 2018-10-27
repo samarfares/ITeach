@@ -1,7 +1,5 @@
 package com.example.tcc.iteach;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -9,10 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,8 +22,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-public class UpcomingFragment  extends Fragment {
-
+public class UpcomingFragment2 extends Fragment {
     View view;
 
     DatabaseReference databaseReference;
@@ -39,14 +33,15 @@ public class UpcomingFragment  extends Fragment {
     ArrayList<String> keyList;
     ArrayList<Lesson> lessons;
 
-    UpcomingAdapter upcomingAdapter;
+    UpcomingAdapter2 upcomingAdapter;
     Lesson lesson;
     String currentDateString;
     int i;
     int j;
     Person student;
     String stuName ;
-    public UpcomingFragment() {
+
+    public UpcomingFragment2() {
     }
 
     @Nullable
@@ -67,7 +62,7 @@ public class UpcomingFragment  extends Fragment {
         keyList = new ArrayList<String>();
         lessons = new ArrayList<Lesson>();
 
-        upcomingAdapter = new UpcomingAdapter(getContext(),list);
+        upcomingAdapter = new UpcomingAdapter2(getContext(),list);
 
 
 
@@ -84,7 +79,7 @@ public class UpcomingFragment  extends Fragment {
                     } catch (java.text.ParseException e) {
                         e.printStackTrace();
                     }
-                    if (lesson.getInstructorID().equals(uID)) {
+                    if (lesson.getStudentID().equals(uID)) {
                         if (i <= 0) {
                             if (i == 0) {
                                 int t = Integer.parseInt(lesson.getTime().substring(0, lesson.getTime().indexOf(":")));
@@ -107,14 +102,11 @@ public class UpcomingFragment  extends Fragment {
                             }
                         });
 */
-
                         keyList.add(ds.getKey());
                         lessons.add(lesson);
                         list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
-                        }
+                                }
                             } else {
-                                keyList.add(ds.getKey());
-                                lessons.add(lesson);
                                 list.add("التاريخ : " + lesson.getDate() + "\n" + "الوقت : " + lesson.getTime() + "\n" + "المادة : " + lesson.getSubject() + "\n" + "السعر : " + lesson.getPrice() + "\n" + "طريقة الدفع : " + lesson.getPaymentMethod() + "\n" + "مكان الدرس : " + lesson.getLessonPlace() + "\n" + "طريقة التدريس : " + lesson.getTeachingMethod());
                             }
                         }
