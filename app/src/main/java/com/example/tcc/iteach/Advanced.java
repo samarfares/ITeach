@@ -4,9 +4,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,9 +36,11 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-import static com.example.tcc.iteach.SearchForInstructorActivity.CalculationByDistance;
+import static com.example.tcc.iteach.NameSearch.CalculationByDistance;
 
-public class AdvancedSearch extends AppCompatActivity {
+
+public class Advanced extends Fragment {
+    View view;
     ListView listView;
     private DatabaseReference databaseReference;
 
@@ -63,65 +66,29 @@ public class AdvancedSearch extends AppCompatActivity {
     private RadioGroup radioType;
     private RadioButton radioTypeButton;
     private Spinner subjectSpinner;
-private TextView textType,textSubject,text;
+    private TextView textType,textSubject,text;
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+
+    public Advanced() {
+        // Required empty public constructor
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate( savedInstanceState );
-        setContentView( R.layout.activity_advanced_search );
-
-        list = new ArrayList<>();
-        namesList = new ArrayList<>();
-        genderList = new ArrayList<>();
-        priceList = new ArrayList<>();
-        subjectList = new ArrayList<>();
-        locations = new ArrayList<>();
-        listLocation = new ArrayList<>();
-
-
-
-        title = getResources().getStringArray(R.array.specialty);
-        adapter= new SpinnerAdapter(getApplicationContext());
-
-        person=getIntent().getStringExtra( "person" );
-
-        listView=(ListView) findViewById( R.id.list1 );
-        text = (TextView) findViewById(R.id.text);
-
-        textType = (TextView) findViewById(R.id.textType);
-        textSubject = (TextView) findViewById(R.id.textSubject);
-
-
-        subjectSpinner = (Spinner) findViewById(R.id.subject);
-        edittext = (EditText) findViewById(R.id.editTextPrice);
-         radioType=(RadioGroup) findViewById(R.id.radioType);
-        textLocation=(TextView) findViewById( R.id.textlocation );
-        Button button = (Button) findViewById(R.id.button1);
-        subjectSpinner.setAdapter(adapter);
-
-
-
-
-
-        location=(Button) findViewById(R.id.detectLocation);
-        location.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent=new Intent(AdvancedSearch.this, LocationActivity.class);
-                intent.putExtra( "person",person );
-
-                intent.putExtra( "search","true" );
-                startActivity(intent);
-
-
-            }
-
-
-        });
-
-        Bundle bundle = getIntent().getParcelableExtra("bundle");
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        Bundle bundle = data.getParcelableExtra("bundle");
         if (bundle!=null) {
             SearchLocation = bundle.getParcelable( "location" );
-            person=getIntent().getStringExtra( "person" );
-            Geocoder geocoder = new Geocoder(getApplicationContext(), Locale.getDefault());
+            person=data.getStringExtra( "person" );
+            Geocoder geocoder = new Geocoder(getActivity().getApplicationContext(), Locale.getDefault());
             try {
                 List<Address> listAddresses = geocoder.getFromLocation(SearchLocation.latitude, SearchLocation.longitude, 1);
                 if(null!=listAddresses&&listAddresses.size()>0){
@@ -136,6 +103,64 @@ private TextView textType,textSubject,text;
 
 
         }
+
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view= inflater.inflate( R.layout.fragment_advanced, container, false );
+        list = new ArrayList<>();
+        namesList = new ArrayList<>();
+        genderList = new ArrayList<>();
+        priceList = new ArrayList<>();
+        subjectList = new ArrayList<>();
+        locations = new ArrayList<>();
+        listLocation = new ArrayList<>();
+
+
+
+        title = getResources().getStringArray(R.array.specialty);
+        adapter= new SpinnerAdapter(getActivity().getApplicationContext());
+
+        person=getActivity().getIntent().getStringExtra( "person" );
+
+        listView=(ListView)view. findViewById( R.id.list1 );
+        text = (TextView) view.findViewById(R.id.text);
+
+        textType = (TextView) view.findViewById(R.id.textType);
+        textSubject = (TextView) view.findViewById(R.id.textSubject);
+
+
+        subjectSpinner = (Spinner) view.findViewById(R.id.subject);
+        edittext = (EditText) view.findViewById(R.id.editTextPrice);
+        radioType=(RadioGroup) view.findViewById(R.id.radioType);
+        textLocation=(TextView) view.findViewById( R.id.textlocation );
+        Button button = (Button) view.findViewById(R.id.button1);
+        subjectSpinner.setAdapter(adapter);
+
+
+
+
+
+        location=(Button) view.findViewById(R.id.detectLocation);
+        location.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent intent=new Intent(getActivity(), LocationActivity.class);
+                intent.putExtra( "person",person );
+
+                intent.putExtra( "search","true" );
+                startActivityForResult(intent,999);
+
+
+            }
+
+
+        });
+
+
 
 
 
@@ -161,7 +186,7 @@ private TextView textType,textSubject,text;
 
 
 
-        search=(Button) findViewById(R.id.button1);
+        search=(Button)view. findViewById(R.id.button1);
         search.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 textLocation.setVisibility( View.GONE );
@@ -171,12 +196,12 @@ private TextView textType,textSubject,text;
                 location.setVisibility( View.GONE );
                 textType.setVisibility( View.GONE );
                 textSubject.setVisibility( View.GONE );
-                Button button = (Button) findViewById(R.id.button1);
+                Button button = (Button)view. findViewById(R.id.button1);
                 subjectSpinner.setAdapter(adapter);
 
                 int selectedId = radioType.getCheckedRadioButtonId();
 
-                   radioTypeButton = (RadioButton) findViewById( selectedId );
+                radioTypeButton = (RadioButton) view.findViewById( selectedId );
                 search.setVisibility( View.GONE );
                 text.setText( "نتائج التصفية : " );
                 if (radioTypeButton!=null )gender = radioTypeButton.getText().toString();
@@ -230,129 +255,129 @@ private TextView textType,textSubject,text;
 
                         Set<Instructor> common1;
                         common1 = new HashSet<Instructor>(list);
-                       if (locations.size()>0)
-                       {
-                           if(genderList.size()>0)
-                           {
-                               if(priceList.size()>0)
-                               {
-                                   if(subjectList.size()>0)
-                                   {
-                                       common1.retainAll(priceList);
-                                       common1.retainAll(locations);
-                                       common1.retainAll(subjectList);
-                                       common1.retainAll(genderList);
+                        if (locations.size()>0)
+                        {
+                            if(genderList.size()>0)
+                            {
+                                if(priceList.size()>0)
+                                {
+                                    if(subjectList.size()>0)
+                                    {
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(locations);
+                                        common1.retainAll(subjectList);
+                                        common1.retainAll(genderList);
 
-                                   }
+                                    }
                                     else{
-                                   common1.retainAll(priceList);
-                                   common1.retainAll(locations);
-                                   common1.retainAll(genderList);}
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(locations);
+                                        common1.retainAll(genderList);}
 
 
-                               }
-                               else
-                               {
-                                   if(subjectList.size()>0){
-                                   common1.retainAll(subjectList);
-                                   common1.retainAll(locations);
-                                   common1.retainAll(genderList); }
-                                   else
-                                   {
-                                       common1.retainAll(locations);
-                                       common1.retainAll(genderList);
-                                   }
-                               }
+                                }
+                                else
+                                {
+                                    if(subjectList.size()>0){
+                                        common1.retainAll(subjectList);
+                                        common1.retainAll(locations);
+                                        common1.retainAll(genderList); }
+                                    else
+                                    {
+                                        common1.retainAll(locations);
+                                        common1.retainAll(genderList);
+                                    }
+                                }
 
 
-                           }
-                           else
-                           {
-                               if(subjectList.size()>0){
-                                   if (priceList.size()>0){
-                                   common1.retainAll(subjectList);
-                                   common1.retainAll(priceList);
-                                   common1.retainAll(locations);}
-                                   else{
-                                       common1.retainAll(subjectList);
-                                       common1.retainAll(locations);
-                                       }
-                                   }
-                               else
-                               {
-                                   if (priceList.size()>0){
-                                       common1.retainAll(priceList);
-                                       common1.retainAll(locations);}
-                                   else{
-                                       common1.retainAll(locations);
-                                   }
-                               }
+                            }
+                            else
+                            {
+                                if(subjectList.size()>0){
+                                    if (priceList.size()>0){
+                                        common1.retainAll(subjectList);
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(locations);}
+                                    else{
+                                        common1.retainAll(subjectList);
+                                        common1.retainAll(locations);
+                                    }
+                                }
+                                else
+                                {
+                                    if (priceList.size()>0){
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(locations);}
+                                    else{
+                                        common1.retainAll(locations);
+                                    }
+                                }
 
-                           }
-                       }
-                       else
-                       {
-                           if(genderList.size()>0)
-                           {
-                               if(subjectList.size()>0)
-                               {
-                                   if(priceList.size()>0)
-                                   {
-                                       common1.retainAll(subjectList);
-                                       common1.retainAll(priceList);
-                                       common1.retainAll(genderList);
+                            }
+                        }
+                        else
+                        {
+                            if(genderList.size()>0)
+                            {
+                                if(subjectList.size()>0)
+                                {
+                                    if(priceList.size()>0)
+                                    {
+                                        common1.retainAll(subjectList);
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(genderList);
 
-                                       }
-                                       else
-                                   {
-                                       common1.retainAll(subjectList);
-                                       common1.retainAll(genderList);
+                                    }
+                                    else
+                                    {
+                                        common1.retainAll(subjectList);
+                                        common1.retainAll(genderList);
 
-                                   }
+                                    }
 
-                               }
-                               else
-                               {
-                                 if(priceList.size()>0)
-                                 {
-                                     common1.retainAll(priceList);
-                                     common1.retainAll(genderList);
-                                 }
-                                 else
-                                 {
-                                     common1.retainAll(genderList);
+                                }
+                                else
+                                {
+                                    if(priceList.size()>0)
+                                    {
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(genderList);
+                                    }
+                                    else
+                                    {
+                                        common1.retainAll(genderList);
 
-                                 }
-                               }
+                                    }
+                                }
 
-                           }
-                           else
-                           {
-                             if(subjectList.size()>0)
-                             {
-                                 if(priceList.size()>0){
-                                 common1.retainAll(priceList);
-                                 common1.retainAll(subjectList);}
-                                 else{
-                                     common1.retainAll(subjectList);
+                            }
+                            else
+                            {
+                                if(subjectList.size()>0)
+                                {
+                                    if(priceList.size()>0){
+                                        common1.retainAll(priceList);
+                                        common1.retainAll(subjectList);}
+                                    else{
+                                        common1.retainAll(subjectList);
 
-                                 }
+                                    }
 
-                             }
-                             else
-                             {
-                                 if(priceList.size()>0)
-                                 common1.retainAll(priceList);
+                                }
+                                else
+                                {
+                                    if(priceList.size()>0)
+                                        common1.retainAll(priceList);
 
-                             }
+                                }
 
-                           }
-
-
+                            }
 
 
 
-                       }
+
+
+                        }
 
 
 
@@ -363,7 +388,7 @@ private TextView textType,textSubject,text;
 
                         if (list.size()!=0){
 
-                            myAdapter = new MyAdapterSearch(AdvancedSearch.this,R.layout.items,list);
+                            myAdapter = new MyAdapterSearch(getActivity(),R.layout.items,list);
 
 
                             listView.setAdapter(myAdapter);
@@ -372,7 +397,7 @@ private TextView textType,textSubject,text;
                         else {
                             text.setText( "لايوجد نتائج مطابقة لبحثك  " );
                             text.setTextSize( 50 );
-                            Toast.makeText(AdvancedSearch.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getActivity(), "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
 
                         }
 
@@ -396,7 +421,7 @@ private TextView textType,textSubject,text;
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                final Intent intent = new Intent(AdvancedSearch.this,ViewInstructorProfile.class);
+                final Intent intent = new Intent(getActivity(),ViewInstructorProfile.class);
                 intent.putExtra("name",list.get(position).getFirstName()+" "+list.get(position).getLastName());
                 intent.putExtra("email",list.get(position).getEmail());
                 intent.putExtra("insId",list.get(position).getUserID());
@@ -411,7 +436,9 @@ private TextView textType,textSubject,text;
                 startActivity(intent);
             }
         });
+    return view;
     }
+
     public class SpinnerAdapter extends BaseAdapter {
         Context context;
         private LayoutInflater mInflater;
@@ -439,17 +466,17 @@ private TextView textType,textSubject,text;
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            final SearchForInstructorActivity.ListContent holder;
+            final ListContent holder;
             View v = convertView;
             if (v == null) {
                 mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
                 v = mInflater.inflate(R.layout.row_edittext, null);
-                holder = new SearchForInstructorActivity.ListContent();
+                holder = new ListContent();
                 holder.text = (TextView) v.findViewById(R.id.textView1);
 
                 v.setTag(holder);
             } else {
-                holder = (SearchForInstructorActivity.ListContent) v.getTag();
+                holder = (ListContent) v.getTag();
             }
 
             holder.text.setText(title[position]);
@@ -461,4 +488,7 @@ private TextView textType,textSubject,text;
     static class ListContent {
         TextView text;
     }
+
+
+
 }
