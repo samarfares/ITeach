@@ -262,17 +262,17 @@ public class adminBlackboard extends AppCompatActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            final SearchForInstructorActivity.ListContent holder;
+            final NameSearch.ListContent holder;
             View v = convertView;
             if (v == null) {
                 mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
                 v = mInflater.inflate(R.layout.row_edittext, null);
-                holder = new SearchForInstructorActivity.ListContent();
+                holder = new NameSearch.ListContent();
                 holder.text = (TextView) v.findViewById(R.id.textView1);
 
                 v.setTag(holder);
             } else {
-                holder = (SearchForInstructorActivity.ListContent) v.getTag();
+                holder = (NameSearch.ListContent) v.getTag();
             }
 
             holder.text.setText(title[position]);
