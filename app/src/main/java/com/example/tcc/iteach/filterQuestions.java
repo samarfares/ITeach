@@ -48,8 +48,7 @@ public class filterQuestions extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_questions);
-        searchButton = (ImageButton) findViewById(R.id.searchButton);
-      //  voiceButton = (ImageButton) findViewById(R.id.voiceSearch);
+      voiceButton = (ImageButton) findViewById(R.id.voiceSearch);
         searchInputText = (EditText) findViewById(R.id.searchInput);
         searchResaults = (RecyclerView) findViewById(R.id.searchResults);
         firebaseAuth = FirebaseAuth.getInstance();
