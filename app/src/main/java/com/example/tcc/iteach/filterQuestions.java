@@ -49,7 +49,7 @@ public class filterQuestions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filter_questions);
         searchButton = (ImageButton) findViewById(R.id.searchButton);
-        voiceButton = (ImageButton) findViewById(R.id.voiceSearch);
+      //  voiceButton = (ImageButton) findViewById(R.id.voiceSearch);
         searchInputText = (EditText) findViewById(R.id.searchInput);
         searchResaults = (RecyclerView) findViewById(R.id.searchResults);
         firebaseAuth = FirebaseAuth.getInstance();
@@ -81,16 +81,38 @@ public class filterQuestions extends AppCompatActivity {
             }
         });
 
-        searchButton.setOnClickListener(new View.OnClickListener() {
+    /*    searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String searchBoxInput = searchInputText.getText().toString();
+                searchQuestion(searchBoxInput);
+            }
+        });  */
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        searchInputText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
                 String searchBoxInput = searchInputText.getText().toString();
                 searchQuestion(searchBoxInput);
             }
         });
     }
 
-  private void searchQuestion(String searchBoxInput)  {
+    private void searchQuestion(String searchBoxInput)  {
       FirebaseRecyclerOptions<Questions> options =
               new FirebaseRecyclerOptions.Builder<Questions>().setQuery(PostsRef.orderByChild("subject").startAt(searchBoxInput).endAt(searchBoxInput+"\uf8ff"), Questions.class).build();
       FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder> adapter =
@@ -118,6 +140,7 @@ public class filterQuestions extends AppCompatActivity {
                           holder.setFullname(model.getFullname());
                           holder.setDate(model.getDate());
                           holder.setDescription(model.getDescription());
+                          holder.setSubject(model.getSubject());
                           holder.commentsButton.setOnClickListener(new View.OnClickListener() {
                               @Override
                               public void onClick(View view) {
@@ -234,6 +257,12 @@ public class filterQuestions extends AppCompatActivity {
         {
             TextView PostDescription = (TextView) mView.findViewById(R.id.questionDescription);
             PostDescription.setText(description);
+        }
+
+        public void setSubject(String subject) {
+            TextView PostSubject = (TextView) mView.findViewById(R.id.questionSubject);
+            PostSubject.setText(subject);
+
         }
     }
 

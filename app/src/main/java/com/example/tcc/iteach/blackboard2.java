@@ -186,6 +186,7 @@ public class blackboard2 extends AppCompatActivity
                         holder.setFullname(model.getFullname());
                         holder.setDate(model.getDate());
                         holder.setDescription(model.getDescription());
+                        holder.setSubject(model.getSubject());
                         holder.commentsButton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -335,6 +336,12 @@ public class blackboard2 extends AppCompatActivity
         {
             TextView PostDescription = (TextView) mView.findViewById(R.id.questionDescription);
             PostDescription.setText(description);
+        }
+
+        public void setSubject(String subject) {
+            TextView PostSubject = (TextView) mView.findViewById(R.id.questionSubject);
+            PostSubject.setText(subject);
+
         }
     }
    /* private void SendUserToPostActivity()
