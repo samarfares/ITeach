@@ -134,20 +134,8 @@ database=FirebaseDatabase.getInstance();
         buttonContinueToLocation.setOnClickListener(this);
         register.setOnClickListener(this);
         //************************************************************
-        buttonBrowse.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              if(ContextCompat.checkSelfPermission(SignUpInstructorActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
-            selectPdf();
+        buttonBrowse.setOnClickListener(this);
 
-
-                }
-                else {
-
-                  ActivityCompat.requestPermissions(SignUpInstructorActivity.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},9);
-              }
-            }
-        });
 //************************************************************
         // fill spinners
         ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(this ,R.array.paymentMethod,android.R.layout.simple_spinner_item);
@@ -371,8 +359,26 @@ String userID = firebaseUser.getUid();
             //startActivity(new Intent(this,blackboard.class));
         }
 
+        if (view == buttonBrowse){
+            if(ContextCompat.checkSelfPermission(SignUpInstructorActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(SignUpInstructorActivity.this,"select pdf method called", Toast.LENGTH_LONG);
+                selectPdf();
+            }
 
-    }
+
+            else {
+                Toast.makeText(SignUpInstructorActivity.this,"Line 370", Toast.LENGTH_LONG);
+
+                ActivityCompat.requestPermissions(SignUpInstructorActivity.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},9);
+            }
+        }
+
+
+
+        }
+
+
+
     public static String encryptIt(String value) {
         try {
             DESKeySpec keySpec = new DESKeySpec(cryptoPass.getBytes("UTF8"));
