@@ -37,8 +37,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
+//import com.google.firebase.storage.FirebaseStorage;
+//import com.google.firebase.storage.StorageReference;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -82,7 +82,7 @@ private String latitude,longitude;
 private static String cryptoPass = "sup3rS3xy";
     List<String> chosen = new ArrayList<String>();
     MultiSelectionSpinner spinner;
-FirebaseStorage storage;
+//FirebaseStorage storage;
 
     private DatabaseReference usersRef;
     private FirebaseAuth mAuth;
@@ -123,7 +123,7 @@ Uri pdfUri;
         buttonBrowse=(Button) findViewById(R.id.buttonBrowse);
         //notification=(TextView) findViewById(R.id.notification);
 method=(Spinner)findViewById(R.id.method);
-storage=FirebaseStorage.getInstance();
+//storage=FirebaseStorage.getInstance();
 database=FirebaseDatabase.getInstance();
         progressDialog =new ProgressDialog(this);
 // database stuff
@@ -311,10 +311,13 @@ String userID = firebaseUser.getUid();
 
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
-                            StorageReference storageReference=storage.getReference("Instructors");
-                            storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
+                          //  StorageReference storageReference=storage.getReference("Instructors");
+                            //storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
+                            FirebaseMessaging.getInstance().subscribeToTopic("notificationsLessons");
+                            FirebaseMessaging.getInstance().subscribeToTopic("notificationsCancel");
+
                             FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail,encryptedLocation,firstName+" "+lastName,userID));
                             final FirebaseUser user = mAuth.getCurrentUser();
                             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
