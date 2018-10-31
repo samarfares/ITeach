@@ -5,202 +5,208 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SignUpInstructorActivity">
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="209dp">
 
-    <LinearLayout
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textview"
-            android:layout_gravity="center_horizontal"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="تسجيل الأستاذ"
-
-
-            />
-
-        <TextView
-            android:textAlignment="center"
-            android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
-            android:id="@+id/textViewSignin2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-        <Button
-            android:layout_margin="15dp"
-            android:id="@+id/buttonContinueToLocation"
-            android:text="فضلاً اختر موقعك من الخارطة"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="textEmailAddress"
-            android:hint="فضلاً أدخل ايميل"
-            android:id="@+id/editTextEmailInstructor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="textPassword"
-            android:hint="فضلاً أدخل كلمة مرور"
-            android:id="@+id/editTextPasswordInstructor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:layout_margin="15dp"
-            android:inputType="phone"
-            android:hint="فضلاً أدخل رقم هاتفك"
-            android:id="@+id/editTextNumberInstructor"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/editTextFirstName"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:hint="فضلاً أدخل اسمك الأول" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/editTextLastName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:hint="فضلاً أدخل اسم شهرتك" />
-        <TextView
-            android:text="فضلاً اختر تاريخ ميلادك"
-            android:id="@+id/textViewDOB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <DatePicker
-            android:id="@+id/datePicker"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:calendarViewShown="false"
-            android:datePickerMode="spinner"
-            android:spinnersShown="true"></DatePicker>
+            <TextView
+                android:id="@+id/textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="تسجيل الأستاذ"
+                android:textAppearance="?android:attr/textAppearanceLarge"
 
-        <TextView
-            android:text="فضلاً اختر جنسك"
-            android:id="@+id/textViewGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
-        <RadioGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/radioGroupGender">
-            <RadioButton
+                />
+
+            <TextView
+                android:id="@+id/textViewSignin2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/male"
-                android:text="ذكر"/>
-            <RadioButton
+                android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
+                android:textAlignment="center" />
+
+
+            <Button
+                android:id="@+id/buttonContinueToLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/female"
-                android:text="أنثى"/>
-        </RadioGroup>
+                android:layout_margin="15dp"
+                android:text="فضلاً اختر موقعك من الخارطة" />
 
-        <TextView
-            android:text="فضلاً اختر تخصصاتك"
-            android:id="@+id/textViewSpecialty"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            <EditText
+                android:id="@+id/editTextEmailInstructor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="فضلاً أدخل ايميل"
+                android:inputType="textEmailAddress" />
 
+            <EditText
+                android:id="@+id/editTextPasswordInstructor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="فضلاً أدخل كلمة مرور"
+                android:inputType="textPassword" />
 
+            <EditText
+                android:id="@+id/editTextNumberInstructor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="فضلاً أدخل رقم هاتفك"
+                android:inputType="phone" />
 
+            <EditText
+                android:id="@+id/editTextFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="فضلاً أدخل اسمك الأول" />
 
+            <EditText
+                android:id="@+id/editTextLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:hint="فضلاً أدخل اسم شهرتك" />
 
+            <TextView
+                android:id="@+id/textViewDOB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً اختر تاريخ ميلادك" />
 
-        <com.example.tcc.iteach.MultiSelectionSpinner
-            android:id="@+id/input1"
-            android:layout_width="fill_parent"
-            android:layout_height="40dp"
-            android:layout_margin="2dp" />
+            <DatePicker
+                android:id="@+id/datePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:calendarViewShown="false"
+                android:datePickerMode="spinner"
+                android:spinnersShown="true"></DatePicker>
 
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/yearsExperience"
-            android:inputType="number"
-            android:hint="فضلاً أدخل عدد سنوات خبرتك"/>
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/lessonsPrice"
-            android:inputType="number"
-            android:hint="فضلاً أدخل سعر الدرس"/>
+            <TextView
+                android:id="@+id/textViewGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً اختر جنسك" />
 
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-        <TextView
-            android:text="فضلاً اختر طريقة الدفع المفضلة لديك"
-            android:id="@+id/textViewPayment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/payment"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="ذكر" />
 
-        <TextView
-            android:text="فضلاً اختر مكان الدرس المناسب لك"
-            android:id="@+id/textViewPlace"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/place"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="أنثى" />
+            </RadioGroup>
 
-        <TextView
-            android:text="فضلاً اختر طريقة التعليم المناسبة لك"
-            android:id="@+id/textViewMethod"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <Spinner
-            android:id="@+id/method"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-
-    <TextView
-        android:text="فضلاً أرفق سيرتك الذاتية"
-        android:id="@+id/textViewBrowse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <Button
-        android:layout_margin="15dp"
-        android:id="@+id/buttonBrowse"
-        android:text="اختر"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-
-        <Button
-            android:layout_margin="15dp"
-            android:id="@+id/buttonRegister"
-            android:text="تسجيل الحساب"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-    </LinearLayout>
+            <TextView
+                android:id="@+id/textViewSpecialty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً اختر تخصصاتك" />
 
 
+            <com.example.tcc.iteach.MultiSelectionSpinner
+                android:id="@+id/input1"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_margin="2dp" />
+
+            <EditText
+                android:id="@+id/yearsExperience"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="فضلاً أدخل عدد سنوات خبرتك"
+                android:inputType="number" />
+
+            <EditText
+                android:id="@+id/lessonsPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="فضلاً أدخل سعر الدرس"
+                android:inputType="number" />
 
 
-</ScrollView>
+            <TextView
+                android:id="@+id/textViewPayment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً اختر طريقة الدفع المفضلة لديك" />
+
+            <Spinner
+                android:id="@+id/payment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewPlace"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً اختر مكان الدرس المناسب لك" />
+
+            <Spinner
+                android:id="@+id/place"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewMethod"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً اختر طريقة التعليم المناسبة لك" />
+
+            <Spinner
+                android:id="@+id/method"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textViewBrowse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="فضلاً أرفق سيرتك الذاتية" />
+
+            <Button
+                android:id="@+id/buttonBrowse"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="اختر" />
+
+
+            <Button
+                android:id="@+id/buttonRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="تسجيل الحساب" />
+
+        </LinearLayout>
+
+
+    </ScrollView>
 
 
 
