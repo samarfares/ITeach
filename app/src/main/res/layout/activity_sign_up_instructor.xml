@@ -175,6 +175,19 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
 
+    <TextView
+        android:text="فضلاً أرفق سيرتك الذاتية"
+        android:id="@+id/textViewBrowse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <Button
+        android:layout_margin="15dp"
+        android:id="@+id/buttonBrowse"
+        android:text="اختر"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
         <Button
             android:layout_margin="15dp"
             android:id="@+id/buttonRegister"

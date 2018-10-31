@@ -1,11 +1,17 @@
 package com.example.tcc.iteach;
 
+import android.Manifest;
 import android.accounts.Account;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -31,6 +37,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
@@ -51,17 +59,18 @@ import javax.crypto.spec.DESKeySpec;
 
 public class SignUpInstructorActivity extends AppCompatActivity implements View.OnClickListener , AdapterView.OnItemSelectedListener {
 Instructor instructor;
-private TextView textViewSignin2 , textview , textViewDOB, textViewGender , textViewSpecialty, textViewPayment, textViewPlace , textViewMethod;
+private TextView textViewSignin2 , textViewBrowse,textview , textViewDOB, textViewGender , textViewSpecialty, textViewPayment, textViewPlace , textViewMethod;
 private EditText editTextPasswordInstructor , yearsExperience, editTextEmailInstructor,editTextFirstName,editTextLastName , editTextNumberInstructor, lessonsPrice;
 private DatePicker datePicker;
 private RadioGroup radioGroupGender;
 private RadioButton male, female;
 private Spinner specialtySpinner , paymentSpinner, placeSpinner , method;
-private Button buttonContinueToLocation;
+private Button buttonContinueToLocation , buttonBrowse;
 private Button register;
 FirebaseAuth firebaseAuth;
 DatabaseReference databaseReference;
 FirebaseUser firebaseUser;
+FirebaseDatabase database;
 ProgressDialog progressDialog;
 String  instructorEmail, instructorPassword , firstName, lastName  , gender, date , yearsOfExperience , instructorsPhoneNum , chosenString, priceString ,   chosenPaymentMethod,chosenPlace , chosenMethod , insId;
 long longInstructorsPhoneNum;
@@ -73,14 +82,13 @@ private String latitude,longitude;
 private static String cryptoPass = "sup3rS3xy";
     List<String> chosen = new ArrayList<String>();
     MultiSelectionSpinner spinner;
-
-
+FirebaseStorage storage;
 
     private DatabaseReference usersRef;
     private FirebaseAuth mAuth;
 
     private String current_user_id;
-
+Uri pdfUri;
 
 
     @Override
@@ -111,7 +119,12 @@ private static String cryptoPass = "sup3rS3xy";
         textViewPayment= (TextView) findViewById(R.id.textViewPayment);
         textViewPlace=(TextView) findViewById(R.id.textViewPlace);
         textViewMethod=(TextView) findViewById(R.id.textViewMethod);
+        textViewBrowse= (TextView) findViewById(R.id.textViewBrowse);
+        buttonBrowse=(Button) findViewById(R.id.buttonBrowse);
+        //notification=(TextView) findViewById(R.id.notification);
 method=(Spinner)findViewById(R.id.method);
+storage=FirebaseStorage.getInstance();
+database=FirebaseDatabase.getInstance();
         progressDialog =new ProgressDialog(this);
 // database stuff
         firebaseAuth = FirebaseAuth.getInstance();
@@ -120,7 +133,22 @@ method=(Spinner)findViewById(R.id.method);
         textViewSignin2.setOnClickListener(this);
         buttonContinueToLocation.setOnClickListener(this);
         register.setOnClickListener(this);
+        //************************************************************
+        buttonBrowse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+              if(ContextCompat.checkSelfPermission(SignUpInstructorActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED){
+            selectPdf();
 
+
+                }
+                else {
+
+                  ActivityCompat.requestPermissions(SignUpInstructorActivity.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},9);
+              }
+            }
+        });
+//************************************************************
         // fill spinners
         ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(this ,R.array.paymentMethod,android.R.layout.simple_spinner_item);
         paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -169,6 +197,35 @@ method=(Spinner)findViewById(R.id.method);
         usersRef = FirebaseDatabase.getInstance().getReference().child("users");
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+       // super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode==9 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            selectPdf();
+        }
+        else
+            Toast.makeText(SignUpInstructorActivity.this,"الرجاء السماح بالوصول لملفاتك" , Toast.LENGTH_LONG);
+    }
+
+    private void selectPdf() {
+
+        Intent intent2 = new Intent();
+        intent2.setType("application/pdf");
+        intent2.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent2,86);
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==86 && requestCode==RESULT_OK && data!=null){
+            pdfUri=data.getData();
+        }
+        else {
+            Toast.makeText(SignUpInstructorActivity.this,"الرجاء اختيار ملف",Toast.LENGTH_LONG);
+        }
+    }
 
     private void registerInstructor(){
         instructorEmail = editTextEmailInstructor.getText().toString();
@@ -241,6 +298,8 @@ method=(Spinner)findViewById(R.id.method);
         if(TextUtils.isEmpty(priceString)){
             Toast.makeText(this, "فضلاً أدخل سعر الدرس", Toast.LENGTH_LONG).show();return;}
 
+            if(pdfUri==null){
+                Toast.makeText(this, "فضلاً اختر ملفاً", Toast.LENGTH_LONG); }
 // if validations are ok we register user
         intYearsOfExperience=Integer.parseInt(yearsOfExperience);
         longInstructorsPhoneNum=Long.parseLong(instructorsPhoneNum);
@@ -264,6 +323,8 @@ String userID = firebaseUser.getUid();
 
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
+                            StorageReference storageReference=storage.getReference("Instructors");
+                            storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                             FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail,encryptedLocation,firstName+" "+lastName,userID));
