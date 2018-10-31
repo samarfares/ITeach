@@ -100,6 +100,8 @@
                 android:hint="فضلاً أدخل اسم شهرته" />
             <TextView
                 android:text="فضلاً اختر تاريخ ميلاده"
+                android:layout_margin="15dp"
+
                 android:id="@+id/textViewDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -114,6 +116,8 @@
             <TextView
                 android:text="فضلاً اختر جنسه"
                 android:id="@+id/textViewGender"
+                android:layout_margin="15dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -124,17 +128,23 @@
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+
                     android:id="@+id/male"
                     android:text="ذكر"/>
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+
                     android:id="@+id/female"
                     android:text="أنثى"/>
             </RadioGroup>
 
             <TextView
                 android:text="فضلاً اختر تخصصاته"
+                android:layout_margin="15dp"
+
                 android:id="@+id/textViewSpecialty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
@@ -154,12 +164,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/yearsExperience"
+                android:layout_margin="15dp"
+
                 android:inputType="number"
                 android:hint="فضلاً أدخل عدد سنوات خبرته"/>
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/lessonsPrice"
+                android:layout_margin="15dp"
+
                 android:inputType="number"
                 android:hint="فضلاً أدخل سعر الدرس"/>
 
@@ -167,6 +181,8 @@
             <TextView
                 android:text="فضلاً اختر طريقة الدفع المفضلة لديه"
                 android:id="@+id/textViewPayment"
+                android:layout_margin="15dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Spinner
@@ -177,6 +193,8 @@
             <TextView
                 android:text="فضلاً اختر مكان الدرس المناسب له"
                 android:id="@+id/textViewPlace"
+                android:layout_margin="15dp"
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
             <Spinner
@@ -188,6 +206,8 @@
                 android:text="فضلاً اختر طريقة التعليم المناسبة له"
                 android:id="@+id/textViewMethod"
                 android:layout_width="match_parent"
+                android:layout_margin="15dp"
+
                 android:layout_height="wrap_content" />
             <Spinner
                 android:id="@+id/method"

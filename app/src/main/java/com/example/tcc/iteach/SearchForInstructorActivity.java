@@ -1,480 +1,136 @@
 package com.example.tcc.iteach;
 
-import android.app.Activity;
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.Context;
+
 import android.content.Intent;
-import android.os.Build;
-import android.os.Parcelable;
-import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.LayoutInflater;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.Toolbar;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import java.io.Serializable;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+public class SearchForInstructorActivity extends AppCompatActivity
+        implements NavigationView.OnNavigationItemSelectedListener {
 
-public class SearchForInstructorActivity  extends AppCompatActivity {
-    ListView listView;
-    List<Instructor> list,listLocation;
-    List<Instructor> namesList;
-    List<Instructor> genderList;
-    List<Instructor> priceList;
-    List<Instructor> subjectList;
-    List<Instructor> locations;
-     Double distance;
-    MyAdapterSearch myAdapter;
-
-    public LatLng SearchLocation;
-
-
-    final ArrayList<String> keyList = new ArrayList<>();
-    public static final String DATABASE_PATH = "Instructors";
-    private DatabaseReference databaseReference;
-    private FirebaseAuth mAuth;
-    private EditText editTextName;
-    private TextView textViewSearch,textType,textSubject;
-    private Button location,search,advancedSearch,locationSearch;
-    private RadioGroup radioType;
-    private RadioButton radioTypeButton;
-    private Spinner subjectSpinner;
-    LatLng locationSelectedLat;
-    int textlength = 0;
-    List<Instructor> instructorsNames;
-    List<Instructor> array_sort,names;
-String person;
-
-    Button btn_popup;
-
-
-  @Override
-    protected void onStart() {
-
-mAuth =FirebaseAuth.getInstance();
-        super.onStart();
-        FirebaseUser firebaseUser=mAuth.getCurrentUser();
-        if(firebaseUser==null)
-        {
-            Intent intent=new Intent(SearchForInstructorActivity.this,MainActivity.class);
-            startActivity(intent);
-        }
-
-    }
-
+    private TabLayout tabLayout;
+    //private AppBarLayout appBarLayout;
+    private ViewPager viewPager;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_for_instructor);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
-        person=getIntent().getStringExtra( "person" );
+        firebaseAuth = FirebaseAuth.getInstance();
 
+        tabLayout = (TabLayout) findViewById(R.id.tabLayoutReservations);
+        //appBarLayout = (AppBarLayout) findViewById(R.id.appBarReservations);
+        viewPager = (ViewPager) findViewById(R.id.viewPagerReservations);
 
+        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
+        tabsAdapter.AddFragment(new NameSearch(),"بحث بالاسم");
+        tabsAdapter.AddFragment(new Advanced(),"بحث متقدم");
 
-        editTextName=(EditText) findViewById( R.id.editTextName );
-        final String name=editTextName.getText().toString();
+        viewPager.setAdapter(tabsAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
-        textType=(TextView) findViewById(R.id.textType);
-        radioType=(RadioGroup) findViewById(R.id.radioType);
-        listView=(ListView) findViewById( R.id.list1 );
-        list = new ArrayList<>();
-        array_sort=new ArrayList<>();
-        names=new ArrayList<>();
-        instructorsNames=new ArrayList<>();
-        namesList = new ArrayList<>();
-        genderList = new ArrayList<>();
-        priceList = new ArrayList<>();
-        subjectList = new ArrayList<>();
-        locations = new ArrayList<>();
-        listLocation = new ArrayList<>();
+        setSupportActionBar(toolbar);
 
-
-
-
-
-
-
-
-
-
-        databaseReference = FirebaseDatabase.getInstance().getReference("Instructors");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                list.clear();
-                for(DataSnapshot snap : dataSnapshot.getChildren()){
-                    keyList.add(snap.getKey());
-                    names.add(snap.getValue(Instructor.class));
-
-                    Instructor instructor = snap.getValue(Instructor.class);
-
-                    list.add(instructor);
-
-                }
-
-                if (list.size()!=0){
-                    myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,list);
-                    listView.setAdapter(myAdapter);
-                    Utility.setListViewHeightBasedOnChildren(listView);}
-                else {
-
-                    Toast.makeText(SearchForInstructorActivity.this, "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
-
-                }
-                for (int i = 0; i < names.size(); i++) {
-
-                    Instructor Names =names.get(i);
-                    // Binds all strings into an array
-                    array_sort.add(Names);
-                }
-
-                editTextName.addTextChangedListener(new TextWatcher() {
-
-
-                    public void afterTextChanged(Editable s) {
-                    }
-
-                    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                    }
-
-                    public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-                        textlength = editTextName.getText().length();
-                        list.clear();
-
-                        for (int i = 0; i < names.size(); i++) {
-                            if (!(names.get(i).firstName .equals( null ))){
-                            if (textlength <= names.get(i).firstName.length()) {
-                                if (names.get(i).firstName.toLowerCase().trim().contains(
-                                        editTextName.getText().toString().toLowerCase().trim())||names.get(i).lastName.toLowerCase().trim().contains(
-                                        editTextName.getText().toString().toLowerCase().trim())) {
-                                    list.add(names.get(i));
-                                }
-                            }}
-                        }
-                        if (list.size()!=0){
-
-                            myAdapter = new MyAdapterSearch(SearchForInstructorActivity.this,R.layout.items,list);
-
-
-                            listView.setAdapter(myAdapter);
-                            Utility.setListViewHeightBasedOnChildren(listView);}
-
-
-
-
-
-
-                    }
-                });
-
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-
-
-        });
-
-
-
-
-
-
-        btn_popup = (Button) findViewById(R.id.button1);
-
-
-        btn_popup.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                Intent intent=new Intent(SearchForInstructorActivity.this, AdvancedSearch.class);
-                intent.putExtra( "person",person );
-                startActivity( intent );
-                }
-        });
-
-//****************************
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, final int position, long id) {
-                final Intent intent = new Intent(SearchForInstructorActivity.this,ViewInstructorProfile.class);
-                intent.putExtra("name",list.get(position).getFirstName()+" "+list.get(position).getLastName());
-                intent.putExtra("email",list.get(position).getEmail());
-                intent.putExtra("insId",list.get(position).getUserID());
-                intent.putExtra( "person",person );
-                Bundle args = new Bundle();
-                String test = SignUpInstructorActivity.decryptIt( list.get(position).getLocation());
-                Double lat = Double.valueOf( test.substring( test.indexOf( "(" ) + 1, test.indexOf( "," ) ) );
-                Double lng = Double.valueOf( test.substring( test.indexOf( "," ) + 1, test.indexOf( ")" ) ) );
-                LatLng t = new LatLng( lat, lng );
-                args.putParcelable("location",t);
-                intent.putExtra("bundle", args);
-                startActivity(intent);
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
+*/
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-
-
-
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
-
-
-    static class ListContent {
-        TextView text;
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
     }
-    public static double CalculationByDistance(LatLng StartP, LatLng EndP) {
-        int Radius=6371;//radius of earth in Km
-        double lat1 = StartP.latitude;
-        double lat2 = EndP.latitude;
-        double lon1 = StartP.longitude;
-        double lon2 = EndP.longitude;
-        double dLat = Math.toRadians(lat2-lat1);
-        double dLon = Math.toRadians(lon2-lon1);
-        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-                        Math.sin(dLon/2) * Math.sin(dLon/2);
-        double c = 2 * Math.asin(Math.sqrt(a));
-        double valueResult= Radius*c;
-        double km=valueResult/1;
-        DecimalFormat newFormat = new DecimalFormat("####");
-        int kmInDec =  Integer.valueOf(newFormat.format(km));
-        double meter=valueResult%1000;
-        int  meterInDec= Integer.valueOf(newFormat.format(meter));
-        Log.i("Radius Value",""+valueResult+"   KM  "+kmInDec+" Meter   "+meterInDec);
 
-        return Radius * c;
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        //getMenuInflater().inflate(R.menu.instructor_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+  /*      if (id == R.id.action_settings) {
+            return true;
+        }
+*/
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        if (id == R.id.nav_home) {
+            Intent h= new Intent(SearchForInstructorActivity.this,instructor_main.class);
+            startActivity(h);
+        } else if (id == R.id.nav_blackboard) {
+            Intent h= new Intent(SearchForInstructorActivity.this,blackboard.class);
+            startActivity(h);
+        } else if (id == R.id.nav_notifications) {
+            Intent h= new Intent(SearchForInstructorActivity.this,notifications.class);
+            startActivity(h);
+        } else if (id == R.id.nav_manage) {
+            Intent h= new Intent(SearchForInstructorActivity.this,settings.class);
+            startActivity(h);
+        } else if (id == R.id.nav_schedule) {
+            Intent h= new Intent(SearchForInstructorActivity.this,schedule.class);
+            startActivity(h);
+        } else if (id == R.id.nav_reservations) {
+            Intent h= new Intent(SearchForInstructorActivity.this,reservations.class);
+            startActivity(h);
+        }
+        else if (id==R.id.nav_signOut){
+            firebaseAuth.signOut();
+            startActivity(new Intent(this, MainActivity.class));
+        }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
     }
 }
-    /*
-    ListView listView;
-    List<Instructor> list;
-    final ArrayList<String> keyList = new ArrayList<>();
-    public static final String DATABASE_PATH = "Instructors";
-    private DatabaseReference databaseReference;
-    private EditText editTextName, editTextPrice;
-    private TextView textViewSearch,textType,textSubject;
-    private Button location,search,advancedSearch;
-    private RadioGroup radioType;
-    private RadioButton radioTypeButton;
-    private Spinner subjectSpinner;
-    String decryptedLocation;
-    LatLng locationSelectedLat;
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search_for_instructor);
-
-        Bundle bundle = getIntent().getParcelableExtra("bundle");
-        if (bundle!=null)
-        locationSelectedLat = bundle.getParcelable("location");
-
-
-        subjectSpinner = (Spinner) findViewById(R.id.subject);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.specialty, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        subjectSpinner.setAdapter(adapter);
-        subjectSpinner.setVisibility( View.GONE );
-        editTextName=(EditText) findViewById( R.id.editTextName );
-        editTextName.setVisibility( View.VISIBLE );
-        textSubject=(TextView) findViewById(R.id.textSubject);
-        textSubject.setVisibility( View.GONE );
-        textType=(TextView) findViewById(R.id.textType);
-        textType.setVisibility( View.GONE );
-        textViewSearch=(TextView) findViewById(R.id.TextViewSearch);
-        editTextPrice= (EditText) findViewById(R.id.editTextPrice);
-        editTextPrice.setVisibility( View.GONE );
-        radioType=(RadioGroup) findViewById(R.id.radioType);
-        radioType.setVisibility( View.GONE );
-        listView=(ListView) findViewById( R.id.list1 );
-        list = new ArrayList<>();
-
-
-        advancedSearch=(Button) findViewById(R.id.advancedSearch);
-        location=(Button) findViewById(R.id.location);
-        location.setVisibility( View.GONE );
-        search=(Button) findViewById(R.id.search);
-        location.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent intent=new Intent(SearchForInstructorActivity.this, LocationActivity.class);
-                intent.putExtra( "search","true" );
-                startActivity(intent);
-
-            }
-
-
-        });
-        advancedSearch.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                 subjectSpinner.setVisibility( View.VISIBLE );
-                 textSubject.setVisibility( View.VISIBLE );
-                 textType.setVisibility( View.VISIBLE );
-                 editTextPrice.setVisibility( View.VISIBLE );
-                 radioType.setVisibility( View.VISIBLE );
-                 location.setVisibility( View.VISIBLE );
-                }
-
-
-        });
-        final String name=editTextName.getText().toString();
-        final String price=editTextPrice.getText().toString();
-        final String subject=subjectSpinner.getSelectedItem().toString();
-        int selectedId = radioType.getCheckedRadioButtonId();
-
-        radioTypeButton = (RadioButton) findViewById( selectedId );
-
-        final String gender = radioTypeButton.getText().toString();
-        search.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                databaseReference = FirebaseDatabase.getInstance().getReference("Instructors");
-                databaseReference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        list.clear();
-
-                        for(DataSnapshot snap : dataSnapshot.getChildren()){
-                            keyList.add(snap.getKey());
-
-                            Instructor instructor = snap.getValue(Instructor.class);
-
-                            if (!name.equals(null)) {
-
-                                if (gender!=null) {
-
-                                    if(!gender.equals(null))
-                                    {
-                                        if(!subject.equals(null)){
-                                            if (location !=null){
-                                            double lessonPrice = Double.parseDouble( price );
-
-                                            if(instructor.firstName.matches(".*"+name+".*")||instructor.lastName.matches(".*"+name+".*"))
-                                              if (instructor.lessonsPrice <= lessonPrice)
-                                                  if (instructor.getGender().equals( gender ))
-                                                    // SignUpInstructorActivity.decryptIt(String.valueOf(instructor.location.latitude));
-                                                      if (instructor.subjects.contains( subject ))
-                                                      list.add( instructor );
-
-
-                                        }
-
-                                            double lessonPrice = Double.parseDouble( price );
-
-                                            if(instructor.firstName.matches(".*"+name+".*")||instructor.lastName.matches(".*"+name+".*"))
-                                                if (instructor.lessonsPrice <= lessonPrice)
-                                                    if (instructor.getGender().equals( gender ))
-                                                        if (instructor.subjects.contains( subject ))
-                                                            list.add( instructor );
-
-
-
-                                        }
-                                        double lessonPrice = Double.parseDouble( price );
-
-                                        if(instructor.firstName.matches(".*"+name+".*")||instructor.lastName.matches(".*"+name+".*"))
-                                            if (instructor.lessonsPrice <= lessonPrice)
-                                                if (instructor.getGender().equals( gender ))
-                                                    list.add( instructor );
-
-
-
-                                }    }
-
-                                if(instructor.firstName.matches(".*"+name+".*")||instructor.lastName.matches(".*"+name+".*"))
-
-                                    list.add( instructor );}
-
-
-
-                            }
-                                }
-
-
-
-                        if (list!=null){
-                            Toast.makeText(SearchForInstructorActivity.this,list.get(0).firstName+' '+list.get( 0 ).lastName, Toast.LENGTH_SHORT).show();
-
-
-                            Intent intent = new Intent(SearchForInstructorActivity.this,SearchResultsActivity.class);
-                            Bundle bundle = new Bundle();
-                            bundle.putParcelable("data", (Parcelable) list );
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-
-
-                        }
-
-                        else
-                            Toast.makeText(SearchForInstructorActivity.this, "No Results Found !!", Toast.LENGTH_SHORT).show();
-
-                    }
-
-
-
-
-
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-
-
-
-
-
-
-            }
-
-
-
-        });
-
-
-    }
-*/
-

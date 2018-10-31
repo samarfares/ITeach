@@ -49,12 +49,20 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:orientation="horizontal">
+                <ImageButton
+                    android:id="@+id/share"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/share" />
 
                 <ImageButton
                     android:id="@+id/buttonLike"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:background="@drawable/dislike" />
+
+
+
 
                 <TextView
                     android:id="@+id/textViewRate"
@@ -67,6 +75,8 @@
                     android:textSize="14sp"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                      />
+
+
             </LinearLayout>
 
             <Button

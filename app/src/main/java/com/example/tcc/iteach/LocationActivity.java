@@ -122,13 +122,14 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
                        startActivity(intent);}
                }
                   else                {
-                Intent intent=new Intent(this, AdvancedSearch.class);
+                   Intent intent = getIntent();
                 Bundle args = new Bundle();
                 args.putParcelable("location", placeId);
                 intent.putExtra("bundle", args);
                 intent.putExtra("person", person);
-
-                startActivity(intent);}
+                   setResult(RESULT_OK, intent);
+                   finish();
+               }
 
             }
             else{

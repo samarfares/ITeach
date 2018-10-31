@@ -54,77 +54,90 @@
                 android:textColor="@android:color/white"
                 android:textStyle="bold" />
 
-            <Button
-                android:layout_margin="15dp"
-                android:id="@+id/buttonContinueToLocation"
-                android:text="فضلاً اختر موقعه من الخارطة"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
 
-            <EditText
-                android:layout_margin="15dp"
-                android:inputType="textEmailAddress"
-                android:hint="فضلاً أدخل ايميل"
-                android:id="@+id/editTextEmailInstructor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:layout_margin="15dp"
-                android:inputType="textPassword"
-                android:hint="فضلاً أدخل كلمة مرور"
-                android:id="@+id/editTextPasswordInstructor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-
-            <EditText
-                android:id="@+id/editTextFirstName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="فضلاً أدخل اسمه الأول" />
-
-            <EditText
-                android:id="@+id/editTextLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="فضلاً أدخل اسم شهرته" />
-            <TextView
-                android:text="فضلاً اختر تاريخ ميلاده"
-                android:id="@+id/textViewDOB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <DatePicker
-                android:id="@+id/datePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                android:spinnersShown="true"></DatePicker>
-
-            <TextView
-                android:text="فضلاً اختر جنسه"
-                android:id="@+id/textViewGender"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioGroupGender">
-                <RadioButton
+                <Button
+                    android:id="@+id/buttonContinueToLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/male"
-                    android:text="ذكر"/>
-                <RadioButton
+                    android:layout_margin="15dp"
+                    android:text="فضلاً اختر موقعه من الخارطة" />
+
+                <EditText
+                    android:id="@+id/editTextEmailInstructor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/female"
-                    android:text="أنثى"/>
-            </RadioGroup>
+                    android:layout_margin="15dp"
+                    android:hint="فضلاً أدخل ايميل"
+                    android:inputType="textEmailAddress" />
 
+                <EditText
+                    android:id="@+id/editTextPasswordInstructor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:hint="فضلاً أدخل كلمة مرور"
+                    android:inputType="textPassword" />
+
+
+                <EditText
+                    android:id="@+id/editTextFirstName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:hint="فضلاً أدخل اسمه الأول" />
+
+                <EditText
+                    android:id="@+id/editTextLastName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+                    android:hint="فضلاً أدخل اسم شهرته" />
+
+                <TextView
+                    android:id="@+id/textViewDOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+
+                    android:text="فضلاً اختر تاريخ ميلاده" />
+
+                <DatePicker
+                    android:id="@+id/datePicker"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:calendarViewShown="false"
+                    android:datePickerMode="spinner"
+                    android:spinnersShown="true"></DatePicker>
+
+                <TextView
+                    android:id="@+id/textViewGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="15dp"
+
+                    android:text="فضلاً اختر جنسه" />
+
+                <RadioGroup
+                    android:id="@+id/radioGroupGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioButton
+                        android:id="@+id/male"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+
+                        android:text="ذكر" />
+
+                    <RadioButton
+                        android:id="@+id/female"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="15dp"
+
+                        android:text="أنثى" />
+                </RadioGroup>
 
 
 

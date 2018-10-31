@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -19,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 public class reservations2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private TabLayout tabLayout;
+    private ViewPager viewPager;
     FirebaseAuth firebaseAuth;
 
     @Override
@@ -28,6 +32,16 @@ public class reservations2 extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+
+        tabLayout = (TabLayout) findViewById(R.id.tabLayoutReservations2);
+        viewPager = (ViewPager) findViewById(R.id.viewPagerReservations2);
+
+        TabsAdapter tabsAdapter = new TabsAdapter(getSupportFragmentManager());
+        tabsAdapter.AddFragment(new UpcomingFragment2(),"القادمة");
+        tabsAdapter.AddFragment(new PastFragment2(),"الماضية");
+
+        viewPager.setAdapter(tabsAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
