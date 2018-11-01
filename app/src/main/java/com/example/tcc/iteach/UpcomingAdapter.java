@@ -119,7 +119,7 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
         });
 
         ////////////////////////////////////
-        TextView lessonTextView = (TextView) convertView.findViewById(R.id.lesson);
+        final TextView lessonTextView = (TextView) convertView.findViewById(R.id.lesson);
         Button edit = (Button) convertView.findViewById(R.id.editLesson);
         edit.setTag(position);
         Button cancel = (Button) convertView.findViewById(R.id.cancelLesson);
@@ -145,6 +145,9 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                 adb.setNegativeButton("لا", null);
                 adb.setPositiveButton("نعم", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+
+
+
                         int pos = (int) view.getTag();
                         FirebaseDatabase.getInstance().getReference("Lessons").addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
@@ -167,6 +170,8 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                                                 Toast.makeText(getContext(), "لا تستطيع إلغاء الدرس اذا كان بعد أقل من ساعة", Toast.LENGTH_SHORT).show();
                                             }
                                             else{
+                                                FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الأستاذ بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+
                                                 list.remove(positionToRemove);
                                                 UpcomingFragment.list.remove(positionToRemove);
                                                 notifyDataSetChanged();
@@ -174,9 +179,12 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                                                 keyList.remove(position);
                                                 lessons.remove(position);
                                                 Toast.makeText(getContext(),"تم إلغاء الدرس بنجاح",Toast.LENGTH_LONG).show();
+
                                             }
                                         }
                                         else{
+                                            FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الأستاذ بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+
                                             list.remove(positionToRemove);
                                             UpcomingFragment.list.remove(positionToRemove);
                                             notifyDataSetChanged();
@@ -184,6 +192,7 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                                             keyList.remove(position);
                                             lessons.remove(position);
                                             Toast.makeText(getContext(),"تم إلغاء الدرس بنجاح",Toast.LENGTH_LONG).show();
+
                                         }
                                     }
                                 }

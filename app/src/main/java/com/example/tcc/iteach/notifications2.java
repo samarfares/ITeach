@@ -33,7 +33,12 @@ public class notifications2 extends AppCompatActivity
     private DatabaseReference databaseReference;
 
     ListView listView;
+    ListView listView2;
+
     List<Message> list;
+    List<MessageCancel> list2;
+    NotificationCancelAdapter myAdapter2;
+
     NotificationAdapter myAdapter;
     FirebaseAuth firebaseAuth;
     @Override
@@ -43,9 +48,12 @@ public class notifications2 extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         firebaseAuth = FirebaseAuth.getInstance();
+        listView2=(ListView) findViewById( R.id.list2 );
 
         listView=(ListView) findViewById( R.id.list1 );
         list = new ArrayList<>();
+        list2 = new ArrayList<>();
+
         databaseReference = FirebaseDatabase.getInstance().getReference( "messages" );
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
@@ -94,6 +102,45 @@ public class notifications2 extends AppCompatActivity
             }
         });
 
+        databaseReference = FirebaseDatabase.getInstance().getReference( "messagesCancel" );
+        databaseReference.addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+
+                    MessageCancel message = snap.getValue( MessageCancel.class );
+                    if(message.getUserID().equals( firebaseAuth.getUid() ))
+
+                        list2.add( message );
+
+                }
+
+
+
+                myAdapter2 = new NotificationCancelAdapter( notifications2.this, R.layout.lessonsitems, list2 );
+                listView2.setAdapter( myAdapter2 );
+                Utility.setListViewHeightBasedOnChildren( listView2 );
+
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
+
+        listView2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(notifications2.this,reservations2.class);
+
+                startActivity(intent);
+            }
+        });
 
 
 

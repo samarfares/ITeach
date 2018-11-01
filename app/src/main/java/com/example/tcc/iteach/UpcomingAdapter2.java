@@ -158,12 +158,16 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                                                 e.printStackTrace();
                                             }
                                             if (j == 0) {
+                                                FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الطالب بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+
                                                 int t = Integer.parseInt(lesson.getTime().substring(0, lesson.getTime().indexOf(":")));
                                                 Calendar rightNow = Calendar.getInstance();
                                                 int currentHourIn24Format = rightNow.get(Calendar.HOUR_OF_DAY); // return the hour in 24 hrs format (ranging from 0-23)
                                                 if (t <= currentHourIn24Format + 1) {
                                                     Toast.makeText(getContext(), "لا تستطيع إلغاء الدرس اذا كان بعد أقل من ساعة", Toast.LENGTH_SHORT).show();
                                                 } else {
+                                                    FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الطالب بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+
                                                     list.remove(positionToRemove);
                                                     UpcomingFragment.list.remove(positionToRemove);
                                                     notifyDataSetChanged();
