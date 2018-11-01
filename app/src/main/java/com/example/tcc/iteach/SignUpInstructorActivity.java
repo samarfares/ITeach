@@ -120,7 +120,7 @@ Uri pdfUri;
         textViewPlace=(TextView) findViewById(R.id.textViewPlace);
         textViewMethod=(TextView) findViewById(R.id.textViewMethod);
         textViewBrowse= (TextView) findViewById(R.id.textViewBrowse);
-        buttonBrowse=(Button) findViewById(R.id.buttonBrowse);
+        buttonBrowse=(Button) findViewById(R.id.buttonBrowse2);
         //notification=(TextView) findViewById(R.id.notification);
 method=(Spinner)findViewById(R.id.method);
 storage=FirebaseStorage.getInstance();
@@ -133,8 +133,9 @@ database=FirebaseDatabase.getInstance();
         textViewSignin2.setOnClickListener(this);
         buttonContinueToLocation.setOnClickListener(this);
         register.setOnClickListener(this);
-        //************************************************************
         buttonBrowse.setOnClickListener(this);
+
+        //************************************************************
 
 //************************************************************
         // fill spinners
@@ -187,12 +188,13 @@ database=FirebaseDatabase.getInstance();
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-       // super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+       super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode==9 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+            Toast.makeText(SignUpInstructorActivity.this,"ameera 4" , Toast.LENGTH_LONG).show();
             selectPdf();
         }
         else
-            Toast.makeText(SignUpInstructorActivity.this,"الرجاء السماح بالوصول لملفاتك" , Toast.LENGTH_LONG);
+            Toast.makeText(SignUpInstructorActivity.this,"الرجاء السماح بالوصول لملفاتك" , Toast.LENGTH_LONG).show();
     }
 
     private void selectPdf() {
@@ -200,18 +202,23 @@ database=FirebaseDatabase.getInstance();
         Intent intent2 = new Intent();
         intent2.setType("application/pdf");
         intent2.setAction(Intent.ACTION_GET_CONTENT);
+        //pdfUri=intent2.getData();
+       // Toast.makeText(SignUpInstructorActivity.this,"ameera" , Toast.LENGTH_LONG).show();
+
         startActivityForResult(intent2,86);
 
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==86 && requestCode==RESULT_OK && data!=null){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==86 && resultCode==RESULT_OK && data!=null){
+            Toast.makeText(SignUpInstructorActivity.this,"ameera 2" , Toast.LENGTH_LONG).show();
             pdfUri=data.getData();
         }
         else {
-            Toast.makeText(SignUpInstructorActivity.this,"الرجاء اختيار ملف",Toast.LENGTH_LONG);
+            Toast.makeText(SignUpInstructorActivity.this,"الرجاء اختيار ملف jj",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -311,7 +318,7 @@ String userID = firebaseUser.getUid();
 
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
-                            StorageReference storageReference=storage.getReference("Instructors");
+                            StorageReference storageReference=storage.getReference();
                             storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
                             databaseReference.child(firebaseUser.getUid()).child("subjects").setValue(chosen);
                             Toast.makeText(SignUpInstructorActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
@@ -359,18 +366,21 @@ String userID = firebaseUser.getUid();
             //startActivity(new Intent(this,blackboard.class));
         }
 
-        if (view == buttonBrowse){
-            if(ContextCompat.checkSelfPermission(SignUpInstructorActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(SignUpInstructorActivity.this,"select pdf method called", Toast.LENGTH_LONG);
+        if (view==buttonBrowse){
+            //Toast.makeText(SignUpInstructorActivity.this,"marwa", Toast.LENGTH_LONG).show();
+            selectPdf();
+
+          /* if(ContextCompat.checkSelfPermission(SignUpInstructorActivity.this,Manifest.permission.READ_EXTERNAL_STORAGE)==PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(SignUpInstructorActivity.this,"select pdf method called", Toast.LENGTH_LONG).show();
                 selectPdf();
             }
 
 
             else {
-                Toast.makeText(SignUpInstructorActivity.this,"Line 370", Toast.LENGTH_LONG);
+                Toast.makeText(SignUpInstructorActivity.this,"Line 370", Toast.LENGTH_LONG).show();
 
                 ActivityCompat.requestPermissions(SignUpInstructorActivity.this,new String[] {Manifest.permission.READ_EXTERNAL_STORAGE},9);
-            }
+            }*/
         }
 
 
