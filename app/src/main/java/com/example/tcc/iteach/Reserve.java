@@ -132,7 +132,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                 } else {
                     if (paymentMethod.equals("نقداً")) {
                         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
-                        lesson = new Lesson(currentDateString, time, insID, stuID, subject, lessonPrice, paymentMethod, lessonPlace, teachingMethod);
+                        lesson = new Lesson(currentDateString, time, insID, stuID, subject, lessonPrice, paymentMethod, lessonPlace, teachingMethod, "لا يوجد");
                         databaseReference.push().setValue(lesson);
                         startActivity(new Intent(Reserve.this, student_main.class));
                         databaseReference = firebaseDatabase.getReference("Instructors").child(insID).child("spots");
