@@ -2,6 +2,7 @@ package com.example.tcc.iteach;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -12,8 +13,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,37 +28,49 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class myQuestions extends AppCompatActivity {
-    private RecyclerView myQuestions;
-    private DatabaseReference PostsRef;
+public class adminBlackboard extends AppCompatActivity {
+
+    private RecyclerView postList;
+    private DatabaseReference  PostsRef;
+    FirebaseAuth firebaseAuth;
     private FirebaseAuth mAuth;
-    private  String currentUserId,databaseUserID;
+    Dialog dialog5;
+    Spinner spinner;
+   adminBlackboard.SpinnerAdapter adapter2;
+    String spinner_item;
+    String[] title;
+    private   String subject;
+    Spinner inputField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_questions);
-        myQuestions = (RecyclerView) findViewById(R.id.myQuestions);
-        myQuestions.setHasFixedSize(true);
+        setContentView(R.layout.activity_admin_blackboard);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        mAuth = FirebaseAuth.getInstance();
+        postList = (RecyclerView) findViewById(R.id.adminboard);
+        postList.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
-        myQuestions.setLayoutManager(linearLayoutManager);
-        myQuestions.getLayoutManager().setMeasurementCacheEnabled(false);
+        postList.setLayoutManager(linearLayoutManager);
+        postList.getLayoutManager().setMeasurementCacheEnabled(false);
 
         PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
-        mAuth = FirebaseAuth.getInstance();
-        currentUserId = mAuth.getCurrentUser().getUid();
-    }
 
+        adapter2 = new  SpinnerAdapter(getApplicationContext());
+
+        title = getResources().getStringArray(R.array.specialty);
+    }
     @Override
     protected void onStart() {
         super.onStart();
-
         FirebaseRecyclerOptions<Questions> options =
-                new FirebaseRecyclerOptions.Builder<Questions>().setQuery(PostsRef.orderByChild("uid").startAt(currentUserId).endAt(currentUserId+"\uf8ff"), Questions.class).build();
+                new FirebaseRecyclerOptions.Builder<Questions>().setQuery(PostsRef, Questions.class).build();
 
-        FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder> adapter =
+        final FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder> adapter =
                 new FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder>(options) {
                     @NonNull
                     @Override
@@ -67,13 +84,6 @@ public class myQuestions extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull blackboard.PostsViewHolder holder, int position, @NonNull final Questions model) {
 
                         final String postKey = getRef(position).getKey();
-                        databaseUserID = model.getUid();
-                        if (!currentUserId.equals(databaseUserID)) {
-                            holder.options.setVisibility(View.INVISIBLE);
-                        }
-                        if (currentUserId.equals(databaseUserID)) {
-                            holder.options.setVisibility(View.VISIBLE);
-                        }
                         if (!model.equals(null)) {
                             holder.setFullname(model.getFullname());
                             holder.setDate(model.getDate());
@@ -82,25 +92,41 @@ public class myQuestions extends AppCompatActivity {
                             holder.commentsButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent clickAnswersIntent = new Intent(myQuestions.this, answerActivity.class);
-                                    clickAnswersIntent.putExtra("postkey", postKey);
+                                    Intent clickAnswersIntent = new Intent(adminBlackboard.this,answerActivity.class);
+                                    clickAnswersIntent.putExtra("postkey",postKey);
                                     startActivity(clickAnswersIntent);
                                 }
                             });
                             holder.options.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View v) {
-                                    final Dialog dialog = new Dialog(myQuestions.this);
-                                    dialog.setContentView(R.layout.editing_deleting);
-                                    final TextView edit = (TextView) dialog.findViewById(R.id.edit);
-                                    final TextView delete = (TextView) dialog.findViewById(R.id.delete);
-                                    dialog.show();
+                                    dialog5 = new Dialog(adminBlackboard.this);
+                                    dialog5.setContentView(R.layout.editing_deleting);
+                                    final TextView edit = (TextView) dialog5.findViewById(R.id.edit);
+                                    final TextView delete = (TextView) dialog5.findViewById(R.id.delete);
+                                    dialog5.show();
                                     delete.setOnClickListener(new View.OnClickListener() {
                                         @Override
                                         public void onClick(View v) {
-                                            PostsRef.child(postKey).removeValue();
-                                            Toast.makeText(myQuestions.this, "تم حذف السؤال بنجاح", Toast.LENGTH_SHORT).show();
-                                            dialog.cancel();
+
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(adminBlackboard.this);
+                                            builder.setTitle("هل أنت متأكد؟");
+                                            builder.setPositiveButton("حذف", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    PostsRef.child(postKey).removeValue();
+                                                    Toast.makeText(adminBlackboard.this, "تم حذف السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                                    dialog5.cancel();
+                                                }
+                                            }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog5.cancel();
+                                                }
+                                            });
+                                            Dialog dialog2 = builder.create();
+                                            dialog2.show();
+
                                         }
                                     });
                                     edit.setOnClickListener(new View.OnClickListener() {
@@ -119,22 +145,36 @@ public class myQuestions extends AppCompatActivity {
                                                     PostsRef.child(postKey).child("description").setValue(edit.getText().toString());
                                                     Toast.makeText(blackboard.this, "تم تعديل السؤال بنجاح", Toast.LENGTH_SHORT).show();
                                                dialog.cancel(); } }); */
-                                            AlertDialog.Builder builder = new AlertDialog.Builder(myQuestions.this);
-                                            builder.setTitle("اكتب النص المعدل");
-                                            final EditText inputField = new EditText(myQuestions.this);
-                                            inputField.setText(model.description);
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(adminBlackboard.this);
+                                            builder.setTitle("اختر المادة");
+                                            inputField = new Spinner(adminBlackboard.this);
+                                            inputField.setAdapter(adapter2);
+                                           // inputField.setText(model.description);
                                             builder.setView(inputField);
+                                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                                                @Override
+                                                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                                                    spinner_item = title[position];
+                                                    subject=spinner_item;
+                                                }
+
+                                                @Override
+                                                public void onNothingSelected(AdapterView<?> parent) {
+
+                                                }
+                                            });
                                             builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    PostsRef.child(postKey).child("description").setValue(inputField.getText().toString());
-                                                    Toast.makeText(myQuestions.this,"تم تعديل السؤال" ,Toast.LENGTH_SHORT).show();
-                                                    dialog.cancel();
+                                                    PostsRef.child(postKey).child("subject").setValue(subject);
+                                                    Toast.makeText(adminBlackboard.this,"تم تعديل المادة" ,Toast.LENGTH_SHORT).show();
+                                                    dialog5.cancel();
                                                 }
                                             }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
-                                                    dialog.cancel();
+                                                    dialog5.cancel();
                                                 }
                                             });
                                             Dialog dialog2 = builder.create();
@@ -142,64 +182,17 @@ public class myQuestions extends AppCompatActivity {
                                         }
                                     });
 
-                            /*    AlertDialog.Builder builder = new AlertDialog.Builder(blackboard.this);
-                                builder.setMessage("اختر اح الخيارات").setPositiveButton("edit", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                }).setNegativeButton("delete", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-
-                                    }
-                                }); */
 
                                 }
                                 //  Toast.makeText(t, "تم حذف السؤال", Toast.LENGTH_SHORT).show();
                             });
-                        }
+                        } }
 
-                    }  };
+                };
 
-        myQuestions.setAdapter(adapter);
+        postList.setAdapter(adapter);
         adapter.startListening();
     }
-
-    /* private void DisplayAllUsersQuestions() {
-        Query query = FirebaseDatabase.getInstance().getReference().child("Posts").orderByKey();
-        FirebaseRecyclerOptions<Questions> options = new FirebaseRecyclerOptions.Builder<Questions>().setQuery(query, Questions.class).build();
-        FirebaseRecyclerAdapter<Questions, PostsViewHolder> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<Questions, PostsViewHolder>(options) {
-
-
-            @NonNull
-            @Override
-            public PostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_questions_layout,parent,false);
-
-                return new PostsViewHolder(view);
-            }
-
-            @Override
-            protected void onBindViewHolder(@NonNull PostsViewHolder holder, int position, @NonNull Questions model) {
-                final String postKey = getRef(position).getKey();
-                holder.setFullname(model.getFullname());
-                holder.setDate(model.getDate());
-                holder.setDescription(model.getDescription());
-                holder.commentsButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        Intent clickAnswersIntent = new Intent(blackboard.this,answerActivity.class);
-                        clickAnswersIntent.putExtra("postkey",postKey);
-                        startActivity(clickAnswersIntent);
-                    }
-                });
-            }
-
-
-        };
-        postList.setAdapter(firebaseRecyclerAdapter);
-    }  */
 
     public static class PostsViewHolder extends RecyclerView.ViewHolder {
         View mView;
@@ -241,4 +234,54 @@ public class myQuestions extends AppCompatActivity {
         Intent addNewPostIntent = new Intent(blackboard.this, askActivity.class);
         startActivity(addNewPostIntent);
     }  */
+
+    public class SpinnerAdapter extends BaseAdapter {
+        Context context;
+        private LayoutInflater mInflater;
+
+        public SpinnerAdapter(Context context) {
+            this.context = context;
+        }
+
+        @Override
+        public int getCount() {
+            return title.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return position;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            final NameSearch.ListContent holder;
+            View v = convertView;
+            if (v == null) {
+                mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+                v = mInflater.inflate(R.layout.row_edittext, null);
+                holder = new NameSearch.ListContent();
+                holder.text = (TextView) v.findViewById(R.id.textView1);
+
+                v.setTag(holder);
+            } else {
+                holder = (NameSearch.ListContent) v.getTag();
+            }
+
+            holder.text.setText(title[position]);
+
+            return v;
+        }
+    }
+
+    static class ListContent {
+        TextView text;
+    }
 }

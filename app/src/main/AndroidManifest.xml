@@ -116,7 +116,6 @@
             android:exported="true" />
         <activity android:name=".resetPassword" />
         <activity android:name=".myQuestions" />
-        <activity android:name=".AdvancedSearch" />
         <activity
             android:name=".AdminActivity"
             android:exported="true" />
@@ -125,9 +124,14 @@
         <activity android:name=".EditLesson"></activity>
 
 
-        <activity android:name=".filterQuestions"></activity>
+        <activity android:name=".filterQuestions" />
+        
+        <activity android:name=".StudentActivity" />
+        <activity android:name=".adminBlackboard"></activity>
 
-        <activity android:name=".StudentActivity"></activity>
+
+
+
 
     </application>
 

@@ -13,13 +13,13 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class MyAdapterSearch extends ArrayAdapter<Instructor> {
+public class NotificationCancelAdapter extends ArrayAdapter<MessageCancel> {
 
     Activity activity;
     int resource;
-    List<Instructor> list;
+    List<MessageCancel> list;
 
-    public MyAdapterSearch(Activity activity, int resource, List<Instructor> list) {
+    public NotificationCancelAdapter(Activity activity, int resource, List<MessageCancel> list) {
         super(activity, resource,list);
         this.activity = activity;
         this.resource = resource;
@@ -34,17 +34,15 @@ public class MyAdapterSearch extends ArrayAdapter<Instructor> {
 
         View view = layoutInflater.inflate(resource,null);
 
-        TextView name = (TextView) view.findViewById(R.id.name);
-        TextView gender = (TextView) view.findViewById(R.id.gender);
-        TextView subject = (TextView) view.findViewById(R.id.subject);
-        TextView email = (TextView) view.findViewById(R.id.Email);
-
-        name.setText( " الاسم: " +list.get(position).firstName+' '+list.get( position ).lastName);
-        gender.setText( "الجنس:  " +list.get(position).getGender());
-        email.setText( "رقم الهاتف: " + list.get(position).getPhoneNum());
+        TextView date = (TextView) view.findViewById(R.id.date);
+        TextView content = (TextView) view.findViewById(R.id.content);
+        TextView time = (TextView) view.findViewById(R.id.time);
 
 
-        subject.setText( " المواد:  " +list.get(position).subjects.toString());
+        date.setText( " التاريخ: " +list.get(position).getDate());
+        content.setText( " الرسالة: " +list.get(position).getMessage());
+        time.setText( " الوقت: " +list.get(position).getTime());
+
 
 
 
