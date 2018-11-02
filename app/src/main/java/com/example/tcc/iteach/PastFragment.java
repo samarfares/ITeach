@@ -35,7 +35,7 @@ public class PastFragment  extends Fragment {
     FirebaseUser firebaseUser;
     ListView listView;
     ArrayList<String> list;
-    ArrayAdapter<String> adapter;
+    PastAdapter pastAdapter;
     Lesson lesson;
     String currentDateString;
     int i;
@@ -61,7 +61,8 @@ public class PastFragment  extends Fragment {
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
         list = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(getActivity(),R.layout.spot_info,R.id.listViewSpotInfoTime,list);
+
+        pastAdapter = new PastAdapter(getContext(),list);
 
 
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -109,7 +110,7 @@ public class PastFragment  extends Fragment {
                     }
                 }
             }
-                listView.setAdapter(adapter);
+                listView.setAdapter(pastAdapter);
             }
 
             @Override
