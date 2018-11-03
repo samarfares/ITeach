@@ -131,7 +131,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
                     saveCurrentDate = currentDate.format(calFordDate.getTime());
 
                     Calendar calFordTime = Calendar.getInstance();
-                    SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
                     saveCurrentTime = currentTime.format(calFordDate.getTime());
 
                     postRandomName = saveCurrentDate + saveCurrentTime;
