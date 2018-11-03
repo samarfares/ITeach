@@ -1,5 +1,6 @@
 package com.example.tcc.iteach;
 
+import android.accounts.NetworkErrorException;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -20,6 +21,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthInvalidUserException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -138,9 +143,32 @@ intent = new Intent(MainActivity.this, instructor_main.class );
                             //startActivity(new Intent(getApplicationContext(),instructor_main.class));
                         }
 
-                         else {
-                            progressDialog.dismiss();
-                            Toast.makeText(MainActivity.this, "فشل تسجيل الدخول ! " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        else if (!task.isSuccessful())
+                        {progressDialog.dismiss();
+                            // if  (((FirebaseAuthException) task.getException()).getErrorCode().equals(""));
+                            try{
+                                throw task.getException(); }
+
+
+                            catch (FirebaseAuthInvalidCredentialsException e){
+                                Toast.makeText(MainActivity.this, "كلمة المرور خاطئة ", Toast.LENGTH_LONG).show();
+
+                            }
+
+                            catch (FirebaseAuthInvalidUserException e){
+                                Toast.makeText(MainActivity.this, "هذا الحساب غير مسجل ", Toast.LENGTH_LONG).show();
+
+                            }
+                            catch(NetworkErrorException e){
+                                Toast.makeText(MainActivity.this, "تحقق من اتصالك بشبكة الانترنت أو حاول لاحقاًً", Toast.LENGTH_LONG).show();
+
+                            }
+                            catch (Exception e){
+                                Toast.makeText(MainActivity.this,"لقد حصل خطأ .. الرجاء المحاولة لاحقاً", Toast.LENGTH_LONG).show();
+
+                            }
+
+
                         }//else
                     }
 
