@@ -1,5 +1,6 @@
 package com.example.tcc.iteach;
 
+import android.accounts.NetworkErrorException;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -22,6 +23,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -230,9 +234,34 @@ buttonRegister2.setOnClickListener(this);
 
                 }
 
-                else {
-                    progressDialog.dismiss();
-                    Toast.makeText(SignUpStudentActivity.this, "لقد فشل تسجيل الحساب, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                else if (!task.isSuccessful())
+                {progressDialog.dismiss();
+                    // if  (((FirebaseAuthException) task.getException()).getErrorCode().equals(""));
+                    try{
+                        throw task.getException(); }
+                    catch (FirebaseAuthWeakPasswordException e){
+                        Toast.makeText(SignUpStudentActivity.this, "طول كلمة السر يجب أن يتعدى الخمس حروف ", Toast.LENGTH_LONG).show();
+
+                    }
+
+                    catch (FirebaseAuthInvalidCredentialsException e){
+                        Toast.makeText(SignUpStudentActivity.this, "البريد الالكتروني المزود غير صالح ", Toast.LENGTH_LONG).show();
+
+                    }
+
+                    catch (FirebaseAuthUserCollisionException e){
+                        Toast.makeText(SignUpStudentActivity.this, "هذا الحساب مسجل مسبقاً", Toast.LENGTH_LONG).show();
+
+                    }
+                    catch(NetworkErrorException e){
+                        Toast.makeText(SignUpStudentActivity.this, "تحقق من اتصالك بشبكة الانترنت أو حاول لاحقاًً", Toast.LENGTH_LONG).show();
+
+                    }
+                    catch (Exception e){
+                        Toast.makeText(SignUpStudentActivity.this,"لقد حصل خطأ .. الرجاء المحاولة لاحقاً", Toast.LENGTH_LONG).show();
+
+                    }
+
 
                 }//else
             }//oncomplete
