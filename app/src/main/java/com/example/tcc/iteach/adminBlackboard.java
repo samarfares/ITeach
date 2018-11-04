@@ -151,7 +151,7 @@ public class adminBlackboard extends AppCompatActivity {
                                             inputField.setAdapter(adapter2);
                                            // inputField.setText(model.description);
                                             builder.setView(inputField);
-                                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                            inputField.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                                                 @Override
                                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -2,6 +2,7 @@ package com.example.tcc.iteach;
 
 import android.Manifest;
 import android.accounts.Account;
+import android.accounts.NetworkErrorException;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -30,15 +31,24 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 //import com.google.firebase.storage.FirebaseStorage;
 //import com.google.firebase.storage.StorageReference;
 
@@ -91,7 +101,8 @@ FirebaseStorage storage;
 
     private String current_user_id;
 Uri pdfUri;
-
+    StorageReference storageReference;
+ProgressDialog progressDialog2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +136,7 @@ Uri pdfUri;
         buttonBrowse=(Button) findViewById(R.id.buttonBrowse2);
         //notification=(TextView) findViewById(R.id.notification);
 method=(Spinner)findViewById(R.id.method);
+storage=FirebaseStorage.getInstance();
 storage= FirebaseStorage.getInstance();
 database=FirebaseDatabase.getInstance();
         progressDialog =new ProgressDialog(this);
@@ -218,9 +230,10 @@ database=FirebaseDatabase.getInstance();
         if(requestCode==86 && resultCode==RESULT_OK && data!=null){
             Toast.makeText(SignUpInstructorActivity.this,"ameera 2" , Toast.LENGTH_LONG).show();
             pdfUri=data.getData();
+            textViewBrowse.setText("A file is selected "+ data.getData().getLastPathSegment());
         }
         else {
-            Toast.makeText(SignUpInstructorActivity.this,"الرجاء اختيار ملف jj",Toast.LENGTH_LONG).show();
+            Toast.makeText(SignUpInstructorActivity.this,"الرجاء اختيار ملف ",Toast.LENGTH_LONG).show();
         }
     }
 
@@ -296,7 +309,7 @@ database=FirebaseDatabase.getInstance();
             Toast.makeText(this, "فضلاً أدخل سعر الدرس", Toast.LENGTH_LONG).show();return;}
 
             if(pdfUri==null){
-                Toast.makeText(this, "فضلاً اختر ملفاً", Toast.LENGTH_LONG); }
+                Toast.makeText(this, "فضلاً أرفق سيرتك الذاتية", Toast.LENGTH_LONG).show();return; }
 // if validations are ok we register user
         intYearsOfExperience=Integer.parseInt(yearsOfExperience);
         longInstructorsPhoneNum=Long.parseLong(instructorsPhoneNum);
@@ -320,9 +333,29 @@ String userID = firebaseUser.getUid();
 
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
+                           StorageReference storageReference=storage.getReference("Instructors");
+                           storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
+//final String fileName = System.currentTimeMillis()+"";
+                            storageReference=storage.getReference();
+                            final StorageReference finalStorageReference = storageReference;
+                            storageReference.child(firebaseUser.getUid()).putFile(pdfUri).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                  String url = finalStorageReference.getDownloadUrl().toString();
+                                  databaseReference.child(firebaseUser.getUid()).child("Cv").setValue(url);
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(SignUpInstructorActivity.this, "فشل تحميل الملف", Toast.LENGTH_SHORT).show();
 
-                            StorageReference storageReference=storage.getReference();
-                            storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
+                                }
+                            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                }
+                            });
 
                           //  StorageReference storageReference=storage.getReference("Instructors");
                             //storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
@@ -347,8 +380,35 @@ String userID = firebaseUser.getUid();
                          startActivity(new Intent(getApplicationContext(),instructor_main.class));
                             }
 
-                        else {progressDialog.dismiss();
-                            Toast.makeText(SignUpInstructorActivity.this, "لقد فشل تسجيل الحساب, "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        else if (!task.isSuccessful())
+                            {progressDialog.dismiss();
+                            // if  (((FirebaseAuthException) task.getException()).getErrorCode().equals(""));
+                            try{
+                               throw task.getException(); }
+                            catch (FirebaseAuthWeakPasswordException e){
+                                Toast.makeText(SignUpInstructorActivity.this, "طول كلمة السر يجب أن يتعدى الخمس حروف ", Toast.LENGTH_LONG).show();
+
+                            }
+
+                            catch (FirebaseAuthInvalidCredentialsException e){
+                                Toast.makeText(SignUpInstructorActivity.this, "البريد الالكتروني المزود غير صالح ", Toast.LENGTH_LONG).show();
+
+                               }
+
+                            catch (FirebaseAuthUserCollisionException e){
+                                Toast.makeText(SignUpInstructorActivity.this, "هذا الحساب مسجل مسبقاً", Toast.LENGTH_LONG).show();
+
+                            }
+                            catch(NetworkErrorException e){
+                                Toast.makeText(SignUpInstructorActivity.this, "تحقق من اتصالك بشبكة الانترنت أو حاول لاحقاًً", Toast.LENGTH_LONG).show();
+
+                            }
+                            catch (Exception e){
+                                Toast.makeText(SignUpInstructorActivity.this,"لقد حصل خطأ .. الرجاء المحاولة لاحقاً", Toast.LENGTH_LONG).show();
+
+                            }
+
+
                              }//else
                     }//oncomplete
                 }); }

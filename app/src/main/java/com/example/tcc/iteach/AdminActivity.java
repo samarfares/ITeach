@@ -53,7 +53,7 @@ public class AdminActivity extends AppCompatActivity {
         subject.setOnClickListener(new View.OnClickListener()   {
             public void onClick(View v)  {
                 try {
-                    startActivity(new Intent(getApplicationContext(), InstructorActivity.class));
+                    startActivity(new Intent(getApplicationContext(), SubjectActivity.class));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -63,7 +63,7 @@ public class AdminActivity extends AppCompatActivity {
         blackboard.setOnClickListener(new View.OnClickListener()   {
             public void onClick(View v)  {
                 try {
-                    startActivity(new Intent(getApplicationContext(), InstructorActivity.class));
+                    startActivity(new Intent(getApplicationContext(), adminBlackboard.class));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
