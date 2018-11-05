@@ -74,12 +74,6 @@ public class answerAdmin extends AppCompatActivity {
                     protected void onBindViewHolder(@NonNull answerActivity.AnswersViewHolder holder, int position, @NonNull final Answers model) {
                         final String postKey = getRef(position).getKey();
                         databaseUserID = model.getUid();
-                        if (!currentUserId.equals(databaseUserID)) {
-                            holder.options2.setVisibility(View.INVISIBLE);
-                        }
-                        if (currentUserId.equals(databaseUserID)) {
-                            holder.options2.setVisibility(View.VISIBLE);
-                        }
                         if (!model.equals(null)) {
                             holder.setUsername(model.getUserName());
                             holder.setDate(model.getDate());

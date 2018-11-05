@@ -92,7 +92,7 @@ public class adminBlackboard extends AppCompatActivity {
                             holder.commentsButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent clickAnswersIntent = new Intent(adminBlackboard.this,answerActivity.class);
+                                    Intent clickAnswersIntent = new Intent(adminBlackboard.this,answerAdmin.class);
                                     clickAnswersIntent.putExtra("postkey",postKey);
                                     startActivity(clickAnswersIntent);
                                 }
