@@ -3,7 +3,7 @@
     package="com.example.tcc.iteach">
 
     <uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -124,11 +124,9 @@
         <activity android:name=".filterQuestions" />
         <activity android:name=".StudentActivity" />
         <activity android:name=".adminBlackboard" />
-
-        <activity android:name=".askActivity2"></activity>
-
-        <activity android:name=".SubjectActivity"></activity>
-
+        <activity android:name=".askActivity2" />
+        <activity android:name=".SubjectActivity" />
+        <activity android:name=".answerAdmin"></activity>
     </application>
 
 </manifest>
