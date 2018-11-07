@@ -29,6 +29,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:textSize="25sp"
+                android:textColor="@color/darkBlue"
                 android:text="تسجيل الأستاذ"
                 android:textAppearance="?android:attr/textAppearanceLarge"
 
@@ -40,6 +42,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
+                android:textSize="20sp"
+                android:textColor="@color/darkBlue"
                 android:textAlignment="center" />
 
 
@@ -48,6 +52,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:background="@color/darkPink"
+                android:textSize="15sp"
+                android:textColor="@color/white"
                 android:text="فضلاً اختر موقعك من الخارطة" />
 
             <EditText
@@ -79,6 +86,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:hint="فضلاً أدخل اسمك الأول" />
 
             <EditText
@@ -86,12 +95,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:hint="فضلاً أدخل اسم شهرتك" />
 
             <TextView
                 android:id="@+id/textViewDOB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً اختر تاريخ ميلادك" />
 
             <DatePicker
@@ -106,6 +119,8 @@
                 android:id="@+id/textViewGender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً اختر جنسك" />
 
             <RadioGroup
@@ -117,12 +132,16 @@
                     android:id="@+id/male"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20sp"
                     android:text="ذكر" />
 
                 <RadioButton
                     android:id="@+id/female"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/darkBlue"
+                    android:textSize="20sp"
                     android:text="أنثى" />
             </RadioGroup>
 
@@ -130,6 +149,8 @@
                 android:id="@+id/textViewSpecialty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً اختر تخصصاتك" />
 
 
@@ -158,6 +179,8 @@
                 android:id="@+id/textViewPayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً اختر طريقة الدفع المفضلة لديك" />
 
             <Spinner
@@ -169,6 +192,8 @@
                 android:id="@+id/textViewPlace"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً اختر مكان الدرس المناسب لك" />
 
             <Spinner
@@ -180,6 +205,8 @@
                 android:id="@+id/textViewMethod"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً اختر طريقة التعليم المناسبة لك" />
 
             <Spinner
@@ -191,15 +218,20 @@
                 android:id="@+id/textViewBrowse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:textColor="@color/darkBlue"
+                android:textSize="20sp"
                 android:text="فضلاً أرفق سيرتك الذاتية" />
 
 
 
             <Button
                 android:id="@+id/buttonBrowse2"
-                android:layout_width="60dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:textColor="@color/white"
+                android:background="@color/darkPink"
+                android:textSize="20sp"
                 android:text="اختر" />
 
 
@@ -208,6 +240,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
+                android:textColor="@color/white"
+                android:background="@color/darkPink"
+                android:textSize="20sp"
                 android:text="تسجيل الحساب" />
 
         </LinearLayout>
