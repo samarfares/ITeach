@@ -1,8 +1,16 @@
-<resources>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+    <resources>
+
+
+    <style parent="AppTheme.Base" name="AppTheme">
+
+    <item name="colorPrimary">@color/bg_login</item>
+
+    <item name="colorPrimaryDark">@color/two</item>
+
+    <item name="colorAccent">@color/colorAccent</item>
+
+</style>
+
 </resources>

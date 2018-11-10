@@ -1,21 +1,21 @@
-<resources>
+<?xml version="1.0"?>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
-        <item name="coordinatorLayoutStyle">@style/Widget.Support.CoordinatorLayout</item>
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-    </style>
+    <resources>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-    </style>
+    <style parent="AppTheme.Base" name="AppTheme"/>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style parent="Theme.AppCompat.Light.NoActionBar" name="AppTheme.Base">
+
+    <!-- Customize your theme here. -->
+
+
+    <item name="colorPrimary">@color/one</item>
+
+    <item name="colorPrimaryDark">@color/two</item>
+
+    <item name="colorAccent">@color/one</item>
+
+</style>
 
 </resources>

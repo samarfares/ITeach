@@ -1,6 +1,40 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#03a9f4</color>
-    <color name="colorPrimaryDark">#0288d1</color>
-    <color name="colorAccent">#FF4081</color>
+<?xml version="1.0" encoding="UTF-8"?>
+    <resources>
+
+    <color name="fourthorang"> #f97024</color>
+
+    <color name="colorAccent">#ce0000</color>
+
+    <color name="oneorang">#f68f00</color>
+
+    <color name="secondorang">#e36f00 </color>
+
+    <color name="threedorang">#ae7800</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+
+    <color name="colorPrimaryDark">#303F9F</color>
+
+    <color name="omar">#ffbc50</color>
+
+    <color name="one">#000000</color>
+
+    <color name="two">#e6f2ff</color>
+
+    <color name="fifth"> #39482e</color>
+
+    <color name="bg_login">#ce0000</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="btn">#f18722</color>
+
+    <color name="overlaybackground">#7f333963 </color>
+
+    <color name="black">#000</color>
+
+    <color name="yello50">#FFFDE7</color>
+
+    <color name="back">#2fc0ab</color>
+
 </resources>
