@@ -14,7 +14,6 @@ public class AdminActivity extends AppCompatActivity {
 
     Button instructor;
     Button student;
-    Button subject;
     Button blackboard;
 
     private Button buttonLogout;
@@ -49,21 +48,12 @@ public class AdminActivity extends AppCompatActivity {
                 }
             }
         });
-        subject =(Button) findViewById(R.id.subject);
-        subject.setOnClickListener(new View.OnClickListener()   {
-            public void onClick(View v)  {
-                try {
-                    startActivity(new Intent(getApplicationContext(), InstructorActivity.class));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+
         blackboard =(Button) findViewById(R.id.blackboard);
         blackboard.setOnClickListener(new View.OnClickListener()   {
             public void onClick(View v)  {
                 try {
-                    startActivity(new Intent(getApplicationContext(), InstructorActivity.class));
+                    startActivity(new Intent(getApplicationContext(), adminBlackboard.class));
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

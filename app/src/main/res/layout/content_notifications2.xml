@@ -7,25 +7,45 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".notifications2"
     tools:showIn="@layout/app_bar_student_main">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
     <LinearLayout
         android:id="@+id/container"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <ListView
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp"
+            android:layout_marginTop="60dp"
+
+            android:text="الأساتذة الجدد :"/>
+
+        <ListView
         android:id="@+id/list1"
-        android:layout_marginTop="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5"></ListView>
-    <ListView
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp"
+            android:text="الإلغاء :"/>
+
+        <ListView
         android:id="@+id/list2"
-        android:layout_marginTop="60dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="5"></ListView>
 
     </LinearLayout>
-
+  </ScrollView>
 
 </RelativeLayout>

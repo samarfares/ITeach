@@ -45,6 +45,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -135,6 +136,7 @@ ProgressDialog progressDialog2;
         buttonBrowse=(Button) findViewById(R.id.buttonBrowse2);
         //notification=(TextView) findViewById(R.id.notification);
 method=(Spinner)findViewById(R.id.method);
+storage=FirebaseStorage.getInstance();
 storage= FirebaseStorage.getInstance();
 database=FirebaseDatabase.getInstance();
         progressDialog =new ProgressDialog(this);
@@ -331,12 +333,15 @@ String userID = firebaseUser.getUid();
 
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
+                           StorageReference storageReference=storage.getReference("Instructors");
+                           storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
 //final String fileName = System.currentTimeMillis()+"";
                             storageReference=storage.getReference();
-                            storageReference.child(firebaseUser.getUid()).putFile(pdfUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            final StorageReference finalStorageReference = storageReference;
+                            storageReference.child(firebaseUser.getUid()).putFile(pdfUri).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                  String url = storageReference.getDownloadUrl().toString();
+                                  String url = finalStorageReference.getDownloadUrl().toString();
                                   databaseReference.child(firebaseUser.getUid()).child("Cv").setValue(url);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {

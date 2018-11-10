@@ -13,14 +13,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="110dp"
+        android:background="@mipmap/ic_launcher_round" />
     <TextView
+        android:id="@+id/textview2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textview3"
         android:layout_gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="تسجيل"
-
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/darkBlue"
+        android:textSize="25sp"
 
         />
 
@@ -28,6 +34,9 @@
         android:layout_margin="15dp"
         android:id="@+id/buttonSignUpInstructor"
         android:text="تسجيل أستاذ"
+        android:textSize="20sp"
+        android:background="@color/darkPink"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -35,6 +44,9 @@
         android:layout_margin="15dp"
         android:id="@+id/buttonSignupStudent"
         android:text="تسجيل طالب"
+        android:textSize="20sp"
+        android:background="@color/darkPink"
+        android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
@@ -42,6 +54,9 @@
         android:textAlignment="center"
         android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
         android:id="@+id/textViewSignIn"
+        android:textSize="20sp"
+        android:textColor="@color/darkBlue"
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

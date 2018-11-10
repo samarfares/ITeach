@@ -28,12 +28,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
-public class askActivity extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener {
+public class askActivity2 extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener {
 
     private Button publishButton;
     private EditText questionText;
@@ -41,21 +39,22 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
     private DatabaseReference UsersRef, PostsRef;
     private FirebaseAuth mAuth;
     Spinner spinner;
-  SpinnerAdapter adapter;
+    askActivity2.SpinnerAdapter adapter;
     String spinner_item;
     String[] title;
-  private   String subject;
+    private   String subject;
 
     private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_user_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ask);
+        setContentView(R.layout.activity_ask2);
+
         UsersRef = FirebaseDatabase.getInstance().getReference().child("users");
         mAuth = FirebaseAuth.getInstance();
         current_user_id = mAuth.getCurrentUser().getUid();
-        adapter= new SpinnerAdapter(getApplicationContext());
+        adapter= new askActivity2.SpinnerAdapter(getApplicationContext());
 
         title = getResources().getStringArray(R.array.specialty);
 
@@ -66,17 +65,6 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
         publishButton.setOnClickListener(this);
         spinner=(Spinner) findViewById(R.id.QuestionSpinner);
         spinner.setAdapter(adapter);
-      /*  List<String> list = new ArrayList<String>();
-        list.add("العربية");
-        list.add("الانكليزية");
-        list.add("الرياضيات");
-        list.add("الكيمياء");
-        list.add("الفيزياء");
-        list.add("الموسيقى");
-        list.add("الرقص");
-        list.add("الرسم");
-        list.add("الطبخ"); */
-       // spinner.setIte
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
@@ -91,7 +79,6 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
 
             }
         });
-
     }
 
     private void ValidatePostInfo() {
@@ -110,7 +97,6 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
             SavingPostInformationToDatabase();
         }
     }
-
 
     private void SavingPostInformationToDatabase() {
 
@@ -153,10 +139,10 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
                                 public void onComplete(@NonNull Task task) {
                                     if (task.isSuccessful()) {
                                         //  SendUserToMainActivity();
-                                        Toast.makeText(askActivity.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(askActivity2.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
                                         //  loadingBar.dismiss();
                                     } else {
-                                        Toast.makeText(askActivity.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(askActivity2.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
                                         // loadingBar.dismiss();
                                     }
                                 }
@@ -189,9 +175,8 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         if(v == publishButton)
             ValidatePostInfo();
-        startActivity(new Intent(this, blackboard.class));
+        startActivity(new Intent(this, blackboard2.class));
     }
-
 
     public class SpinnerAdapter extends BaseAdapter {
         Context context;
@@ -242,4 +227,6 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
     static class ListContent {
         TextView text;
     }
+
+
 }

@@ -6,68 +6,91 @@
     android:layout_height="match_parent"
     tools:context="com.example.tcc.iteach.MainActivity">
 
-   <LinearLayout
-       android:layout_centerHorizontal="true"
-       android:layout_centerVertical="true"
-android:orientation="vertical"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:id="@+id/textview2"
-           android:layout_gravity="center_horizontal"
-           android:textAppearance="?android:attr/textAppearanceLarge"
-           android:text="تسجيل الدخول"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="79dp"
+        tools:ignore="MissingConstraints">
 
 
-           />
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginLeft="110dp"
+            android:background="@mipmap/ic_launcher_round" />
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="تسجيل الدخول"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/darkBlue"
+            android:textSize="25sp"
 
 
+            />
 
 
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:hint="فضلاً أدخل الايميل"
+            android:inputType="textEmailAddress"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+
+            android:hint="فضلاً أدخل كلمة المرور"
+            android:inputType="textPassword"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp" />
 
 
+        <Button
+            android:id="@+id/buttonSignin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:background="@color/darkPink"
+            android:text="تسجيل الدخول"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
 
-       <EditText
-           android:layout_margin="15dp"
-           android:inputType="textEmailAddress"
-           android:hint="فضلاً أدخل الايميل"
-           android:id="@+id/editTextEmail"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/textViewSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ليس لديك حساب؟؟ اضغط هنا "
+            android:textAlignment="center"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp" />
 
-       <EditText
-           android:layout_margin="15dp"
-           android:inputType="textPassword"
-           android:hint="فضلاً أدخل كلمة المرور"
-           android:id="@+id/editTextPassword"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/forgetpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
 
-
-       <Button
-           android:layout_margin="15dp"
-           android:id="@+id/buttonSignin"
-           android:text="تسجيل الدخول"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
-
-       <TextView
-           android:textAlignment="center"
-           android:text="ليس لديك حساب؟؟ اضغط هنا "
-           android:id="@+id/textViewSignUp"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
-
-       <TextView
-           android:textAlignment="center"
-           android:layout_margin="15dp"
-           android:text="هل نسيت كلمة السر؟؟ اضغط هنا "
-           android:id="@+id/forgetpassword"
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content" />
-   </LinearLayout>
+            android:text="هل نسيت كلمة السر؟؟ اضغط هنا "
+            android:textAlignment="center"
+            android:textColor="@color/darkBlue"
+            android:textSize="20sp" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

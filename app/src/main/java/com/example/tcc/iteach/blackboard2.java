@@ -354,7 +354,7 @@ public class blackboard2 extends AppCompatActivity
     public void onClick(View v) {
         if(v==askButton ){
             finish();
-            Intent addNewPostIntent = new Intent(blackboard2.this, askActivity.class);
+            Intent addNewPostIntent = new Intent(blackboard2.this, askActivity2.class);
             startActivity(addNewPostIntent);
         }
         if(v==my ){
