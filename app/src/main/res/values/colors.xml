@@ -1,10 +1,9 @@
-<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
     <resources>
 
     <color name="fourthorang"> #f97024</color>
 
-    <color name="colorAccent">#ce0000</color>
+    <color name="colorAccent">#1fabcb</color>
 
     <color name="oneorang">#f68f00</color>
 
@@ -12,9 +11,9 @@
 
     <color name="threedorang">#ae7800</color>
 
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#1fabcb</color>
 
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimaryDark">#1fabcb</color>
 
     <color name="omar">#ffbc50</color>
 
@@ -39,19 +38,3 @@
     <color name="back">#2fc0ab</color>
 
 </resources>
-=======
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#03a9f4</color>
-    <color name="colorPrimaryDark">#0288d1</color>
-    <color name="colorAccent">#FF4081</color>
-
-
-    <color name="blue">#1fabcb</color>
-    <color name="lightPink">#FFC3C3</color>
-    <color name="darkPink">#d87e7e</color>
-    <color name="darkBlue">#437097</color>
-    <color name="white">#FFFFFF</color>
-
-</resources>
->>>>>>> afbdf832479d3b65c1d667ec8b60167404f78a78

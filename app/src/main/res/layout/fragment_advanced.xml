@@ -21,7 +21,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="20dp"
-                android:textColor="@color/darkBlue"
                 android:textSize="20sp"
                 android:text="يمكنك اختيار أي فئة للبحث أو يمكنك الجمع بينها"
                 android:textStyle="bold" />
@@ -33,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:text="بالقرب من "
-                android:background="@color/darkPink"
                 android:textColor="@color/white"
                 android:drawableLeft="@drawable/locationpin"
                 android:textStyle="bold"
@@ -50,7 +48,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="الجنس"
-                android:textColor="@color/darkBlue"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -65,7 +62,6 @@
                     android:id="@+id/radioMale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/darkBlue"
 
                     android:text="ذكر" />
 
@@ -73,7 +69,6 @@
                     android:id="@+id/radioFemale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/darkBlue"
 
                     android:text="أنثى" />
 
@@ -98,7 +93,6 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="30dp"
                 android:text="المواد:"
-                android:textColor="@color/darkBlue"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -113,7 +107,6 @@
                 android:id="@+id/button1"
                 android:layout_width="354dp"
                 android:layout_height="wrap_content"
-                android:background="@color/darkPink"
                 android:textColor="@color/white"
                 android:layout_marginTop="30dp"
                 android:text="بحث"

@@ -1,21 +1,18 @@
 <?xml version="1.0"?>
 
-    <resources>
+<resources>
+    <style name="AppTheme" parent="AppTheme.Base"></style>
 
-    <style parent="AppTheme.Base" name="AppTheme"/>
+    <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/one</item>
+        <item name="colorPrimaryDark">@color/two</item>
+        <item name="colorAccent">@color/one</item>
 
+    </style>
 
-    <style parent="Theme.AppCompat.Light.NoActionBar" name="AppTheme.Base">
+    <style name="AppTheme.AppBarOverlay"></style>
 
-    <!-- Customize your theme here. -->
-
-
-    <item name="colorPrimary">@color/one</item>
-
-    <item name="colorPrimaryDark">@color/two</item>
-
-    <item name="colorAccent">@color/one</item>
-
-</style>
+    <style name="AppTheme.PopupOverlay"></style>
 
 </resources>

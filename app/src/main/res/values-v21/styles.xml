@@ -3,14 +3,11 @@
     <resources>
 
 
-    <style parent="AppTheme.Base" name="AppTheme">
+    <style name="AppTheme" parent="AppTheme.Base">
 
-    <item name="colorPrimary">@color/bg_login</item>
-
-    <item name="colorPrimaryDark">@color/two</item>
-
-    <item name="colorAccent">@color/colorAccent</item>
-
-</style>
+        <item name="colorPrimary">#1fabcb</item>
+        <item name="colorPrimaryDark">#1fabcb</item>
+        <item name="colorAccent">#1fabcb</item>
+    </style>
 
 </resources>

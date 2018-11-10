@@ -1,0 +1,16 @@
+<layer-list
+    xmlns:andriod="http://schemas.android.com/apk/res/android">
+<item
+    >
+    <shape
+        andriod:shape="oval">
+        <solid andriod:color="#ffffff"/>
+        <corners andriod:radius="20dp"/>
+        <size andriod:width="120dp" andriod:height="120dp"/>
+
+
+    </shape>
+
+</item>
+
+</layer-list>

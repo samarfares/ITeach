@@ -36,7 +36,6 @@
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="120dp"
                     android:text="أهلا بك"
-                    android:textColor="@color/darkBlue"
                     android:textSize="25sp" />
 
 
@@ -56,7 +55,6 @@
                         android:layout_marginTop="10sp"
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
-                        android:background="@color/darkPink"
                         android:padding="5dp"
                         android:scaleType="fitXY"
 
@@ -75,7 +73,6 @@
                         android:layout_marginTop="10sp"
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
-                        android:background="@color/darkPink"
                         android:padding="5dp"
                         android:scaleType="fitXY"
                         android:text="الطلاب"
@@ -100,7 +97,6 @@
 
                         android:layout_weight="1"
                         android:adjustViewBounds="true"
-                        android:background="@color/darkPink"
                         android:padding="5dp"
                         android:scaleType="fitXY"
                         android:text="منصة الأسئلة"
@@ -132,7 +128,6 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-android:background="@color/darkPink"
             android:layout_gravity="center_horizontal"
             android:fontFamily="sans-serif"
             android:text="تسجيل الخروج"

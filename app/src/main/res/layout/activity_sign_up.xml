@@ -25,7 +25,6 @@
         android:layout_gravity="center_horizontal"
         android:text="تسجيل"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/darkBlue"
         android:textSize="25sp"
 
         />
@@ -34,8 +33,8 @@
         android:layout_margin="15dp"
         android:id="@+id/buttonSignUpInstructor"
         android:text="تسجيل أستاذ"
+        android:background="@drawable/buttonshape"
         android:textSize="20sp"
-        android:background="@color/darkPink"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -45,7 +44,7 @@
         android:id="@+id/buttonSignupStudent"
         android:text="تسجيل طالب"
         android:textSize="20sp"
-        android:background="@color/darkPink"
+        android:background="@drawable/buttonshape"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -55,7 +54,6 @@
         android:text="لديك حساب مسبقاُ؟؟ اضغط هنا"
         android:id="@+id/textViewSignIn"
         android:textSize="20sp"
-        android:textColor="@color/darkBlue"
 
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />

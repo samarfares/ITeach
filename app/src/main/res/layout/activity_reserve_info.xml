@@ -2,15 +2,15 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#e6f2ff"
     tools:context=".ReserveInfo">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-
         <LinearLayout
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
@@ -18,87 +18,281 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
-                android:text="Instructor name"
-                android:textSize="25sp"
-                android:id="@+id/text_view_reserve"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
 
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_1"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    app:cardElevation="20dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#1fabcb"
+                    app:cardCornerRadius="20dp">
 
-            <TextView
-                android:text="اختر المادة"
-                android:layout_marginTop="25dp"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:id="@+id/text_view_reserve1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/spinner_reserve1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"/>
+                    <TextView
 
-
-            <TextView
-                android:text="اختر طريقة الدفع"
-                android:layout_marginTop="20dp"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:id="@+id/text_view_reserve2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/spinner_reserve2"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"/>
+                        android:id="@+id/text_view_reserve"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Instructor name"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold|italic"
+                        android:textSize="25sp"
+                        />
 
 
 
-            <TextView
-                android:text="اختر مكان الدرس"
-                android:layout_marginTop="20dp"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:id="@+id/text_view_reserve3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/spinner_reserve3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"/>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_1"
+                    app:cardElevation="4dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="4dp"
+                    android:layout_alignParentRight="true"
+                    >
+
+                    <RelativeLayout
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+
+
+                            android:id="@+id/text_view_reserve1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1fabcb"
+                            android:text="قم باختيار المادة : "
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:padding="14dp"
+                            />
+                        <Spinner
+                            android:id="@+id/spinner_reserve1"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:spinnerMode="dropdown"
+                            android:layout_below="@+id/text_view_reserve1"
+                            android:textDirection="rtl"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
 
 
 
-            <TextView
-                android:text="اختر طريقة التدريس"
-                android:layout_marginTop="20dp"
-                android:layout_margin="10dp"
-                android:textSize="20sp"
-                android:id="@+id/text_view_reserve4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/spinner_reserve4"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dropdown"/>
 
 
-            <Button
-                android:id="@+id/button_continue_reserve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="استمرار"
-                android:layout_gravity="center"
-                android:layout_marginVertical="20dp"
-                />
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_2"
+                    app:cardElevation="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:backgroundTint="#e0e0d1"
+                    app:cardCornerRadius="4dp"
+                    android:layout_alignParentRight="true"
+                    >
+
+                    <RelativeLayout
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+
+
+                            android:id="@+id/text_view_reserve2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1fabcb"
+                            android:text="قم باختيار طريقة الدفع :"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:padding="14dp"
+                            />
+                        <Spinner
+                            android:id="@+id/spinner_reserve2"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:spinnerMode="dropdown"
+                            android:layout_below="@+id/text_view_reserve2"
+                            android:textDirection="rtl"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            />
+
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_3"
+                    app:cardElevation="4dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="4dp"
+                    android:layout_alignParentRight="true"
+                    >
+
+                    <RelativeLayout
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+
+
+                            android:id="@+id/text_view_reserve3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1fabcb"
+                            android:text="قم باختيار مكان الدرس :"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:padding="14dp"
+                            />
+                        <Spinner
+                            android:id="@+id/spinner_reserve3"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:spinnerMode="dropdown"
+                            android:layout_below="@+id/text_view_reserve3"
+                            android:textDirection="rtl"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            />
+
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_4"
+                    app:cardElevation="12dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:backgroundTint="#e0e0d1"
+                    app:cardCornerRadius="4dp"
+                    android:layout_alignParentRight="true"
+                    >
+
+                    <RelativeLayout
+                        android:layout_margin="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <TextView
+
+
+                            android:id="@+id/text_view_reserve4"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="#1fabcb"
+                            android:text="قم باختيار مكان الدرس :"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:padding="14dp"
+                            />
+                        <Spinner
+                            android:id="@+id/spinner_reserve4"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:spinnerMode="dropdown"
+                            android:layout_below="@+id/text_view_reserve4"
+                            android:textDirection="rtl"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            />
+
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+                <Button
+                    android:id="@+id/button_continue_reserve"
+                    android:layout_width="150dp"
+                    android:layout_height="30dp"
+                    android:text="استمرار"
+                    android:layout_below="@+id/card_5"
+                    android:background="@drawable/buttonshape"
+                    android:textAlignment="center"
+                    android:textStyle="bold|italic"
+                    android:textSize="13dp"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginBottom="4dp"
+                    />
+
+
+            </RelativeLayout>
+
+
         </LinearLayout>
 
+
+
+
+
     </ScrollView>
+
 
 </android.support.constraint.ConstraintLayout>
