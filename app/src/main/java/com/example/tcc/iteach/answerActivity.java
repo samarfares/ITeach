@@ -104,7 +104,7 @@ public class answerActivity extends AppCompatActivity {
             final String saveCurrentDate = currentDate.format(calFordDate.getTime());
 
             Calendar calFordTime = Calendar.getInstance();
-            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
+            SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
             final String saveCurrentTime = currentTime.format(calFordDate.getTime());
 
             final String RandomKey = currentUserID + saveCurrentDate + saveCurrentTime;
@@ -150,7 +150,7 @@ public class answerActivity extends AppCompatActivity {
                             holder.setUsername(model.getUserName());
                             holder.setDate(model.getDate());
                             holder.setComment(model.getComment());
-                            holder.setTime(model.getTime());
+                        //    holder.setTime(model.getTime());
                             holder.setLikeButtonStatus(postKey);
                             holder.likeButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
@@ -193,7 +193,7 @@ public class answerActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(View v) {
                                             postRef.child(postKey).removeValue();
-                                            Toast.makeText(answerActivity.this, "تم حذف الجواب بنجاح", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(answerActivity.this, "تم حذف السؤال بنجاح", Toast.LENGTH_SHORT).show();
                                             dialog5.cancel();
                                         }
                                     });
@@ -222,7 +222,7 @@ public class answerActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                    postRef.child(postKey).child("description").setValue(inputField.getText().toString());
-                                                    Toast.makeText(answerActivity.this,"تم تعديل الجواب" ,Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(answerActivity.this,"تم تعديل السؤال" ,Toast.LENGTH_SHORT).show();
                                                     dialog5.cancel();
                                                 }
                                             }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
@@ -327,10 +327,10 @@ public class answerActivity extends AppCompatActivity {
             answerdate.setText(date);
         }
 
-        public void setTime(String time) {
+       /* public void setTime(String time) {
             TextView answerTime = (TextView) mView.findViewById(R.id.AnsweerTime);
             answerTime.setText(time);
-        }
+        }  */
 
         public void setUsername(String username) {
             TextView answerUserName = (TextView) mView.findViewById(R.id.AnswerUserName);

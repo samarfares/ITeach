@@ -1,5 +1,7 @@
 package com.example.tcc.iteach;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -31,8 +33,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-public class askActivity2 extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener {
 
+
+public class askActivity2 extends AppCompatActivity implements View.OnClickListener,AdapterView.OnItemSelectedListener  {
     private Button publishButton;
     private EditText questionText;
     String Description;
@@ -46,11 +49,11 @@ public class askActivity2 extends AppCompatActivity implements View.OnClickListe
 
     private String saveCurrentDate, saveCurrentTime, postRandomName, downloadUrl, current_user_id;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ask2);
-
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_ask2 );
         UsersRef = FirebaseDatabase.getInstance().getReference().child("users");
         mAuth = FirebaseAuth.getInstance();
         current_user_id = mAuth.getCurrentUser().getUid();
@@ -78,82 +81,83 @@ public class askActivity2 extends AppCompatActivity implements View.OnClickListe
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
-        });
-    }
-
-    private void ValidatePostInfo() {
-        Description = questionText.getText().toString();
+        }); }
+        private void ValidatePostInfo() {
+            Description = questionText.getText().toString();
 
 
-        if (TextUtils.isEmpty(Description)) {
-            Toast.makeText(this, "من فضلك ادخل نص السؤال اولا", Toast.LENGTH_SHORT).show();
-        } else {
-            //  loadingBar.setTitle("Add New Post");
-            // loadingBar.setMessage("Please wait, while we are updating your new post...");
-            // loadingBar.show();
-            // loadingBar.setCanceledOnTouchOutside(true);
+            if (TextUtils.isEmpty(Description)) {
+                Toast.makeText(this, "من فضلك ادخل نص السؤال اولا", Toast.LENGTH_SHORT).show();
+            } else {
+                //  loadingBar.setTitle("Add New Post");
+                // loadingBar.setMessage("Please wait, while we are updating your new post...");
+                // loadingBar.show();
+                // loadingBar.setCanceledOnTouchOutside(true);
 
-            //  StoringImageToFirebaseStorage();
-            SavingPostInformationToDatabase();
+                //  StoringImageToFirebaseStorage();
+                SavingPostInformationToDatabase();
+            }
         }
-    }
 
-    private void SavingPostInformationToDatabase() {
+        private void SavingPostInformationToDatabase() {
 
-        ArrayAdapter<CharSequence> specialtyAdapter = ArrayAdapter.createFromResource(this, R.array.specialty, android.R.layout.simple_spinner_item);
-        specialtyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        // subjectSpinner.setAdapter(specialtyAdapter);
-        //  subjectSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
-        UsersRef.child(current_user_id).addValueEventListener(new ValueEventListener() {
+            ArrayAdapter<CharSequence> specialtyAdapter = ArrayAdapter.createFromResource(this, R.array.specialty, android.R.layout.simple_spinner_item);
+            specialtyAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            // subjectSpinner.setAdapter(specialtyAdapter);
+            //  subjectSpinner.setOnItemClickListener((AdapterView.OnItemClickListener) this);
+            UsersRef.child(current_user_id).addValueEventListener(new ValueEventListener() {
 
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()) {
-                    String userFullName = dataSnapshot.child("fullname").getValue().toString();
-                    //  String userProfileImage = dataSnapshot.child("profileimage").getValue().toString();
-                    System.out.print("after listening");
-                    Calendar calFordDate = Calendar.getInstance();
-                    SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
-                    saveCurrentDate = currentDate.format(calFordDate.getTime());
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String userFullName = dataSnapshot.child("fullname").getValue().toString();
+                        //  String userProfileImage = dataSnapshot.child("profileimage").getValue().toString();
+                        System.out.print("after listening");
+                        Calendar calFordDate = Calendar.getInstance();
+                        SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");
+                        saveCurrentDate = currentDate.format(calFordDate.getTime());
 
-                    Calendar calFordTime = Calendar.getInstance();
-                    SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
-                    saveCurrentTime = currentTime.format(calFordDate.getTime());
+                        Calendar calFordTime = Calendar.getInstance();
+                        SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
+                        saveCurrentTime = currentTime.format(calFordDate.getTime());
 
-                    postRandomName = saveCurrentDate + saveCurrentTime;
+                        postRandomName = saveCurrentDate + saveCurrentTime;
 
-                    HashMap postsMap = new HashMap();
-                    postsMap.put("uid", current_user_id);
-                    postsMap.put("date", saveCurrentDate);
-                    postsMap.put("time", saveCurrentTime);
-                    postsMap.put("description", Description);
-                    postsMap.put("subject",subject);
-                    // postsMap.put("postimage", downloadUrl);
-                    // postsMap.put("profileimage", userProfileImage);
+                        HashMap postsMap = new HashMap();
+                        postsMap.put("uid", current_user_id);
+                        postsMap.put("date", saveCurrentDate);
+                        postsMap.put("time", saveCurrentTime);
+                        postsMap.put("description", Description);
+                        postsMap.put("subject",subject);
+                        // postsMap.put("postimage", downloadUrl);
+                        // postsMap.put("profileimage", userProfileImage);
 
-                    postsMap.put("fullname", userFullName);
-                    PostsRef.child(current_user_id + postRandomName).updateChildren(postsMap)
-                            .addOnCompleteListener(new OnCompleteListener() {
+                        postsMap.put("fullname", userFullName);
+                        PostsRef.child(current_user_id + postRandomName).updateChildren(postsMap)
+                                .addOnCompleteListener(new OnCompleteListener() {
 
-                                @Override
-                                public void onComplete(@NonNull Task task) {
-                                    if (task.isSuccessful()) {
-                                        //  SendUserToMainActivity();
-                                        Toast.makeText(askActivity2.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
-                                        //  loadingBar.dismiss();
-                                    } else {
-                                        Toast.makeText(askActivity2.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
-                                        // loadingBar.dismiss();
+                                    @Override
+                                    public void onComplete(@NonNull Task task) {
+                                        if (task.isSuccessful()) {
+                                            //  SendUserToMainActivity();
+                                            Toast.makeText(askActivity2.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                            //  loadingBar.dismiss();
+                                        } else {
+                                            Toast.makeText(askActivity2.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
+                                            // loadingBar.dismiss();
+                                        }
                                     }
-                                }
-                            });
+                                });
+                    }
                 }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    System.out.print("فشلت الاضافة");
+
+
             }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                System.out.print("فشلت الاضافة");
-            }
         });
     }
 
@@ -171,62 +175,64 @@ public class askActivity2 extends AppCompatActivity implements View.OnClickListe
 
     }
 
+
     @Override
     public void onClick(View v) {
-        if(v == publishButton)
-            ValidatePostInfo();
-        startActivity(new Intent(this, blackboard2.class));
+            if(v == publishButton)
+                ValidatePostInfo();
+            startActivity(new Intent(this, blackboard2.class));
+
     }
 
-    public class SpinnerAdapter extends BaseAdapter {
-        Context context;
-        private LayoutInflater mInflater;
+public class SpinnerAdapter extends BaseAdapter {
+    Context context;
+    private LayoutInflater mInflater;
 
-        public SpinnerAdapter(Context context) {
-            this.context = context;
-        }
-
-        @Override
-        public int getCount() {
-            return title.length;
-        }
-
-        @Override
-        public Object getItem(int position) {
-            return position;
-        }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            final NameSearch.ListContent holder;
-            View v = convertView;
-            if (v == null) {
-                mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-                v = mInflater.inflate(R.layout.row_edittext, null);
-                holder = new NameSearch.ListContent();
-                holder.text = (TextView) v.findViewById(R.id.textView1);
-
-                v.setTag(holder);
-            } else {
-                holder = (NameSearch.ListContent) v.getTag();
-            }
-
-            holder.text.setText(title[position]);
-
-            return v;
-        }
+    public SpinnerAdapter(Context context) {
+        this.context = context;
     }
 
-    static class ListContent {
-        TextView text;
+    @Override
+    public int getCount() {
+        return title.length;
     }
+
+    @Override
+    public Object getItem(int position) {
+        return position;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        final NameSearch.ListContent holder;
+        View v = convertView;
+        if (v == null) {
+            mInflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
+            v = mInflater.inflate(R.layout.row_edittext, null);
+            holder = new NameSearch.ListContent();
+            holder.text = (TextView) v.findViewById(R.id.textView1);
+
+            v.setTag(holder);
+        } else {
+            holder = (NameSearch.ListContent) v.getTag();
+        }
+
+        holder.text.setText(title[position]);
+
+        return v;
+    }
+}
+
+static class ListContent {
+    TextView text;
+}
 
 
 }

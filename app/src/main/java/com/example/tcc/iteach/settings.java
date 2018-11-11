@@ -1,5 +1,18 @@
 package com.example.tcc.iteach;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -39,8 +52,11 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import com.google.firebase.auth.FirebaseAuth;
+
 public class settings extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener , AdapterView.OnItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener , AdapterView.OnItemSelectedListener  {
     Instructor instructor1;
     FirebaseAuth firebaseAuth;
     TextView FN1,LN1,Dob1,Email1,Gender1,subjects1,lessonPlace,lessonPrice,teachingMethod,paymentMethod1,phoneNum,yoe,likes;
@@ -55,7 +71,7 @@ public class settings extends AppCompatActivity
     private Spinner specialtySpinner1 , paymentSpinner1, placeSpinner1 , method1;
 
     String firstName,lastName,birth,email,gender,subject,lessonPl,lessonPri,teachingMeth,paymentMeth,phoneNumber,yoe1,likes1;
-Double newPrice;
+    Double newPrice;
     String  instructorEmail2, instructorPassword2 , firstName2, lastName2  , gender2, date2 , yearsOfExperience2 , instructorsPhoneNum2 , chosenString2, priceString2 ,   chosenPaymentMethod2,chosenPlace2 , chosenMethod2;
 
     long longInstructorsPhoneNum;
@@ -67,19 +83,15 @@ Double newPrice;
     String location1;
 
     List<String> chosen2 = new ArrayList<String>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_settings2);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth = FirebaseAuth.getInstance();
-        mAuth = FirebaseAuth.getInstance();
-        currentUserId = mAuth.getCurrentUser().getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Instructors").child(currentUserId);
-        databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Instructors").child(currentUserId);
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +110,27 @@ Double newPrice;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        currentUserId = mAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Instructors").child(currentUserId);
+        databaseReference2 = FirebaseDatabase.getInstance().getReference().child("Instructors").child(currentUserId);
+
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
+*/
+
+
+
 
         FN1 = (TextView) findViewById(R.id.InstructorFN);
         LN1 = (TextView) findViewById(R.id.InstructorLN);
@@ -136,23 +169,23 @@ Double newPrice;
                     birth = dataSnapshot.child("dob").getValue().toString();
                     email = dataSnapshot.child("email").getValue().toString();
                     gender = dataSnapshot.child("gender").getValue().toString();
-                      subject = dataSnapshot.child("subjects").getValue().toString();
-                      lessonPl = dataSnapshot.child("lessonsPlace").getValue().toString();
-                     lessonPri = dataSnapshot.child("lessonsPrice").getValue().toString();
+                    subject = dataSnapshot.child("subjects").getValue().toString();
+                    lessonPl = dataSnapshot.child("lessonsPlace").getValue().toString();
+                    lessonPri = dataSnapshot.child("lessonsPrice").getValue().toString();
                     teachingMeth = dataSnapshot.child("teachingMethod").getValue().toString();
                     paymentMeth = dataSnapshot.child("paymentMethod").getValue().toString();
                     phoneNumber = dataSnapshot.child("phoneNum").getValue().toString();
                     yoe1 = dataSnapshot.child("yoe").getValue().toString();
                     likes1 = dataSnapshot.child("likes").getValue().toString();
- location1 = dataSnapshot.child("location").getValue().toString();
+                    location1 = dataSnapshot.child("location").getValue().toString();
                     FN1.setText(firstName);
                     LN1.setText(lastName);
                     Dob1.setText(birth);
                     Email1.setText(email);
                     Gender1.setText(gender);
-                     subjects1.setText(subject);
-                      lessonPlace.setText(lessonPl);
-                      lessonPrice.setText(lessonPri);
+                    subjects1.setText(subject);
+                    lessonPlace.setText(lessonPl);
+                    lessonPrice.setText(lessonPri);
                     teachingMethod.setText(teachingMeth);
                     paymentMethod1.setText(paymentMeth);
                     phoneNum.setText(phoneNumber);
@@ -287,7 +320,7 @@ Double newPrice;
                 RadioButton Ma = new RadioButton(settings.this);
                 fe.setText("أنثى");
                 Ma.setText("ذكر");
-radioGroupGender2.addView(fe,0);
+                radioGroupGender2.addView(fe,0);
                 radioGroupGender2.addView(Ma,1);
                 builder.setView(radioGroupGender2);
                 int radioId= radioGroupGender2.getCheckedRadioButtonId();
@@ -334,10 +367,10 @@ radioGroupGender2.addView(fe,0);
                 builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                       // databaseReference.child("subjects").setValue(chosen2);
+                        // databaseReference.child("subjects").setValue(chosen2);
                         newPrice=Double.parseDouble(lessonPl);
-                    //    instructor1 = new Instructor (firstName,lastName,birth,gender,location1,longInstructorsPhoneNum, intYearsOfExperience,newPrice,0,0,0 ,paymentMeth, lessonPl , teachingMeth , email, chosen2 , currentUserId );
-                     //   databaseReference2.setValue(instructor1);
+                        //    instructor1 = new Instructor (firstName,lastName,birth,gender,location1,longInstructorsPhoneNum, intYearsOfExperience,newPrice,0,0,0 ,paymentMeth, lessonPl , teachingMeth , email, chosen2 , currentUserId );
+                        //   databaseReference2.setValue(instructor1);
                         databaseReference.child("subjects").setValue(chosen2);
                         Toast.makeText(settings.this, "تم تعديل المواد", Toast.LENGTH_SHORT).show();
                     }
@@ -557,6 +590,7 @@ radioGroupGender2.addView(fe,0);
 
 
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -629,15 +663,6 @@ radioGroupGender2.addView(fe,0);
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(parent==paymentSpinner1)
-            chosenPaymentMethod2 = parent.getItemAtPosition(position).toString();
-
-
-        if(parent==placeSpinner1)
-            chosenPlace2= parent.getItemAtPosition(position).toString();
-
-        if(parent==method1)
-            chosenMethod2= parent.getItemAtPosition(position).toString();
 
     }
 

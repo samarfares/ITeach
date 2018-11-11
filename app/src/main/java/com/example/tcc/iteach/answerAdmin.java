@@ -1,5 +1,7 @@
 package com.example.tcc.iteach;
 
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -25,6 +27,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+
 public class answerAdmin extends AppCompatActivity {
     private RecyclerView answersList;
     private ImageButton answerButton,my;
@@ -41,10 +44,11 @@ public class answerAdmin extends AppCompatActivity {
     private  String currentUserId,databaseUserID;
     Dialog dialog5;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_answer_admin);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_answer_admin );
         post_key = getIntent().getExtras().get("postkey").toString();
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
@@ -60,6 +64,7 @@ public class answerAdmin extends AppCompatActivity {
         linearLayoutManager.setReverseLayout(true);
         linearLayoutManager.setStackFromEnd(true);
         answersList.setLayoutManager(linearLayoutManager);
+
     }
 
     @Override
@@ -78,7 +83,7 @@ public class answerAdmin extends AppCompatActivity {
                             holder.setUsername(model.getUserName());
                             holder.setDate(model.getDate());
                             holder.setComment(model.getComment());
-                            holder.setTime(model.getTime());
+                            //  holder.setTime(model.getTime());
                             holder.setLikeButtonStatus(postKey);
 
 
@@ -228,10 +233,10 @@ public class answerAdmin extends AppCompatActivity {
             answerdate.setText(date);
         }
 
-        public void setTime(String time) {
+      /*  public void setTime(String time) {
             TextView answerTime = (TextView) mView.findViewById(R.id.AnsweerTime);
             answerTime.setText(time);
-        }
+        } */
 
         public void setUsername(String username) {
             TextView answerUserName = (TextView) mView.findViewById(R.id.AnswerUserName);

@@ -52,8 +52,6 @@ Intent intent;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         firebaseAuth =FirebaseAuth.getInstance();
 
 

@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".answerAdmin">
-
     <TextView
         android:id="@+id/answers"
         android:layout_width="match_parent"

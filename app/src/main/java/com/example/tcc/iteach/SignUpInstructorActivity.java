@@ -45,7 +45,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -136,7 +135,6 @@ ProgressDialog progressDialog2;
         buttonBrowse=(Button) findViewById(R.id.buttonBrowse2);
         //notification=(TextView) findViewById(R.id.notification);
 method=(Spinner)findViewById(R.id.method);
-storage=FirebaseStorage.getInstance();
 storage= FirebaseStorage.getInstance();
 database=FirebaseDatabase.getInstance();
         progressDialog =new ProgressDialog(this);
@@ -204,7 +202,6 @@ database=FirebaseDatabase.getInstance();
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if(requestCode==9 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
-            Toast.makeText(SignUpInstructorActivity.this,"ameera 4" , Toast.LENGTH_LONG).show();
             selectPdf();
         }
         else
@@ -228,7 +225,6 @@ database=FirebaseDatabase.getInstance();
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode==86 && resultCode==RESULT_OK && data!=null){
-            Toast.makeText(SignUpInstructorActivity.this,"ameera 2" , Toast.LENGTH_LONG).show();
             pdfUri=data.getData();
             textViewBrowse.setText("A file is selected "+ data.getData().getLastPathSegment());
         }
@@ -333,15 +329,12 @@ String userID = firebaseUser.getUid();
 
                            // String id = databaseReference.push().getKey();
                             databaseReference.child(firebaseUser.getUid()).setValue(instructor);
-                           StorageReference storageReference=storage.getReference("Instructors");
-                           storageReference.child(firebaseUser.getUid()).child("Cv").putFile(pdfUri);
 //final String fileName = System.currentTimeMillis()+"";
                             storageReference=storage.getReference();
-                            final StorageReference finalStorageReference = storageReference;
-                            storageReference.child(firebaseUser.getUid()).putFile(pdfUri).addOnSuccessListener( new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            storageReference.child(firebaseUser.getUid()).putFile(pdfUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                  String url = finalStorageReference.getDownloadUrl().toString();
+                                  String url = storageReference.getDownloadUrl().toString();
                                   databaseReference.child(firebaseUser.getUid()).child("Cv").setValue(url);
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
