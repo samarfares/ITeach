@@ -26,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -58,7 +59,8 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         buttonDate = (Button) findViewById(R.id.button_choose_date_schedule_edit);
         buttonEdit = (Button) findViewById(R.id.button_edit);
         TextView textView = (TextView) findViewById(R.id.textViewDateEdit);
-        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
+        DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+        currentDateString = format.format(Calendar.getInstance().getTime());
         textView.setText(currentDateString);
 
         none = (TextView)findViewById(R.id.noneTextEdit);
@@ -79,7 +81,7 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -151,7 +153,8 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+        currentDateString = format.format(Calendar.getInstance().getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDateEdit);
         textView.setText(currentDateString);
         listView = (ListView) findViewById(R.id.listViewEdit);

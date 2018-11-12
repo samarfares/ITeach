@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -57,7 +58,8 @@ public class PastFragment  extends Fragment {
         firebaseUser=firebaseAuth.getCurrentUser();
         uID =  firebaseUser.getUid();
         lesson = new Lesson();
-        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
+        DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+        currentDateString = format.format(Calendar.getInstance().getTime());
 
         databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
         list = new ArrayList<>();
@@ -72,8 +74,9 @@ public class PastFragment  extends Fragment {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     lesson = ds.getValue(Lesson.class);
                     try {
-                        Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
-                        Date date2 = DateFormat.getDateInstance(DateFormat.FULL).parse(lesson.getDate());
+                        DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+                        Date date1 = format.parse(currentDateString);
+                        Date date2 = format.parse(lesson.getDate());
                         i = date1.compareTo(date2);
                     } catch (java.text.ParseException e) {
                         e.printStackTrace();
