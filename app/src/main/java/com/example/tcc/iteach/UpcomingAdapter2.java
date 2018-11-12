@@ -22,6 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,7 +64,9 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
             firebaseUser = firebaseAuth.getCurrentUser();
             final String uID = firebaseUser.getUid();
             lesson = new Lesson();
-            currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
+            DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+            currentDateString = format.format(Calendar.getInstance().getTime());
+
             databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
             list = new ArrayList<String>();
             keyList = new ArrayList<String>();
@@ -73,7 +76,7 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
             ///////////////////////////////////
 
 
-            databaseReference.addValueEventListener(new ValueEventListener() {
+            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -81,8 +84,10 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
 
                         lesson = ds.getValue(Lesson.class);
                         try {
-                            Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
-                            Date date2 = DateFormat.getDateInstance(DateFormat.FULL).parse(lesson.getDate());
+                            DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+
+                            Date date1 = format.parse(currentDateString);
+                            Date date2 = format.parse(lesson.getDate());
                             i = date1.compareTo(date2);
                         } catch (java.text.ParseException e) {
                             e.printStackTrace();
@@ -151,8 +156,10 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                                         lesson = ds2.getValue(Lesson.class);
                                         if (ds2.getKey().equals(keyList.get(position))) {
                                             try {
-                                                Date date1 = DateFormat.getDateInstance(DateFormat.FULL).parse(currentDateString);
-                                                Date date2 = DateFormat.getDateInstance(DateFormat.FULL).parse(lesson.getDate());
+                                                DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+
+                                                Date date1 = format.parse(currentDateString);
+                                                Date date2 = format.parse(lesson.getDate());
                                                 j = date1.compareTo(date2);
                                             } catch (java.text.ParseException e) {
                                                 e.printStackTrace();
@@ -169,7 +176,7 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                                                     FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الطالب بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
 
                                                     list.remove(positionToRemove);
-                                                    UpcomingFragment.list.remove(positionToRemove);
+                                                    UpcomingFragment2.list.remove(positionToRemove);
                                                     notifyDataSetChanged();
                                                     FirebaseDatabase.getInstance().getReference("Lessons").child(keyList.get(position)).removeValue();
                                                     keyList.remove(position);

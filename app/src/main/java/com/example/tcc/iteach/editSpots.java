@@ -250,7 +250,7 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -262,11 +262,9 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
 
                         } else {
                             list.add(spot.getTime() + ".Group." + spot.getNumberOfStudent());
-
                         }
                     }
                 }
-
                 for (String item : list) {
                     String[] parts = item.split("\\."); // String array, each element is text between dots
                     if (parts[0].equals("6:00")) {

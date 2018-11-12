@@ -67,7 +67,7 @@ public class PastFragment  extends Fragment {
         pastAdapter = new PastAdapter(getContext(),list);
 
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

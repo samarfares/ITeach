@@ -38,7 +38,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/feedback"
             android:layout_marginLeft="20dp"
-            android:text="إضافة ملاحظة"
+            android:text="إضافة ملاحظة للطالب"
             android:textColor="#000"
             android:drawableRight="@drawable/ic_edit"/>
 

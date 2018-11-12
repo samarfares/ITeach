@@ -227,7 +227,7 @@ public class schedule extends AppCompatActivity
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
-        currentDateString = format.format(Calendar.getInstance().getTime());
+        currentDateString = format.format(c.getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDate);
         textView.setText(currentDateString);
 
@@ -243,7 +243,7 @@ public class schedule extends AppCompatActivity
         databaseReference = FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Instructors").child(instructor_id).child("spots").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

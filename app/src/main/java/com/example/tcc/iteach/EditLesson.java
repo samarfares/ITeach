@@ -121,7 +121,8 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
                     databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
                     databaseReference.child(lessonID).child("date").setValue(currentDateString);
                     databaseReference.child(lessonID).child("time").setValue(time);
-                    startActivity(new Intent(EditLesson.this, reservations.class));
+                    startActivity(new Intent(EditLesson.this, reservations2.class));
+                    Toast.makeText(EditLesson.this, "تم تعديل الدرس", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -154,7 +155,7 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
-        currentDateString = format.format(Calendar.getInstance().getTime());
+        currentDateString = format.format(c.getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDateEdit);
         textView.setText(currentDateString);
         listView = (ListView) findViewById(R.id.listViewEdit);
@@ -168,7 +169,7 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()){

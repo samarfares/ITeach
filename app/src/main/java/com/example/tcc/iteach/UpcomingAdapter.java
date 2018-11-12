@@ -78,7 +78,7 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
         ///////////////////////////////////
 
 
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 

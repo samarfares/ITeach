@@ -93,7 +93,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
@@ -150,13 +150,15 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
                                                     if (spot.isIndividual()) {
                                                         ds.getRef().child("available").setValue(false);
                                                     }
-                                                } else {
+                                                }
+                                                else {
                                                     if (!spot.isIndividual()) {
                                                         ds.getRef().child("numberOfStudent").setValue(spot.getNumberOfStudent() - 1);
                                                         if (spot.getNumberOfStudent() == 1)
                                                             ds.getRef().child("available").setValue(false);
                                                     }
                                                 }
+                                                Toast.makeText(Reserve.this, "تم حجز الدرس بنجاح", Toast.LENGTH_LONG).show();
                                             }
                                         }
                                     }
@@ -225,7 +227,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
-        currentDateString = format.format(Calendar.getInstance().getTime());
+        currentDateString = format.format(c.getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDateReserve);
         textView.setText(currentDateString);
 
@@ -242,7 +244,7 @@ public class Reserve extends AppCompatActivity implements DatePickerDialog.OnDat
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
         list = new ArrayList<>();
         adapter = new ArrayAdapter<String>(this,R.layout.spot_info,R.id.listViewSpotInfoTime,list);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
