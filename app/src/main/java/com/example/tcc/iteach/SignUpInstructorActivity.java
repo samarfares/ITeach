@@ -357,6 +357,7 @@ String userID = firebaseUser.getUid();
                             FirebaseMessaging.getInstance().subscribeToTopic("notificationsLessons");
                             FirebaseMessaging.getInstance().subscribeToTopic("notificationsCancel");
 
+
                             FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail,encryptedLocation,firstName+" "+lastName,userID));
                             final FirebaseUser user = mAuth.getCurrentUser();
                             user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
