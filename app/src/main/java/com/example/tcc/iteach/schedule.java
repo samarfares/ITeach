@@ -35,6 +35,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.sql.Date;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -67,7 +68,8 @@ public class schedule extends AppCompatActivity
         Button button = (Button) findViewById(R.id.button_choose_date_schedule);
         Button button1 = (Button) findViewById(R.id.button_edit_spots);
         final TextView textView = (TextView) findViewById(R.id.textViewDate);
-        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(Calendar.getInstance().getTime());
+        DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+        currentDateString = format.format(Calendar.getInstance().getTime());
         textView.setText(currentDateString);
 
 
@@ -224,7 +226,8 @@ public class schedule extends AppCompatActivity
         c.set(Calendar.YEAR, year);
         c.set(Calendar.MONTH,month);
         c.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(c.getTime());
+        DateFormat format = new SimpleDateFormat("EEE, d MMM yyyy");
+        currentDateString = format.format(Calendar.getInstance().getTime());
         TextView textView = (TextView) findViewById(R.id.textViewDate);
         textView.setText(currentDateString);
 
