@@ -5,25 +5,118 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".answerAdmin">
-    <TextView
-        android:id="@+id/answers"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="الاجابات"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/answersListAdmin"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="534dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@id/answers"
-        android:layout_marginEnd="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp" />
+        android:layout_height="match_parent"
+        >
+        <LinearLayout
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                >
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_1"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentTop="true"
+                    app:cardElevation="20dp"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="#1fabcb"
+                    app:cardCornerRadius="20dp"
+
+                    >
+
+                    <TextView
+
+                        android:id="@+id/answers"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="الاجابات"
+                        android:layout_marginTop="3dp"
+                        android:textColor="#ffffff"
+                        android:textStyle="bold|italic"
+                        android:textSize="25sp"
+                        />
+
+
+
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/card_1"
+                    app:cardElevation="15dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginBottom="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="4dp"
+                    android:layout_alignParentRight="true"
+                    >
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/answersListAdmin"
+                        android:layout_width="match_parent"
+                        android:layout_height="482dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_below="@id/answers"
+                        android:layout_margin="5dp"
+                        android:background="#ffff"
+                        />
+
+
+
+                </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
 
 </RelativeLayout>

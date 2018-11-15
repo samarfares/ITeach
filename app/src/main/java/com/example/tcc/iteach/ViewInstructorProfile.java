@@ -229,7 +229,7 @@ else{
         if (v==buttonShare){
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
             sharingIntent.setType("*/*");
-           sharingIntent.putExtra(Intent.EXTRA_TEXT, list.get(0).getFirstName()+ " " + list.get(0).getLastName()+list.get(0).getPhoneNum()+ list.get(0).getGender());
+           sharingIntent.putExtra(Intent.EXTRA_TEXT,"قد تكون مهتما بهذا الأستاذ : "+"\n الاسم : "+ list.get(0).getFirstName()+ " " + list.get(0).getLastName()+"\n رقم الهاتف : "+list.get(0).getPhoneNum()+"\n الجنس : "+ list.get(0).getGender()+"\n البريد الالكتروني : "+ list.get(0).email+"\n التخصص : "+list.get(0).subjects.toString()+"\n سعر الدرس : "+list.get(0).lessonsPrice+" SR");
 
             startActivity(Intent.createChooser(sharingIntent, "المشاركة باستخدام "));
         }

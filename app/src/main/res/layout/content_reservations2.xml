@@ -7,6 +7,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".reservations2"
     tools:showIn="@layout/app_bar_student_main"
+    android:background="#e6f2ff"
     android:orientation="vertical">
 
     <android.support.design.widget.TabLayout
@@ -18,7 +19,7 @@
         android:id="@+id/tabLayoutReservations2"
         app:tabTextColor="#fff"
         app:tabIndicatorColor="#2d2d2d"
-        android:background="@color/colorPrimary"/>
+        android:background="#1fabcb"/>
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"

@@ -2,155 +2,456 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#e6f2ff"
     tools:context=".AdminActivity">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="16dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent">
 
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints">
 
-        <ScrollView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp"
+                tools:ignore="MissingConstraints">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#1fabcb"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+                        <TextView
+                            android:id="@+id/textGrid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:padding="7dp"
+                            android:text="أهلا بك يسرنا انضمامك الينا"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="20dp"
+                            android:textStyle="italic" />
+
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.AppBarLayout>
 
             <LinearLayout
-                android:paddingHorizontal="30dp"
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="22dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
                 android:orientation="vertical">
 
 
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#ffff"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/imaView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundimage"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/appBarLayout"
+                    app:srcCompat="@drawable/login"
+                    tools:ignore="MissingConstraints"
+                    android:layout_gravity="center"
+                    />
+
                 <TextView
-                    android:id="@+id/textGrid"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_marginLeft="120dp"
-                    android:text="أهلا بك"
-                    android:textSize="25sp" />
-                    android:textSize="34sp" />
+                    android:layout_gravity="center"
+                    android:text="معا يد بيد لنبني المستقبل"
+                    android:textAlignment="center"
+                    android:textStyle="normal|italic"
+                    android:textDirection="rtl"
+                    android:textSize="13dp"
+                    android:layout_marginTop="12dp"
+                    android:padding="5dp"
+                    android:textColor="#1fabcb"
+                    />
 
-
-                <LinearLayout
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="2dp"
+                    android:background="#ffff"
 
-                    <Button
-                        android:id="@+id/instructor"
-                        android:layout_width="0dp"
-                        android:textSize="34sp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5sp"
-                        android:layout_marginLeft="2sp"
-                        android:layout_marginRight="5sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:padding="5dp"
-                        android:text="الأساتذة"
-                        android:scaleType="fitXY"
-                         />
-
-                    <Button
-                        android:id="@+id/student"
-                        android:layout_width="0dp"
-                        android:textSize="34sp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5sp"
-                        android:layout_marginLeft="2sp"
-                        android:layout_marginRight="5sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:padding="5dp"
-                        android:text="الطلاب"
-                        android:scaleType="fitXY"
-                         />
-                </LinearLayout>
-
-                <LinearLayout
+                    />
+                <RelativeLayout
+                    android:id="@+id/relativeLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="36dp"
+                    >
 
-                    <Button
-                        android:id="@+id/subject"
-                        android:layout_width="0dp"
-                        android:textSize="34sp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5sp"
-                        android:layout_marginLeft="2sp"
-                        android:layout_marginRight="5sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:padding="5dp"
-                        android:text="المواد"
-                        android:scaleType="fitXY"
-                        />
-
-                    <Button
-                        android:id="@+id/blackboard"
-                        android:layout_width="0dp"
-                        android:textSize="34sp"
-                        android:layout_height="match_parent"
-                        android:layout_marginBottom="5sp"
-                        android:layout_marginLeft="2sp"
-                        android:layout_marginRight="5sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_weight="1"
-                        android:adjustViewBounds="true"
-                        android:padding="5dp"
-                        android:scaleType="fitXY"
-                        android:text="منصة الأسئلة"
-                         />
-
-                </LinearLayout>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginLeft="6dp"
+                        android:layout_marginRight="6dp"
+                        app:cardElevation="12dp"
+                        app:cardCornerRadius="12dp"
+                        android:backgroundTint="#ffe6e6"
 
 
 
 
 
+                        >
 
+                        <android.support.v7.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#ffcccc"
+                            android:layout_margin="6dp"
+                            app:cardElevation="22dp"
+                            app:cardCornerRadius="12dp"
+                            >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="#ffcccc"
+                                android:layout_margin="6dp"
+                                android:orientation="vertical">
+
+
+                                <android.support.v7.widget.CardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="6dp"
+                                    app:cardElevation="12dp"
+                                    app:cardCornerRadius="12dp"
+                                    android:backgroundTint="#D87E7E"
+                                    >
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layoutDirection="rtl"
+                                        android:layout_margin="6dp"
+                                        android:background="#D87E7E"
+                                        >
+
+
+
+                                        <android.support.v7.widget.CardView
+                                            android:layout_width="120dp"
+                                            android:layout_height="120dp"
+                                            android:id="@+id/subcard1"
+                                            android:layout_alignParentRight="true"
+
+                                            android:layout_marginRight="15dp"
+                                            android:layout_marginTop="15dp"
+                                            android:layout_marginBottom="7dp"
+                                            android:backgroundTint="#ffff"
+                                            app:cardElevation="20dp"
+                                            app:cardCornerRadius="12dp"
+                                            >
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/im1"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="60dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:src="@drawable/teacher"
+                                                    />
+
+                                                <Button
+                                                    android:id="@+id/instructor"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:text="الأساتذة"
+                                                    android:textColor="#fff"
+                                                    android:background="#1fabcb"
+                                                    android:textSize="20dp"
+                                                    android:textStyle="bold"
+                                                    android:padding="2dp"
+                                                    android:textAlignment="center"
+                                                    android:textDirection="rtl"
+                                                    />
+
+
+                                            </LinearLayout>
+
+
+
+
+
+
+                                        </android.support.v7.widget.CardView>
+
+                                        <android.support.v7.widget.CardView
+                                            android:layout_width="120dp"
+                                            android:layout_height="120dp"
+                                            android:id="@+id/subcard2"
+                                            android:layout_alignParentLeft="true"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginTop="15dp"
+                                            android:layout_marginBottom="7dp"
+                                            android:backgroundTint="#ffff"
+                                            app:cardElevation="20dp"
+                                            app:cardCornerRadius="12dp"
+
+                                            >
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/im2"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="60dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:src="@drawable/student"
+                                                    />
+
+                                                <Button
+                                                    android:id="@+id/student"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:text="الطلاب"
+                                                    android:textColor="#fff"
+                                                    android:background="#1fabcb"
+                                                    android:textSize="20dp"
+                                                    android:textStyle="bold"
+                                                    android:padding="2dp"
+                                                    android:textAlignment="center"
+                                                    android:textDirection="rtl"
+                                                    />
+
+
+                                            </LinearLayout>
+
+
+                                        </android.support.v7.widget.CardView>
+
+                                        <android.support.v7.widget.CardView
+                                            android:layout_width="120dp"
+                                            android:layout_height="120dp"
+                                            android:id="@+id/subcard3"
+                                            android:layout_alignParentRight="true"
+
+                                            android:layout_marginRight="15dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_marginBottom="15dp"
+                                            android:layout_below="@+id/subcard1"
+                                            android:backgroundTint="#ffff"
+                                            app:cardElevation="20dp"
+                                            app:cardCornerRadius="12dp"
+                                            >
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/im3"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="60dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:src="@drawable/study_materials"
+                                                    />
+
+                                                <Button
+                                                    android:id="@+id/subject"
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:text="المواد"
+                                                    android:textColor="#fff"
+                                                    android:background="#1fabcb"
+                                                    android:textSize="20dp"
+                                                    android:textStyle="bold"
+                                                    android:padding="2dp"
+                                                    android:textAlignment="center"
+                                                    android:textDirection="rtl"
+                                                    />
+
+
+                                            </LinearLayout>
+
+
+                                        </android.support.v7.widget.CardView>
+
+                                        <android.support.v7.widget.CardView
+                                            android:layout_width="120dp"
+                                            android:layout_height="120dp"
+                                            android:id="@+id/subcard4"
+                                            android:layout_alignParentLeft="true"
+                                            android:layout_marginLeft="15dp"
+                                            android:layout_marginRight="15dp"
+                                            android:layout_marginTop="8dp"
+                                            android:layout_below="@id/subcard2"
+                                            android:backgroundTint="#ffff"
+                                            app:cardElevation="20dp"
+                                            app:cardCornerRadius="12dp"
+
+                                            >
+
+
+                                            <LinearLayout
+                                                android:layout_width="match_parent"
+                                                android:layout_height="match_parent"
+                                                android:orientation="vertical">
+
+                                                <ImageView
+                                                    android:id="@+id/im4"
+                                                    android:layout_width="70dp"
+                                                    android:layout_height="60dp"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:src="@drawable/questions"
+                                                    />
+
+                                                <Button
+                                                    android:id="@+id/blackboard"
+                                                    android:layout_width="80dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_gravity="center"
+                                                    android:layout_marginTop="7dp"
+                                                    android:text="الأسئلة"
+                                                    android:textColor="#fff"
+                                                    android:background="#1fabcb"
+                                                    android:textSize="20dp"
+                                                    android:textStyle="bold"
+                                                    android:padding="2dp"
+                                                    android:textAlignment="center"
+                                                    android:textDirection="rtl"
+                                                    />
+
+
+                                            </LinearLayout>
+
+                                        </android.support.v7.widget.CardView>
+
+
+
+                                    </RelativeLayout>
+
+
+                                </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+                            </LinearLayout>
+
+                        </android.support.v7.widget.CardView>
+
+
+
+
+                    </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+                </RelativeLayout>
+                <Button
+                    android:id="@+id/buttonLogout"
+                    android:layout_width="200dp"
+                    android:layout_height="30dp"
+                    android:background="@drawable/buttonshape"
+                    android:text="تسجيل الخروج"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff"
+                    android:textSize="14dp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:layout_gravity="center"
+
+                    />
 
 
 
             </LinearLayout>
 
+        </LinearLayout></ScrollView>
 
 
 
 
 
-        </ScrollView>
 
 
-        <Button
-            android:id="@+id/buttonLogout"
-            android:layout_width="300dp"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:layout_gravity="center_horizontal"
-            android:fontFamily="sans-serif"
-            android:text="تسجيل الخروج"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-
-
-
-    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

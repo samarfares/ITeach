@@ -6,36 +6,93 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".blackboard"
-    tools:showIn="@layout/app_bar_instructor_main">
+    android:background="#e6f2ff"
+    tools:showIn="@layout/app_bar_instructor_main"
+    >
 
-    <Button
-        android:id="@+id/askButton"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/cc"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="13dp"
-        android:layout_marginStart="13dp"
         android:layout_marginTop="60dp"
-        android:text="اسأل" />
-    <Button
-        android:id="@+id/myQuestionsButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:layout_alignTop="@+id/askButton"
-        android:layout_centerHorizontal="true"
-        android:text="اسئلتي" />
-    <Button
-        android:id="@+id/filters"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/askButton"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="16dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="16dp"
-        android:text="تصفية" />
+        android:layout_marginRight="13dp"
+        app:cardElevation="12dp"
+        app:cardCornerRadius="13dp"
+        android:backgroundTint="#ffff"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            >
+
+            <Button
+                android:id="@+id/askButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="13dp"
+
+                android:layout_marginStart="13dp"
+                android:text="اسأل"
+                android:textStyle="bold"
+                android:background="@drawable/buttonshape"
+                android:textColor="#ffff"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                />
+            <Button
+                android:id="@+id/myQuestionsButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/askButton"
+                android:layout_centerHorizontal="true"
+                android:text="اسئلتي"
+                android:textStyle="bold"
+                android:background="@drawable/buttonshape"
+                android:textColor="#ffff"
+                />
+            <Button
+                android:id="@+id/filters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/askButton"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:text="تصفية"
+                android:textStyle="bold"
+                android:background="@drawable/buttonshape"
+                android:textColor="#ffff"
+                />
+
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:id="@+id/vv"
+        android:background="#ffff"
+        android:layout_below="@id/cc"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginLeft="7dp"
+
+        />
+
+
 
 
 
@@ -43,11 +100,13 @@
         android:id="@+id/allQuestionList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="10dp"
         android:layout_alignParentLeft="true"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical"
+        android:layout_below="@+id/vv"
+        android:background="#e6f2ff"
+
+        />
 
 
 </RelativeLayout>

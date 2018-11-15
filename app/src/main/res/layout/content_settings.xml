@@ -6,231 +6,536 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".settings"
-    tools:showIn="@layout/app_bar_instructor_main">
+    tools:showIn="@layout/app_bar_instructor_main"
+    android:background="#e6f2ff"
+    >
 
-    <LinearLayout
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp">
-        <LinearLayout
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:backgroundTint="#1fabcb"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        >
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorFN"
-                android:layout_width="wrap_content"
+
+            android:backgroundTint="#f4d7d7"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="الاسم الأول"
-                />
-            <ImageButton
-                android:id="@+id/edit21"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorLN"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="الاسم الأخير"
-                />
-            <ImageButton
-                android:id="@+id/edit22"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorG"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="الجنس"
-                />
-            <ImageButton
-                android:id="@+id/edit23"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorDob"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="تاريخ الميلاد"
-                />
-            <ImageButton
-                android:id="@+id/edit24"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorEma"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="الايميل"
-                />
-            <ImageButton
-                android:id="@+id/edit25"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorSu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="المواد"
-                />
-            <ImageButton
-                android:id="@+id/edit26"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorLikes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="المواد"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorPlace"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="مكان الدرس"
-                />
-            <ImageButton
-                android:id="@+id/edit28"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorPhone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="رقم التلفون"
-                />
-            <ImageButton
-                android:id="@+id/edit29"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorTMethod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="طريقة التدريس"
-                />
-            <ImageButton
-                android:id="@+id/edit30"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorPayment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="طريقة الدفع"
-                />
-            <ImageButton
-                android:id="@+id/edit31"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="السعر"
-                />
-            <ImageButton
-                android:id="@+id/edit32"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:id="@+id/InstructorYoe"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="سنوات الخبرة"
-                />
-            <ImageButton
-                android:id="@+id/edit33"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edit"
-                android:layout_marginLeft="50dp"/>
-        </LinearLayout>
+                android:orientation="vertical"
+                android:layout_margin="3dp"
+                android:background="#f4d7d7"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    >
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorFN"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الاسم الأول"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit21"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr2"
+                        android:layout_below="@id/carr1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorLN"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الاسم الأخير"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit22"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr3"
+                        android:layout_below="@id/carr2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorG"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الجنس"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit23"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr4"
+                        android:layout_below="@id/carr3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/InstructorDob"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="تاريخ الميلاد"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr5"
+                        android:layout_below="@id/carr4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorEma"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الايميل"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit25"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr6"
+                        android:layout_below="@id/carr5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorSu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="المواد"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit26"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr7"
+                        android:layout_below="@id/carr6"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        android:backgroundTint="#ccffff"
+                        android:layout_centerHorizontal="true"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorLikes"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="المواد"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr8"
+                        android:layout_below="@id/carr7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorPlace"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="مكان الدرس"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit28"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr9"
+                        android:layout_below="@id/carr8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorPhone"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="رقم التلفون"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit29"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr10"
+                        android:layout_below="@id/carr9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorTMethod"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="طريقة التدريس"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit30"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr11"
+                        android:layout_below="@id/carr10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorPayment"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="طريقة الدفع"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit31"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr12"
+                        android:layout_below="@id/carr11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorPrice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="السعر"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit32"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr13"
+                        android:layout_below="@id/carr12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/InstructorYoe"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="سنوات الخبرة"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit33"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
 
 
 
-    </LinearLayout>
+                </RelativeLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+
 
 </RelativeLayout>

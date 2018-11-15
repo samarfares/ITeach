@@ -2,243 +2,647 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#e6f2ff"
     tools:context=".InstructorActivity">
 
     <ScrollView
-        android:layout_width="380dp"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:fillViewport="true"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        tools:layout_editor_absoluteY="83dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
             android:id="@+id/linearLayout11"
-            android:layout_width="380dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textViewUserEmail"
-                android:layout_width="wrap_content"
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="فقط اضغط على الأستاذ للحذف"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textStyle="bold" />
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-
-
-                <ListView
-                    android:id="@+id/list1"
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"></ListView>
+                    android:layout_height="50dp"
+                    android:background="#1fabcb"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
 
-            <Button
-                android:id="@+id/add"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:fontFamily="sans-serif"
-                android:onClick="uploadData"
-                android:text="إضافة أستاذ جديد"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textViewUserEmail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:padding="5dp"
+                            android:text="فقط اضغط على الأستاذ للحذف"
+                            android:textAlignment="center"
+                            android:textColor="#ffffff"
+                            android:textSize="18dp"
+                            android:textStyle="bold|italic" />
 
-            <Button
-                android:layout_margin="15dp"
-                android:id="@+id/buttonContinueToLocation"
-                android:text="فضلاً اختر موقعه من الخارطة"
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.AppBarLayout>
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <EditText
-                android:layout_margin="15dp"
-                android:inputType="textEmailAddress"
-                android:hint="فضلاً أدخل ايميل"
-                android:id="@+id/editTextEmailInstructor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:layout_margin="15dp"
-                android:inputType="textPassword"
-                android:hint="فضلاً أدخل كلمة مرور"
-                android:id="@+id/editTextPasswordInstructor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:layout_margin="15dp"
-                android:inputType="phone"
-                android:hint="فضلاً أدخل رقم هاتفه"
-                android:id="@+id/editTextNumberInstructor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <EditText
-                android:id="@+id/editTextFirstName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="فضلاً أدخل اسمه الأول" />
-
-            <EditText
-                android:id="@+id/editTextLastName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp"
-                android:hint="فضلاً أدخل اسم شهرته" />
-            <TextView
-                android:text="فضلاً اختر تاريخ ميلاده"
-                android:layout_margin="15dp"
-
-                android:id="@+id/textViewDOB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <DatePicker
-                android:id="@+id/datePicker"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:calendarViewShown="false"
-                android:datePickerMode="spinner"
-                android:spinnersShown="true"></DatePicker>
-
-            <TextView
-                android:text="فضلاً اختر جنسه"
-                android:id="@+id/textViewGender"
-                android:layout_margin="15dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <RadioGroup
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioGroupGender">
-                <RadioButton
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
+                    android:id="@+id/s1"
+                    app:cardElevation="14dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginLeft="4dp"
+                    >
 
-                    android:id="@+id/male"
-                    android:text="ذكر"/>
-                <RadioButton
+                    <ListView
+                        android:id="@+id/list1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"></ListView>
+                </android.support.v7.widget.CardView>
+
+
+
+                <View
+                    android:id="@+id/v1"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_below="@+id/s1"
+                    android:background="@color/white" />
+                <Button
+                    android:id="@+id/add"
+                    android:layout_width="200dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/v1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/buttonshape"
+                    android:text="إضافة أستاذ جديد"
+                    android:onClick="uploadData"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+
+                    />
+
+                <Button
+                    android:id="@+id/buttonContinueToLocation"
+                    android:layout_width="250dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/add"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/buttonshape"
+                    android:drawableLeft="@drawable/ic_my_location_black_24dp"
+                    android:drawablePadding="12dp"
+                    android:text="فضلاً اختر موقعه من الخارطة"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+
+                    />
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonContinueToLocation"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <EditText
+                            android:id="@+id/editTextEmailInstructor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_email_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل ايميل"
+                            android:inputType="textEmailAddress"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextEmailInstructor"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <EditText
+                            android:id="@+id/editTextPasswordInstructor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v2"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_lock_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل كلمة مرور"
+                            android:inputType="textPassword"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextPasswordInstructor"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberInstructor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v3"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_phone_iphone_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل رقم هاتفه"
+                            android:inputType="phone"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextNumberInstructor"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+
+                        <EditText
+                            android:id="@+id/editTextFirstName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v4"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل اسمه الأول"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v5"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextFirstName"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+
+                        <EditText
+                            android:id="@+id/editTextLastName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v5"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل اسم شهرته"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+
+                    android:backgroundTint="#FFFDE7">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/textViewDOB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginRight="9dp"
+                            android:layout_marginTop="9dp"
+                            android:padding="5dp"
+                            android:text="فضلاً اختر تاريخ ميلاده"
+                            android:textAlignment="center"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+
+                            />
+
+                        <DatePicker
+                            android:id="@+id/datePicker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textViewDOB"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="4dp"
+                            android:calendarViewShown="false"
+                            android:datePickerMode="spinner"
+                            android:spinnersShown="true"></DatePicker>
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+
+                    android:backgroundTint="#e6f2ff">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp">
+
+                        <View
+                            android:id="@+id/v6"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#fff" />
+
+                        <TextView
+                            android:id="@+id/textViewGender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/v6"
+                            android:layout_marginTop="10dp"
+                            android:text="فضلاً اختر جنسه"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupGender"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/textViewGender"
+                            android:layout_marginTop="4dp"
+                            android:textDirection="rtl"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/male"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="ذكر"
+                                android:textSize="14dp"
+                                android:textDirection="rtl"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/female"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="أنثى"
+                                android:textSize="14dp"
+                                android:textDirection="rtl"
+                                />
+                        </RadioGroup>
+
+                        <View
+                            android:id="@+id/v7"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_below="@+id/radioGroupGender"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#fff" />
+
+
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+
+                        <TextView
+                            android:id="@+id/textViewSpecialty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر تخصصاته"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <com.example.tcc.iteach.MultiSelectionSpinner
+                            android:id="@+id/input1"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewSpecialty"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+
+
+
+
+
+                        <EditText
+                            android:id="@+id/yearsExperience"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/input1"
+                            android:layout_margin="15dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل عدد سنوات خبرته"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/vv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/yearsExperience"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <EditText
+                            android:id="@+id/lessonsPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vv1"
+
+                            android:layout_margin="15dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل سعر الدرس"
+                            android:inputType="number"
+
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp"
+
+                            />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/textViewPayment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر طريقة الدفع المفضلة لديه"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <Spinner
+                            android:id="@+id/payment"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewPayment"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+                        <View
+                            android:id="@+id/vvv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/payment"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+
+                        <TextView
+                            android:id="@+id/textViewPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vvv1"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر مكان الدرس المناسب له"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <Spinner
+                            android:id="@+id/place"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewPlace"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+
+                        <View
+                            android:id="@+id/vvv2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/place"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <TextView
+                            android:id="@+id/textViewMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vvv2"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر طريقة التعليم المناسبة له"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <Spinner
+                            android:id="@+id/method"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewMethod"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+
+
+                <Button
+                    android:id="@+id/addNew"
+                    android:layout_width="250dp"
+                    android:layout_height="35dp"
                     android:layout_margin="15dp"
-
-                    android:id="@+id/female"
-                    android:text="أنثى"/>
-            </RadioGroup>
-
-            <TextView
-                android:text="فضلاً اختر تخصصاته"
-                android:layout_margin="15dp"
-
-                android:id="@+id/textViewSpecialty"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
+                    android:text="إضافة الأستاذ الجديد"
+                    android:onClick="uploadData"
+                    android:layout_below="@id/card_5"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="4dp"
+                    android:layout_marginTop="30dp"
+                    android:background="@drawable/buttonshape"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
 
 
+                    />
+                <Button
+                    android:id="@+id/buttonLogout"
+                    android:layout_width="250dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="15dp"
+                    android:text="تسجيل الخروج"
+                    android:layout_below="@id/addNew"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/buttonshape"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
 
 
-
-            <com.example.tcc.iteach.MultiSelectionSpinner
-                android:id="@+id/input1"
-                android:layout_width="fill_parent"
-                android:layout_height="40dp"
-                android:layout_margin="2dp" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/yearsExperience"
-                android:layout_margin="15dp"
-
-                android:inputType="number"
-                android:hint="فضلاً أدخل عدد سنوات خبرته"/>
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/lessonsPrice"
-                android:layout_margin="15dp"
-
-                android:inputType="number"
-                android:hint="فضلاً أدخل سعر الدرس"/>
+                    />
 
 
-            <TextView
-                android:text="فضلاً اختر طريقة الدفع المفضلة لديه"
-                android:id="@+id/textViewPayment"
-                android:layout_margin="15dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/payment"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="فضلاً اختر مكان الدرس المناسب له"
-                android:id="@+id/textViewPlace"
-                android:layout_margin="15dp"
-
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/place"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:text="فضلاً اختر طريقة التعليم المناسبة له"
-                android:id="@+id/textViewMethod"
-                android:layout_width="match_parent"
-                android:layout_margin="15dp"
-
-                android:layout_height="wrap_content" />
-            <Spinner
-                android:id="@+id/method"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content" />
-
-
-            <Button
-                android:id="@+id/addNew"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:onClick="uploadData"
-                android:text="إضافة الأستاذ الجديد"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/buttonLogout"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="20dp"
-
-
-                android:text="تسجيل الخروج"
-                android:textColor="@android:color/white"
-                android:textStyle="bold" />
+            </RelativeLayout>
 
 
         </LinearLayout>
-
     </ScrollView>
+
+
 </android.support.constraint.ConstraintLayout>
