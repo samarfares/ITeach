@@ -6,7 +6,301 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".settings2"
-    tools:showIn="@layout/app_bar_student_main">
+    tools:showIn="@layout/app_bar_student_main"
+    android:background="#e6f2ff"
+
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:backgroundTint="#1fabcb"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="8dp"
+        >
+        <android.support.v7.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:backgroundTint="#f4d7d7"
+            android:layout_margin="3dp"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="4dp"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_margin="3dp"
+                android:background="#f4d7d7"
+                >
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    >
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr1"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/IndividualFN"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الاسم الأول"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr2"
+                        android:layout_below="@id/carr1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/IndividualLN"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الاسم الأخير"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr3"
+                        android:layout_below="@id/carr2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/IndividualG"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الجنس"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr4"
+                        android:layout_below="@id/carr3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+
+                            <TextView
+                                android:id="@+id/IndividualDob"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="تاريخ الميلاد"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr5"
+                        android:layout_below="@id/carr4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/IndividualEma"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="الايميل"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"
+                                />
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/carr6"
+                        android:layout_below="@id/carr5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="2dp"
+                        app:cardElevation="4dp"
+                        >
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="4dp"
+                            >
+                            <TextView
+                                android:id="@+id/IndividualSu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:hint="المواد"
+                                android:textAlignment="center"
+                                android:layout_centerHorizontal="true"
+                                />
+                            <ImageButton
+                                android:id="@+id/edit6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/edit"
+                                android:layout_marginLeft="30dp"
+                                android:layout_alignParentLeft="true"/>
+
+                        </RelativeLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+
+
+
+
+
 
 
 </RelativeLayout>

@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Reserve">
+    tools:context=".Reserve"
+    android:background="#e6f2ff"
+    >
 
 
     <ScrollView
@@ -19,56 +21,209 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/button_choose_date_schedule_reserve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="اختر التاريخ"
-                android:layout_gravity="center"
-                android:layout_marginVertical="20dp"
-                />
 
-            <TextView
-                android:id="@+id/textViewDateReserve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="التاريخ"
-                android:textSize="35sp"
-                android:layout_gravity="center"
-                />
-
-            <TextView
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:layout_marginTop="20dp"
-                android:text="اختر أحد الأوقات المتاحة إذا وجدت : "/>
-            <TextView
-                android:id="@+id/noneTextReserve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="لا يوجد مواعيد متاحة في هذا اليوم اختر يوماً اخر"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
-                />
+                android:layout_height="wrap_content">
 
-            <ListView
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="20dp"
-                android:id="@+id/listViewReserve"
-                android:layout_width="match_parent"
-                android:layout_height="240dp">
-            </ListView>
 
-            <Button
-                android:id="@+id/button_reserve"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="احجز الدرس"
-                android:layout_gravity="center"
-                android:layout_marginVertical="20dp"
-                />
+                <android.support.v7.widget.CardView
+                    android:layout_width="250dp"
+                    android:layout_height="50dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+                    app:cardElevation="10dp"
+                    android:id="@+id/card11"
+                    android:backgroundTint="#1fabcb"
+                    >
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:background="#1fabcb"
+                        >
+
+                        <Button
+                            android:id="@+id/button_choose_date_schedule_reserve"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:text="اختر التاريخ"
+                            android:background="#1fabcb"
+                            android:drawableLeft="@drawable/today_64"
+                            android:textStyle="bold"
+                            android:textSize="20dp"
+                            android:textColor="#ffff"
+
+                            />
+
+
+                    </RelativeLayout></android.support.v7.widget.CardView>
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="#FFFDE7"
+                    android:id="@+id/view11"
+                    android:layout_below="@id/card11"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="350dp"
+                    android:id="@+id/card12"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view11"
+                    android:layout_marginTop="20dp"
+                    app:cardElevation="12dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_marginBottom="4dp"
+                    android:backgroundTint="#ffffcc"
+                    android:layout_centerHorizontal="true"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:backgroundTint="#ffffcc"
+                        >
+
+                        <TextView
+                            android:id="@+id/textViewDateReserve"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="التاريخ"
+                            android:textSize="35sp"
+                            android:layout_gravity="center"
+                            android:textAlignment="center"
+                            android:textDirection="ltr"
+                            android:textColor="#33001a"
+
+
+                            />
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:background="#FFFDE7"
+                    android:id="@+id/view12"
+                    android:layout_below="@id/card12"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    />
+
+                <android.support.v7.widget.CardView
+                    android:layout_width="match_parent"
+                    android:id="@+id/card13"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/view12"
+                    android:layout_marginTop="20dp"
+                    app:cardElevation="12dp"
+                    app:cardCornerRadius="2dp"
+                    android:layout_marginBottom="4dp"
+                    android:backgroundTint="#ffff"
+                    android:layout_marginLeft="2dp"
+                    android:layout_marginRight="2dp"
+                    >
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="4dp"
+                        android:backgroundTint="#ffffcc"
+                        >
+
+
+                        <TextView
+                            android:id="@+id/t1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="25sp"
+                            android:layout_marginTop="20dp"
+                            android:text="اختر أحد الأوقات المتاحة إذا وجدت : "
+                            android:layout_alignParentTop="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_marginRight="5dp"
+                            android:textColor="#e29c9c"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"
+                            />
+
+                        <TextView
+                            android:id="@+id/noneTextReserve"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="لا يوجد مواعيد متاحة في هذا اليوم اختر يوماً اخر"
+                            android:textSize="20dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="15dp"
+
+                            android:layout_below="@id/t1"
+                            android:textDirection="rtl"
+                            android:textAlignment="center"
+                            android:layout_centerHorizontal="true"
+                            android:padding="6dp"
+                            />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"
+                            android:background="#e29c9c"
+                            android:id="@+id/view13"
+                            android:layout_below="@id/noneTextReserve"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            />
+
+                        <ListView
+                            android:layout_marginTop="30dp"
+                            android:layout_marginBottom="20dp"
+                            android:id="@+id/listViewReserve"
+                            android:layout_width="match_parent"
+                            android:layout_height="240dp"
+                            android:layout_below="@id/view13"
+
+                            >
+                        </ListView>
+
+
+
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+
+
+
+
+                <Button
+                    android:id="@+id/button_reserve"
+                    android:layout_width="175dp"
+                    android:layout_height="40dp"
+                    android:text="احجز الدرس"
+                    android:layout_below="@id/card13"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/buttonshape"
+                    android:textSize="18dp"
+                    android:layout_marginTop="20dp"
+                    android:textStyle="bold"
+                    android:textColor="#ffff"
+                    android:layout_marginBottom="10dp"
+                    />
+
+
+            </RelativeLayout>
+
+
         </LinearLayout>
 
     </ScrollView>
