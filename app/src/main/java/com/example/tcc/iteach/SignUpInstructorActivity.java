@@ -233,7 +233,7 @@ database=FirebaseDatabase.getInstance();
         }
     }
 
-    private void registerInstructor(){
+    public void registerInstructor(){
         instructorEmail = editTextEmailInstructor.getText().toString();
         instructorPassword = editTextPasswordInstructor.getText().toString();
 
