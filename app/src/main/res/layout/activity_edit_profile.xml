@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".editProfile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#1fabcb"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+
+
+
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.AppBarLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/buttonContinueToLocation"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <EditText
+                            android:id="@+id/editTextEmailInstructor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_email_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل ايميل"
+                            android:inputType="textEmailAddress"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextEmailInstructor"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <EditText
+                            android:id="@+id/editTextPasswordInstructor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v2"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_lock_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل كلمة مرور"
+                            android:inputType="textPassword"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v3"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextPasswordInstructor"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <EditText
+                            android:id="@+id/editTextNumberInstructor"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v3"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_phone_iphone_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل رقم هاتفك"
+                            android:inputType="phone"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v4"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextNumberInstructor"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+
+                        <EditText
+                            android:id="@+id/editTextFirstName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v4"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل اسمك الأول"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/v5"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/editTextFirstName"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+
+                        <EditText
+                            android:id="@+id/editTextLastName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/v5"
+                            android:layout_margin="15dp"
+                            android:drawableLeft="@drawable/ic_perm_identity_black_24dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل اسم شهرتك"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_1"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+
+                    android:backgroundTint="#FFFDE7">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/textViewDOB"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:layout_marginRight="9dp"
+                            android:layout_marginTop="9dp"
+                            android:padding="5dp"
+                            android:text="فضلاً اختر تاريخ ميلادك :"
+                            android:textAlignment="center"
+                            android:textSize="14dp"
+                            android:textStyle="bold"
+
+                            />
+
+                        <DatePicker
+                            android:id="@+id/datePicker"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/textViewDOB"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="4dp"
+                            android:layout_marginTop="4dp"
+                            android:calendarViewShown="false"
+                            android:datePickerMode="spinner"
+                            android:spinnersShown="true"></DatePicker>
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="20dp"
+
+                    android:backgroundTint="#e6f2ff">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="4dp">
+
+                        <View
+                            android:id="@+id/v6"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#fff" />
+
+                        <TextView
+                            android:id="@+id/textViewGender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@id/v6"
+                            android:layout_marginTop="10dp"
+                            android:text="فضلاً اختر جنسك :"
+                            android:textSize="14dp"
+                            android:textStyle="bold" />
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupGender"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_below="@+id/textViewGender"
+                            android:layout_marginTop="4dp"
+                            android:textDirection="rtl"
+                            >
+
+                            <RadioButton
+                                android:id="@+id/male"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="ذكر"
+                                android:textSize="14dp"
+                                android:textDirection="rtl"
+                                />
+
+                            <RadioButton
+                                android:id="@+id/female"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="أنثى"
+                                android:textSize="14dp"
+                                android:textDirection="rtl"
+                                />
+                        </RadioGroup>
+
+                        <View
+                            android:id="@+id/v7"
+                            android:layout_width="match_parent"
+                            android:layout_height="5dp"
+                            android:layout_below="@+id/radioGroupGender"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_marginTop="10dp"
+                            android:background="#fff" />
+
+
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_3"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+
+                        <TextView
+                            android:id="@+id/textViewSpecialty"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:text=" فضلاً اختر المواد المهتم بتعلمها :"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+
+
+
+                        <com.example.tcc.iteach.MultiSelectionSpinner
+                            android:id="@+id/input1"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewSpecialty"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+                        <EditText
+                            android:id="@+id/yearsExperience"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/input1"
+                            android:layout_margin="15dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل عدد سنوات خبرتك"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp" />
+
+                        <View
+                            android:id="@+id/vv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/yearsExperience"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <EditText
+                            android:id="@+id/lessonsPrice"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vv1"
+
+                            android:layout_margin="15dp"
+                            android:drawablePadding="12dp"
+                            android:hint="فضلاً أدخل سعر الدرس"
+                            android:inputType="number"
+
+                            android:textAlignment="center"
+                            android:textColor="#000"
+                            android:textDirection="ltr"
+                            android:textSize="13dp"
+
+                            />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_4"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="4dp"
+                    android:layout_marginRight="4dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#ffffff"
+                    app:cardCornerRadius="3dp"
+                    app:cardElevation="14dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/textViewPayment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر طريقة الدفع المفضلة لديك :"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <Spinner
+                            android:id="@+id/payment"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewPayment"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+                        <View
+                            android:id="@+id/vvv1"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/payment"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+
+                        <TextView
+                            android:id="@+id/textViewPlace"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vvv1"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر مكان الدرس المناسب لك"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <Spinner
+                            android:id="@+id/place"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewPlace"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+
+                        <View
+                            android:id="@+id/vvv2"
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_below="@+id/place"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:background="#1fabcb" />
+
+                        <TextView
+                            android:id="@+id/textViewMethod"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vvv2"
+                            android:padding="14dp"
+                            android:text="فضلاً اختر طريقة التعليم المناسبة لك"
+                            android:textColor="#1fabcb"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"/>
+
+                        <Spinner
+                            android:id="@+id/method"
+                            android:layout_width="300dp"
+                            android:layout_height="35dp"
+                            android:layout_below="@+id/textViewMethod"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginBottom="5dp"
+                            android:padding="4dp"
+                            android:textDirection="rtl" />
+
+
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.CardView
+                    android:id="@+id/card_6"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/card_5"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="#1fabcb"
+                    app:cardElevation="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="5dp">
+
+
+                        <TextView
+                            android:id="@+id/textViewBrowse"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:padding="4dp"
+                            android:text=" فضلاً أرفق سيرتك الذاتية :"
+                            android:textColor="#ffff"
+                            android:textSize="15dp"
+                            android:textStyle="bold"
+                            android:textDirection="rtl"
+                            />
+
+
+                        <Button
+                            android:id="@+id/buttonBrowse2"
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginBottom="5dp"
+                            android:text="اختر ملف"
+                            android:textSize="13dp"
+                            android:textStyle="italic|bold"
+                            android:textAlignment="center"
+                            android:textColor="#ffff"
+                            android:background="@drawable/buttonshape"
+
+                            />
+
+
+                    </RelativeLayout>
+                </android.support.v7.widget.CardView>
+
+
+
+                <Button
+                    android:id="@+id/buttonRegister"
+                    android:layout_width="250dp"
+                    android:layout_height="35dp"
+                    android:layout_margin="15dp"
+                    android:text="حفظ المعلومات"
+                    android:layout_below="@id/card_6"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/buttonshape"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="16dp"
+                    android:textStyle="bold"
+
+
+                    />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

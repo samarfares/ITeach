@@ -33,6 +33,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -83,11 +84,12 @@ public class settings extends AppCompatActivity
     String location1;
 
     List<String> chosen2 = new ArrayList<String>();
+    Button edit,delete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings2);
+        setContentView(R.layout.activity_settings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -130,7 +132,8 @@ public class settings extends AppCompatActivity
 */
 
 
-
+        edit = (Button) findViewById(R.id.editProfile);
+        delete = (Button) findViewById(R.id.deleteProfile);
 
         FN1 = (TextView) findViewById(R.id.InstructorFN);
         LN1 = (TextView) findViewById(R.id.InstructorLN);
@@ -146,19 +149,7 @@ public class settings extends AppCompatActivity
         yoe = (TextView) findViewById(R.id.InstructorYoe);
         likes = (TextView) findViewById(R.id.InstructorLikes);
 
-        edit21 = (ImageButton) findViewById(R.id.edit21);
-        edit22 = (ImageButton) findViewById(R.id.edit22);
-        edit23 = (ImageButton) findViewById(R.id.edit23);
-        edit24 = (ImageButton) findViewById(R.id.edit24);
-        edit25 = (ImageButton) findViewById(R.id.edit25);
-        edit26 = (ImageButton) findViewById(R.id.edit26);
 
-        edit28 = (ImageButton) findViewById(R.id.edit28);
-        edit29 = (ImageButton) findViewById(R.id.edit29);
-        edit30 = (ImageButton) findViewById(R.id.edit30);
-        edit31 = (ImageButton) findViewById(R.id.edit31);
-        edit32 = (ImageButton) findViewById(R.id.edit32);
-        edit33 = (ImageButton) findViewById(R.id.edit33);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -205,386 +196,13 @@ public class settings extends AppCompatActivity
 
             }
         });
-        edit21.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اكتب الاسم المعدل");
-                final EditText inputField = new EditText(settings.this);
-                inputField.setText(firstName);
-                builder.setView(inputField);
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("firstName").setValue(inputField.getText().toString());
-                        Toast.makeText(settings.this, "تم تعديل الاسم الأول", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit22.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اكتب الاسم المعدل");
-                final EditText inputField = new EditText(settings.this);
-                inputField.setText(lastName);
-                builder.setView(inputField);
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("lastName").setValue(inputField.getText().toString());
-                        Toast.makeText(settings.this, "تم تعديل الاسم الأخير", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit24.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اختر تاريخ الميلاد المعدل");
-                final EditText inputField = new EditText(settings.this);
-                datePicker2 = new DatePicker(settings.this);
-                inputField.setText(birth);
-                builder.setView(datePicker2);
-
-                date1 = datePicker2.getDayOfMonth()+"/"+datePicker2.getMonth()+"/"+datePicker2.getYear();
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("dob").setValue(date1);
-                        Toast.makeText(settings.this, "تم تعديل تاريخ الميلاد", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit25.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اكتب النص المعدل");
-                final EditText inputField = new EditText(settings.this);
-                inputField.setText(email);
-                builder.setView(inputField);
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("email").setValue(inputField.getText().toString());
-                        Toast.makeText(settings.this, "تم تعديل السؤال", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit23.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اختر الجنس المعدل");
-                final EditText inputField = new EditText(settings.this);
-                //inputField.setText(gender);
-                radioGroupGender2 = new RadioGroup(settings.this);
-                RadioButton fe = new RadioButton(settings.this);
-                RadioButton Ma = new RadioButton(settings.this);
-                fe.setText("أنثى");
-                Ma.setText("ذكر");
-                radioGroupGender2.addView(fe,0);
-                radioGroupGender2.addView(Ma,1);
-                builder.setView(radioGroupGender2);
-                int radioId= radioGroupGender2.getCheckedRadioButtonId();
-                RadioButton radioButton = findViewById(radioId);
-                if(radioButton!=null)
-                    gender = radioButton.getText().toString();
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("gender").setValue(gender);
-                        Toast.makeText(settings.this, "تم تعديل الجنس", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-        edit26.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اختر الموادالمعدلة");
-                spinner2= new MultiSelectionSpinner(settings.this);
-                List<String> list = new ArrayList<String>();
-
-                list.add("العربية");
-                list.add("الانكليزية");
-                list.add("الرياضيات");
-                list.add("الكيمياء");
-                list.add("الفيزياء");
-                list.add("الموسيقى");
-                list.add("الرقص");
-                list.add("الرسم");
-                list.add("الطبخ");
-                spinner2.setItems(list);
-                //        inputField.setText(person.getSubjects());
-                builder.setView(spinner2);
-                chosen2=spinner2.getSelectedStrings();
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // databaseReference.child("subjects").setValue(chosen2);
-                        newPrice=Double.parseDouble(lessonPl);
-                        //    instructor1 = new Instructor (firstName,lastName,birth,gender,location1,longInstructorsPhoneNum, intYearsOfExperience,newPrice,0,0,0 ,paymentMeth, lessonPl , teachingMeth , email, chosen2 , currentUserId );
-                        //   databaseReference2.setValue(instructor1);
-                        databaseReference.child("subjects").setValue(chosen2);
-                        Toast.makeText(settings.this, "تم تعديل المواد", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-        edit28.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اخترالمكان المعدل");
-                final EditText inputField = new EditText(settings.this);
-                //        inputField.setText(person.getSubjects());
-                placeSpinner1 = new Spinner(settings.this);
-                ArrayAdapter<CharSequence> placeAdapter = ArrayAdapter.createFromResource(getBaseContext(),R.array.lessonsPlace,android.R.layout.simple_spinner_item);
-                placeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                placeSpinner1.setAdapter(placeAdapter);
-                builder.setView(placeSpinner1);
-                placeSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        chosenPlace2= parent.getItemAtPosition(position).toString();
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("lessonsPlace").setValue(chosenPlace2);
-                        Toast.makeText(settings.this, "تم تعديل المكان", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit29.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اكتب الرقم المعدل");
-                final EditText inputField = new EditText(settings.this);
-                //        inputField.setText(person.getSubjects());
-                builder.setView(inputField);
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        longInstructorsPhoneNum1=Long.parseLong(inputField.getText().toString());
-                        databaseReference.child("phoneNum").setValue(longInstructorsPhoneNum1);
-                        Toast.makeText(settings.this, "تم تعديل الرقم", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit30.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اختر طريقة التدريس المعدلة");
-                final EditText inputField = new EditText(settings.this);
-                //        inputField.setText(person.getSubjects());
-                method1 = new Spinner(settings.this);
-                ArrayAdapter<CharSequence> methodAdapter = ArrayAdapter.createFromResource(settings.this,R.array.method,android.R.layout.simple_spinner_item);
-                methodAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                method1.setAdapter(methodAdapter);
-                builder.setView(method1);
-                method1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        chosenMethod2= parent.getItemAtPosition(position).toString();
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("teachingMethod").setValue(chosenMethod2);
-                        Toast.makeText(settings.this, "تم تعديل طريقة التدريس", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit31.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(settings.this);
-                builder1.setTitle("اختر طريقة الدفع المعدلة");
-                final EditText inputField = new EditText(settings.this);
-                paymentSpinner1 = new Spinner(settings.this);
-                ArrayAdapter<CharSequence> paymentAdapter = ArrayAdapter.createFromResource(settings.this,R.array.paymentMethod,android.R.layout.simple_spinner_item);
-                paymentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                paymentSpinner1.setAdapter(paymentAdapter);
-                builder1.setView(paymentSpinner1);
-                paymentSpinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                    @Override
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        chosenPaymentMethod2 = parent.getItemAtPosition(position).toString();
-
-                    }
-
-                    @Override
-                    public void onNothingSelected(AdapterView<?> parent) {
-
-                    }
-                });
-                //        inputField.setText(person.getSubjects());
-
-                builder1.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        databaseReference.child("paymentMethod").setValue(chosenPaymentMethod2);
-                        Toast.makeText(settings.this, "تم تعديل طريقة الدفع", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog3 = builder1.create();
-                dialog3.show();
-            }
-        });
-
-        edit32.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اكتب السعر المعدل");
-                final EditText inputField = new EditText(settings.this);
-                //        inputField.setText(person.getSubjects());
-                builder.setView(inputField);
-
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        price1=Double.parseDouble(inputField.getText().toString());
-                        databaseReference.child("lessonsPrice").setValue(price1);
-                        Toast.makeText(settings.this, "تم تعديل السعر", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
-
-        edit33.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(settings.this);
-                builder.setTitle("اكتب سنوات الخبرة المعدل");
-                final EditText inputField = new EditText(settings.this);
-                //        inputField.setText(person.getSubjects());
-                builder.setView(inputField);
-                builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        intYearsOfExperience1=Integer.parseInt(inputField.getText().toString());
-                        databaseReference.child("yoe").setValue(intYearsOfExperience1);
-                        Toast.makeText(settings.this, "تم تعديل سنوات الخبرة", Toast.LENGTH_SHORT).show();
-                    }
-                }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                Dialog dialog2 = builder.create();
-                dialog2.show();
-            }
-        });
+edit.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        startActivity(new Intent(settings.this, editProfile.class));
+    }
+});
 
     }
 
