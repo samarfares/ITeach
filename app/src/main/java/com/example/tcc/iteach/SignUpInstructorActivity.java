@@ -1,18 +1,11 @@
 package com.example.tcc.iteach;
 
-import android.Manifest;
-import android.accounts.Account;
 import android.accounts.NetworkErrorException;
-import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -36,7 +29,6 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
@@ -57,7 +49,6 @@ import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.crypto.BadPaddingException;
@@ -233,7 +224,7 @@ database=FirebaseDatabase.getInstance();
         }
     }
 
-    public void registerInstructor(){
+    public String registerInstructor(){
         instructorEmail = editTextEmailInstructor.getText().toString();
         instructorPassword = editTextPasswordInstructor.getText().toString();
 
@@ -257,55 +248,85 @@ database=FirebaseDatabase.getInstance();
         chosenString= spinner.getSelectedItemsAsString();
         if(encryptedLocation== null ){
             // email is empty!
-            Toast.makeText(this, "فضلاً اختر موقعك من الخارطة", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلاً اختر موقعك من الخارطة", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
         if(TextUtils.isEmpty(instructorEmail)){
             // email is empty!
-            Toast.makeText(this, "فضلأ أدخل ايميل", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ أدخل ايميل", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
 
         if(TextUtils.isEmpty(instructorPassword)){
             // password is empty!
-            Toast.makeText(this, "فضلأ أدخل كلمة مرور", Toast.LENGTH_LONG).show(); return;}
+            Toast.makeText(this, "فضلأ أدخل كلمة مرور", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
         if (instructorPassword.length()<6){
-            Toast.makeText(this, "لايجب أن يكون طول كلمة المرور أقل من ستة أحرف", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "لايجب أن يكون طول كلمة المرور أقل من ستة أحرف", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
 
         if(TextUtils.isEmpty(instructorsPhoneNum)){
-            Toast.makeText(this, "فضلاً أدخل رقم هاتفك", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلاً أدخل رقم هاتفك", Toast.LENGTH_LONG).show();
+            return null;
+        }
             if(instructorsPhoneNum.length()!= 10&& !(instructorsPhoneNum.substring( 0,1 ).equals( "05" ))){
-                    Toast.makeText(this, "رقم الهاتف يجب أن يكون من 10 أرقام ويبدأ ب 05", Toast.LENGTH_LONG).show();return;}
+                    Toast.makeText(this, "رقم الهاتف يجب أن يكون من 10 أرقام ويبدأ ب 05", Toast.LENGTH_LONG).show();
+                return null;
+            }
         if(TextUtils.isEmpty(firstName)){
-           Toast.makeText(this, "فضلاً أدخل اسمك الأول", Toast.LENGTH_LONG).show();return;}
+           Toast.makeText(this, "فضلاً أدخل اسمك الأول", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
         if(TextUtils.isEmpty(lastName)){
-            Toast.makeText(this, "فضلاُ أدخل اسم شهرتك", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلاُ أدخل اسم شهرتك", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
         if(TextUtils.isEmpty(date)){
-            Toast.makeText(this, "فضلأ أدخل تاريخ ميلادك", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ أدخل تاريخ ميلادك", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
         if(datePicker.getYear()>2003){
-            Toast.makeText(this, "عذراً غير مسموح لك التسجيل بهذا العمر", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "عذراً غير مسموح لك التسجيل بهذا العمر", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
         if(TextUtils.isEmpty(gender)){
-            Toast.makeText(this, "فضلأ اختر جنسك", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ اختر جنسك", Toast.LENGTH_LONG).show();
+            return null;
+        }
         if(chosen.size()==0){
             // email is empty!
-            Toast.makeText(this, "فضلأ اختر المواد التي تدرسها", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ اختر المواد التي تدرسها", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
 
 
         if(TextUtils.isEmpty(yearsOfExperience)){
-            Toast.makeText(this, "فضلأ أدخل عدد سنوات خبرتك", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلأ أدخل عدد سنوات خبرتك", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
 
 
         if(TextUtils.isEmpty(priceString)){
-            Toast.makeText(this, "فضلاً أدخل سعر الدرس", Toast.LENGTH_LONG).show();return;}
+            Toast.makeText(this, "فضلاً أدخل سعر الدرس", Toast.LENGTH_LONG).show();
+            return null;
+        }
 
             if(pdfUri==null){
-                Toast.makeText(this, "فضلاً أرفق سيرتك الذاتية", Toast.LENGTH_LONG).show();return; }
+                Toast.makeText(this, "فضلاً أرفق سيرتك الذاتية", Toast.LENGTH_LONG).show();
+                return null;
+            }
 // if validations are ok we register user
         intYearsOfExperience=Integer.parseInt(yearsOfExperience);
         longInstructorsPhoneNum=Long.parseLong(instructorsPhoneNum);
@@ -405,7 +426,9 @@ String userID = firebaseUser.getUid();
 
                              }//else
                     }//oncomplete
-                }); }
+                });
+        return null;
+    }
 
     @Override
     public void onClick(View view) {

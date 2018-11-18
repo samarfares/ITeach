@@ -133,7 +133,7 @@ public class LocationActivity extends AppCompatActivity implements GoogleApiClie
 
             }
             else{
-                Toast.makeText(LocationActivity.this, "Your Location must be in Riyadh..sorry !!, ", Toast.LENGTH_LONG).show();
+                Toast.makeText(LocationActivity.this, "عذراً يجب أن يكون موقعك ضمن الرياض", Toast.LENGTH_LONG).show();
 
            Intent intent=new Intent(this, SignUpInstructorActivity.class);
             startActivity(intent);}
