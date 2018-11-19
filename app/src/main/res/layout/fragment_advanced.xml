@@ -3,122 +3,301 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Advanced">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Advanced"
+    android:background="#e6f2ff"
+    >
 
-<ScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
 
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:textSize="20sp"
-                android:text="يمكنك اختيار أي فئة للبحث أو يمكنك الجمع بينها"
-                android:textStyle="bold" />
-
-
-            <Button
-                android:id="@+id/detectLocation"
+            <android.support.design.widget.AppBarLayout
+                android:id="@+id/appBarLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:text="بالقرب من "
-                android:textColor="@color/white"
-                android:drawableLeft="@drawable/locationpin"
-                android:textStyle="bold"
-                />
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#1fabcb"
+                    app:layout_scrollFlags="scroll|enterAlways"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+
+
+
+                    </RelativeLayout>
+
+
+                </android.support.v7.widget.Toolbar>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffff"
+                    >
+
+
+
+                    <TextView
+                        android:id="@+id/text"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
+                        android:text="يمكنك اختيار أي فئة للبحث أو يمكنك الجمع بينها"
+                        android:textAlignment="center"
+                        android:textSize="13dp"
+                        android:textColor="#e29c9c"
+                        />
+
+                    <View
+                        android:id="@+id/v1"
+                        android:layout_width="match_parent"
+                        android:layout_height="3dp"
+                        android:layout_below="@+id/text"
+                        android:background="#ffff" />
+
+                    <Button
+                        android:id="@+id/detectLocation"
+                        android:layout_width="300dp"
+                        android:layout_height="35dp"
+                        android:layout_below="@+id/v1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="7dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/buttonshape"
+                        android:drawableLeft="@drawable/ic_my_location_black_24dp"
+                        android:drawablePadding="12dp"
+                        android:text="بالقرب من "
+                        android:textAlignment="center"
+                        android:textColor="@color/white"
+                        android:textSize="16dp"
+                        android:textStyle="bold"
+
+                        />
+
+
+                </RelativeLayout>
+
+
+            </android.support.design.widget.AppBarLayout>
+
+
+
             <TextView
                 android:id="@+id/textlocation"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="8dp"
+                android:background="#FFFDE7"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textType"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="الجنس"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-
-            <RadioGroup
-                android:id="@+id/radioType"
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <RadioButton
-                    android:id="@+id/radioMale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="ذكر" />
-
-                <RadioButton
-                    android:id="@+id/radioFemale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:text="أنثى" />
-
-
-            </RadioGroup>
-
-
-
-
-            <EditText
-                android:id="@+id/editTextPrice"
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:layout_marginTop="30dp"
-                android:hint="سعر الدرس أقل من"
-                android:inputType="number" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
 
-            <TextView
-                android:id="@+id/textSubject"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="30dp"
-                android:text="المواد:"
-                android:textSize="20sp"
+                android:backgroundTint="#ffff">
 
-                android:textStyle="bold" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp">
 
-            <Spinner
-                android:id="@+id/subject"
+
+
+                    <TextView
+                        android:id="@+id/textType"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+
+                        android:layout_marginTop="10dp"
+                        android:text="فضلاً اختر جنسك :"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+                    <View
+                        android:id="@+id/v7"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/textType"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginTop="10dp"
+                        android:background="#1fabcb" />
+
+                    <RadioGroup
+                        android:id="@+id/radioType"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/v7"
+                        android:layout_marginTop="4dp"
+                        android:textDirection="rtl"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/radioMale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="ذكر"
+                            android:textSize="14dp"
+                            android:textDirection="rtl"
+                            />
+
+                        <RadioButton
+                            android:id="@+id/radioFemale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="أنثى"
+                            android:textSize="14dp"
+                            android:textDirection="rtl"
+                            />
+                    </RadioGroup>
+
+
+
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/car44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp" />
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="8dp"
+                app:cardCornerRadius="8dp"
+
+                android:backgroundTint="#ffff">
+
+                <EditText
+                    android:id="@+id/editTextPrice"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="6dp"
+                    android:hint="سعر الدرس أقل من"
+                    android:inputType="number"
+                    android:drawableLeft="@drawable/expensive4"
+                    android:drawablePadding="10dp"
+                    />
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/card_5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_4"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="#ffffff"
+                app:cardCornerRadius="3dp"
+                app:cardElevation="14dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5dp">
+
+
+                    <TextView
+                        android:id="@+id/textSubject"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="14dp"
+                        android:text="المواد:"
+                        android:textColor="#1fabcb"
+                        android:textSize="15dp"
+                        android:textStyle="bold"
+                        android:textDirection="rtl"/>
+
+                    <Spinner
+                        android:id="@+id/subject"
+                        android:layout_width="300dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textSubject"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:padding="4dp"
+                        android:textDirection="rtl" />
+
+
+
+
+
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+
+
+
+
+
 
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="354dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-
                 android:layout_marginTop="30dp"
                 android:text="بحث"
-                android:textStyle="bold" />
-
-
-            <ListView
-                android:id="@+id/list1"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="#ffff"
+                android:background="@drawable/buttonsh2"
+                android:layout_gravity="center_horizontal"
+                android:drawableLeft="@drawable/ic_search_black_24dp"
+                />
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></ListView>
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                app:cardElevation="12dp"
+                android:backgroundTint="#ffff"
+                >
+
+                <ListView
+                    android:id="@+id/list1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="4dp"
+                    ></ListView>
+
+            </android.support.v7.widget.CardView>
+
+
         </LinearLayout>
-</ScrollView>
+    </ScrollView>
 </FrameLayout>

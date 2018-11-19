@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:backgroundTint="#ffff"
+    android:layout_margin="5dp"
+    app:cardElevation="12dp"
+    app:cardCornerRadius="9dp"
+    android:background="#e6f2ff"
+
+    >
 
 
 
@@ -13,7 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_margin="20dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        android:background="#ffff"
+        >
     </ListView>
 
-</LinearLayout>
+</android.support.v7.widget.CardView>

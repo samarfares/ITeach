@@ -294,7 +294,7 @@ database=FirebaseDatabase.getInstance();
             return null;
         }
 
-        if(datePicker.getYear()>2003){
+        if(datePicker.getYear()>2000){
             Toast.makeText(this, "عذراً غير مسموح لك التسجيل بهذا العمر", Toast.LENGTH_LONG).show();
             return null;
         }
