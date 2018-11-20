@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v7.widget.MenuPopupWindow;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.MimeTypeMap;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -92,6 +93,7 @@ public class InstructorActivity extends AppCompatActivity implements AdapterView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         firebaseAuth = FirebaseAuth.getInstance();
         listView = (ListView) findViewById(R.id.list1);
         buttonContinueToLocation=(Button)findViewById(R.id.buttonContinueToLocation);

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -80,7 +81,7 @@ private LatLng location;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_student);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         textViewSignin2 = (TextView) findViewById(R.id.textViewSignin2);
         editTextEmailStudent = (EditText) findViewById(R.id.editTextEmailStudent);
         editTextPasswordStudent= (EditText) findViewById(R.id.editTextPasswordStudent);

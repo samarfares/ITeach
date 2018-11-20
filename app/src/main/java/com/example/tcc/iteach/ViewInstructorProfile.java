@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -50,7 +51,7 @@ int countLikes;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_instructor_profile);
 
-
+    this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 listViewInstructorProfile = (ListView) findViewById(R.id.listViewInstructorProfile);
 textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile);

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -98,7 +99,7 @@ ProgressDialog progressDialog2;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_instructor);
-
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         textViewSignin2 = (TextView) findViewById(R.id.textViewSignin2);
         editTextEmailInstructor = (EditText) findViewById(R.id.editTextEmailInstructor);
         editTextPasswordInstructor= (EditText) findViewById(R.id.editTextPasswordInstructor);
