@@ -185,7 +185,7 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                                                 }
                                             } else {
                                                 list.remove(positionToRemove);
-                                                UpcomingFragment.list.remove(positionToRemove);
+                                                UpcomingFragment2.list.remove(positionToRemove);
                                                 notifyDataSetChanged();
                                                 databaseReference.getRoot().child("Lessons").child(keyList.get(position)).removeValue();
                                                 keyList.remove(position);
