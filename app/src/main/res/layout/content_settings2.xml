@@ -41,7 +41,7 @@
 
                 <Button
                     android:id="@+id/editProfile2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="تعديل الملف الشخصي"
@@ -49,18 +49,18 @@
                     android:textColor="#ffff"
                     android:textAlignment="center"
                     android:textStyle="bold"
-                    android:layout_marginRight="20dp"
+                    android:layout_marginRight="3dp"
                     android:layout_marginTop="9dp"
                     android:layout_alignParentTop="true"
                     android:drawableLeft="@drawable/edit_40"
-                    android:textSize="16dp"
+                    android:textSize="13dp"
 
 
 
                     />
                 <Button
                     android:id="@+id/deleteProfile2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="120dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:text="حذف الملف الشخصي"
@@ -70,9 +70,9 @@
                     android:layout_marginTop="9dp"
                     android:textStyle="bold"
                     android:layout_alignParentTop="true"
-                    android:layout_marginLeft="20dp"
+                    android:layout_marginLeft="3dp"
                     android:drawableLeft="@drawable/icons8trash_40"
-
+                    android:textSize="13dp"
 
                     />
 

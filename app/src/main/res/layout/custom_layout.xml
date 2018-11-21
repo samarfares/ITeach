@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/back_1"
+    android:layout_height="wrap_content"
+    android:background="#e6f2ff"
     >
 
 
@@ -13,10 +13,8 @@
         android:id="@+id/imageView2"
         android:layout_width="match_parent"
         app:srcCompat="@mipmap/ic_launcher"
-        android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/roundimage"
+        android:layout_height="wrap_content"
+
+
         />
 </LinearLayout>

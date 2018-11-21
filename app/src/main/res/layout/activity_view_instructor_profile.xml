@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ViewInstructorProfile"
-    android:background="@drawable/back_2"
+    android:background="#e6f2ff"
     >
 
 
@@ -69,7 +69,7 @@
                             <View
                                 android:id="@+id/v1"
                                 android:layout_width="match_parent"
-                                android:layout_height="3dp"
+                                android:layout_height="1dp"
                                 android:layout_below="@+id/distance"
                                 android:background="#1fabcb" />
 
@@ -89,7 +89,7 @@
                             <View
                                 android:id="@+id/v2"
                                 android:layout_width="match_parent"
-                                android:layout_height="3dp"
+                                android:layout_height="1dp"
                                 android:layout_below="@+id/textViewInstructorProfile"
                                 android:background="#1fabcb" />
 
@@ -99,8 +99,8 @@
                                 android:layout_below="@id/v2"
                                 android:layout_marginTop="15dp"
                                 android:layout_marginBottom="6dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="5dp"
+                                android:layout_marginLeft="1dp"
+                                android:layout_marginRight="1dp"
                                 app:cardElevation="7dp"
                                 android:backgroundTint="#FFFDE7"
                                 >
@@ -108,8 +108,7 @@
                                 <ListView
                                     android:id="@+id/listViewInstructorProfile"
                                     android:layout_width="match_parent"
-                                    android:layout_height="100dp"
-                                    android:layout_margin="4dp"
+                                    android:layout_height="wrap_content"
                                     android:background="#FFFDE7"
 
 

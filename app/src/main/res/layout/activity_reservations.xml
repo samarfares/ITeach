@@ -9,12 +9,30 @@
     android:background="#e6f2ff"
     tools:openDrawer="start">
 
-    <include
-        layout="@layout/app_bar_instructor_main"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-    <include layout="@layout/content_reservations" />
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#1fabcb"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <include layout="@layout/content_reservations" />
+
+    </LinearLayout>
+
+
 
 
     <android.support.design.widget.NavigationView

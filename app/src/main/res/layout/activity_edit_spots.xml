@@ -58,7 +58,7 @@
                     app:cardElevation="12dp"
                     app:cardCornerRadius="2dp"
                     android:layout_marginBottom="4dp"
-                    android:backgroundTint="#ffffcc"
+                    android:backgroundTint="#ffff"
                     android:layout_centerHorizontal="true"
                     >
 
@@ -66,7 +66,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="4dp"
-                        android:backgroundTint="#ffffcc"
+                        android:backgroundTint="#ffff"
                         >
 
                         <TextView
@@ -113,13 +113,15 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/textViewDate"
                     android:layout_marginTop="10dp"
-                    android:backgroundTint="#ffff"
+                    android:backgroundTint="#ffffcc"
 
                     >
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:background="#ffffcc"
+                        >
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -138,49 +140,39 @@
 
                                 />
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="30dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_6"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+                            <Button
+                                android:id="@+id/button_group_6"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_6"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                android:text="جماعي"
 
-                            </android.support.v7.widget.CardView>
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
+                                android:layout_marginVertical="10dp"
+
+                                />
+
 
 
                             <TextView
@@ -210,49 +202,39 @@
                                 android:textStyle="bold"
                                 />
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="30dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_7"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_7"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_7"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
 
@@ -283,49 +265,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="30dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_8"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_8"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_8"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -358,49 +330,39 @@
                                 />
 
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="30dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_9"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_9"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_9"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -429,49 +391,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_10"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_10"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
 
@@ -501,49 +453,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_11"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_11"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_11"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -575,49 +517,39 @@
                                 />
 
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_12"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_12"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -647,49 +579,39 @@
                                 android:textStyle="bold"/>
 
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_13"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_13"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_13"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -719,49 +641,39 @@
                                 android:textStyle="bold"/>
 
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_14"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_14"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_14"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -794,49 +706,39 @@
 
                                 />
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_15"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_15"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_15"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_15"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -865,49 +767,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_16"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_16"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -937,49 +829,38 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_individual_17"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_17"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_17"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_17"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -1011,49 +892,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_18"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_18"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_18"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_18"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -1082,49 +953,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_19"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_19"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_19"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_19"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -1153,49 +1014,39 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_20"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_20"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_20"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_20"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -1223,49 +1074,38 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_21"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_21"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_21"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_21"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
 
 
                             <TextView
@@ -1293,49 +1133,38 @@
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
 
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_22"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_22"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+                            <Button
+                                android:id="@+id/button_group_22"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_22"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
@@ -1362,49 +1191,39 @@
                                 android:textSize="20dp"
                                 android:layout_margin="10dp"
                                 android:textStyle="bold"/>
-                            <android.support.v7.widget.CardView
+
+
+                            <Button
+                                android:id="@+id/button_individual_23"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="فردي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:layout_marginLeft="20dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
+                                />
 
-                                <Button
-                                    android:id="@+id/button_individual_23"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="فردي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
 
-                            </android.support.v7.widget.CardView>
 
-                            <android.support.v7.widget.CardView
+
+                            <Button
+                                android:id="@+id/button_group_23"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:text="جماعي"
+                                android:background="#ffff"
+                                android:textColor="#000"
+                                android:textStyle="normal"
+                                android:textSize="20dp"
                                 android:layout_marginVertical="10dp"
-                                app:cardElevation="10dp"
-                                app:cardCornerRadius="17dp"
-                                >
-                                <Button
-                                    android:id="@+id/button_group_23"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="جماعي"
-                                    android:background="@drawable/buttonshape"
-                                    android:textColor="#ffff"
-                                    android:textStyle="bold"
-                                    android:textSize="20dp"
-                                    />
+                                />
 
-                            </android.support.v7.widget.CardView>
+
 
 
                             <TextView
