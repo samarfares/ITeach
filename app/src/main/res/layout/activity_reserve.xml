@@ -183,16 +183,7 @@
                             android:layout_marginRight="10dp"
                             />
 
-                        <ListView
-                            android:layout_marginTop="30dp"
-                            android:layout_marginBottom="20dp"
-                            android:id="@+id/listViewReserve"
-                            android:layout_width="match_parent"
-                            android:layout_height="240dp"
-                            android:layout_below="@id/view13"
 
-                            >
-                        </ListView>
 
 
 
@@ -203,6 +194,16 @@
 
 
 
+                <ListView
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="20dp"
+                    android:id="@+id/listViewReserve"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_below="@id/card13"
+
+                    >
+                </ListView>
 
 
                 <Button
@@ -210,7 +211,7 @@
                     android:layout_width="175dp"
                     android:layout_height="40dp"
                     android:text="احجز الدرس"
-                    android:layout_below="@id/card13"
+                    android:layout_below="@id/listViewReserve"
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/buttonshape"
                     android:textSize="18dp"
