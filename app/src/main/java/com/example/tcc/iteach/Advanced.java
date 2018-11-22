@@ -246,145 +246,123 @@ public class Advanced extends Fragment {
                                 if (instructor.subjects.contains( subject ))
 
                                     subjectList.add( instructor );
+
                             }
 
 
                         }
+                        // if he chooses but mine is empty
 
 
 
                         Set<Instructor> common1;
                         common1 = new HashSet<Instructor>(list);
-                        if (locations.size()>0)
+                        if (locations.size()>0&&genderList.size()>0&&subjectList.size()>0&& priceList.size()>0)
                         {
-                            if(genderList.size()>0)
-                            {
-                                if(priceList.size()>0)
-                                {
-                                    if(subjectList.size()>0)
-                                    {
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(locations);
-                                        common1.retainAll(subjectList);
-                                        common1.retainAll(genderList);
+                            Toast.makeText(getActivity(), "1", Toast.LENGTH_SHORT).show();
 
-                                    }
-                                    else{
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(locations);
-                                        common1.retainAll(genderList);}
-
-
-                                }
-                                else
-                                {
-                                    if(subjectList.size()>0){
-                                        common1.retainAll(subjectList);
-                                        common1.retainAll(locations);
-                                        common1.retainAll(genderList); }
-                                    else
-                                    {
-                                        common1.retainAll(locations);
-                                        common1.retainAll(genderList);
-                                    }
-                                }
-
-
-                            }
-                            else
-                            {
-                                if(subjectList.size()>0){
-                                    if (priceList.size()>0){
-                                        common1.retainAll(subjectList);
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(locations);}
-                                    else{
-                                        common1.retainAll(subjectList);
-                                        common1.retainAll(locations);
-                                    }
-                                }
-                                else
-                                {
-                                    if (priceList.size()>0){
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(locations);}
-                                    else{
-                                        common1.retainAll(locations);
-                                    }
-                                }
-
-                            }
-                        }
-                        else
+                            common1.retainAll(priceList);
+                            common1.retainAll(locations);
+                            common1.retainAll(subjectList);
+                            common1.retainAll(genderList);}
+                        if (locations.size()>0&&genderList.size()<=0&&subjectList.size()>0&& priceList.size()>0)
                         {
-                            if(genderList.size()>0)
-                            {
-                                if(subjectList.size()>0)
-                                {
-                                    if(priceList.size()>0)
-                                    {
-                                        common1.retainAll(subjectList);
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(genderList);
+                            Toast.makeText(getActivity(), "2", Toast.LENGTH_SHORT).show();
 
-                                    }
-                                    else
-                                    {
-                                        common1.retainAll(subjectList);
-                                        common1.retainAll(genderList);
+                            common1.retainAll(priceList);
+                            common1.retainAll(locations);
+                            common1.retainAll(subjectList);
+                         }
+                        if (locations.size()>0&&genderList.size()>0&&subjectList.size()<=0&& priceList.size()>0)
+                        {
+                            Toast.makeText(getActivity(), "3", Toast.LENGTH_SHORT).show();
 
-                                    }
+                            common1.retainAll(priceList);
+                            common1.retainAll(locations);
+                            common1.retainAll(genderList);}
+                        if (locations.size()>0&&genderList.size()>0&&subjectList.size()>0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "4", Toast.LENGTH_SHORT).show();
 
-                                }
-                                else
-                                {
-                                    if(priceList.size()>0)
-                                    {
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(genderList);
-                                    }
-                                    else
-                                    {
-                                        common1.retainAll(genderList);
+                            common1.retainAll(locations);
+                            common1.retainAll(subjectList);
+                            common1.retainAll(genderList);}
+                        if (locations.size()<=0&&genderList.size()>0&&subjectList.size()>0&& priceList.size()>0)
+                        {
+                            Toast.makeText(getActivity(), "5", Toast.LENGTH_SHORT).show();
 
-                                    }
-                                }
+                            common1.retainAll(priceList);
+                            common1.retainAll(subjectList);
+                            common1.retainAll(genderList);}
+                        if (locations.size()>0&&genderList.size()<=0&&subjectList.size()<=0&& priceList.size()>0)
+                        {
+                            Toast.makeText(getActivity(), "6", Toast.LENGTH_SHORT).show();
 
+                            common1.retainAll(priceList);
+                            common1.retainAll(locations);
                             }
-                            else
-                            {
-                                if(subjectList.size()>0)
-                                {
-                                    if(priceList.size()>0){
-                                        common1.retainAll(priceList);
-                                        common1.retainAll(subjectList);}
-                                    else{
-                                        common1.retainAll(subjectList);
+                        if (locations.size()>0&&genderList.size()<=0&&subjectList.size()>0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "7", Toast.LENGTH_SHORT).show();
 
-                                    }
+                            common1.retainAll(locations);
+                            common1.retainAll(subjectList);
+                           }
+                        if (locations.size()>0&&genderList.size()>0&&subjectList.size()<=0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "8", Toast.LENGTH_SHORT).show();
 
-                                }
-                                else
-                                {
-                                    if(priceList.size()>0)
-                                        common1.retainAll(priceList);
+                            common1.retainAll(locations);
+                            common1.retainAll(genderList);}
+                        if (locations.size()<=0&&genderList.size()<=0&&subjectList.size()>0&& priceList.size()>0)
+                        {
+                            Toast.makeText(getActivity(), "9", Toast.LENGTH_SHORT).show();
 
-                                }
-
+                            common1.retainAll(priceList);
+                            common1.retainAll(subjectList);
                             }
+                        if (locations.size()<=0&&genderList.size()>0&&subjectList.size()<=0&& priceList.size()>0)
+                        {
+                            Toast.makeText(getActivity(), "10", Toast.LENGTH_SHORT).show();
 
+                            common1.retainAll(priceList);
+                            common1.retainAll(genderList);}
+                        if (locations.size()<=0&&genderList.size()>0&&subjectList.size()>0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "11", Toast.LENGTH_SHORT).show();
 
+                            common1.retainAll(subjectList);
+                            common1.retainAll(genderList);}
 
+                        if (locations.size()<=0&&genderList.size()<=0&&subjectList.size()<=0&& priceList.size()>0)
+                        {
+                            Toast.makeText(getActivity(), "12", Toast.LENGTH_SHORT).show();
 
+                            common1.retainAll(priceList);
+                           }
+                        if (locations.size()<=0&&genderList.size()<=0&&subjectList.size()>0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "13", Toast.LENGTH_SHORT).show();
 
+                            common1.retainAll(subjectList);
+                           }
+                        if (locations.size()<=0&&genderList.size()>0&&subjectList.size()<=0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "14", Toast.LENGTH_SHORT).show();
+
+                            common1.retainAll(genderList);}
+                        if (locations.size()>0&&genderList.size()<=0&&subjectList.size()<=0&& priceList.size()<=0)
+                        {
+                            Toast.makeText(getActivity(), "15", Toast.LENGTH_SHORT).show();
+
+                            common1.retainAll(locations);
                         }
 
 
 
 
                         list = new ArrayList<Instructor>(common1);
-                        if(genderList.size()<=0 && priceList.size()<=0 && subjectList.size()<=0)
-                            list.clear();
+
 
                         if (list.size()!=0){
 

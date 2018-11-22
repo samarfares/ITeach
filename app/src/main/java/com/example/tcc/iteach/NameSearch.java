@@ -133,7 +133,7 @@ public class NameSearch extends Fragment {
                     list.add(instructor);
 
                 }
-
+                if (getActivity()!=null){
                 if (list.size()!=0){
                     myAdapter = new MyAdapterSearch(getActivity(),R.layout.items,list);
                     listView.setAdapter(myAdapter);
@@ -142,7 +142,7 @@ public class NameSearch extends Fragment {
 
                     Toast.makeText(getActivity(), "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
 
-                }
+                }}
                 for (int i = 0; i < names.size(); i++) {
 
                     Instructor Names =names.get(i);

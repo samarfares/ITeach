@@ -36,20 +36,50 @@ public class ViewInstructorProfile extends AppCompatActivity implements View.OnC
     DatabaseReference databaseReference;
     DatabaseReference ref;
 
-    DatabaseReference databaseReference2 , likesRef ;
+    DatabaseReference databaseReference2 ,databaseReference3, likesRef ;
    List<Instructor> list = new ArrayList<>();
 
     AdapterInstructor adapterInstructor;
 ImageButton buttonLike ,buttonShare;
 Button buttonReserve;
 String email , ID;
+    boolean check = true;
+
 boolean likeChecker= false;
+    FirebaseAuth firebaseAuth;
+
 FirebaseUser firebaseUser;
 int countLikes;
 @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_instructor_profile);
+    buttonReserve=(Button) findViewById(R.id.buttonReserve);
+
+    firebaseAuth =FirebaseAuth.getInstance();
+
+    databaseReference3=FirebaseDatabase.getInstance().getReference("Instructors");
+    databaseReference3.addValueEventListener( new ValueEventListener() {
+        @Override
+        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+            for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                if (snap.child( "userID" ).getValue().toString().equals( firebaseAuth.getCurrentUser().getUid() )) {
+                    check=false;
+                    buttonReserve.setVisibility( View.GONE );
+                }
+            }
+            if (check){
+                buttonReserve.setVisibility( View.VISIBLE );
+            }
+        }
+
+        @Override
+        public void onCancelled(DatabaseError databaseError) {
+
+        }
+    } );
+
+
 
     this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -92,7 +122,6 @@ textViewInstructorProfile= (TextView)findViewById(R.id.textViewInstructorProfile
         }
     });
  distance.setText( "يبعد عنك مسافة :  "+ getIntent().getExtras().getString("distance")+ " كيلومتر ");
-    buttonReserve=(Button) findViewById(R.id.buttonReserve);
             buttonLike=(ImageButton) findViewById(R.id.buttonLike);
     buttonShare=(ImageButton) findViewById(R.id.share);
 
