@@ -36,12 +36,14 @@ public class notifications extends AppCompatActivity
     private DatabaseReference databaseReference;
     ListView listView2;
     ListView listView3;
+    ListView listView4;
 
     List<MessageLesson> list2;
     List<MessageCancel> list3;
-
+    List<MessageEdit> list4;
     NotificationLessonAdapter myAdapter2;
     NotificationCancelAdapter myAdapter3;
+    NotificationEditAdapter myAdapter4;
 
     FirebaseAuth firebaseAuth;
 
@@ -57,10 +59,11 @@ public class notifications extends AppCompatActivity
         firebaseAuth = FirebaseAuth.getInstance();
         listView2=(ListView) findViewById( R.id.list2 );
         listView3=(ListView) findViewById( R.id.list3 );
+        listView4=(ListView) findViewById( R.id.list4 );
 
         list2 = new ArrayList<>();
         list3 = new ArrayList<>();
-
+        list4 = new ArrayList<>();
 
 
 
@@ -145,6 +148,44 @@ public class notifications extends AppCompatActivity
             }
         });
 
+        databaseReference = FirebaseDatabase.getInstance().getReference( "messagesEdit" );
+        databaseReference.addValueEventListener( new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snap : dataSnapshot.getChildren()) {
+
+                    MessageEdit message = snap.getValue( MessageEdit.class );
+                    if(message.getInstructorID().equals( firebaseAuth.getUid() ))
+
+                        list4.add( message );
+
+                }
+
+
+
+                myAdapter4 = new NotificationEditAdapter( notifications.this, R.layout.lessonsitems, list4 );
+                listView4.setAdapter( myAdapter4 );
+                Utility.setListViewHeightBasedOnChildren( listView4 );
+
+
+
+            }
+
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        } );
+
+
+        listView4.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(notifications.this,reservations.class);
+                startActivity(intent);
+            }
+        });
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

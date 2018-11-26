@@ -135,6 +135,8 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                 Intent intent = new Intent(view.getContext(),EditLesson.class);
                 intent.putExtra("lessonID" , keyList.get(position));
                 intent.putExtra("insID",lessons.get(position).getInstructorID());
+                intent.putExtra("studentId",lessons.get(position).getStudentID());
+
                 intent.putExtra("teachingMethod",lessons.get(position).getTeachingMethod());
                 view.getContext().startActivity(intent);
             }
@@ -175,7 +177,7 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                                                 Toast.makeText(getContext(), "لا تستطيع إلغاء الدرس اذا كان بعد أقل من ساعة", Toast.LENGTH_SHORT).show();
                                             }
                                             else{
-                                                FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الأستاذ بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+                                                FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("تم إالغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
 
                                                 list.remove(positionToRemove);
                                                 UpcomingFragment.list.remove(positionToRemove);
@@ -188,7 +190,7 @@ public class UpcomingAdapter extends ArrayAdapter<String> {
                                             }
                                         }
                                         else{
-                                            FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الأستاذ بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+                                            FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("تم إالغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
 
                                             list.remove(positionToRemove);
                                             UpcomingFragment.list.remove(positionToRemove);
