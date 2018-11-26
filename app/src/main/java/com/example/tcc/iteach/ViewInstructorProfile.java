@@ -275,7 +275,7 @@ else{
             intent.putExtra("insLikes",list.get(0).getLikes());
             intent.putExtra("insPaymentMethod",list.get(0).getPaymentMethod());
             intent.putExtra("insLessonsPlace",list.get(0).getLessonsPlace());
-            intent.putExtra("insLessonsPrice",list.get(0).getLessonsPrice());
+            intent.putExtra("insLessonsPrice",String.valueOf(list.get(0).getLessonsPrice()));
             intent.putExtra("insTeachingMethod",list.get(0).getTeachingMethod());
             intent.putExtra("insYOE",list.get(0).getYoe());
             intent.putExtra("insDOB",list.get(0).getDob());
