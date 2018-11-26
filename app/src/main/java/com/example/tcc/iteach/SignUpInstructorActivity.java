@@ -378,6 +378,8 @@ String userID = firebaseUser.getUid();
                             Toast.makeText(SignUpInstructorActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                             FirebaseMessaging.getInstance().subscribeToTopic("notificationsLessons");
                             FirebaseMessaging.getInstance().subscribeToTopic("notificationsCancel");
+                            FirebaseMessaging.getInstance().subscribeToTopic("notificationsEdit");
+
 
 
                             FirebaseDatabase.getInstance().getReference("messages").push().setValue(new Message( "أستاذ جديد", "أستاذ جديد انضم لنا..قد تكون مهتماً بالمواد التي يدرسها ويسكن بالقرب منك .." ,instructorEmail,encryptedLocation,firstName+" "+lastName,userID));

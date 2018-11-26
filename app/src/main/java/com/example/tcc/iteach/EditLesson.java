@@ -29,6 +29,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EditLesson extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
 
@@ -49,7 +50,7 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
     Button buttonDate;
 
     String date, time = "null", stuID;
-    String insID, insName, paymentMethod, lessonPlace, lessonPrice, teachingMethod ,subject, lessonID;
+    String insID, insName, paymentMethod, lessonPlace, lessonPrice, teachingMethod ,subject, lessonID,studentId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +69,7 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
 
         lessonID = intent.getStringExtra("lessonID");
         insID = intent.getStringExtra("insID");
+        studentId=intent.getStringExtra( "studentId" );
         teachingMethod = intent.getStringExtra("teachingMethod");
 
         listView = (ListView) findViewById(R.id.listViewEdit);
@@ -123,6 +125,8 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
                     databaseReference.child(lessonID).child("time").setValue(time);
                     startActivity(new Intent(EditLesson.this, reservations2.class));
                     Toast.makeText(EditLesson.this, "تم تعديل الدرس", Toast.LENGTH_SHORT).show();
+                    FirebaseDatabase.getInstance().getReference("messagesEdit").push().setValue(new MessageEdit("تم تعديل الدرس .." ,currentDateString,time,insID,studentId));
+
                 }
             }
         });

@@ -219,6 +219,8 @@ buttonRegister2.setOnClickListener(this);
                     Toast.makeText(SignUpStudentActivity.this, "تم تسجيل الحساب بنجاح", Toast.LENGTH_SHORT).show();
                     FirebaseMessaging.getInstance().subscribeToTopic("notifications");
                     FirebaseMessaging.getInstance().subscribeToTopic("notificationsCancel");
+                    FirebaseMessaging.getInstance().subscribeToTopic("notificationsEdit");
+
 
                     final FirebaseUser user = mAuth.getCurrentUser();
                     user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {

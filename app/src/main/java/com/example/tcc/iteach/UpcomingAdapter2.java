@@ -134,6 +134,8 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                     Intent intent = new Intent(view.getContext(), EditLesson.class);
                     intent.putExtra("lessonID", keyList.get(position));
                     intent.putExtra("insID", lessons.get(position).getInstructorID());
+                    intent.putExtra("studentId",lessons.get(position).getStudentID());
+
                     intent.putExtra("teachingMethod", lessons.get(position).getTeachingMethod());
                     view.getContext().startActivity(intent);
                 }
@@ -165,7 +167,7 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                                                 e.printStackTrace();
                                             }
                                             if (j == 0) {
-                                                FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الطالب بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+                                                FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("تم إالغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
 
                                                 int t = Integer.parseInt(lesson.getTime().substring(0, lesson.getTime().indexOf(":")));
                                                 Calendar rightNow = Calendar.getInstance();
@@ -173,7 +175,7 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                                                 if (t <= currentHourIn24Format + 1) {
                                                     Toast.makeText(getContext(), "لا تستطيع إلغاء الدرس اذا كان بعد أقل من ساعة", Toast.LENGTH_SHORT).show();
                                                 } else {
-                                                    FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("لقد قام الطالب بإلغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
+                                                    FirebaseDatabase.getInstance().getReference("messagesCancel").push().setValue(new MessageCancel("تم إالغاء الدرس .." ,lesson.getDate(),lesson.getTime(),lesson.getInstructorID(),lesson.getStudentID()));
 
                                                     list.remove(positionToRemove);
                                                     UpcomingFragment2.list.remove(positionToRemove);
