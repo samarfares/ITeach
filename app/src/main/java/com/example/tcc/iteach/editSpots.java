@@ -1533,18 +1533,17 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                     databaseReference.push().setValue(spot);
                 }
             }
-                if(chosen8){
-                    if(individual8){
-                        spot = new Spot( instructor_id, date,  "8:00", 1, true,  true);
-                        databaseReference.push().setValue(spot);
-                    }
-                    else {
-                        spot = new Spot( instructor_id, date,  "8:00", numberInt8, true,  false);
-                        databaseReference.push().setValue(spot);
-                    }
 
+            if(chosen8) {
+                if (individual8) {
+                    spot = new Spot(instructor_id, date, "8:00", 1, true, true);
+                    databaseReference.push().setValue(spot);
+                } else {
+                    spot = new Spot(instructor_id, date, "8:00", numberInt8, true, false);
+                    databaseReference.push().setValue(spot);
                 }
-                if(chosen9){
+            }
+            if(chosen9){
                     if(individual9){
                         spot = new Spot( instructor_id, date,  "9:00", 1, true,  true);
                         databaseReference.push().setValue(spot);
@@ -1554,8 +1553,8 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         databaseReference.push().setValue(spot);
                     }
 
-                }
-                if(chosen10){
+            }
+            if(chosen10){
                     if(individual10){
                         spot = new Spot( instructor_id, date,  "10:00", 1, true,  true);
                         databaseReference.push().setValue(spot);
@@ -1697,8 +1696,8 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         databaseReference.push().setValue(spot);
                     }
 
-                }
-                if(chosen23){
+            }
+            if(chosen23){
                     if(individual23){
                         spot = new Spot( instructor_id, date,  "23:00", 1, true,  true);
                         databaseReference.push().setValue(spot);
@@ -1708,9 +1707,10 @@ public class editSpots extends AppCompatActivity implements View.OnClickListener
                         databaseReference.push().setValue(spot);
                     }
 
-                }
+            }
 
-                startActivity(new Intent(this, schedule.class));
+            Toast.makeText(this, "تم تعديل الأوقات المتاحة بنجاح", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(this, schedule.class));
 
         }
 

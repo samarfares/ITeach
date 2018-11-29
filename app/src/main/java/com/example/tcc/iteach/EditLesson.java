@@ -50,7 +50,7 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
     Button buttonDate;
 
     String date, time = "null", stuID;
-    String insID, insName, paymentMethod, lessonPlace, lessonPrice, teachingMethod ,subject, lessonID,studentId;
+    String insID, insName, paymentMethod, lessonPlace, lessonPrice, teachingMethod ,subject, lessonID, studentId, person;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,13 +71,15 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
         insID = intent.getStringExtra("insID");
         studentId=intent.getStringExtra( "studentId" );
         teachingMethod = intent.getStringExtra("teachingMethod");
+        person = intent.getStringExtra("person");
+
 
         listView = (ListView) findViewById(R.id.listViewEdit);
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference();
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseUser=firebaseAuth.getCurrentUser();
-        String instructor_id = insID;
+        final String instructor_id = insID;
         spot = new Spot();
 
         databaseReference = firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots");
@@ -123,8 +125,48 @@ public class EditLesson extends AppCompatActivity implements DatePickerDialog.On
                     databaseReference = FirebaseDatabase.getInstance().getReference("Lessons");
                     databaseReference.child(lessonID).child("date").setValue(currentDateString);
                     databaseReference.child(lessonID).child("time").setValue(time);
-                    startActivity(new Intent(EditLesson.this, reservations2.class));
+
+                    firebaseDatabase.getReference("Instructors").child(instructor_id).child("spots").addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                            for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                                spot = ds.getValue(Spot.class);
+                                if (spot.getDate().equals(currentDateString)) {
+                                    if (spot.isAvailable()) {
+                                        if (spot.getTime().equals(time)) {
+                                            if (teachingMethod.equals("فردي")) {
+                                                if (spot.isIndividual()) {
+                                                    ds.getRef().child("available").setValue(false);
+                                                }
+                                            }
+                                            else {
+                                                if (!spot.isIndividual()) {
+                                                    ds.getRef().child("numberOfStudent").setValue(spot.getNumberOfStudent() - 1);
+                                                    if (spot.getNumberOfStudent() == 1)
+                                                        ds.getRef().child("available").setValue(false);
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
                     Toast.makeText(EditLesson.this, "تم تعديل الدرس", Toast.LENGTH_SHORT).show();
+
+                    if(person.equals("instructor"))
+                        startActivity(new Intent(EditLesson.this, reservations.class));
+
+                    else
+                        startActivity(new Intent(EditLesson.this, reservations2.class));
                     FirebaseDatabase.getInstance().getReference("messagesEdit").push().setValue(new MessageEdit("تم تعديل الدرس .." ,currentDateString,time,insID,studentId));
 
                 }

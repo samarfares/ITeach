@@ -135,7 +135,7 @@ public class UpcomingAdapter2 extends ArrayAdapter<String> {
                     intent.putExtra("lessonID", keyList.get(position));
                     intent.putExtra("insID", lessons.get(position).getInstructorID());
                     intent.putExtra("studentId",lessons.get(position).getStudentID());
-
+                    intent.putExtra("person","student");
                     intent.putExtra("teachingMethod", lessons.get(position).getTeachingMethod());
                     view.getContext().startActivity(intent);
                 }
