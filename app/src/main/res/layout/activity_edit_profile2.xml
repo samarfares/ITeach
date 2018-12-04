@@ -52,7 +52,6 @@
                     android:id="@+id/card_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/buttonContinueToLocation2"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
@@ -68,7 +67,7 @@
 
 
                         <EditText
-                            android:id="@+id/editTextEmailStudent"
+                            android:id="@+id/editTextEmailStudent2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="15dp"
@@ -81,35 +80,13 @@
                             android:textDirection="ltr"
                             android:textSize="13dp" />
 
-                        <View
-                            android:id="@+id/v2"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_below="@+id/editTextEmailStudent"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="#1fabcb" />
 
-                        <EditText
-                            android:id="@+id/editTextPasswordStudent"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/v2"
-                            android:layout_margin="15dp"
-                            android:drawableLeft="@drawable/ic_lock_black_24dp"
-                            android:drawablePadding="12dp"
-                            android:hint="فضلاً أدخل كلمة مرور"
-                            android:inputType="textPassword"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textDirection="ltr"
-                            android:textSize="13dp" />
 
                         <View
                             android:id="@+id/v3"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/editTextPasswordStudent"
+                            android:layout_below="@+id/editTextEmailStudent2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
@@ -118,7 +95,7 @@
 
 
                         <EditText
-                            android:id="@+id/editTextFirstNameStudent"
+                            android:id="@+id/editTextFirstNameStudent2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/v3"
@@ -135,14 +112,14 @@
                             android:id="@+id/v5"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/editTextFirstNameStudent"
+                            android:layout_below="@+id/editTextFirstNameStudent2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
 
                         <EditText
-                            android:id="@+id/editTextLastNameStudent"
+                            android:id="@+id/editTextLastNameStudent2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/v5"
@@ -177,7 +154,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewDOBStudent"
+                            android:id="@+id/textViewDOBStudent2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -193,10 +170,10 @@
                             />
 
                         <DatePicker
-                            android:id="@+id/datePickerStudent"
+                            android:id="@+id/datePickerStudent2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewDOBStudent"
+                            android:layout_below="@id/textViewDOBStudent2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="4dp"
                             android:layout_marginTop="4dp"
@@ -234,7 +211,7 @@
                             android:background="#fff" />
 
                         <TextView
-                            android:id="@+id/textViewGenderStudent"
+                            android:id="@+id/textViewGenderStudent2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -245,17 +222,17 @@
                             android:textStyle="bold" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupGender2"
+                            android:id="@+id/radioGroupGender22"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_below="@+id/textViewGenderStudent"
+                            android:layout_below="@+id/textViewGenderStudent2"
                             android:layout_marginTop="4dp"
                             android:textDirection="rtl"
                             >
 
                             <RadioButton
-                                android:id="@+id/male2"
+                                android:id="@+id/male22"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="ذكر"
@@ -264,7 +241,7 @@
                                 />
 
                             <RadioButton
-                                android:id="@+id/female2"
+                                android:id="@+id/female22"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="أنثى"
@@ -277,7 +254,7 @@
                             android:id="@+id/v7"
                             android:layout_width="match_parent"
                             android:layout_height="5dp"
-                            android:layout_below="@+id/radioGroupGender2"
+                            android:layout_below="@+id/radioGroupGender22"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="10dp"
@@ -309,7 +286,7 @@
                         android:layout_margin="5dp">
 
                         <TextView
-                            android:id="@+id/textViewSubjects"
+                            android:id="@+id/textViewSubjects2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="14dp"
@@ -322,10 +299,10 @@
 
 
                         <com.example.tcc.iteach.MultiSelectionSpinner
-                            android:id="@+id/input2"
+                            android:id="@+id/input22"
                             android:layout_width="300dp"
                             android:layout_height="35dp"
-                            android:layout_below="@+id/textViewSubjects"
+                            android:layout_below="@+id/textViewSubjects2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp"
                             android:padding="4dp"
@@ -345,7 +322,7 @@
 
 
                 <Button
-                    android:id="@+id/buttonRegister2"
+                    android:id="@+id/buttonRegister22"
                     android:layout_width="250dp"
                     android:layout_height="35dp"
                     android:layout_margin="15dp"

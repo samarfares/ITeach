@@ -53,7 +53,6 @@
                     android:id="@+id/card_1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/buttonContinueToLocation"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="4dp"
                     android:layout_marginRight="4dp"
@@ -69,7 +68,7 @@
 
 
                         <EditText
-                            android:id="@+id/editTextEmailInstructor"
+                            android:id="@+id/editTextEmailInstructor2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="15dp"
@@ -82,41 +81,18 @@
                             android:textDirection="ltr"
                             android:textSize="13dp" />
 
-                        <View
-                            android:id="@+id/v2"
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:layout_below="@+id/editTextEmailInstructor"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginRight="5dp"
-                            android:background="#1fabcb" />
-
-                        <EditText
-                            android:id="@+id/editTextPasswordInstructor"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@id/v2"
-                            android:layout_margin="15dp"
-                            android:drawableLeft="@drawable/ic_lock_black_24dp"
-                            android:drawablePadding="12dp"
-                            android:hint="فضلاً أدخل كلمة مرور"
-                            android:inputType="textPassword"
-                            android:textAlignment="center"
-                            android:textColor="#000"
-                            android:textDirection="ltr"
-                            android:textSize="13dp" />
 
                         <View
                             android:id="@+id/v3"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/editTextPasswordInstructor"
+                            android:layout_below="@+id/editTextEmailInstructor2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
                         <EditText
-                            android:id="@+id/editTextNumberInstructor"
+                            android:id="@+id/editTextNumberInstructor2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/v3"
@@ -134,14 +110,14 @@
                             android:id="@+id/v4"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/editTextNumberInstructor"
+                            android:layout_below="@+id/editTextNumberInstructor2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
 
                         <EditText
-                            android:id="@+id/editTextFirstName"
+                            android:id="@+id/editTextFirstName2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/v4"
@@ -158,14 +134,14 @@
                             android:id="@+id/v5"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/editTextFirstName"
+                            android:layout_below="@+id/editTextFirstName2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
 
                         <EditText
-                            android:id="@+id/editTextLastName"
+                            android:id="@+id/editTextLastName2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/v5"
@@ -200,7 +176,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewDOB"
+                            android:id="@+id/textViewDOB2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -216,10 +192,10 @@
                             />
 
                         <DatePicker
-                            android:id="@+id/datePicker"
+                            android:id="@+id/datePicker2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/textViewDOB"
+                            android:layout_below="@id/textViewDOB2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="4dp"
                             android:layout_marginTop="4dp"
@@ -257,7 +233,7 @@
                             android:background="#fff" />
 
                         <TextView
-                            android:id="@+id/textViewGender"
+                            android:id="@+id/textViewGender2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -268,17 +244,17 @@
                             android:textStyle="bold" />
 
                         <RadioGroup
-                            android:id="@+id/radioGroupGender"
+                            android:id="@+id/radioGroupGender22"
                             android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
-                            android:layout_below="@+id/textViewGender"
+                            android:layout_below="@+id/textViewGender2"
                             android:layout_marginTop="4dp"
                             android:textDirection="rtl"
                             >
 
                             <RadioButton
-                                android:id="@+id/male"
+                                android:id="@+id/male3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="ذكر"
@@ -287,7 +263,7 @@
                                 />
 
                             <RadioButton
-                                android:id="@+id/female"
+                                android:id="@+id/female3"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:text="أنثى"
@@ -300,7 +276,7 @@
                             android:id="@+id/v7"
                             android:layout_width="match_parent"
                             android:layout_height="5dp"
-                            android:layout_below="@+id/radioGroupGender"
+                            android:layout_below="@+id/radioGroupGender2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:layout_marginTop="10dp"
@@ -334,7 +310,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewSpecialty"
+                            android:id="@+id/textViewSpecialty2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="14dp"
@@ -348,20 +324,20 @@
 
 
                         <com.example.tcc.iteach.MultiSelectionSpinner
-                            android:id="@+id/input1"
+                            android:id="@+id/input12"
                             android:layout_width="300dp"
                             android:layout_height="35dp"
-                            android:layout_below="@+id/textViewSpecialty"
+                            android:layout_below="@+id/textViewSpecialty2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp"
                             android:padding="4dp"
                             android:textDirection="rtl" />
 
                         <EditText
-                            android:id="@+id/yearsExperience"
+                            android:id="@+id/yearsExperience2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@id/input1"
+                            android:layout_below="@id/input12"
                             android:layout_margin="15dp"
                             android:drawablePadding="12dp"
                             android:hint="فضلاً أدخل عدد سنوات خبرتك"
@@ -375,13 +351,13 @@
                             android:id="@+id/vv1"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/yearsExperience"
+                            android:layout_below="@+id/yearsExperience2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
                         <EditText
-                            android:id="@+id/lessonsPrice"
+                            android:id="@+id/lessonsPrice2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/vv1"
@@ -423,7 +399,7 @@
 
 
                         <TextView
-                            android:id="@+id/textViewPayment"
+                            android:id="@+id/textViewPayment2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="14dp"
@@ -434,10 +410,10 @@
                             android:textDirection="rtl"/>
 
                         <Spinner
-                            android:id="@+id/payment"
+                            android:id="@+id/payment2"
                             android:layout_width="300dp"
                             android:layout_height="35dp"
-                            android:layout_below="@+id/textViewPayment"
+                            android:layout_below="@+id/textViewPayment2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp"
                             android:padding="4dp"
@@ -447,14 +423,14 @@
                             android:id="@+id/vvv1"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/payment"
+                            android:layout_below="@+id/payment2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
 
                         <TextView
-                            android:id="@+id/textViewPlace"
+                            android:id="@+id/textViewPlace2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/vvv1"
@@ -466,10 +442,10 @@
                             android:textDirection="rtl"/>
 
                         <Spinner
-                            android:id="@+id/place"
+                            android:id="@+id/place2"
                             android:layout_width="300dp"
                             android:layout_height="35dp"
-                            android:layout_below="@+id/textViewPlace"
+                            android:layout_below="@+id/textViewPlace2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp"
                             android:padding="4dp"
@@ -480,13 +456,13 @@
                             android:id="@+id/vvv2"
                             android:layout_width="match_parent"
                             android:layout_height="1dp"
-                            android:layout_below="@+id/place"
+                            android:layout_below="@+id/place2"
                             android:layout_marginLeft="5dp"
                             android:layout_marginRight="5dp"
                             android:background="#1fabcb" />
 
                         <TextView
-                            android:id="@+id/textViewMethod"
+                            android:id="@+id/textViewMethod2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/vvv2"
@@ -498,10 +474,10 @@
                             android:textDirection="rtl"/>
 
                         <Spinner
-                            android:id="@+id/method"
+                            android:id="@+id/method2"
                             android:layout_width="300dp"
                             android:layout_height="35dp"
-                            android:layout_below="@+id/textViewMethod"
+                            android:layout_below="@+id/textViewMethod2"
                             android:layout_centerHorizontal="true"
                             android:layout_marginBottom="5dp"
                             android:padding="4dp"
@@ -546,7 +522,7 @@
 
 
                         <Button
-                            android:id="@+id/buttonBrowse2"
+                            android:id="@+id/buttonBrowse22"
                             android:layout_width="60dp"
                             android:layout_height="wrap_content"
                             android:layout_alignParentLeft="true"
@@ -570,7 +546,7 @@
 
 
                 <Button
-                    android:id="@+id/buttonRegister"
+                    android:id="@+id/buttonRegister3"
                     android:layout_width="250dp"
                     android:layout_height="35dp"
                     android:layout_margin="15dp"

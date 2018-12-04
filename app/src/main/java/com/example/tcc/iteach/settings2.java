@@ -2,6 +2,7 @@ package com.example.tcc.iteach;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.View;
@@ -15,14 +16,41 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.DatePicker;
+import android.widget.ImageButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class settings2 extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     FirebaseAuth firebaseAuth;
     Button edit2,delete2;
+
+    TextView FN,LN,Dob,Email,Gender,subjects;
+    ImageButton edit1,edit3,edit4,edit5,edit6;
+    private FirebaseAuth mAuth;
+    private DatabaseReference databaseReference;
+    String currentUserId;
+    Person person;
+    String firstName,lastName,birth,email,gender,subject;
+    MultiSelectionSpinner spinner1;
+    private DatePicker datePicker1;
+    String date1;
+    private RadioGroup radioGroupGender1;
+
+    List<String> chosen1 = new ArrayList<String>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +60,9 @@ public class settings2 extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        currentUserId = mAuth.getCurrentUser().getUid();
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUserId);
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +87,43 @@ public class settings2 extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(settings2.this, editProfile2.class));
+            }
+        });
+
+        FN = (TextView) findViewById(R.id.IndividualFN);
+        LN = (TextView) findViewById(R.id.IndividualLN);
+        Dob = (TextView) findViewById(R.id.IndividualDob);
+        Email = (TextView) findViewById(R.id.IndividualEma);
+        Gender = (TextView) findViewById(R.id.IndividualG);
+        subjects = (TextView) findViewById(R.id.IndividualSu);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()) {
+                    firstName = dataSnapshot.child("firstName").getValue().toString();
+                    lastName = dataSnapshot.child("lastName").getValue().toString();
+                    birth = dataSnapshot.child("dob").getValue().toString();
+                    email = dataSnapshot.child("email").getValue().toString();
+                    gender = dataSnapshot.child("gender").getValue().toString();
+                    subject = dataSnapshot.child("subjects").getValue().toString();
+                    FN.setText(firstName);
+                    LN.setText(lastName);
+                    Dob.setText(birth);
+                    Email.setText(email);
+                    Gender.setText(gender);
+                    subjects.setText(subject);
+                }
+                else {
+                    Toast.makeText(settings2.this, "لقد فشل جلب المعلومات, ", Toast.LENGTH_LONG).show();
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
             }
         });
     }
