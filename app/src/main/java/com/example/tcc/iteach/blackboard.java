@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -45,6 +46,8 @@ public class blackboard extends AppCompatActivity
     private FirebaseAuth mAuth;
     private  String currentUserId,databaseUserID;
     Dialog dialog5;
+    TextView verified;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,7 @@ public class blackboard extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
+        user =firebaseAuth.getCurrentUser();
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +75,12 @@ public class blackboard extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        verified = (TextView)  header.findViewById(R.id.textView);
+        if(user.isEmailVerified()){
+            verified.setText("الحساب مفعل");}
+        else {
+            verified.setText("الحساب غير مفعل");  }
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
         Intent intent = new Intent(blackboard.this,LocationActivity.class);
@@ -152,7 +162,9 @@ public class blackboard extends AppCompatActivity
         }
         else if (id==R.id.nav_signOut){
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            Intent b = new Intent(this, MainActivity.class);
+            b.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(b);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -358,17 +370,14 @@ public class blackboard extends AppCompatActivity
     @Override
     public void onClick(View v) {
         if(v==askButton ){
-            finish();
             Intent addNewPostIntent = new Intent(blackboard.this, askActivity.class);
             startActivity(addNewPostIntent);
         }
         if(v==my ){
-            finish();
             Intent addNewPostIntent = new Intent(blackboard.this, myQuestions.class);
             startActivity(addNewPostIntent);
         }
         if(v==filter ){
-            finish();
             Intent addNewPostIntent = new Intent(blackboard.this, filterQuestions.class);
             startActivity(addNewPostIntent);
         }

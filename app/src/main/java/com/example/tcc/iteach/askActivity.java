@@ -90,7 +90,8 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+Toast.makeText(askActivity.this,"من فضلك اختر المادة أولا",Toast.LENGTH_SHORT).show();
+return;
             }
         });
 
@@ -98,8 +99,8 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
 
     private void ValidatePostInfo() {
         Description = questionText.getText().toString();
-
-
+if( spinner.getSelectedItem() == null || spinner_item.equals("")) {
+    Toast.makeText(this, "من فضلك اختر المادة اولا", Toast.LENGTH_SHORT).show(); }
         if (TextUtils.isEmpty(Description)) {
             Toast.makeText(this, "من فضلك ادخل نص السؤال اولا", Toast.LENGTH_SHORT).show();
         } else {
@@ -109,6 +110,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
             // loadingBar.setCanceledOnTouchOutside(true);
 
             //  StoringImageToFirebaseStorage();
+
             SavingPostInformationToDatabase();
         }
     }
@@ -133,7 +135,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
                     saveCurrentDate = currentDate.format(calFordDate.getTime());
 
                     Calendar calFordTime = Calendar.getInstance();
-                    SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm");
+                    SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");
                     saveCurrentTime = currentTime.format(calFordDate.getTime());
 
                     postRandomName = saveCurrentDate + saveCurrentTime;
@@ -156,6 +158,7 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
                                     if (task.isSuccessful()) {
                                         //  SendUserToMainActivity();
                                         Toast.makeText(askActivity.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(askActivity.this, blackboard.class));
                                         //  loadingBar.dismiss();
                                     } else {
                                         Toast.makeText(askActivity.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
@@ -184,14 +187,15 @@ public class askActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
+        Toast.makeText(askActivity.this,"من فضلك اختر المادة أولا",Toast.LENGTH_SHORT).show();
+        return;
     }
 
     @Override
     public void onClick(View v) {
         if(v == publishButton)
             ValidatePostInfo();
-        startActivity(new Intent(this, blackboard.class));
+       // startActivity(new Intent(this, blackboard.class));
     }
 
 

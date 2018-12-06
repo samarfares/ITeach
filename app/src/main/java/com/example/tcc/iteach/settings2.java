@@ -1,5 +1,7 @@
 package com.example.tcc.iteach;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,7 +24,10 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -51,6 +56,10 @@ public class settings2 extends AppCompatActivity
     private RadioGroup radioGroupGender1;
 
     List<String> chosen1 = new ArrayList<String>();
+    FirebaseUser firebaseUser;
+    FirebaseUser user;
+    TextView verified;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +70,8 @@ public class settings2 extends AppCompatActivity
 
         firebaseAuth = FirebaseAuth.getInstance();
         mAuth = FirebaseAuth.getInstance();
+        firebaseUser = firebaseAuth.getCurrentUser();
+        user = firebaseAuth.getCurrentUser();
         currentUserId = mAuth.getCurrentUser().getUid();
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUserId);
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -80,6 +91,13 @@ public class settings2 extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        verified = (TextView)  header.findViewById(R.id.textView);
+        if(user.isEmailVerified()){
+            verified.setText("الحساب مفعل");}
+        else {
+            verified.setText("الحساب غير مفعل");  }
 
         edit2 = (Button) findViewById(R.id.editProfile2);
         delete2 = (Button) findViewById(R.id.deleteProfile2);
@@ -124,6 +142,43 @@ public class settings2 extends AppCompatActivity
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        delete2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder dialogue = new AlertDialog.Builder(settings2.this);
+                dialogue.setTitle("تأكيد عملية حذف الحساب");
+                dialogue.setMessage("هل أنت متأكد من أنك تود حذف حسابك وجميع المعلومات المتعلقة به؟");
+                dialogue.setPositiveButton("حذف", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        databaseReference.removeValue();
+                        firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    Toast.makeText(settings2.this,"تم حذف حسابك بنجاح",Toast.LENGTH_LONG).show();
+                                    Intent intent = new Intent(settings2.this,MainActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                }
+                                else {
+                                    Toast.makeText(settings2.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                                }
+                            }
+                        });
+                    }
+                });
+                dialogue.setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = dialogue.create();
+                alertDialog.show();
             }
         });
     }
@@ -184,7 +239,9 @@ public class settings2 extends AppCompatActivity
         }
         else if (id==R.id.nav_signOut){
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            Intent b = new Intent(this, MainActivity.class);
+            b.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(b);
         }
 
 

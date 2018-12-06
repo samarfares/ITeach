@@ -152,7 +152,7 @@
                                 android:layout_alignParentBottom="true"
                                 android:textDirection="rtl"
                                 android:textColor="#000"
-                                android:padding="5dp"
+                                android:padding="2dp"
                                 android:textStyle="italic"
                                 android:textSize="20dp"
                                 android:layout_margin="4dp"

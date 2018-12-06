@@ -86,11 +86,13 @@ public class askActivity2 extends AppCompatActivity implements View.OnClickListe
         }); }
         private void ValidatePostInfo() {
             Description = questionText.getText().toString();
+            if( spinner.getSelectedItem() == null || spinner_item.equals("")) {
+                Toast.makeText(this, "من فضلك اختر المادة اولا", Toast.LENGTH_SHORT).show(); }
 
-
-            if (TextUtils.isEmpty(Description)) {
+           else if (TextUtils.isEmpty(Description)) {
                 Toast.makeText(this, "من فضلك ادخل نص السؤال اولا", Toast.LENGTH_SHORT).show();
-            } else {
+            }
+            else {
                 //  loadingBar.setTitle("Add New Post");
                 // loadingBar.setMessage("Please wait, while we are updating your new post...");
                 // loadingBar.show();
@@ -143,6 +145,7 @@ public class askActivity2 extends AppCompatActivity implements View.OnClickListe
                                         if (task.isSuccessful()) {
                                             //  SendUserToMainActivity();
                                             Toast.makeText(askActivity2.this, "تم نشر السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(askActivity2.this, blackboard2.class));
                                             //  loadingBar.dismiss();
                                         } else {
                                             Toast.makeText(askActivity2.this, "لقد حدث خطأ ما", Toast.LENGTH_SHORT).show();
@@ -182,7 +185,7 @@ public class askActivity2 extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
             if(v == publishButton)
                 ValidatePostInfo();
-            startActivity(new Intent(this, blackboard2.class));
+          //  startActivity(new Intent(this, blackboard2.class));
 
     }
 

@@ -44,7 +44,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -61,6 +64,7 @@ public class settings extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,View.OnClickListener , AdapterView.OnItemSelectedListener  {
     Instructor instructor1;
     FirebaseAuth firebaseAuth;
+    FirebaseUser firebaseUser;
     TextView FN1,LN1,Dob1,Email1,Gender1,subjects1,lessonPlace,lessonPrice,teachingMethod,paymentMethod1,phoneNum,yoe,likes;
     ImageButton edit21,edit22,edit23,edit24,edit25,edit26,edit28,edit29,edit30,edit31,edit32,edit33;
     private FirebaseAuth mAuth;
@@ -86,6 +90,8 @@ public class settings extends AppCompatActivity
 
     List<String> chosen2 = new ArrayList<String>();
     Button edit,delete;
+    FirebaseUser user;
+    TextView verified;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,7 +102,8 @@ public class settings extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
+firebaseUser = firebaseAuth.getCurrentUser();
+user = firebaseAuth.getCurrentUser();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,7 +121,13 @@ public class settings extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        verified = (TextView)  header.findViewById(R.id.textView);
+        if(user.isEmailVerified()){
+            verified.setText("الحساب مفعل");}
+        else {
+            verified.setText("الحساب غير مفعل");  }
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
@@ -205,6 +218,42 @@ edit.setOnClickListener(new View.OnClickListener() {
         startActivity(new Intent(settings.this, editProfile.class));
     }
 });
+delete.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        AlertDialog.Builder dialogue = new AlertDialog.Builder(settings.this);
+        dialogue.setTitle("تأكيد عملية حذف الحساب");
+        dialogue.setMessage("هل أنت متأكد من أنك تود حذف حسابك وجميع المعلومات المتعلقة به؟");
+        dialogue.setPositiveButton("حذف", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                databaseReference.removeValue();
+             firebaseUser.delete().addOnCompleteListener(new OnCompleteListener<Void>() {
+                 @Override
+                 public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        Toast.makeText(settings.this,"تم حذف حسابك بنجاح",Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(settings.this,MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                    else {
+                        Toast.makeText(settings.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                 }
+             });
+            }
+        });
+        dialogue.setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+            });
+AlertDialog alertDialog = dialogue.create();
+alertDialog.show();
+            }
+});
 
     }
 
@@ -248,26 +297,30 @@ edit.setOnClickListener(new View.OnClickListener() {
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
         if (id == R.id.nav_home) {
-            Intent h= new Intent(settings.this,student_main.class);
+            Intent h= new Intent(settings.this,instructor_main.class);
             startActivity(h);
         } else if (id == R.id.nav_blackboard) {
-            Intent h= new Intent(settings.this,blackboard2.class);
+            Intent h= new Intent(settings.this,blackboard.class);
             startActivity(h);
         } else if (id == R.id.nav_notifications) {
-            Intent h= new Intent(settings.this,notifications2.class);
+            Intent h= new Intent(settings.this,notifications.class);
             startActivity(h);
         } else if (id == R.id.nav_manage) {
-            Intent h= new Intent(settings.this,settings2.class);
+            Intent h= new Intent(settings.this,settings.class);
+            startActivity(h);
+        } else if (id == R.id.nav_schedule) {
+            Intent h= new Intent(settings.this,schedule.class);
             startActivity(h);
         } else if (id == R.id.nav_reservations) {
-            Intent h= new Intent(settings.this,reservations2.class);
+            Intent h= new Intent(settings.this,reservations.class);
             startActivity(h);
         }
         else if (id==R.id.nav_signOut){
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            Intent b = new Intent(this, MainActivity.class);
+            b.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(b);
         }
 
 

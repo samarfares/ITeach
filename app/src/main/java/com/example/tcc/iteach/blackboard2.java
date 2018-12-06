@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -46,6 +47,9 @@ public class blackboard2 extends AppCompatActivity
     private FirebaseAuth mAuth;
     private  String currentUserId,databaseUserID;
      Dialog dialog5;
+     TextView verified;
+     FirebaseUser user;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +64,7 @@ public class blackboard2 extends AppCompatActivity
         currentUserId = mAuth.getCurrentUser().getUid();
         Intent intent = new Intent(blackboard2.this,LocationActivity.class);
         intent.putExtra("userID", currentUserId );
-
+user = firebaseAuth.getCurrentUser();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +80,12 @@ public class blackboard2 extends AppCompatActivity
         toggle.syncState();
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        View header = navigationView.getHeaderView(0);
+        verified = (TextView)  header.findViewById(R.id.textView);
+      if(user.isEmailVerified()){
+verified.setText("الحساب مفعل");}
+      else {
+          verified.setText("الحساب غير مفعل");  }
 
         askButton = (Button) findViewById(R.id.askButton);
         my = (Button) findViewById(R.id.myQuestionsButton);
@@ -152,7 +161,9 @@ public class blackboard2 extends AppCompatActivity
         }
         else if (id==R.id.nav_signOut){
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            Intent b = new Intent(this, MainActivity.class);
+            b.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(b);
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -164,20 +175,18 @@ public class blackboard2 extends AppCompatActivity
         super.onStart();
         FirebaseRecyclerOptions<Questions> options =
                 new FirebaseRecyclerOptions.Builder<Questions>().setQuery(PostsRef, Questions.class).build();
-
-        FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder> adapter =
-                new FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder>(options) {
+        FirebaseRecyclerAdapter<Questions, PostsViewHolder> adapter =
+                new FirebaseRecyclerAdapter<Questions, PostsViewHolder>(options) {
                     @NonNull
                     @Override
-                    public blackboard.PostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+                    public PostsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.all_questions_layout, parent,false);
-                        blackboard.PostsViewHolder viewHolder = new blackboard.PostsViewHolder(view);
-                        return  viewHolder;
+                        PostsViewHolder viewHolder = new PostsViewHolder(view);
+                        return viewHolder;
                     }
 
                     @Override
-                    protected void onBindViewHolder(@NonNull blackboard.PostsViewHolder holder, int position, @NonNull final Questions model) {
-
+                    protected void onBindViewHolder(@NonNull PostsViewHolder holder, int position, @NonNull final Questions model) {
                         final String postKey = getRef(position).getKey();
                         databaseUserID = model.getUid();
                         if (!currentUserId.equals(databaseUserID)) {
@@ -187,37 +196,37 @@ public class blackboard2 extends AppCompatActivity
                             holder.options.setVisibility(View.VISIBLE);
                         }
                         if (!model.equals(null)) {
-                        holder.setFullname(model.getFullname());
-                        holder.setDate(model.getDate());
-                        holder.setDescription(model.getDescription());
-                        holder.setSubject(model.getSubject());
-                        holder.commentsButton.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent clickAnswersIntent = new Intent(blackboard2.this,answerActivity.class);
-                                clickAnswersIntent.putExtra("postkey",postKey);
-                                startActivity(clickAnswersIntent);
-                            }
-                        });
-                        holder.options.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                              dialog5  = new Dialog(blackboard2.this);
-                                dialog5.setContentView(R.layout.editing_deleting);
-                                final TextView edit = (TextView) dialog5.findViewById(R.id.edit);
-                                final TextView delete = (TextView) dialog5.findViewById(R.id.delete);
-                                dialog5.show();
-                                delete.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
-                                        PostsRef.child(postKey).removeValue();
-                                        Toast.makeText(blackboard2.this, "تم حذف السؤال بنجاح", Toast.LENGTH_SHORT).show();
-                                        dialog5.cancel();
-                                    }
-                                });
-                                edit.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View v) {
+                            holder.setFullname(model.getFullname());
+                            holder.setDate(model.getDate());
+                            holder.setDescription(model.getDescription());
+                            holder.setSubject(model.getSubject());
+                            holder.commentsButton.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    Intent clickAnswersIntent = new Intent(blackboard2.this, answerActivity.class);
+                                    clickAnswersIntent.putExtra("postkey", postKey);
+                                    startActivity(clickAnswersIntent);
+                                }
+                            });
+                            holder.options.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View v) {
+                                    dialog5 = new Dialog(blackboard2.this);
+                                    dialog5.setContentView(R.layout.editing_deleting);
+                                    final TextView edit = (TextView) dialog5.findViewById(R.id.edit);
+                                    final TextView delete = (TextView) dialog5.findViewById(R.id.delete);
+                                    dialog5.show();
+                                    delete.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            PostsRef.child(postKey).removeValue();
+                                            Toast.makeText(blackboard2.this, "تم حذف السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                            dialog5.cancel();
+                                        }
+                                    });
+                                    edit.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
                                        /*     final Dialog dialog = new Dialog(blackboard.this);
                                             dialog.setContentView(R.layout.edit_question);
                                             dialog.setTitle("اكتب النص المعدل هنا");
@@ -231,28 +240,28 @@ public class blackboard2 extends AppCompatActivity
                                                     PostsRef.child(postKey).child("description").setValue(edit.getText().toString());
                                                     Toast.makeText(blackboard.this, "تم تعديل السؤال بنجاح", Toast.LENGTH_SHORT).show();
                                                dialog.cancel(); } }); */
-                                        AlertDialog.Builder builder = new AlertDialog.Builder(blackboard2.this);
-                                        builder.setTitle("اكتب النص المعدل");
-                                        final EditText inputField = new EditText(blackboard2.this);
-                                        inputField.setText(model.description);
-                                        builder.setView(inputField);
-                                        builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                PostsRef.child(postKey).child("description").setValue(inputField.getText().toString());
-                                                Toast.makeText(blackboard2.this,"تم تعديل السؤال" ,Toast.LENGTH_SHORT).show();
-                                                dialog5.cancel();
-                                            }
-                                        }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
-                                            @Override
-                                            public void onClick(DialogInterface dialog, int which) {
-                                                dialog5.cancel();
-                                            }
-                                        });
-                                        Dialog dialog2 = builder.create();
-                                        dialog2.show();
-                                    }
-                                });
+                                            AlertDialog.Builder builder = new AlertDialog.Builder(blackboard2.this);
+                                            builder.setTitle("اكتب النص المعدل");
+                                            final EditText inputField = new EditText(blackboard2.this);
+                                            inputField.setText(model.description);
+                                            builder.setView(inputField);
+                                            builder.setPositiveButton("تعديل", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    PostsRef.child(postKey).child("description").setValue(inputField.getText().toString());
+                                                    Toast.makeText(blackboard2.this, "تم تعديل السؤال", Toast.LENGTH_SHORT).show();
+                                                    dialog5.cancel();
+                                                }
+                                            }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {
+                                                @Override
+                                                public void onClick(DialogInterface dialog, int which) {
+                                                    dialog5.cancel();
+                                                }
+                                            });
+                                            Dialog dialog2 = builder.create();
+                                            dialog2.show();
+                                        }
+                                    });
 
                             /*    AlertDialog.Builder builder = new AlertDialog.Builder(blackboard.this);
                                 builder.setMessage("اختر اح الخيارات").setPositiveButton("edit", new DialogInterface.OnClickListener() {
@@ -267,16 +276,21 @@ public class blackboard2 extends AppCompatActivity
                                     }
                                 }); */
 
-                            }
-                            //  Toast.makeText(t, "تم حذف السؤال", Toast.LENGTH_SHORT).show();
-                        });
-                    } }
+                                }
+                                //  Toast.makeText(t, "تم حذف السؤال", Toast.LENGTH_SHORT).show();
+                            });
+                        }
+                    }
 
                 };
-
         postList.setAdapter(adapter);
         adapter.startListening();
+
+
     }
+
+
+
     /* private void DisplayAllUsersQuestions() {
         Query query = FirebaseDatabase.getInstance().getReference().child("Posts").orderByKey();
         FirebaseRecyclerOptions<Questions> options = new FirebaseRecyclerOptions.Builder<Questions>().setQuery(query, Questions.class).build();
@@ -357,17 +371,14 @@ public class blackboard2 extends AppCompatActivity
     @Override
     public void onClick(View v) {
         if(v==askButton ){
-            finish();
             Intent addNewPostIntent = new Intent(blackboard2.this, askActivity2.class);
             startActivity(addNewPostIntent);
         }
         if(v==my ){
-            finish();
             Intent addNewPostIntent = new Intent(blackboard2.this, myQuestions.class);
             startActivity(addNewPostIntent);
         }
         if(v==filter ){
-            finish();
             Intent addNewPostIntent = new Intent(blackboard2.this, filterQuestions.class);
             startActivity(addNewPostIntent);
         }

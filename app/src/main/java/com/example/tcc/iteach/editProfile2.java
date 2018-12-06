@@ -1,5 +1,6 @@
 package com.example.tcc.iteach;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -51,22 +52,15 @@ public class editProfile2 extends AppCompatActivity {
         currentUserId4 = mAuth4.getCurrentUser().getUid();
         databaseReference4 = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUserId4);
         databaseReference44 = FirebaseDatabase.getInstance().getReference().child("Students").child(currentUserId4);
-
+        datePickerStudent2 = (DatePicker) findViewById(R.id.datePickerStudent2);
         editTextFirstNameStudent2 = (TextView) findViewById(R.id.editTextFirstNameStudent2);
         editTextLastNameStudent2 = (TextView) findViewById(R.id.editTextLastNameStudent2);
-        datePickerStudent2 = (DatePicker) findViewById(R.id.datePickerStudent2);
+
         editTextEmailStudent2 = (TextView) findViewById(R.id.editTextEmailStudent2);
         radioGroupGender22 = (RadioGroup) findViewById(R.id.radioGroupGender22);
         male22 = (RadioButton) findViewById(R.id.male22);
         female22 = (RadioButton) findViewById(R.id.female22);
         input22 = (MultiSelectionSpinner) findViewById(R.id.input22);
-       // place2 = (Spinner) findViewById(R.id.place2);
-      //  lessonsPrice2 = (TextView) findViewById(R.id.lessonsPrice2);
-     //   method2 = (Spinner) findViewById(R.id.method2);
-     //   payment2 = (Spinner) findViewById(R.id.payment2);
-        //editTextNumberStudent2 = (TextView) findViewById(R.id.editTextNumberStudent2);
-       // yearsExperience2 = (TextView) findViewById(R.id.yearsExperience2);
-        // likes = (TextView) findViewById(R.id.InstructorLikes);
         save = (Button) findViewById(R.id.buttonRegister22);
         List<String> list = new ArrayList<String>();
         list.add("");
@@ -80,13 +74,21 @@ public class editProfile2 extends AppCompatActivity {
         list.add("الرسم");
         list.add("الطبخ");
         input22.setItems(list);
-     /*   databaseReference4.addValueEventListener(new ValueEventListener() {
+
+        databaseReference4.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.exists()) {
                     firstName3 = dataSnapshot.child("firstName").getValue().toString();
                     lastName3 = dataSnapshot.child("lastName").getValue().toString();
                     birth3 = dataSnapshot.child("dob").getValue().toString();
+                    String day = birth3.substring(0,2);
+                    String month = birth3.substring(3,5);
+                    String year = birth3.substring(6,10);
+                    int mday=Integer.valueOf(day);
+                    int mmonth=Integer.valueOf(month);
+                    int myear=Integer.valueOf(year);
+                    datePickerStudent2.updateDate(myear,mmonth,mday);
                     email3 = dataSnapshot.child("email").getValue().toString();
                     gender3 = dataSnapshot.child("gender").getValue().toString();
                     subject3 = dataSnapshot.child("subjects").getValue().toString();
@@ -99,7 +101,7 @@ public class editProfile2 extends AppCompatActivity {
                     //   lessonPlace.setText(lessonPl3);
                 }
                 else {
-                    Toast.makeText(editProfile2.this, "لقد فشل جلب المعلومات, ", Toast.LENGTH_LONG).show();
+                 //   Toast.makeText(editProfile2.this, "لقد فشل جلب المعلومات, ", Toast.LENGTH_SHORT).show();
 
                 }
 
@@ -110,7 +112,17 @@ public class editProfile2 extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });  */
+        });
+
+       // place2 = (Spinner) findViewById(R.id.place2);
+      //  lessonsPrice2 = (TextView) findViewById(R.id.lessonsPrice2);
+     //   method2 = (Spinner) findViewById(R.id.method2);
+     //   payment2 = (Spinner) findViewById(R.id.payment2);
+        //editTextNumberStudent2 = (TextView) findViewById(R.id.editTextNumberStudent2);
+       // yearsExperience2 = (TextView) findViewById(R.id.yearsExperience2);
+        // likes = (TextView) findViewById(R.id.InstructorLikes);
+
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -153,6 +165,10 @@ public class editProfile2 extends AppCompatActivity {
                     if(!(subjects.equals(""))){
                         databaseReference4.child("subjects").setValue(subjects);
                     }
+                Toast.makeText(editProfile2.this, "تم التعديل بنجاح", Toast.LENGTH_LONG).show();
+
+                Intent h= new Intent(editProfile2.this,settings.class);
+                startActivity(h);
 
             }
         });

@@ -21,12 +21,15 @@ import android.widget.Toast;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class myQuestions extends AppCompatActivity {
     private RecyclerView myQuestions;
-    private DatabaseReference PostsRef;
+    private DatabaseReference PostsRef,PostsRef2;
     private FirebaseAuth mAuth;
     private  String currentUserId,databaseUserID;
 
@@ -42,17 +45,30 @@ public class myQuestions extends AppCompatActivity {
         linearLayoutManager.setStackFromEnd(true);
         myQuestions.setLayoutManager(linearLayoutManager);
         myQuestions.getLayoutManager().setMeasurementCacheEnabled(false);
-
-        PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
         mAuth = FirebaseAuth.getInstance();
         currentUserId = mAuth.getCurrentUser().getUid();
+        PostsRef = FirebaseDatabase.getInstance().getReference().child("Posts");
+        PostsRef2 = FirebaseDatabase.getInstance().getReference().child("Posts");
+        PostsRef2.orderByChild("uid").equalTo(currentUserId).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if(!dataSnapshot.exists())
+                    Toast.makeText(myQuestions.this,"لايوجد أي أسئلة تم نشرها من قبلك ",Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
 
-        FirebaseRecyclerOptions<Questions> options =
+        final FirebaseRecyclerOptions<Questions> options =
                 new FirebaseRecyclerOptions.Builder<Questions>().setQuery(PostsRef.orderByChild("uid").startAt(currentUserId).endAt(currentUserId+"\uf8ff"), Questions.class).build();
 
         FirebaseRecyclerAdapter<Questions, blackboard.PostsViewHolder> adapter =
@@ -76,6 +92,7 @@ public class myQuestions extends AppCompatActivity {
                         if (currentUserId.equals(databaseUserID)) {
                             holder.options.setVisibility(View.VISIBLE);
                         }
+
                         if (!model.equals(null)) {
                             holder.setFullname(model.getFullname());
                             holder.setDate(model.getDate());
@@ -161,6 +178,8 @@ public class myQuestions extends AppCompatActivity {
                                 //  Toast.makeText(t, "تم حذف السؤال", Toast.LENGTH_SHORT).show();
                             });
                         }
+
+
 
                     }  };
 
