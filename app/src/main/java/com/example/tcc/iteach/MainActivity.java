@@ -114,20 +114,23 @@ intent = new Intent(MainActivity.this, instructor_main.class );
                         if (task.isSuccessful()) {
                             progressDialog.dismiss();
                             finish();
-
+                            if (editTextEmail.getText().toString().equals( "marwatta95@gmail.com" ))
+                                startActivity( new Intent( getApplicationContext(), AdminActivity.class ) );
+                                else{
                             databaseReference2.addValueEventListener( new ValueEventListener() {
                                 @Override
                                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                     for (DataSnapshot snap : dataSnapshot.getChildren()) {
                                         if (snap.child( "userID" ).getValue().toString().equals( firebaseAuth.getCurrentUser().getUid() )) {
-                                            check=false;
+                                            check = false;
                                             //intent.putExtra("username", snap.child("firstName").toString()+" "+snap.child("lastName"));
-                                            startActivity( intent);
+                                            startActivity( intent );
 
                                         }
                                     }
-                                    if (check){
-                                    startActivity(new Intent(getApplicationContext(),student_main.class));}
+                                    if (check) {
+                                        startActivity( new Intent( getApplicationContext(), student_main.class ) );
+                                    }
                                 }
 
                                 @Override
@@ -136,7 +139,7 @@ intent = new Intent(MainActivity.this, instructor_main.class );
                                 }
                             } );
 
-
+                        }
 
 
                             //startActivity(new Intent(getApplicationContext(),instructor_main.class));

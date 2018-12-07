@@ -129,7 +129,10 @@ public class SearchForInstructorActivity extends AppCompatActivity
         }
         else if (id==R.id.nav_signOut){
             firebaseAuth.signOut();
-            startActivity(new Intent(this, MainActivity.class));
+            Intent b = new Intent(this, MainActivity.class);
+            b.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(b);
+
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
