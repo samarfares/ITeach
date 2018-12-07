@@ -93,7 +93,7 @@ public class adminBlackboard extends AppCompatActivity {
                             holder.commentsButton.setOnClickListener(new View.OnClickListener() {
                                 @Override
                                 public void onClick(View view) {
-                                    Intent clickAnswersIntent = new Intent(adminBlackboard.this,answerActivity.class);
+                                    Intent clickAnswersIntent = new Intent(adminBlackboard.this,answerAdmin.class);
                                     clickAnswersIntent.putExtra("postkey",postKey);
                                     startActivity(clickAnswersIntent);
                                 }
@@ -152,7 +152,7 @@ public class adminBlackboard extends AppCompatActivity {
                                             inputField.setAdapter(adapter2);
                                            // inputField.setText(model.description);
                                             builder.setView(inputField);
-                                            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                                            inputField.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
                                                 @Override
                                                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
