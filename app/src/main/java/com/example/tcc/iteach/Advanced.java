@@ -341,7 +341,7 @@ public class Advanced extends Fragment {
 
                         list = new ArrayList<Instructor>(common1);
 
-
+                        if (getActivity()!=null){
                         if (list.size()!=0){
 
                             myAdapter = new MyAdapterSearch(getActivity(),R.layout.items,list);
@@ -355,7 +355,7 @@ public class Advanced extends Fragment {
                             text.setTextSize( 50 );
                             Toast.makeText(getActivity(), "لايوجد نتائج مطابقة لبحثك !!", Toast.LENGTH_SHORT).show();
 
-                        }
+                        }}
 
 
                     }
