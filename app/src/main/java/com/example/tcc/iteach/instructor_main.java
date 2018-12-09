@@ -53,6 +53,7 @@ int i=0;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor_main);
+        i=0;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         fadingTextView = (FadingTextView) findViewById(R.id.top3text) ;
@@ -105,6 +106,7 @@ int i=0;
         databaseReference.orderByChild("likes").limitToLast(3).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                i=0;
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
                     name = snap.child("firstName").getValue().toString()+" "+snap.child("lastName").getValue().toString();
                     email = snap.child("email").getValue().toString();
