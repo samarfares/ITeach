@@ -123,7 +123,6 @@ firebaseAuth=FirebaseAuth.getInstance();
                     fadingTextView.setText(name);
                     top3[i]=name;
                     i++;
-                    Toast.makeText(student_main.this,"la"+ i, Toast.LENGTH_LONG).show();
                     if (i==3) {
                         break;
                     }
