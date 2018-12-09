@@ -18,10 +18,12 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +47,8 @@ public class student_main extends AppCompatActivity
     DatabaseReference databaseReference;
     FadingTextView fadingTextView;
     FirebaseAuth firebaseAuth;
+    FirebaseUser user;
+    TextView verified;
     /**
      *
      */
@@ -60,6 +64,8 @@ public class student_main extends AppCompatActivity
         setSupportActionBar(toolbar);
         fadingTextView = (FadingTextView) findViewById(R.id.top3text) ;
         top3 = new String[100];
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
         fab.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +84,12 @@ public class student_main extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header = navigationView.getHeaderView(0);
+        verified = (TextView)  header.findViewById(R.id.textView);
+        if(user.isEmailVerified()){
+            verified.setText("الحساب مفعل");}
+        else {
+            verified.setText("الحساب غير مفعل");  }
         ///////////////////////////// top3
         fadingTextView.setTimeout(FadingTextView.SECONDS,2);
 

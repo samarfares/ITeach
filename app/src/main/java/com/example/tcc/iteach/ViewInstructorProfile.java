@@ -228,14 +228,14 @@ likesRef.addValueEventListener(new ValueEventListener() {
 if (dataSnapshot.child(ID).hasChild(FirebaseAuth.getInstance().getCurrentUser().getUid())){
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
 buttonLike.setImageResource(R.drawable.like);
-textViewRate.setText(((Integer.toString(countLikes)+" likes")));
+textViewRate.setText(((Integer.toString(countLikes)+" اعجاب ")));
     databaseReference2.child("likes").setValue(countLikes);
 }
 
 else{
     countLikes=(int) dataSnapshot.child(likedInsId).getChildrenCount();
     buttonLike.setImageResource(R.drawable.dislike);
-    textViewRate.setText(((Integer.toString(countLikes)+" likes")));
+    textViewRate.setText(((Integer.toString(countLikes)+" اعجاب ")));
     databaseReference2.child("likes").setValue(countLikes);
 
 

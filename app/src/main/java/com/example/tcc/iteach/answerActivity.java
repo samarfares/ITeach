@@ -195,7 +195,7 @@ public class answerActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(View v) {
                                             postRef.child(postKey).removeValue();
-                                            Toast.makeText(answerActivity.this, "تم حذف السؤال بنجاح", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(answerActivity.this, "تم حذف الجواب بنجاح", Toast.LENGTH_SHORT).show();
                                             dialog5.cancel();
                                         }
                                     });
@@ -224,7 +224,7 @@ public class answerActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onClick(DialogInterface dialog, int which) {
                                                    postRef.child(postKey).child("description").setValue(inputField.getText().toString());
-                                                    Toast.makeText(answerActivity.this,"تم تعديل السؤال" ,Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(answerActivity.this,"تم تعديل الجواب" ,Toast.LENGTH_SHORT).show();
                                                     dialog5.cancel();
                                                 }
                                             }).setNegativeButton("الغاء", new DialogInterface.OnClickListener() {

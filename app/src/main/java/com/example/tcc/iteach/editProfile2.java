@@ -167,7 +167,7 @@ public class editProfile2 extends AppCompatActivity {
                     }
                 Toast.makeText(editProfile2.this, "تم التعديل بنجاح", Toast.LENGTH_LONG).show();
 
-                Intent h= new Intent(editProfile2.this,settings.class);
+                Intent h= new Intent(editProfile2.this,settings2.class);
                 startActivity(h);
 
             }
