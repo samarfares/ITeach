@@ -133,7 +133,6 @@ public class settings2 extends AppCompatActivity
                     subjects.setText(subject);
                 }
                 else {
-                    Toast.makeText(settings2.this, "لقد فشل جلب المعلومات, ", Toast.LENGTH_LONG).show();
 
                 }
 

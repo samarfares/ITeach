@@ -63,7 +63,7 @@ public class student_main extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         fadingTextView = (FadingTextView) findViewById(R.id.top3text) ;
-        top3 = new String[100];
+        top3 = new String[3];
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

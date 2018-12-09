@@ -199,7 +199,6 @@ user = firebaseAuth.getCurrentUser();
                     likes.setText(likes1);
                 }
                 else {
-                    Toast.makeText(settings.this, "لقد فشل جلب المعلومات, ", Toast.LENGTH_LONG).show();
 
                 }
 

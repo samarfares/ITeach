@@ -60,7 +60,7 @@ int i=0;
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
         fadingTextView.setTimeout(FadingTextView.SECONDS,2);
-        top3 = new String[100];
+        top3 = new String[3];
 
         /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

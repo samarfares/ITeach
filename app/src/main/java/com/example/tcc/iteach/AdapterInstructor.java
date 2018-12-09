@@ -54,10 +54,24 @@ gender.setText(instructor.getGender());
 dob.setText("ولد في : "+instructor.getDob());
 likes.setText(" الإعجابات "+instructor.getLikes()+"");
         yoe.setText("سنين الخبرة : "+instructor.getYoe()+"");
-        insLessonPlace.setText("يفضل أن يكون الدرس : "+instructor.getLessonsPlace());
+        if (!(instructor.getLessonsPlace().equals( "كلاهما" )))
+
+            insLessonPlace.setText("يفضل أن يكون الدرس : "+instructor.getLessonsPlace());
+        else
+            insLessonPlace.setText("يفضل أن يكون الدرس : "+"[عند الأستاذ,عند الطالب]");
+
+
         insLessonPrice.setText("سعر الدرس : "+instructor.getLessonsPrice()+" SR");
+       if (!(instructor.getTeachingMethod().equals( "كلاهما" )))
         insTmethod.setText("يفضل أن يدرس : "+instructor.getTeachingMethod());
-        insPmethod.setText("طريقة الدفع : "+instructor.getPaymentMethod());
+       else
+           insTmethod.setText("يفضل أن يدرس : "+"[فردي,جماعي]");
+
+        if (!(instructor.getPaymentMethod().equals( "كلاهما" )))
+            insPmethod.setText("طريقة الدفع : "+instructor.getPaymentMethod());
+        else
+            insPmethod.setText("طريقة الدفع : "+"[نقداً,فيزا]");
+
         insEmail.setText("البريد الالكتروني : "+instructor.getEmail());
          insPhone.setText("رقم الجوال : "+instructor.getPhoneNum()+"");
 
