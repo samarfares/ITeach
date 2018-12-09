@@ -59,6 +59,7 @@ public class student_main extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_main);
+        i=0;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -113,6 +114,7 @@ firebaseAuth=FirebaseAuth.getInstance();
         databaseReference.orderByChild("likes").limitToLast(3).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                i=0;
                 for (DataSnapshot snap : dataSnapshot.getChildren()){
                     name = snap.child("firstName").getValue().toString()+" "+snap.child("lastName").getValue().toString();
                     email = snap.child("email").getValue().toString();
@@ -121,6 +123,10 @@ firebaseAuth=FirebaseAuth.getInstance();
                     fadingTextView.setText(name);
                     top3[i]=name;
                     i++;
+                    Toast.makeText(student_main.this,"la"+ i, Toast.LENGTH_LONG).show();
+                    if (i==3) {
+                        break;
+                    }
                 }
                fadingTextView.setTexts(top3);
 
